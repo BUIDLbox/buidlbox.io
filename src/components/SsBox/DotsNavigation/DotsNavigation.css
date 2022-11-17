@@ -1,0 +1,20 @@
+.steps-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.step-box {
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--main-light-color);
+  transition: all 0.4s ease-out;
+  width: 1rem;
+  height: 1rem;
+  cursor: pointer;
+  border-image: none;
+}
+
+.step-box:hover {
+  border-image: var(--gradient-3) 1;
+}

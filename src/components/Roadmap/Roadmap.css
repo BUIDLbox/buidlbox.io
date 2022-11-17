@@ -1,0 +1,13 @@
+.roadmap h2 {
+  margin: 0 auto;
+  padding-bottom: var(--title-padding);
+}
+
+.roadmap-content {
+  margin: 0 auto;
+  width: fit-content;
+}
+.roadmap-content svg {
+  max-width: 100%;
+  height: auto;
+}

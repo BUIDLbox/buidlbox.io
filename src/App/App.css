@@ -1,0 +1,144 @@
+:root {
+  --title-gradient: linear-gradient(90deg, #FFC800 0%, #16DBBE 100%);
+  --gradient-1: linear-gradient(90deg, #E54DE5 0%, #FFC800 100%);
+  --gradient-2: linear-gradient(90deg, #16DBBE 0%, #E54DE5 100%);
+  --gradient-3: linear-gradient(90deg, #FFC800 0%, #16DBBE 100%);
+  --main-light-color: #FFF1E2;
+  --dark-bg-color: #213645;
+  --yellow-color: #FFC800;
+  --green-color: #16DBBE;
+
+  --font-xxl: 4.5rem;
+  --line-height-xxl: 5.3rem;
+  --font-xl: 4rem; /* 64px */
+  --font-l: 2.25rem; /* 36px */
+  --line-height-l: 2.6rem;
+  --font-m: 1.25rem; /* 20px */
+  --line-height-m: 1.75rem;
+  --font-s: 1.125rem; /* 18px */
+  --font-xs: 1rem;
+
+  --title-padding: 3rem;
+}
+
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--font-m);
+  line-height: var(--line-height-m);
+  color: var(--main-light-color);
+  font-weight: 400;
+  width: 100%;
+  background: url('./bubbles.svg') var(--dark-bg-color);
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--dark-bg-color);
+  border-radius: 10px;
+  transition: all 0.3s ease-out;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gradient-1);
+}
+
+section {
+  margin: 7rem auto;
+  max-width: 60rem;
+  padding: 0 10%;
+}
+
+/* fonts */
+h1 {
+  font-size: var(--font-xxl);
+  line-height: var(--line-height-xxl);
+  font-family: 'Spline Sans', sans-serif;
+  font-weight: 700;
+}
+
+h2,
+.main-title {
+  font-size: var(--font-l);
+  line-height: var(--line-height-l);
+  font-family: 'Spline Sans', sans-serif;
+  font-weight: 700;
+  background: var(--gradient-3);
+  background-clip: text;
+  color: transparent;
+  width: fit-content;
+}
+
+button,
+a,
+p {
+  font-size: var(--font-m);
+  line-height: var(--line-height-m);
+}
+
+.number {
+  font-family: 'Spline Sans', sans-serif;
+  font-weight: 700;
+  font-size: var(--font-xl);
+  background: var(--gradient-1);
+  background-clip: text;
+  color: transparent;
+  width: fit-content;
+  line-height: normal;
+}
+
+.font-s {
+  font-size: var(--font-s);
+}
+
+.bold-p {
+  font-weight: 600;
+}
+
+@media only screen and (max-width: 80rem) { /* 1280px */
+  :root {
+    --font-xxl: 3rem;
+    --line-height-xxl: 3.5rem;
+  }
+}
+
+@media only screen and (max-width: 62.5rem) { /* 1000px */
+  :root {
+    --font-xxl: 2.35rem;
+    --line-height-xxl: 3rem;
+  }
+}
+
+@media only screen and (max-width: 53rem) { /* 850px */
+  :root {
+    --font-xxl: 1.8rem;
+    --line-height-xxl: 2.4rem;
+    --font-l: 2rem;
+    --line-height-l: 2.2rem;
+  }
+}
+
+@media only screen and (max-width: 37.5rem) { /* 600px */
+  :root {
+    --font-xxl: 1.3rem;
+    --line-height-xxl: 1.8rem;
+    --font-xl: 1.8rem;
+    --font-l: 1.6rem;
+    --line-height-l: 1.8rem;
+    --font-m: 1.1rem;
+    --line-height-m: 1.4rem;
+    --font-s: 1rem; 
+  }
+}
+

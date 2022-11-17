@@ -1,0 +1,27 @@
+.description-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  max-width: 100rem;
+  gap: 10%;
+}
+
+.description-content > *:not(:last-child) {
+  padding-bottom: 2.5rem;
+}
+
+.description-content p {
+  max-width: 34rem;
+  /* text-align: justify; */
+}
+
+@media only screen and (max-width: 50rem) {
+  .description-box {
+    flex-direction: column;
+    gap: 3rem;
+  }
+  .description-box-img {
+    max-width: 150px;
+    max-height: 250px;
+  }
+}

@@ -1,0 +1,16 @@
+.primary-btn {
+  background: transparent;
+  border: 1px solid var(--main-light-color);
+  border-radius: 8px;
+  padding: 0.6em 2em;
+  color: var(--main-light-color);
+  transition: all 0.4s ease-out;
+  width: fit-content;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.primary-btn:hover {
+  color: var(--dark-bg-color);
+  background-color: var(--main-light-color);
+}
