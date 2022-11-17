@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/buidlbox.io/static/css/main.5043ec17.css",
+    "main.js": "/buidlbox.io/static/js/main.9c29c26e.js",
+    "static/media/img3.png": "/buidlbox.io/static/media/img3.915c4a09811beddb90ce.png",
+    "static/media/img2.png": "/buidlbox.io/static/media/img2.2c0f777a8b9ec86a236c.png",
+    "static/media/img1.png": "/buidlbox.io/static/media/img1.19c12d5cc77f866a4245.png",
+    "static/media/img3.jpg": "/buidlbox.io/static/media/img3.7de9b9ca830e99403808.jpg",
+    "static/media/img1.jpg": "/buidlbox.io/static/media/img1.032b27e6bc5f80c2b7bc.jpg",
+    "static/media/img2.jpg": "/buidlbox.io/static/media/img2.f56e651099b2a6e61f5e.jpg",
+    "static/media/deco.svg": "/buidlbox.io/static/media/deco.4487bb8292f1f27d7f8b48440e5ef3c4.svg",
+    "static/media/gloria-2x.jpg": "/buidlbox.io/static/media/gloria-2x.5064d1e96845222d43a1.jpg",
+    "static/media/mani-2x.png": "/buidlbox.io/static/media/mani-2x.52161d20c64881652e9e.png",
+    "static/media/morten-2x.jpg": "/buidlbox.io/static/media/morten-2x.1de2a53b13c1f957a125.jpg",
+    "static/media/guist-2x.jpg": "/buidlbox.io/static/media/guist-2x.2ea97c5dc7833b816430.jpg",
+    "static/media/blerta-2x.jpg": "/buidlbox.io/static/media/blerta-2x.d681cab92f1c6ed76e36.jpg",
+    "static/media/annelisa-2x.jpg": "/buidlbox.io/static/media/annelisa-2x.cd86ec0ce0afe82a9ea4.jpg",
+    "static/media/james-2x.jpg": "/buidlbox.io/static/media/james-2x.9f93d71b7ea62a345807.jpg",
+    "static/media/bubbles.svg": "/buidlbox.io/static/media/bubbles.c4e044244662458f58c4.svg",
+    "index.html": "/buidlbox.io/index.html",
+    "main.5043ec17.css.map": "/buidlbox.io/static/css/main.5043ec17.css.map",
+    "main.9c29c26e.js.map": "/buidlbox.io/static/js/main.9c29c26e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5043ec17.css",
+    "static/js/main.9c29c26e.js"
+  ]
+}
