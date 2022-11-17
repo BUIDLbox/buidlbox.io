@@ -25,7 +25,7 @@ function App() {
 
     <HackInABox />
     <Started />
-    <SsBox />
+    {/* <SsBox /> */}
     
      <Roadmap />
      <Team />
