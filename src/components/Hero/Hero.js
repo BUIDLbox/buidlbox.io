@@ -20,7 +20,7 @@ function Hero() {
   const [aspectRatioAnimation, setAspectRatioAnimation] = useState(animationDataDesktop169);
   const centeredText = aspectRatioAnimation === animationDataDesktop34 || aspectRatioAnimation === animationDataMobile189;
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     window.matchMedia("(max-width: 35rem)").matches || width * 1.5 < height  ? setIsMobile(true) : setIsMobile(false);
     const aspectRatio = width / height;
     const aspectRatio169 = 16 / 9;
@@ -48,7 +48,7 @@ function Hero() {
     };
   }, [width, height]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     let gsap1, gsap2;
     function LottieScrollTrigger(vars) {
       let playhead = {frame: 0},

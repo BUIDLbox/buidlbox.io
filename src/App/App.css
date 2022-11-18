@@ -33,7 +33,7 @@ body {
   color: var(--main-light-color);
   font-weight: 400;
   width: 100%;
-  background: url('./bubbles.svg') var(--dark-bg-color);
+  background: url('./page-bg.svg') var(--dark-bg-color);
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
@@ -85,6 +85,7 @@ a,
 p {
   font-size: var(--font-m);
   line-height: var(--line-height-m);
+  text-decoration: none;
 }
 
 .number {
