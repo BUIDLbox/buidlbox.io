@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/buidlbox.io/static/css/main.c60f03b1.css",
+    "main.css": "/buidlbox.io/static/css/main.49eae61f.css",
     "main.js": "/buidlbox.io/static/js/main.fb905317.js",
     "static/media/img3.png": "/buidlbox.io/static/media/img3.915c4a09811beddb90ce.png",
     "static/media/img2.png": "/buidlbox.io/static/media/img2.2c0f777a8b9ec86a236c.png",
@@ -17,11 +17,11 @@
     "static/media/annelisa-2x.jpg": "/buidlbox.io/static/media/annelisa-2x.cd86ec0ce0afe82a9ea4.jpg",
     "static/media/james-2x.jpg": "/buidlbox.io/static/media/james-2x.9f93d71b7ea62a345807.jpg",
     "index.html": "/buidlbox.io/index.html",
-    "main.c60f03b1.css.map": "/buidlbox.io/static/css/main.c60f03b1.css.map",
+    "main.49eae61f.css.map": "/buidlbox.io/static/css/main.49eae61f.css.map",
     "main.fb905317.js.map": "/buidlbox.io/static/js/main.fb905317.js.map"
   },
   "entrypoints": [
-    "static/css/main.c60f03b1.css",
+    "static/css/main.49eae61f.css",
     "static/js/main.fb905317.js"
   ]
 }
