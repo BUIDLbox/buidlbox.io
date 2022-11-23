@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/buidlbox.io/static/css/main.1e735e67.css",
-    "main.js": "/buidlbox.io/static/js/main.085cb7a2.js",
+    "main.css": "/buidlbox.io/static/css/main.c60f03b1.css",
+    "main.js": "/buidlbox.io/static/js/main.3923d4e0.js",
     "static/media/img3.png": "/buidlbox.io/static/media/img3.915c4a09811beddb90ce.png",
     "static/media/img2.png": "/buidlbox.io/static/media/img2.2c0f777a8b9ec86a236c.png",
     "static/media/img1.png": "/buidlbox.io/static/media/img1.19c12d5cc77f866a4245.png",
@@ -16,13 +16,12 @@
     "static/media/blerta-2x.jpg": "/buidlbox.io/static/media/blerta-2x.d681cab92f1c6ed76e36.jpg",
     "static/media/annelisa-2x.jpg": "/buidlbox.io/static/media/annelisa-2x.cd86ec0ce0afe82a9ea4.jpg",
     "static/media/james-2x.jpg": "/buidlbox.io/static/media/james-2x.9f93d71b7ea62a345807.jpg",
-    "static/media/page-bg.svg": "/buidlbox.io/static/media/page-bg.6d52fab120668ce76560.svg",
     "index.html": "/buidlbox.io/index.html",
-    "main.1e735e67.css.map": "/buidlbox.io/static/css/main.1e735e67.css.map",
-    "main.085cb7a2.js.map": "/buidlbox.io/static/js/main.085cb7a2.js.map"
+    "main.c60f03b1.css.map": "/buidlbox.io/static/css/main.c60f03b1.css.map",
+    "main.3923d4e0.js.map": "/buidlbox.io/static/js/main.3923d4e0.js.map"
   },
   "entrypoints": [
-    "static/css/main.1e735e67.css",
-    "static/js/main.085cb7a2.js"
+    "static/css/main.c60f03b1.css",
+    "static/js/main.3923d4e0.js"
   ]
 }
