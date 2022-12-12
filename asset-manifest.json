@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/buidlbox.io/static/css/main.1ca0ae7f.css",
-    "main.js": "/buidlbox.io/static/js/main.1e187729.js",
+    "main.css": "/buidlbox.io/static/css/main.9658a7e3.css",
+    "main.js": "/buidlbox.io/static/js/main.53791478.js",
     "static/media/img3.png": "/buidlbox.io/static/media/img3.915c4a09811beddb90ce.png",
     "static/media/img2.png": "/buidlbox.io/static/media/img2.2c0f777a8b9ec86a236c.png",
     "static/media/img1.png": "/buidlbox.io/static/media/img1.19c12d5cc77f866a4245.png",
@@ -17,20 +17,20 @@
     "static/media/annelisa-2x.jpg": "/buidlbox.io/static/media/annelisa-2x.cd86ec0ce0afe82a9ea4.jpg",
     "static/media/james-2x.jpg": "/buidlbox.io/static/media/james-2x.9f93d71b7ea62a345807.jpg",
     "static/media/page-bg.svg": "/buidlbox.io/static/media/page-bg.6d52fab120668ce76560.svg",
+    "static/media/metis.svg": "/buidlbox.io/static/media/metis.bfad3183465c85013c4c1a7d6cb131ed.svg",
+    "static/media/filecoin.svg": "/buidlbox.io/static/media/filecoin.ce1146eba21b8ca6a41e36cbcddd3fc2.svg",
     "index.html": "/buidlbox.io/index.html",
-    "static/media/algorand.svg": "/buidlbox.io/static/media/algorand.d60ec26980533f2e8b0763e65338a410.svg",
-    "static/media/biconomy.svg": "/buidlbox.io/static/media/biconomy.d60ec26980533f2e8b0763e65338a410.svg",
-    "static/media/celo.svg": "/buidlbox.io/static/media/celo.d60ec26980533f2e8b0763e65338a410.svg",
-    "static/media/filecoin.svg": "/buidlbox.io/static/media/filecoin.d60ec26980533f2e8b0763e65338a410.svg",
-    "static/media/ledger.svg": "/buidlbox.io/static/media/ledger.d60ec26980533f2e8b0763e65338a410.svg",
-    "static/media/lukso.svg": "/buidlbox.io/static/media/lukso.d60ec26980533f2e8b0763e65338a410.svg",
-    "static/media/mask.svg": "/buidlbox.io/static/media/mask.d60ec26980533f2e8b0763e65338a410.svg",
-    "static/media/metis.svg": "/buidlbox.io/static/media/metis.d60ec26980533f2e8b0763e65338a410.svg",
-    "main.1ca0ae7f.css.map": "/buidlbox.io/static/css/main.1ca0ae7f.css.map",
-    "main.1e187729.js.map": "/buidlbox.io/static/js/main.1e187729.js.map"
+    "static/media/biconomy.svg": "/buidlbox.io/static/media/biconomy.d39d656d900c819ab6400e26c12003e4.svg",
+    "static/media/celo.svg": "/buidlbox.io/static/media/celo.fbda664709d7161dbbb03aea3925e02a.svg",
+    "static/media/mask.svg": "/buidlbox.io/static/media/mask.601f919cb173e5fc59507bc17f75793c.svg",
+    "static/media/algorand.svg": "/buidlbox.io/static/media/algorand.74bb5e35403c94b897b1423cabaf22b3.svg",
+    "static/media/ledger.svg": "/buidlbox.io/static/media/ledger.9366447b1a0da7ffd125c1bebcfec7cf.svg",
+    "static/media/lukso.svg": "/buidlbox.io/static/media/lukso.f5d5a511e54f1f668dcab2198525c957.svg",
+    "main.9658a7e3.css.map": "/buidlbox.io/static/css/main.9658a7e3.css.map",
+    "main.53791478.js.map": "/buidlbox.io/static/js/main.53791478.js.map"
   },
   "entrypoints": [
-    "static/css/main.1ca0ae7f.css",
-    "static/js/main.1e187729.js"
+    "static/css/main.9658a7e3.css",
+    "static/js/main.53791478.js"
   ]
 }
