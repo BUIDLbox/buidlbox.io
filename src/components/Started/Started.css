@@ -1,5 +1,9 @@
 .started {
   text-align: center;
+  z-index: 2;
+}
+p {
+  z-index: 10;
 }
 .started h2 {
   padding-bottom: 2rem;

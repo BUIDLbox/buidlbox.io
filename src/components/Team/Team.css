@@ -5,7 +5,7 @@
 
 .team-members {
   display: flex;
-  gap: 1.25rem;
+  gap: 10%;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
@@ -15,8 +15,11 @@
 
 .member-card {
   display: flex;
-  height: 151px;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
   transition: all 0.4s ease-out;
+  padding-bottom: 2.25rem;
 }
 
 .member-card:hover {
@@ -27,43 +30,31 @@
 .member-avatar {
   height: 151px;
   width: 151px;
+  border-radius: 50%;
 }
 
 .member-name {
-  width: 151px;
-  height: 151px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
-  color: var(--dark-bg-color);
+  color: var(--white-color);
   font-weight: 700;
   letter-spacing: -0.023em;
 }
 
 @media only screen and (max-width: 63rem) {
-  .member-avatar,
-  .member-name {
+  .member-avatar {
     width: 100px;
     height: 100px;
   }
-  .member-card {
-    height: 100px;
-  }
-  .member-name svg {
-    display: none;
-  }
 }
 @media only screen and (max-width: 35rem) {
-  .member-avatar,
-  .member-name {
-    width: 55px;
-    height: 55px;
+  .member-avatar {
+    width: 75px;
+    height: 75px;
   }
   .member-name p {
     font-size: 0.8rem;
-  }
-  .member-card {
-    height: 55px;
   }
 }

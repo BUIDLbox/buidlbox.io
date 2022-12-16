@@ -1,5 +1,5 @@
 import './DescriptionBox.css';
-import { useEffect, useLayoutEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import useIsVisible from '../../hooks/useIsVisible';
 import buidlbox from './buidlbox-icon.json';
 import { Player } from '@lottiefiles/react-lottie-player';

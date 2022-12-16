@@ -14,14 +14,21 @@
   max-width: 34rem;
   /* text-align: justify; */
 }
+.description-content.reversed p {
+  max-width: 27.5rem;
+  /* text-align: justify; */
+}
+
+@media only screen and (max-width: 60rem) {
+  .description-box.reversed {
+    flex-direction: column;
+    gap: 3rem;
+  }
+}
 
 @media only screen and (max-width: 50rem) {
   .description-box {
     flex-direction: column;
     gap: 3rem;
-  }
-  .description-box-img {
-    max-width: 150px;
-    max-height: 250px;
   }
 }

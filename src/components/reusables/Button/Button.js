@@ -1,12 +1,12 @@
 import './Button.css';
 
-function Button({text, link}) {
+function Button({text, link, handleClick}) {
   return (
     <>
       {link ? (
         <a className="primary-btn" href={link}>{text}</a>
       ) : (
-        <button className="primary-btn">{text}</button>
+        <button onClick={handleClick} className="primary-btn">{text}</button>
       )}
     </>
   );

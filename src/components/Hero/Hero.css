@@ -1,32 +1,24 @@
+.hero-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  gap: 7%;
+  height: 100vh;
+  position: relative;
+  width: 100%;
+}
 
 .lottieContainer {
-  /* width: 100%; */
-  max-width: 100vw;
-  max-height: 100vh;
- /* height: 100%; */
-}
-.lottieContainer svg {
-  min-height: 100vh;
-  max-height: 100vh;
-  width: auto;
-  z-index: 100;
+  width: 380px;
+  height: 380px;
+  max-width: 100%;
+  z-index: 1;
 }
 
 h1 {
-  position: absolute;
   color: var(--main-light-color);
-}
-.left-text {
-  bottom: 50%;
-  left: 10%;
-  /* right: 20%; */
-  transform: translateY(50%);
-}
-.centered-text {
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 5%;
-  text-align: center;
+  z-index: 1;
 }
 
 .gradient-1 {
@@ -40,4 +32,42 @@ h1 {
 }
 .hero-gradient {
 	background-clip: text;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.hero-bg g {
+  cursor: pointer;
+  transition: all 0.5s ease-out;
+  z-index: 10;
+}
+.hero-bg g:hover {
+  filter: blur(4px) !important;
+}
+
+@media only screen and (max-width: 80rem) {
+  .lottieContainer {
+    width: 310px;
+    height: 310px;
+  }
+}
+@media only screen and (max-width: 62.5rem) {
+  .hero-inner {
+    flex-direction: column;
+    gap: 1.8rem;
+  }
+  .lottieContainer { 
+    max-width: 80%;
+  }
+  h1 {
+    text-align: center;
+  }
+  
 }

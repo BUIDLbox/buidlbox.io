@@ -8,7 +8,7 @@ function DotsNavigation({ totalSteps, activeStepIndex, changeStep }) {
       {totalStepsArr.map((step, index) => (
         <div
           key={uuid()}
-          onClick={() => changeStep(index)}
+          onClick={() => changeStep(index + 1)}
           className={`step-box ${activeStepIndex === index ? 'active-step-box' : ''}`}
           style={{ backgroundColor: activeStepIndex === index ? 'var(--main-light-color)' : 'unset' }}
         ></div>

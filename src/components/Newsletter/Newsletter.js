@@ -1,17 +1,20 @@
+import { useState } from "react";
 import Button from "../reusables/Button/Button";
-import deco from './deco.svg';
+import DividerLottie from "./DividerLottie";
+import Modal from "./Modal/Modal";
 import './Newsletter.css';
 
 function Newsletter() {
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <>
-      <section>
-        <img className="deco-img" src={deco} alt=""  width="910" height="50" />
-      </section>
+      <DividerLottie />
       <section className="newsletter">
         <h2>Interested? Join our newsletter</h2>
-        <Button text="Sign up" />
+        <Button text="Sign up" handleClick={() => setShowModal(true)} />
       </section>
+      <Modal show={showModal} setShow={setShowModal} />
     </>
   );
 }

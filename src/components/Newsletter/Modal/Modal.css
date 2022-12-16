@@ -1,0 +1,102 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 30;
+}
+.modal-content {
+  border-radius: 8px;
+  z-index: 30;
+  background: var(--dark-bg-color);;
+  height: fit-content;
+}
+
+/* modal transition */
+.modal, 
+.modal-content {
+    transition: all 0.15s ease-out;
+}
+.modal.enter-done,
+.modal.show {
+    opacity: 1;
+}
+
+.modal.exit,
+.modal {
+    opacity: 0;
+}
+.modal.enter-done .modal-content,
+.modal.show .modal-content {
+    transform: translateY(0);
+}
+.modal.exit .modal-content,
+.modal-content {
+    transform: translateY(-10px);
+}
+
+@media only screen and (min-width: 37.5rem) {
+  .modal-content {
+      max-width: 27rem;
+  }
+}
+
+/* style overrides */
+#mc_embed_signup {
+  background:var(--dark-bg-color);
+  color: white;
+  clear: left;
+  font-size: 1rem;
+  max-width: 600px;
+}
+
+#mc_embed_signup form {
+  margin: 1.5rem 3.5rem;
+}
+#mc_embed_signup .mc-field-group {
+  width: 100%;
+}
+
+#mc_embed_signup input,
+#mc_embed_signup input:focus,
+input:-internal-autofill-selected {
+  border: 1px solid var(--green-color);
+  outline: none;
+  background-color: var(--dark-bg-color);
+  color: white;
+}
+
+#mc_embed_signup .helper_text {
+  background-color: var(--dark-bg-color);
+  color: var(--green-color);
+}
+
+#mc_embed_signup #mc-embedded-subscribe-form div.mce_inline_error {
+  background-color: var(--dark-bg-color);
+}
+
+#mc_embed_signup .button {
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  height: unset;
+  background: var(--gradient-3);
+  color: var(--dark-bg-color);
+  font-weight: 600;
+  width: 100%;
+  opacity: 1;
+  transition: opacity 0.4s ease-out;
+}
+
+#mc_embed_signup .button:hover,
+#mc_embed_signup .button:active,
+#mc_embed_signup .button:focus,
+.cta-btn:hover,
+.cta-btn:active {
+  opacity: 0.7;
+  border: none;
+}
