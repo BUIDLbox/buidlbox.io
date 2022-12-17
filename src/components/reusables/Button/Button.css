@@ -9,6 +9,10 @@
   text-decoration: none;
   cursor: pointer;
 }
+.primary-btn.small {
+  font-size: var(--font-xxs);
+  padding: 0.4em 0.9em;
+}
 
 .primary-btn:hover {
   color: var(--dark-bg-color);

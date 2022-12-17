@@ -1,10 +1,10 @@
 import './Button.css';
 
-function Button({text, link, handleClick}) {
+function Button({text, link, handleClick, small}) {
   return (
     <>
       {link ? (
-        <a className="primary-btn" href={link}>{text}</a>
+        <a className={small ? 'primary-btn small' : 'primary-btn'} href={link}>{text}</a>
       ) : (
         <button onClick={handleClick} className="primary-btn">{text}</button>
       )}

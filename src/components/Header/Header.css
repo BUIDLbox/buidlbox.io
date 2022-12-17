@@ -1,7 +1,12 @@
 header {
   position: fixed;
-  top: 1rem;
-  left: 1.5%;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2.5% 1rem 1.5%;
+  width: 100%;
   z-index: 10;
   cursor: pointer;
+  box-sizing: border-box;
+  backdrop-filter: blur(6px);
+  background-color: rgba(33, 54, 69, 0.6);
 }
