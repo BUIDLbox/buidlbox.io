@@ -3,13 +3,15 @@ import buildboxLogo from './buidlbox-logo.json';
 
 function AnimatedLogo() {
   return (
-    <Player
-      autoplay
-      hover
-      src={buildboxLogo}
-      style={{ height: '40px', width: '144px', cursor: 'pointer' }}
-    >
-    </Player>
+    <div onClick={() => window.scrollTo(0, 0)}>
+      <Player
+        autoplay
+        hover
+        src={buildboxLogo}
+        style={{ height: '40px', width: '144px', cursor: 'pointer' }}
+      >
+      </Player>
+    </div>
   );
 }
 
