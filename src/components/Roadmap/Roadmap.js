@@ -137,7 +137,7 @@ function Roadmap() {
   return (
     <section className="roadmap">
       <Parallax speed={5} opacity={[0.3, 1]}>
-        <h2>Roadmap</h2>
+        <h2>Timeline</h2>
       </Parallax>
       {!verticalTimeline ? (
         <div className="roadmap-content">

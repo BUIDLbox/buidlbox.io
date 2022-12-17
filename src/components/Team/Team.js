@@ -29,7 +29,7 @@ function Team() {
   return (
     <section className="team">
       <Parallax speed={5} opacity={[0.3, 1]}>
-        <h2>Team</h2>
+        <h2>The buidlbox team</h2>
       </Parallax>
       <div className="team-members">
         {team.map(member => (
