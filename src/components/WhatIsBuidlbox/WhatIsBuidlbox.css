@@ -2,15 +2,13 @@
 .buidlbox-section-description {
   background: var(--gradient-1);
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  scroll-snap-align: center;
 }
 
 .buidlbox-section-description-inner {
-  /* max-width: 830px; */
   padding: 0 8%;
   margin: 0 auto;
   display: flex;
