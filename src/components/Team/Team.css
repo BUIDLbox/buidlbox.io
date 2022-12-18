@@ -3,6 +3,32 @@
   padding-bottom: var(--title-padding);
 }
 
+.team {
+  position: relative;
+  background-color: var(--dark-card-bg);
+  padding: 5rem 10%;
+}
+
+.team:before {
+  content: '';
+  position: absolute;
+  top: 0%;
+  left: 0;
+  width: 100%;
+  height: 25px;
+  display: block;
+  background: linear-gradient(
+    -35deg, transparent 33.33%,
+    var(--dark-card-bg) 33.33%, var(--dark-card-bg) 66.66%,
+    transparent 66.66%),
+    linear-gradient(
+    35deg, transparent 33.33%,
+    var(--dark-card-bg) 33.33%, var(--dark-card-bg) 66.66%,
+    transparent 66.66%);
+  background-size: 60px 90px;
+  transform: translateY(-100%);
+}
+
 .team-members {
   display: flex;
   gap: 10%;

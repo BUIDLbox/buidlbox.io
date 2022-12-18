@@ -10,7 +10,6 @@ import Footer from '../components/Footer/Footer';
 import Started from '../components/Started/Started';
 import Testimonials from '../components/Testimonials/Testimonials';
 import gsap from "gsap";
-import EmpowerAnimation from '../components/DescriptionBox/EmpowerAnimation';
 import ScrollTrigger from "gsap/ScrollTrigger";
 import Logos from '../components/Logos/Logos';
 import CustomLottie from '../components/DescriptionBox/CustomLottie';
@@ -20,13 +19,6 @@ import WhatIsBuidlbox from '../components/WhatIsBuidlbox/WhatIsBuidlbox';
 import { ParallaxProvider } from 'react-scroll-parallax';
 import Grow from '../components/Grow/Grow';
 gsap.registerPlugin(ScrollTrigger);
-
-const empowerDescription = (
-  <>
-    <p><span className="bold-p">buidlbox’s</span> mission is to empower changemakers to thrive in the digital frontier...and to us, buidlers are changemakers. They are developers, artists, educators, designers, thought leaders, and so much more.</p>
-    <p> To support our mission, we aim to generate new opportunities for buidlers to create and foster growth across ecosystems that are buidling the future of the internet.</p>
-  </>
-);
 
 const hackathonDescription = (
   <p>Design your hackathon experience with custom landing pages, custom user polls, set your challenges – the possibilities are endless!</p>
@@ -68,16 +60,15 @@ function App() {
       <div>
         <Header />
         <Hero />
-        <DescriptionBox title={`Let’s buidl a better future`} description={empowerDescription}>
-          <EmpowerAnimation />
-        </DescriptionBox>
         <WhatIsBuidlbox />
         <Grow />
-        {descriptionBoxes.map((box, index) => (
-          <DescriptionBox key={`box-${index}`} title={box.title} description={box.description} reversed={box.reversed}>
-            {box.children}
-          </DescriptionBox>
-        ))}
+        <section className='description-boxes'>
+          {descriptionBoxes.map((box, index) => (
+            <DescriptionBox key={`box-${index}`} title={box.title} description={box.description} reversed={box.reversed}>
+              {box.children}
+            </DescriptionBox>
+          ))}
+        </section>
         <Started />
         <Logos />
         <Testimonials />

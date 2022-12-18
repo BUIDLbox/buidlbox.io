@@ -1,13 +1,15 @@
-footer {
+.footer-inner {
   margin: 0 auto;
-  margin-bottom: 4rem;
+  /* padding: 0 10%; */
+  padding-top: 4rem;
+  padding-bottom: 3rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 @media only screen and (max-width: 44rem) {
-  footer {
+  .footer-inner {
     flex-direction: column;
     gap: 2rem;
     text-align: center;

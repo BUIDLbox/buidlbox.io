@@ -5,7 +5,7 @@ header {
   align-items: center;
   padding: 1rem calc(1.5% + 1rem) 1rem 1.5%;
   width: 100%;
-  z-index: 10;
+  z-index: 30;
   box-sizing: border-box;
   backdrop-filter: blur(6px);
   background-color: rgba(33, 54, 69, 0.6);

@@ -1,7 +1,8 @@
 import lottie from "lottie-web";
-import { useLayoutEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import './Hero.css';
 import heroAnimation from './hero-logo.json';
+import Button from "../reusables/Button/Button";
 
 const gsap = window.gsap;
 const ScrollTrigger = window.ScrollTrigger;
@@ -37,10 +38,7 @@ function Hero() {
           frame: animation.totalFrames - 1,
           ease: "none",
           onUpdate: () => animation.goToAndStop(playhead.frame, true),
-        })
-        .to(heroTitle.current, {
-          color: 'transparent',
-        }, 0);
+        });
 
         // in case there are any other ScrollTriggers on the page and the loading of this Lottie asset caused layout changes
         ScrollTrigger.sort();
@@ -66,16 +64,42 @@ function Hero() {
     }
   }, []);
 
+  const [isScroll0, setIsScroll0] = useState(true);
+  useEffect(() => {
+    const changeMainText = () => {
+      window.scrollY > 0 ? setIsScroll0(false) : setIsScroll0(true);
+    };
+    
+    window.addEventListener('scroll', changeMainText);
+    return () => window.removeEventListener('scroll', changeMainText);
+  }, []);
+
   return (
     <div ref={hero} className="hero">
       <div className="hero-inner">
         <div className="lottieContainer" ref={lottieRef}></div>
-        <h1 ref={heroTitle}>
-          <span className="hero-gradient gradient-1">Empower<br/> changemakers</span>
-          <span className="hero-gradient gradient-2"><br/> to thrive </span>
-          <span className="hero-gradient gradient-3">in the <br/></span>
-          <span className="hero-gradient gradient-3">digital frontier</span>
-        </h1>
+        <div className="hero-text">
+          <h1 ref={heroTitle}>
+            <div style={{ opacity: `${isScroll0 ? 1 : 0}`, transition: 'all 0.3s ease-in' }}>
+              <span className="hero-gradient gradient-1">Empower<br/> changemakers</span>
+              <span className="hero-gradient gradient-2"><br/> to thrive </span>
+              <span className="hero-gradient gradient-3">in the <br/></span>
+              <span className="hero-gradient gradient-3">digital frontier</span>
+            </div>
+            <div className="second-hero-text" style={{ opacity: `${isScroll0 ? 0 : 1}`, transition: 'all 0.5s ease-out 0.1s' }}>
+              <h1>
+                <span className="hero-gradient gradient-1">Hackathons <br/></span>
+                <span>
+                  <span className="hero-gradient gradient-2">made </span>
+                  <span className="hero-gradient gradient-3">easy</span>
+                  <span className="hero-gradient gradient-1">.</span>
+                </span>
+              </h1>
+              <p className="hero-build font-m">build /// buidl /// buidlbox!</p>
+              <Button text="Request a demo" hero={true} link={`mailto:buidlbox@supermodular.xyz?subject=buidlbox%3A%20Demo%20request&body=%F0%9F%91%8B%20Hello%20buidlbox%20team%2C%0A%0AI%20would%20like%20to%20request%20a%20demo!%20Here's%20my%20info%3A%0A%0A%3C!--%20Please%20enter%20your%20details%20below%20--%3E%0AOrganization%20name%3A%20%5BYour%20organization's%20name%5D%0AWork%20email%3A%20%5BYour%20work%20email%20address%5D%0AFull%20name%3A%20%5BYour%20name%5D%0ATime%20zone%3A%20%5BPST%2FEST%2FCET%2Fetc%5D`} />
+            </div>
+          </h1>
+        </div>
         <svg className="hero-bg" width="1440" height="1024" viewBox="0 0 1440 1024" preserveAspectRatio="xMaxYMax slice" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g style={{filter: 'blur(15px)'}}>
           <circle cx="1415" cy="726" r="81.1813" transform="rotate(39.4085 1415 726)" fill="url(#paint0_linear_1485_3)"/>

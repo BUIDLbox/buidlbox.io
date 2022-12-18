@@ -1,16 +1,33 @@
-.buidlbox-section {
-  text-align: center;
-  max-width: 100rem;
+
+.buidlbox-section-description {
+  background: var(--gradient-1);
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  scroll-snap-align: center;
 }
 
-.buidlbox-section h2 {
+.buidlbox-section-description-inner {
+  /* max-width: 830px; */
+  padding: 0 8%;
   margin: 0 auto;
-  padding-bottom: 2.5rem;
+  display: flex;
+  gap: 5%;
+  justify-content: space-between;
+  align-items: center;
 }
-.buidlbox-section p {
-  padding-bottom: 3.5rem;
-  max-width: 44rem;
-  margin: 0 auto;
+
+.buidlbox-section-description h2 {
+  padding-bottom: 2.5rem;
+  color: var(--dark-bg-color);
+  text-align: left;
+}
+
+.buidlbox-section-description p {
+  line-height: 140%;
+  max-width: 650px;
 }
 
 .buidlbox-slides-links {
@@ -18,8 +35,10 @@
   gap: 10%;
   justify-content: center;
   padding-top: 2.5rem;
+  text-align: center;
 }
 .buidlbox-slides-images {
+  max-width: 100rem;
   position: relative;
   max-width: fit-content;
   margin: 0 auto;
@@ -41,4 +60,20 @@ img.front-ss {
   transition: all 0.6s ease-out;
   max-width: 100%;
   height: auto;
+}
+
+
+@media only screen and (max-width: 50rem) {
+  .buidlbox-section-description-inner {
+    flex-direction: column;
+    gap: 3rem;
+  }
+  .animation-container {
+    max-width: 70%;
+  }
+}
+@media only screen and (max-width: 31.25rem) {
+  .buidlbox-section-description p {
+    font-size: 1.25rem;
+  }
 }

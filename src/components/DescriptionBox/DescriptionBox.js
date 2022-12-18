@@ -3,7 +3,7 @@ import './DescriptionBox.css';
 
 function DescriptionBox({title, description, children, reversed}) {
   return (
-    <section className={`description-box ${reversed? 'reversed' : ''}`}>
+    <div className={`description-box ${reversed? 'reversed' : ''}`}>
       {reversed ? (
         <>
           {children}
@@ -23,7 +23,7 @@ function DescriptionBox({title, description, children, reversed}) {
           {children}
         </>
       )}
-    </section>
+    </div>
   );
 }
 

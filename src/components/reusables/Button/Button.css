@@ -19,6 +19,24 @@
   padding: 0.5em 0.9em;
 }
 
+.primary-btn.hero {
+  background-clip: padding-box;
+  border: solid 2px transparent; 
+  position: relative;
+  background: var(--dark-bg-color);
+  padding: 0.4em 2em;
+}
+
+.primary-btn.hero:before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  z-index: -1;
+  margin: -4px;
+  border-radius: inherit;
+  background: linear-gradient(to right, #E54DE5, #16DBBE,#FFC839);
+}
+
 .btn-boxes > img {
   position: absolute;
   transition: all 0.5s ease-out;

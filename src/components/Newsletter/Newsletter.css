@@ -21,3 +21,29 @@
     text-align: center;
   }
 }
+
+.before-footer {
+  position: relative;
+  background-color: var(--dark-card-bg);
+  padding-bottom: 2rem;
+}
+
+.before-footer:before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 25px;
+  display: block;
+  background: linear-gradient(
+    -35deg, transparent 33.33%,
+    var(--dark-card-bg) 33.33%, var(--dark-card-bg) 66.66%,
+    transparent 66.66%),
+    linear-gradient(
+    35deg, transparent 33.33%,
+    var(--dark-card-bg) 33.33%, var(--dark-card-bg) 66.66%,
+    transparent 66.66%);
+  background-size: 60px 90px;
+  transform: rotate(180deg);
+}

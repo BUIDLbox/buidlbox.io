@@ -27,7 +27,7 @@ function Team() {
   ];
 
   return (
-    <section className="team">
+    <div className="team">
       <Parallax speed={5} opacity={[0.3, 1]}>
         <h2>The buidlbox team</h2>
       </Parallax>
@@ -51,7 +51,7 @@ function Team() {
           </a>
         ))}
       </div>
-    </section>
+    </div>
   );
 }
 

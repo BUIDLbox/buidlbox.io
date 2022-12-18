@@ -72,8 +72,8 @@ function Testimonials() {
   }, [width]);
 
   const handleTouchStart = (e) => {
-      const touchDown = e.touches[0].clientX
-      setTouchPosition(touchDown)
+      const touchDown = e.touches[0].clientX;
+      setTouchPosition(touchDown);
   };
 
   const goNextSlide = useCallback(() => {
@@ -100,10 +100,10 @@ function Testimonials() {
   const handleTouchMove = (e) => {
     const touchDown = touchPosition;
     if(touchDown === null) {
-      return
+      return;
     };
-    const currentTouch = e.touches[0].clientX
-    const diff = touchDown - currentTouch
+    const currentTouch = e.touches[0].clientX;
+    const diff = touchDown - currentTouch;
 
     if (diff > 5) {
         goNextSlide();

@@ -5,6 +5,7 @@
   --gradient-3: linear-gradient(90deg, #FFC800 0%, #16DBBE 100%);
   --main-light-color: #FFF1E2;
   --dark-bg-color: #213645;
+  --dark-card-color: #28465B;
   --yellow-color: #FFC800;
   --green-color: #16DBBE;
   --dark-card-bg: #2A4457;
@@ -79,7 +80,7 @@ body {
 section {
   margin: 7rem auto;
 }
-footer,
+.footer-inner,
 section {
   max-width: 60rem;
   padding: 0 10%;
@@ -110,7 +111,7 @@ h2,
   color: transparent;
 }
 .bold {
-  font-weight: 800;
+  font-weight: 700;
 }
 
 button,
@@ -164,6 +165,15 @@ a {
   line-height: normal;
 }
 
+.font-xxl {
+  font-size: var(--font-xxl);
+}
+
+.font-l {
+  font-size: var(--font-l);
+  line-height: var(--line-height-l);
+}
+
 .font-m {
   font-size: var(--font-m);
 }
@@ -179,6 +189,19 @@ a {
   font-weight: 600;
 }
 
+.description-boxes {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+section.description-boxes {
+  max-width: 75rem;
+}
+@media only screen and (max-width: 22rem) {
+  section.description-boxes {
+    padding: 0;
+  }
+}
 @media only screen and (max-width: 80rem) { /* 1280px */
   :root {
     --font-xxl: 3.2rem;
