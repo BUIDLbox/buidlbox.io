@@ -58,14 +58,20 @@ function Testimonials() {
     }
   ];
 
+  const [clickDisabled, setClickDisabled] = useState(false);
+  const [hasTransition, setHasTransition] = useState(true);
+
   testimonials.unshift(testimonials[testimonials.length - 1]);
   testimonials.push(testimonials[1]);
 
   const { width } = useWindowDimensions();
   const [activeSlide, setActiveSlide] = useState(1);
-  const [transitionEnabled, setTransitionEnabled] = useState(true);
   const [touchPosition, setTouchPosition] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
+  const ref = useRef();
+  const isRefVisible = useIsVisible(ref);
+
+  const intervalId = useRef(null);
 
   useEffect(() => {
     window.matchMedia("(max-width: 31.25rem)").matches ? setIsMobile(true) : setIsMobile(false);
@@ -84,18 +90,63 @@ function Testimonials() {
       setActiveSlide(prev => prev - 1);
   }, []);
 
-  const handleTransitionEnd = () => {
+  useEffect(() => {
+    if (activeSlide === testimonials.length - 1) {
+    	setClickDisabled(true);
+    	setTimeout(() => {
+      	setHasTransition(false);
+      	setActiveSlide(1);
+      }, 300);
+    }
+    
+    if (activeSlide === 1) {
+    	setTimeout(() => {
+      	setHasTransition(true)
+      }, 300);
+    }
+    
     if (activeSlide === 0) {
-        setTransitionEnabled(false);
-        setActiveSlide(testimonials.length - 2);
-    } else if (activeSlide === testimonials.length - 1) {
-        setTransitionEnabled(false);
-        setActiveSlide(1);
+    	setClickDisabled(true);
+    	setTimeout(() => {
+      	setHasTransition(false);
+        setActiveSlide(testimonials.length - 2)
+      }, 300)
     }
-    if (activeSlide === 1 || activeSlide === testimonials.length - 2) {
-      setTransitionEnabled(true);
+    
+    if (activeSlide === testimonials.length - 2) {
+   		setTimeout(() => {
+      	setHasTransition(true);
+      }, 300)
     }
-  }
+  }, [activeSlide, testimonials.length]);
+
+  useEffect(() => {
+    if (clickDisabled) {
+      setTimeout(() => {
+        setClickDisabled(false);
+      }, 300 * 2);
+    }
+  }, [clickDisabled]);
+
+
+  useEffect(() => {
+    const start = () => {
+      // if (intervalId.current != null) {
+      //   return;
+      // }
+      intervalId.current = setInterval(() => {
+        setActiveSlide(prevVisibleSlide => {
+          if (prevVisibleSlide + 1 === testimonials.length) {
+            return 0;
+          }
+          return prevVisibleSlide + 1
+        })
+      }, 4000);
+    };
+    isRefVisible ? start() : stopInterval();
+
+    return () => clearInterval(intervalId.current);
+  }, [testimonials.length, isRefVisible]);
 
   const handleTouchMove = (e) => {
     const touchDown = touchPosition;
@@ -107,45 +158,24 @@ function Testimonials() {
 
     if (diff > 5) {
         goNextSlide();
-        setAutoPlay(false);
+        stopInterval();
     }
     if (diff < -5) {
         goPrevSlide();
-        setAutoPlay(false);
+        stopInterval();
     }
 
     setTouchPosition(null);
   };
 
-  const ref = useRef();
-  const timeoutId = useRef();
-  const isRefVisible = useIsVisible(ref);
-  const [autoPlay, setAutoPlay] = useState(true);
+  const stopInterval = () => {
+    intervalId.current && clearInterval(intervalId.current);
+  };
 
-  const changeStep = useCallback((index) => {
-    if (!index) {
-      timeoutId.current && clearTimeout(timeoutId.current);
-      timeoutId.current = setTimeout(goNextSlide, 200);
-    } else {
-      timeoutId.current && clearTimeout(timeoutId.current);
-      setActiveSlide(index);
-      setAutoPlay(false);
-    };
-  }, [goNextSlide]);
-    
-
-  useEffect(() => {
-    let intervalId;
-    if (isRefVisible && autoPlay) {
-      intervalId = setInterval(() => {
-        changeStep();
-      }, 4000);
-    } else {
-      intervalId && clearInterval(intervalId);
-    }
-
-    return () => intervalId && clearInterval(intervalId);
-  }, [isRefVisible, changeStep, autoPlay]);
+  const goToStep = (index) => {
+    stopInterval();
+    setActiveSlide(index);
+  };
 
   return (
     <div className="testimonials">
@@ -154,17 +184,18 @@ function Testimonials() {
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         ref={ref}
-        // 1.8rem= gap, 60vw = activeSlide width 
+        // 1.8rem = gap, 60vw = activeSlide width 
         style={{
           transform: `${!isMobile
             ? `translate(calc(-${activeSlide * 60}vw - 0.4rem - calc(${activeSlide} * 1.8rem) + 20vw))`
             : `translate(calc(-${activeSlide * 100}vw))`}`,
-          transition: !transitionEnabled ? 'none' : 'all 0.3s ease-out',
+          transition: !hasTransition ? 'none' : 'all 0.3s linear',
         }}
-        onTransitionEnd={() => handleTransitionEnd()}
       >
         {testimonials.map((testimonial, index) => (
           <div
+            style={{ pointerEvents: `${clickDisabled ? 'none' : ''}` }}
+            onClick={() => goToStep(index)} 
             className={`
               carousel-item ${
                 activeSlide === index && index !== 0 && index !== testimonials.length - 1
@@ -188,7 +219,7 @@ function Testimonials() {
           </div>
         ))}
       </div>
-      <DotsNavigation totalSteps={testimonials.length - 3} activeStepIndex={activeSlide - 1} changeStep={changeStep}/>
+      <DotsNavigation totalSteps={testimonials.length - 3} activeStepIndex={activeSlide - 1} changeStep={goToStep}/>
     </div>
   );
 }

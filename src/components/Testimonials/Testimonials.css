@@ -3,8 +3,6 @@
   margin: 7rem auto;
 }
 .carousel-container {
-  /* background-color: green; */
-  /* display: flex; */
   display: inline-flex;
   flex-wrap: nowrap;
   gap: 1.8rem;
@@ -17,10 +15,10 @@
   padding-right: 1.8rem;
 }
 .carousel-item {
+  cursor: pointer;
   background-color: var(--dark-card-bg);
   opacity: 0.5;
   box-shadow: 0px 4px 4px 3px rgba(0, 0, 0, 0.1);
-  /* height: 15rem; */
   width: 60vw;
   transition: all 0.3s ease-out;
   padding: 3rem 3.5rem;
@@ -31,11 +29,18 @@
   justify-content: space-between;
   gap: 2rem;
 }
+.carousel-item:hover {
+  transform: scale(0.99);
+  opacity: 0.8;
+}
 
 .carousel-item-active {
   opacity: 1;
   background: linear-gradient(0deg, #213645 -0.13%, rgba(0, 0, 0, 0) 100%), linear-gradient(90deg, #E54DE5 0%, #FFC800 100%);
   box-shadow: 0px 4px 4px 3px rgba(0, 0, 0, 0.1);
+}
+.carousel-item-active:hover {
+  opacity: 1;
 }
 
 .testimonial-content {
