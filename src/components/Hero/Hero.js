@@ -12,14 +12,15 @@ function Hero() {
   const tl = useRef();
   const hero = useRef();
   const lottieRef = useRef();
-  const heroTitle = useRef();
 
   useLayoutEffect(() => {
+    const isMobile = window.matchMedia("(max-width: 37.5rem)").matches;
+    const end = isMobile ? '+=800' : '+=1500';
     function LottieScrollTrigger(vars) {
+      ScrollTrigger.refresh();
       let playhead = {frame: 0},
       target = gsap.utils.toArray(vars.target)[0],
-      speeds = {slow: "+=2000", medium: "+=1000", fast: "+=500"},
-      st = { trigger: vars.trigger, anticipatePin: 1, fastScrollEnd: true, pin: true, start: "top top", end: speeds[vars.speed] || "+=1000", scrub: 1.5 },
+      st = { trigger: vars.trigger, anticipatePin: 1, fastScrollEnd: true, pin: true, start: "top top", end: end, scrub: 1.5 },
       animation = lottie.loadAnimation({
         container: target,
         renderer: vars.renderer || "svg",
@@ -79,7 +80,7 @@ function Hero() {
       <div className="hero-inner">
         <div className="lottieContainer" ref={lottieRef}></div>
         <div className="hero-text">
-          <h1 ref={heroTitle}>
+          <h1>
             <div style={{ opacity: `${isScroll0 ? 1 : 0}`, transition: 'all 0.3s ease-in' }}>
               <span className="hero-gradient gradient-1">Empower<br/> changemakers</span>
               <span className="hero-gradient gradient-2"><br/> to thrive </span>
