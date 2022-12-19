@@ -16,7 +16,7 @@ function CustomLottie() {
     function LottieScrollTrigger(vars) {
       let playhead = {frame: 0},
       target = gsap.utils.toArray(vars.target)[0],
-      st = { trigger: vars.trigger, anticipatePin: 1, fastScrollEnd: true, start: "top 90%", end: "center center", scrub: 1 },
+      st = { trigger: vars.trigger, anticipatePin: 1, fastScrollEnd: true, start: "top 90%", end: "center center", scrub: 1.5 },
       animation = lottie.loadAnimation({
         container: target,
         renderer: vars.renderer || "svg",

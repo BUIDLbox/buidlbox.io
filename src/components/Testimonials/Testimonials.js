@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import useIsVisible from '../../hooks/useIsVisible';
 import DotsNavigation from './DotsNavigation/DotsNavigation';
 import './Testimonials.css';
@@ -33,7 +33,7 @@ function Testimonials() {
       avatar: kitti
     },
     {
-      content: `“Hosting a hackathon with the buidlbox team was one of the most productive outcomes we've seen in the tech ecosystem and crypto community”`,
+      content: `“Hosting a hackathon with the buidlbox team was one of the most productive outcomes we've seen in the tech ecosystem and crypto community.”`,
       name: 'Ivan Kotelnikov',
       position: 'devrel @ everscale.network',
       logo: everscale,
@@ -67,6 +67,7 @@ function Testimonials() {
   const { width } = useWindowDimensions();
   const [activeSlide, setActiveSlide] = useState(1);
   const [touchPosition, setTouchPosition] = useState(null);
+  const [startTouch, setStartTouch] = useState();
   const [isMobile, setIsMobile] = useState(false);
   const ref = useRef();
   const isRefVisible = useIsVisible(ref);
@@ -80,15 +81,8 @@ function Testimonials() {
   const handleTouchStart = (e) => {
       const touchDown = e.touches[0].clientX;
       setTouchPosition(touchDown);
+      setStartTouch(activeSlide);
   };
-
-  const goNextSlide = useCallback(() => {
-      setActiveSlide(prev => prev + 1);
-  }, []);
-
-  const goPrevSlide = useCallback(() => {
-      setActiveSlide(prev => prev - 1);
-  }, []);
 
   useEffect(() => {
     if (activeSlide === testimonials.length - 1) {
@@ -157,11 +151,11 @@ function Testimonials() {
     const diff = touchDown - currentTouch;
 
     if (diff > 5) {
-        goNextSlide();
+        goToStep(startTouch + 1);
         stopInterval();
     }
     if (diff < -5) {
-        goPrevSlide();
+        goToStep(startTouch - 1);
         stopInterval();
     }
 
