@@ -172,6 +172,7 @@ a {
 
 .font-xxl {
   font-size: var(--font-xxl);
+  line-height: var(--line-height-xxl);
 }
 
 .font-l {

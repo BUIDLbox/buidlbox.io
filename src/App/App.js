@@ -18,6 +18,7 @@ import MetricsLottie from '../components/DescriptionBox/MetricsLottie';
 import WhatIsBuidlbox from '../components/WhatIsBuidlbox/WhatIsBuidlbox';
 import { ParallaxProvider } from 'react-scroll-parallax';
 import Grow from '../components/Grow/Grow';
+import Empower from '../components/Empower/Empower';
 gsap.registerPlugin(ScrollTrigger);
 
 const hackathonDescription = (
@@ -75,6 +76,7 @@ function App() {
         <Roadmap />
         <Team />
         <Newsletter />
+        <Empower />
         <Footer />
       </div>
     </ParallaxProvider>

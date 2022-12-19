@@ -26,7 +26,7 @@
     var(--dark-card-bg) 33.33%, var(--dark-card-bg) 66.66%,
     transparent 66.66%);
   background-size: 60px 90px;
-  transform: translateY(-100%);
+  transform: translateY(-98%);
 }
 
 .team-members {

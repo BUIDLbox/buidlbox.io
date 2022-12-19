@@ -1,8 +1,32 @@
+footer {
+  position: relative;
+}
+
+footer:before {
+  content: '';
+  position: absolute;
+  top: 0%;
+  left: 0;
+  width: 100%;
+  height: 25px;
+  display: block;
+  background: linear-gradient(
+    -35deg, transparent 33.33%,
+    var(--dark-bg-color) 33.33%, var(--dark-bg-color) 66.66%,
+    transparent 66.66%),
+    linear-gradient(
+    35deg, transparent 33.33%,
+    var(--dark-bg-color) 33.33%, var(--dark-bg-color) 66.66%,
+    transparent 66.66%);
+  background-size: 60px 90px;
+  transform: translateY(-98%);
+}
+
 .footer-inner {
   margin: 0 auto;
   /* padding: 0 10%; */
-  padding-top: 4rem;
-  padding-bottom: 3rem;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
