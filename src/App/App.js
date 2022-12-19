@@ -25,7 +25,7 @@ const hackathonDescription = (
 );
 
 const metricsDescription = (
-  <p>Gain insights to your hackathon’s performance analytics. Track user sign-ups, landing page performance, project submissions, and more.</p>
+  <p>Gain insights <p className="bold-p">on your hackathon’s performance.</p> Track user sign-ups, landing page performance, project submissions, and more.</p>
 );
 
 const collabDescription = (

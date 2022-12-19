@@ -9,6 +9,7 @@
   --yellow-color: #FFC800;
   --green-color: #16DBBE;
   --dark-card-bg: #2A4457;
+  --divider-color: #4981A8;
   accent-color: var(--green-color);
   --font-xxl: 4.5rem;
   --line-height-xxl: 5.3rem;
@@ -112,6 +113,10 @@ h2,
 }
 .bold {
   font-weight: 700;
+}
+
+.links-divider {
+  color: var(--divider-color);
 }
 
 button,
@@ -243,5 +248,12 @@ section.description-boxes {
   :root {
     --font-xxl: 2rem;
     --line-height-xxl: 2.5rem;
+  }
+}
+
+@media only screen and (max-width: 24.06rem) {
+  .footer-inner,
+  section {
+    padding: 0 7%;
   }
 }

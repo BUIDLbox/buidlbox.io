@@ -24,7 +24,7 @@
 }
 
 .buidlbox-section-description p {
-  line-height: 140%;
+  line-height: 130%;
   max-width: 650px;
 }
 
@@ -70,8 +70,12 @@ img.front-ss {
     max-width: 70%;
   }
 }
-@media only screen and (max-width: 31.25rem) {
+
+@media only screen and (max-width: 24.6rem) {
   .buidlbox-section-description p {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
+  }
+  .buidlbox-section-description-inner {
+    padding: 0 6%;
   }
 }

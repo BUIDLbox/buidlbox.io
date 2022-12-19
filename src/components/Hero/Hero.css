@@ -16,10 +16,15 @@
   z-index: 1;
 }
 
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2.2em;
+  z-index: 1;
+}
+
 h1 {
   color: transparent;
-  z-index: 1;
-  position: relative;
 }
 
 .gradient-1 {
@@ -33,23 +38,6 @@ h1 {
 }
 .hero-gradient {
 	background-clip: text;
-}
-
-.second-hero-text {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.hero-build {
-  color: var(--main-light-color);
-  padding-top: 0.8rem;
-  padding-bottom: 1rem;
-  font-weight: 300;
 }
 
 .hero-bg {
@@ -87,8 +75,4 @@ h1 {
   h1 {
     text-align: center;
   }
-  .second-hero-text {
-    left: 0;
-  }
-  
 }

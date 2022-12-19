@@ -16,9 +16,13 @@ function WhatIsBuidlbox() {
         <div className='buidlbox-section-description-inner'>
           <div style={{ minWidth: '60%'}}>
             <Parallax speed={2} opacity={[0.3, 1]}>
-              <h2 className='font-xxl'>What is buidlbox?</h2>
+              <h2 className='font-xxl'>What's buidlbox?</h2>
             </Parallax>
-            <p className="font-l"><span className="bold-p">buidlbox</span> is a hackathon platform that provides both buidlers and guidls with innovative tools to grow ecosystems and buidl a better web.</p>
+            <p className="font-m" style={{ paddingBottom: '1.25rem'}}>
+              /bɪdlbɒks/, a hack-in-a-box.
+            </p>
+            <p className="font-m">Host, co-sponsor and participate in hackathons. buidlbox is an end-to-end hackathons platform enabling buidlers and guidls with everything needed to gain novel skills, earn prizes, grow communities, and buidl a better web together.</p>
+            {/* <p className="font-l"><span className="bold-p">buidlbox</span> is a hackathon platform that provides both buidlers and guidls with innovative tools to grow ecosystems and buidl a better web.</p> */}
           </div>
           <div className="animation-container">
             <img style={{maxWidth: '100%', height: 'auto'}} src={animation} alt="" width="400" height="400" />
