@@ -6,7 +6,7 @@ p {
   z-index: 10;
 }
 .started h2 {
-  padding-bottom: 2rem;
+  padding-bottom: var(--title-padding);
   margin: 0 auto;
 }
 .started p {

@@ -7,6 +7,7 @@ import ledger from './ledger.svg';
 import lukso from './lukso.svg';
 import mask from './mask.svg';
 import metis from './metis.svg';
+import zkSync from './zkSync.svg';
 
 function Logos() {
 
@@ -19,6 +20,7 @@ function Logos() {
     { src: filecoin, alt: 'filecoin' },
     { src: mask, alt: 'mask' },
     { src: ledger, alt: 'ledger' },
+    { src: zkSync, alt: 'zkSync' },
   ];
 
   return (

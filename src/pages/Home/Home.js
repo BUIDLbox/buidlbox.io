@@ -17,6 +17,7 @@ import WhatIsBuidlbox from '../../components/WhatIsBuidlbox/WhatIsBuidlbox';
 import { ParallaxProvider } from 'react-scroll-parallax';
 import Grow from '../../components/Grow/Grow';
 import Empower from '../../components/Empower/Empower';
+import ZkSyncCollab from '../../components/ZkSyncCollab/ZkSyncCollab';
 gsap.registerPlugin(ScrollTrigger);
 
 const hackathonDescription = (
@@ -68,6 +69,7 @@ function Home() {
             </DescriptionBox>
           ))}
         </section>
+        <ZkSyncCollab />
         <Started />
         <Logos />
         <Testimonials />

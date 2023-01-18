@@ -1,11 +1,12 @@
 import AnimatedLogo from '../reusables/AnimatedLogo';
 import './Footer.css';
+import { Link } from 'react-router-dom';
 
 function Footer() {
   return (
     <footer>
       <div className="footer-inner">
-        <AnimatedLogo />
+        <Link to={'/'}><AnimatedLogo /></Link>
         <p>
           <a className="main-link" href="https://twitter.com/buidlbox">Twitter</a>
           <span className="links-divider">{' /// '}</span>

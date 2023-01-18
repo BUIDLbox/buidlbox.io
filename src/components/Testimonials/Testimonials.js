@@ -7,11 +7,13 @@ import everscale from './assets/Everscale.svg';
 import lukso from './assets/Lukso.svg';
 import tezos from './assets/Tezos.svg';
 import reserve from './assets/reserve.svg';
+import zkSync from './assets/zksync-logo.svg';
 import ivan from './assets/ivan.jpg';
 import kitti from './assets/kitti.jpg';
 import jonathan from './assets/jonathan.jfif';
 import daphne from './assets/daphne.jpg';
 import soham from './assets/soham.jpg';
+import amy from './assets/amy-mayernik.jpg';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
 
 function Testimonials() {
@@ -55,6 +57,14 @@ function Testimonials() {
       logo: reserve,
       alt: 'Reserve Protocol',
       avatar: soham
+    },
+    {
+      content: '“We’re excited to announce that we’ll be collaborating with buidlbox to create best-in-class, community-first hackathons.“',
+      name: 'Amy Mayernik',
+      position: 'Head of Events @ zkSync',
+      logo: zkSync,
+      alt: 'zkSync',
+      avatar: amy
     }
   ];
 

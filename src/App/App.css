@@ -1,7 +1,9 @@
 :root {
   --title-gradient: linear-gradient(90deg, #FFC800 0%, #16DBBE 100%);
   --gradient-1: linear-gradient(90deg, #E54DE5 0%, #FFC800 100%);
+  --gradient-1-reversed: linear-gradient(90deg, #FFC800 0%, #E54DE5 100%);
   --gradient-2: linear-gradient(90deg, #16DBBE 0%, #E54DE5 100%);
+  --gradient-2-reversed: linear-gradient(90deg, #E54DE5 0%, #16DBBE 100%);
   --gradient-3: linear-gradient(90deg, #FFC800 0%, #16DBBE 100%);
   --main-light-color: #FFF1E2;
   --dark-bg-color: #213645;
@@ -120,7 +122,6 @@ h2,
 }
 
 button,
-a,
 p {
   font-size: var(--font-s);
   line-height: var(--line-height-s);
@@ -128,6 +129,9 @@ p {
 }
 
 a {
+  font-size: var(--font-xs);
+  line-height: var(--line-height-xs);
+  text-decoration: none;
   color: var(--main-light-color);
 }
 
