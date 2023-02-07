@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import useIsVisible from '../../hooks/useIsVisible';
-import DotsNavigation from './DotsNavigation/DotsNavigation';
+import DotsNavigation from '../reusables/DotsNavigation/DotsNavigation';
 import './Testimonials.css';
+import '../reusables/carousel.css';
 import ethShanghai from './assets/ETHShanghai.svg';
 import everscale from './assets/Everscale.svg';
 import lukso from './assets/Lukso.svg';

@@ -1,0 +1,59 @@
+.carousel-container {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  gap: 1.8rem;
+  overflow-x: hidden;
+  transition: all 0.3s ease-out;
+  margin-bottom: 1.5rem;
+}
+
+.carousel-item:last-child {
+  padding-right: 1.8rem;
+}
+.carousel-item {
+  cursor: pointer;
+  background-color: var(--dark-card-bg);
+  opacity: 0.5;
+  box-shadow: 0px 4px 4px 3px rgba(0, 0, 0, 0.1);
+  width: 60vw;
+  transition: all 0.3s ease-out;
+  padding: 3rem 3.5rem;
+  box-sizing: border-box;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.carousel-item:hover {
+  transform: scale(0.99);
+  opacity: 0.8;
+}
+
+.carousel-item-active {
+  opacity: 1;
+  background: linear-gradient(0deg, #213645 -0.13%, rgba(0, 0, 0, 0) 100%), linear-gradient(90deg, #E54DE5 0%, #FFC800 100%);
+  box-shadow: 0px 4px 4px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-out;
+}
+.carousel-item-active:hover {
+  opacity: 1;
+}
+
+@media only screen and (max-width: 53rem) {
+  .carousel-item {
+    padding: 2.25rem 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 35rem) {
+  .carousel-item {
+    padding: 2.4rem 2rem;
+  }
+}
+
+@media only screen and (max-width: 22rem) {
+  .carousel-item {
+    padding: 1.5rem 1.2rem;
+  }
+}
