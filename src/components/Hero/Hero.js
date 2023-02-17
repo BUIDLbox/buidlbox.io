@@ -78,7 +78,7 @@ function Hero() {
               <span className="hero-gradient gradient-1">.</span>
             </span>
           </h1>
-          <Button text="Request a demo" hero={true} link={`mailto:buidlbox@supermodular.xyz?subject=buidlbox%3A%20Demo%20request&body=%F0%9F%91%8B%20Hello%20buidlbox%20team%2C%0A%0AI%20would%20like%20to%20request%20a%20demo!%20Here's%20my%20info%3A%0A%0A%3C!--%20Please%20enter%20your%20details%20below%20--%3E%0AOrganization%20name%3A%20%5BYour%20organization's%20name%5D%0AWork%20email%3A%20%5BYour%20work%20email%20address%5D%0AFull%20name%3A%20%5BYour%20name%5D%0ATime%20zone%3A%20%5BPST%2FEST%2FCET%2Fetc%5D`} />
+          <Button text="Launch app" hero={true} link={`https://app.buidlbox.io/`} />
         </div>
         <svg className="hero-bg" width="1440" height="1024" viewBox="0 0 1440 1024" preserveAspectRatio="xMaxYMax slice" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g style={{filter: 'blur(15px)'}}>

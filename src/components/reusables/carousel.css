@@ -3,6 +3,7 @@
   flex-wrap: nowrap;
   gap: 1.8rem;
   overflow-x: hidden;
+  overflow-x: hidden;
   transition: all 0.3s ease-out;
   margin-bottom: 1.5rem;
 }

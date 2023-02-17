@@ -10,3 +10,7 @@ header {
   backdrop-filter: blur(6px);
   background-color: rgba(33, 54, 69, 0.6);
 }
+.header-buttons {
+  display: flex;
+  gap: 2rem;
+}

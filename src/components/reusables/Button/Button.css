@@ -14,11 +14,27 @@
   text-decoration: none;
   cursor: pointer;
 }
+.primary-btn.first {
+  background-color: #E54DE5;
+  border-color:#E54DE5;
+  /* border-radius: 50px; */
+}
+@media only screen and (max-width: 600px) {
+  .link-container.first {
+    display: none;
+  }
+}
 .primary-btn.small {
   font-size: var(--font-xxs);
-  padding: 0.5em 0.9em;
+  padding: 0.6em 1.25em;
 }
 
+@media only screen and (max-width: 360px) {
+  .primary-btn.small {
+    font-size: 0.7rem;
+    padding: 0.6em 1em;
+  }
+}
 .primary-btn.hero {
   background-clip: padding-box;
   border: solid 2px transparent; 
