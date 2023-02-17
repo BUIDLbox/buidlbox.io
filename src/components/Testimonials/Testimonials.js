@@ -191,6 +191,11 @@ function Testimonials() {
         ref={ref}
         // 1.8rem = gap, 60vw = activeSlide width 
         style={{
+          gap: `${
+            isMobile
+              ? '0rem'
+              : '1.8rem'
+          }`,
           transform: `${!isMobile
             ? `translate(calc(-${activeSlide * 60}vw - 0.4rem - calc(${activeSlide} * 1.8rem) + 20vw))`
             : `translate(calc(-${activeSlide * 100}vw))`}`,
@@ -199,7 +204,8 @@ function Testimonials() {
       >
         {testimonials.map((testimonial, index) => (
           <div
-            style={{ pointerEvents: `${clickDisabled ? 'none' : ''}` }}
+            style={{ pointerEvents: `${clickDisabled ? 'none' : ''}`,
+            width: `${isMobile ? "100vw" : "60vw"}`, }}
             onClick={() => goToStep(index)} 
             className={`
               carousel-item ${
