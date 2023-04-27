@@ -8,6 +8,7 @@ import lukso from './lukso.svg';
 import mask from './mask.svg';
 import metis from './metis.svg';
 import zkSync from './zkSync.svg';
+import horizen from './horizen.svg';
 
 function Logos() {
 
@@ -21,6 +22,7 @@ function Logos() {
     { src: mask, alt: 'mask' },
     { src: ledger, alt: 'ledger' },
     { src: zkSync, alt: 'zkSync' },
+    { src: horizen, alt: 'horizen' },
   ];
 
   return (

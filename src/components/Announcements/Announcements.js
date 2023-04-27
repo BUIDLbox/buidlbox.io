@@ -5,6 +5,7 @@ import Button from "../reusables/Button/Button";
 import { Parallax } from "react-scroll-parallax";
 import ethdenver from "./ethdenver.png";
 import ethHeader from "./eth-header.png";
+import horizen from "./horizen.svg";
 import CollabCard from "./CollabCard";
 import { useEffect, useRef, useState } from "react";
 import useIsVisible from "../../hooks/useIsVisible";
@@ -19,12 +20,28 @@ function Announcements() {
     {
       component:
         <CollabCard
+          title="Bringing Together Web3 Builder Communities Through Hackathons"
+          collabLogo={horizen}
+          collabLogoSize={{ width: 135, height: 25 }}
+          collabName="Horizen"
+        >
+          <Button
+            newTab={true}
+            text="Read more"
+            link="https://blog.horizen.io/horizen-partners-with-buidlbox-to-bring-together-web3-builder-communities-through-hackathons/"
+          />
+        </CollabCard>
+    },
+    {
+      component:
+        <CollabCard
           title="zkSync is Buidling Community with buidlbox"
           collabLogo={zksyncLogo}
           collabLogoSize={{width: 97, height: 70}}
           collabName="zkSync"
         >
           <Button
+            newTab={true}
             text="Read more"
             link="https://blog.matter-labs.io/buidling-community-with-buidlbox-b2d2c9797497"
           />
