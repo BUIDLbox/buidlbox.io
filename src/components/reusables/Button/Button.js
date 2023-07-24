@@ -4,7 +4,16 @@ import btnBox2 from "./btn-box-2.svg";
 import btnBox3 from "./btn-box-3.svg";
 import btnBox4 from "./btn-box-4.svg";
 
-function Button({ text, link, handleClick, small, hero, first, withBoxes, newTab }) {
+function Button({
+  text,
+  link,
+  handleClick,
+  small,
+  hero,
+  first,
+  withBoxes,
+  newTab,
+}) {
   const getClasses = `
     primary-btn ${small ? "small" : ""}
     ${hero ? "hero" : ""}
@@ -13,16 +22,22 @@ function Button({ text, link, handleClick, small, hero, first, withBoxes, newTab
   return (
     <>
       {link ? (
-        <div className={`link-container ${first ? 'first' : ''}`}>
-          { newTab ? (
-          <a className={getClasses} href={link} target="_blank" rel="noreferrer">
-            <span>{text}</span>
-          </a>
+        <div className={`link-container ${first ? "first" : ""}`}>
+          {newTab ? (
+            <a
+              className={getClasses}
+              href={link}
+              target="_blank"
+              rel="noreferrer"
+              onClick={handleClick}
+            >
+              <span>{text}</span>
+            </a>
           ) : (
-          <a className={getClasses} href={link}>
-            <span>{text}</span>
-          </a>
-           )}
+            <a className={getClasses} href={link} onClick={handleClick}>
+              <span>{text}</span>
+            </a>
+          )}
           {withBoxes === true && (
             <div className="btn-boxes">
               <img className="btn-box-1" src={btnBox1} alt="" />
