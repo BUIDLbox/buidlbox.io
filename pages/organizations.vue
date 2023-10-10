@@ -3,7 +3,10 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { EasePack } from "gsap/EasePack";
+import { ButtonType } from "~/types/button";
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, EasePack);
+
+const isTrialModalOpen = ref(false);
 
 const carouselTags = [
   { name: "Guidl dashboard", imgSrc: "/carouselTags/guidl-dashboard.png" },
@@ -23,7 +26,26 @@ const selectedCarouselTag = ref<{ name: string; imgSrc: string }>(
 </script>
 
 <template>
-  <div class="mt-16">
+  <div>
+  <div class="grid gap-32">
+    <div class="bg-hero-bg w-full bg-top bg-contain bg-no-repeat grid gap-10">
+      <div class="flex flex-col gap-8 items-center justify-center py-24 pt-24">
+        <GradientTitle class="font-heading text-5xl 2xl:text-6xl"
+          >Build amazing hackathons.</GradientTitle
+        >
+        <h3 class="2xl:text-lg max-w-md text-center text-on-surface">
+          A hack-in-a-box designed to connect talented buidlers with top web3
+          organizations to buidl a better web.
+        </h3>
+
+        <div class="flex items-center gap-4 mt-4">
+          <Button title="Request a demo" :button-type="ButtonType.Secondary1" @click="isTrialModalOpen = true"/>
+        </div>
+      </div>
+
+      <Logos />
+    </div>
+
     <div class="px-[10vw] bg-gradient-to-b from-dark-blue to-tertiary-surface">
       <div class="flex flex-col items-center text-center gap-6">
         <h5
@@ -56,6 +78,27 @@ const selectedCarouselTag = ref<{ name: string; imgSrc: string }>(
       </div>
     </div>
 
+    <div>
+      <div class="flex flex-col items-center text-center gap-6">
+        <h5
+          class="font-heading text-xl text-around-forms font-medium uppercase"
+        >
+          WHY CHOOSE BUIDLBOX?
+        </h5>
+        <GradientTitle class="font-heading text-2xl xl:text-4xl font-extrabold"
+          >Elevate your hackathon experience</GradientTitle
+        >
+        <p>
+          With a guidl account for your organization, you can seamlessly launch
+          your hackathon in minutes – bounties too.
+        </p>
+        <div class="flex items-center justify-center gap-5">
+          <Button title="Request a demo" @click="isTrialModalOpen = true" />
+          <Button title="View pricing" :button-type="ButtonType.Secondary1" />
+        </div>
+      </div>
+    </div>
+
     <div class="px-[10vw] bg-gradient-to-b from-dark-blue to-tertiary-surface">
       <div class="flex flex-col items-center text-center gap-6">
         <h5
@@ -73,9 +116,15 @@ const selectedCarouselTag = ref<{ name: string; imgSrc: string }>(
         <Features />
         <div class="flex items-center justify-center gap-5">
           <Button title="Purchase a hackathon" />
-          <Button title="Request a demo" />
+          <Button title="Request a demo" :button-type="ButtonType.Secondary1" @click="isTrialModalOpen = true" />
         </div>
       </div>
     </div>
   </div>
+
+  <RequestTrial
+    :is-modal-open="isTrialModalOpen"
+    @close-modal="isTrialModalOpen = false"
+  />
+</div>
 </template>
