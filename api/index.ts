@@ -35,6 +35,25 @@ const getPublishedHackathonsAPI = async (options?: {
   });
 };
 
+export interface Announcement {
+  message: string;
+  link?: string;
+}
+
+export const getAnnouncementsAPI = async () => {
+  const apiUrl = import.meta.env.VITE_BUIDL_API;
+  const url = `${apiUrl}/landing-page/announcements`;
+
+  return await apiService<{ data: Announcement[] }>({
+    method: "GET",
+    url,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    hasResponse: true,
+  });
+};
+
 export interface Metrics {
   property: "hackathons" | "projects" | "buidlers" | "prizes";
   value: number;
