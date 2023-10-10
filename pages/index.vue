@@ -16,6 +16,7 @@ import buidlerLottie3 from "~/assets/lottie/03-flex.json";
 import buidlerLottie1 from "~/assets/lottie/01-hack.json";
 import buidlerLottie2 from "~/assets/lottie/02-gm.json";
 import timelineLottie from "~/assets/lottie/04-roadmap.json";
+import { getErrorMessage } from "~/utils";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, EasePack);
 const metrics = ref<Metrics[]>();
@@ -371,19 +372,25 @@ const reverseLottie = (elem: any) => {
     <div class="bg-gradient-to-b from-tertiary-surface to-dark-blue from-35%">
       <div class="bg-hero-bg w-full bg-top bg-contain bg-no-repeat">
         <div
-          class="bg-secondary w-full py-2 overflow-hidden w-screen relative h-8"
+          class="bg-secondary py-2 overflow-hidden w-screen relative min-h-[44px]"
         >
-          <div
-            class="animate-scroll translate-x-full flex items-center gap-8 absolute top-0 left-0 w-full"
-          >
-            <a
-              :href="announcement.link"
-              v-for="(announcement, index) of announcements"
-              :key="index"
-              class="3xl:text-base text-sm text-center text-black font-bold whitespace-nowrap"
-            >
-              {{ announcement.message }}
-            </a>
+          <div class="flex items-center justify-center w-full py-1">
+            <ClientOnly>
+              <Vue3Marquee
+                pauseOnHover
+                :clone="true"
+                v-if="announcements && announcements.length > 0"
+              >
+                <a
+                  :href="announcement.link"
+                  v-for="(announcement, index) of announcements"
+                  :key="index"
+                  class="3xl:text-base text-sm text-center text-black font-bold whitespace-nowrap mr-12 lg:mr-16"
+                >
+                  {{ announcement.message }}
+                </a>
+              </Vue3Marquee>
+            </ClientOnly>
           </div>
         </div>
 
