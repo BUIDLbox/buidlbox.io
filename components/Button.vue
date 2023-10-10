@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { ButtonSize, ButtonType } from "../types/button";
-
+import loadingDots from "@/assets/lottie/loading-colored-dots.json";
 const props = withDefaults(
   defineProps<{
     buttonType?: ButtonType;
@@ -99,14 +99,16 @@ const iconFill = computed(() => {
       :class="classes"
       class="w-full z-[2] rounded-3xl h-full transition-all duration-300"
     >
-    <div v-if="isLoading"></div>
-      <!-- <Vue3Lottie
-        v-if="isLoading"
-        :animationData="LoadingColoredDots"
-        class="transition-all duration-300"
-        :height="20"
-        :width="50"
-      /> -->
+      <div v-if="isLoading">
+        <client-only>
+          <Vue3Lottie
+            :animationData="loadingDots"
+            class="transition-all duration-300"
+            :height="20"
+            :width="50"
+          />
+        </client-only>
+      </div>
 
       <div
         class="transition-all duration-300 flex items-center justify-center"
