@@ -17,7 +17,7 @@ export default {
         inter: ["Inter", "sans-serif"],
         heading: ["Big Shoulders Text", "cursive"],
       },
-       colors: {
+      colors: {
         background: "var(--background)",
         surface: "var(--surface)",
         forms: "var(--forms)",
@@ -50,20 +50,21 @@ export default {
       },
       keyframes: {
         scroll: {
-          '0%': { transform: 'translateX(0%)' },
-          '100%': { transform: 'translateX(-200%)' },
-        }
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-100%)" },
+        },
       },
       animation: {
-        scroll: 'scroll 25s linear infinite',
-      }
+        scroll: "scroll 25s linear infinite",
+      },
     },
   },
-  plugins: [function ({ addVariant }) {
+  plugins: [
+    function ({ addVariant }) {
       addVariant("child", "& > *");
       addVariant("child-hover", "& > *:hover");
     },
-  FormKitVariants
-],
-}
+    FormKitVariants
+  ],
+};
 

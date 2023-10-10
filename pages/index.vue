@@ -1,40 +1,25 @@
 <script setup lang="ts">
-import { VNodeRef } from "nuxt/dist/app/compat/capi";
 import { ButtonType } from "~/types/button";
-import { useParallax } from "@vueuse/core";
 import { testimonials } from "~/data/index";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { EasePack } from "gsap/EasePack";
-import { Metrics, getMetricsAPI, newsletterSubscribeAPI } from "~/api";
-import timelineLottie from "@/assets/lottie/04-roadmap.json";
-import buidlerLottie1 from "@/assets/lottie/01-hack.json";
-import buidlerLottie2 from "@/assets/lottie/02-gm.json";
-import buidlerLottie3 from "@/assets/lottie/03-flex.json";
+import {
+  Announcement,
+  Metrics,
+  getAnnouncementsAPI,
+  getMetricsAPI,
+newsletterSubscribeAPI,
+} from "../api";
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, EasePack);
-
-const carouselTags = [
-  { name: "Guidl dashboard", imgSrc: "/carouselTags/guidl-dashboard.png" },
-  { name: "Hackathon setup wizard", imgSrc: "/buidlbox-user-dashboard.png" },
-  { name: "Manage challenges", imgSrc: "" },
-  { name: "Personalized landing page", imgSrc: "" },
-  { name: "Invite co-sponsors & judges", imgSrc: "" },
-  { name: "Manage event calendar", imgSrc: "" },
-  { name: "Review submissions", imgSrc: "" },
-  { name: "Judging platform", imgSrc: "" },
-  { name: "Announce winners", imgSrc: "" },
-  { name: "Metrics & data", imgSrc: "" },
-];
-const selectedCarouselTag = ref<{ name: string; imgSrc: string }>(
-  carouselTags[0]
-);
 const metrics = ref<Metrics[]>();
+const announcements = ref<Announcement[]>();
 
 onMounted(async () => {
   nextTick(() => {
     const slideInSections = gsap.utils.toArray(".slide-in-section");
-    slideInSections.forEach((section) => {
+    slideInSections.forEach((section: any) => {
       gsap.from(section, {
         y: 50,
         opacity: 0,
@@ -42,14 +27,13 @@ onMounted(async () => {
         scrollTrigger: {
           trigger: section,
           scrub: 1.2,
-          stagger: 0.5,
           end: "center center",
         },
       });
     });
 
     const blogImages = gsap.utils.toArray(".blog-image");
-    blogImages.forEach((img) => {
+    blogImages.forEach((img: any) => {
       gsap.set(img, { transformPerspective: 500 });
       gsap.from(img, {
         opacity: 0,
@@ -64,12 +48,16 @@ onMounted(async () => {
     });
   });
 
-  const data = await getMetricsAPI();
-  metrics.value = data.data?.data;
+  const metricsData = await getMetricsAPI();
+  metrics.value = metricsData.data?.data;
+
+  const announcementData = await getAnnouncementsAPI();
+  announcements.value = announcementData.data?.data;
+  console.log("HELP", announcementData);
+  console.log({ wee: announcementData.data?.data });
 });
 
 const container = ref<any>(null);
-const unmutatedTestimonials = [...testimonials];
 
 const hackathons = [
   {
@@ -325,59 +313,7 @@ const reverseLottie = (elem: any) => {
     <!-- hero -->
     <div class="bg-gradient-to-b from-tertiary-surface to-dark-blue from-35%">
       <div class="bg-hero-bg w-full bg-top bg-contain bg-no-repeat">
-        <!-- <div ref="target">
-            <div
-              v-if="firstSlide.length > 0"
-              class="min-w-[100vw] h-[60px] sm:h-[90px] 2xl:h-[120px] overflow-hidden relative transition-all duration-500"
-              :style="{ width: `${slider1W}px` }"
-            >
-              <div
-                ref="slideRef"
-                class="w-[200%] flex hover:pause animate-slide h-[60px] sm:h-[90px] 2xl:h-[120px] justify-around absolute left-0 transition-all duration-500"
-                :style="{
-                  animationDuration: `${firstSlide.length * 3}s`,
-                }"
-              >
-                <p class="inline-flex">lorem 1</p>
-
-                <p class="inline-flex">lorem 2</p>
-                <p class="inline-flex">lorem 3</p>
-                <p class="inline-flex">lorem 4</p>
-                <p class="inline-flex">lorem 5</p>
-              </div>
-            </div>
-          </div> -->
-        <!-- annoucement bar -->
-
-        <!-- <section class="relative overflow-hidden bg-secondary py-4">
-            <div
-              class="marquee__inner w-fit flex flex-auto"
-              aria-hidden="true"
-              ref="inner"
-            >
-              <p class="3xl:text-sm text-xs text-center flex-shrink-0 marquee__part">
-                REALLY COOL ANNOUNCEMENT BAR
-              </p>
-              <p class="3xl:text-sm text-xs text-center flex-shrink-0 marquee__part">
-                Announcement 2 here!!
-              </p>
-              <p class="3xl:text-sm text-xs text-center flex-shrink-0 marquee__part">
-                Third one
-              </p>
-              <p class="3xl:text-sm text-xs text-center flex-shrink-0 marquee__part">
-                Long announcement Long Long announcement Long Long announcement
-                Long Long announcement Long Long announcement Long Long Long
-                announcement Long Long announcement Long Long announcement Long
-                Long announcement Long Long announcement Long Long announcement
-                Long Long announcement Long Long announcement Long Long
-                announcement Long announcement Long Long announcement Long Long
-                announcement Long announcementLong announcementLong
-                announcementLong announcementLong announcement Long
-                announcementLong announcementLong announcementLong
-                announcementLong announcement
-              </p> 
-            </div>
-          </section> -->
+      
 
         <div
           class="bg-secondary w-full py-2 overflow-hidden w-screen relative h-8"
@@ -385,114 +321,15 @@ const reverseLottie = (elem: any) => {
           <div
             class="animate-scroll translate-x-full flex items-center gap-8 absolute top-0 left-0 w-full"
           >
-            <p class="3xl:text-sm text-xs text-center flex-shrink-0">
-              REALLY COOL ANNOUNCEMENT BAR
-            </p>
-            <p class="3xl:text-sm text-xs text-center flex-shrink-0">
-              Announcement 2 here!!
-            </p>
-            <p class="3xl:text-sm text-xs text-center flex-shrink-0">
-              Third one
-            </p>
-            <p class="3xl:text-sm text-xs text-center flex-shrink-0">
-              Long announcement
-            </p>
-            <p class="3xl:text-sm text-xs text-center flex-shrink-0">
-              REALLY COOL ANNOUNCEMENT BAR
-            </p>
-            <p class="3xl:text-sm text-xs text-center flex-shrink-0">
-              Announcement 2 here!!
-            </p>
-            <p class="3xl:text-sm text-xs text-center flex-shrink-0">
-              Third one
-            </p>
-            <p class="3xl:text-sm text-xs text-center flex-shrink-0">
-              Long announcement
-            </p>
-            <p class="3xl:text-sm text-xs text-center flex-shrink-0">
-              REALLY COOL ANNOUNCEMENT BAR
-            </p>
-            <p class="3xl:text-sm text-xs text-center flex-shrink-0">
-              Announcement 2 here!!
-            </p>
-            <p class="3xl:text-sm text-xs text-center flex-shrink-0">
-              Third one
-            </p>
-            <p class="3xl:text-sm text-xs text-center flex-shrink-0">
-              Long announcement
-            </p>
-            <p class="3xl:text-sm text-xs text-center flex-shrink-0">
-              REALLY COOL ANNOUNCEMENT BAR
-            </p>
-            <p class="3xl:text-sm text-xs text-center flex-shrink-0">
-              Announcement 2 here!!
-            </p>
-            <p class="3xl:text-sm text-xs text-center flex-shrink-0">
-              Third one
-            </p>
-            <p class="3xl:text-sm text-xs text-center flex-shrink-0">
-              Long announcement
-            </p>
-            <p class="3xl:text-sm text-xs text-center flex-shrink-0">
-              REALLY COOL ANNOUNCEMENT BAR
-            </p>
-            <p class="3xl:text-sm text-xs text-center flex-shrink-0">
-              Announcement 2 here!!
-            </p>
-            <p class="3xl:text-sm text-xs text-center flex-shrink-0">
-              Third one
-            </p>
-            <p class="3xl:text-sm text-xs text-center flex-shrink-0">
-              Long announcement
-            </p>
-            <p class="3xl:text-sm text-xs text-center flex-shrink-0">
-              REALLY COOL ANNOUNCEMENT BAR
-            </p>
-            <p class="3xl:text-sm text-xs text-center flex-shrink-0">
-              Announcement 2 here!!
-            </p>
-            <p class="3xl:text-sm text-xs text-center flex-shrink-0">
-              Third one
-            </p>
-            <p class="3xl:text-sm text-xs text-center flex-shrink-0">
-              Long announcement
-            </p>
-            <p class="3xl:text-sm text-xs text-center flex-shrink-0">
-              REALLY COOL ANNOUNCEMENT BAR
-            </p>
-            <p class="3xl:text-sm text-xs text-center flex-shrink-0">
-              Announcement 2 here!!
-            </p>
-            <p class="3xl:text-sm text-xs text-center flex-shrink-0">
-              Third one
-            </p>
-            <p class="3xl:text-sm text-xs text-center flex-shrink-0">
-              Long announcement
-            </p>
-            <p class="3xl:text-sm text-xs text-center flex-shrink-0">
-              REALLY COOL ANNOUNCEMENT BAR
-            </p>
-            <p class="3xl:text-sm text-xs text-center flex-shrink-0">
-              Announcement 2 here!!
-            </p>
-            <p class="3xl:text-sm text-xs text-center flex-shrink-0">
-              Third one
-            </p>
-            <p class="3xl:text-sm text-xs text-center flex-shrink-0">
-              Long announcement
-            </p>
-            <p class="3xl:text-sm text-xs text-center flex-shrink-0">
-              REALLY COOL ANNOUNCEMENT BAR
-            </p>
-            <p class="3xl:text-sm text-xs text-center flex-shrink-0">
-              Announcement 2 here!!
-            </p>
-            <p class="3xl:text-sm text-xs text-center flex-shrink-0">
-              Third one
-            </p>
-            <p class="3xl:text-sm text-xs text-center flex-shrink-0">
-              Long announcement
-            </p>
+           <a
+                :href="announcement.link"
+                v-for="(announcement, index) of announcements"
+                :key="index"
+                class="3xl:text-base text-sm text-center text-black font-bold whitespace-nowrap"
+              >
+                {{ announcement.message }}
+              </a>
+           
           </div>
         </div>
 
