@@ -1,3 +1,4 @@
+import { APIError } from "~/api/apiService";
 import { ScheduleEvent, ScheduleType } from "~/types/hackathon";
 
 export const sortHackathonByRecent = <
@@ -43,5 +44,32 @@ export const floorAmount = (amount: string | number) => {
     return (Math.floor(Number(amount) / 1000) * 1000).toLocaleString("en-US");
   } else {
     return (Math.floor(Number(amount) / 100) * 100).toLocaleString("en-US");
+  }
+};
+
+export function throwFormattedError(error: string | APIError) {
+  const errorMessage = typeof error === "string" ? error : error.message;
+  throw new Error(errorMessage);
+}
+
+export const getErrorMessage = (
+  err: unknown,
+  fallback = "There was a problem"
+) => {
+
+  try {
+    const parsedError = typeof err === "string" ? JSON.parse(err) : err;
+
+    // If parsedError.message exists, use it, otherwise use the original error or fallback
+    const message = JSON.parse(parsedError?.message).message ?? err ?? fallback;
+
+    if (parsedError instanceof APIError) {
+      return message
+    } else {
+      return message
+    }
+  } catch {
+    // If JSON parsing fails, use the original error or fallback
+    return `${err}` ?? fallback;
   }
 };

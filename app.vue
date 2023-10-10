@@ -8,8 +8,28 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { EasePack } from "gsap/EasePack";
-import { Metrics, getMetricsAPI } from "./api";
+import { Metrics, getMetricsAPI, newsletterSubscribeAPI } from "./api";
+import timelineLottie from "@/assets/lottie/04-roadmap.json";
+import buidlerLottie1 from "@/assets/lottie/01-hack.json";
+import buidlerLottie2 from "@/assets/lottie/02-gm.json";
+import buidlerLottie3 from "@/assets/lottie/03-flex.json";
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, EasePack);
+
+const carouselTags = [
+  { name: "Guidl dashboard", imgSrc: "/carouselTags/guidl-dashboard.png" },
+  { name: "Hackathon setup wizard", imgSrc: "/buidlbox-user-dashboard.png" },
+  { name: "Manage challenges", imgSrc: "" },
+  { name: "Personalized landing page", imgSrc: "" },
+  { name: "Invite co-sponsors & judges", imgSrc: "" },
+  { name: "Manage event calendar", imgSrc: "" },
+  { name: "Review submissions", imgSrc: "" },
+  { name: "Judging platform", imgSrc: "" },
+  { name: "Announce winners", imgSrc: "" },
+  { name: "Metrics & data", imgSrc: "" },
+];
+const selectedCarouselTag = ref<{ name: string; imgSrc: string }>(
+  carouselTags[0]
+);
 const metrics = ref<Metrics[]>();
 
 onMounted(async () => {
@@ -50,16 +70,8 @@ onMounted(async () => {
 });
 
 const container = ref<any>(null);
-const { tilt, roll, source } = useParallax(container);
-const { x, y } = useMouse();
 const unmutatedTestimonials = [...testimonials];
 
-// const targetIsVisible = useElementVisibility(container)
-const { targetIsVisible, intersectionRatio } = useIsVisible(container);
-// ftc
-// permissionless
-// ethdenver
-// zksync(buidlera)
 const hackathons = [
   {
     hackathonId: "1",
@@ -201,8 +213,6 @@ watch(userDashboardRef, () => {
   //   // onEnter: () => (isOrgSticky.value = true),
   // });
 });
-const horizontalScrollStep3 = ref();
-const horizontalScrollStep4 = ref();
 
 const sponsorsHeader = ref();
 watch(sponsorsHeader, () => {
@@ -232,15 +242,6 @@ watch([horizontalScrollWrapper, orgHeaderRef], () => {
       duration: 3,
       ease: "none",
     })
-
-    // .from(horizontalScrollStep3.value, {
-    //   opacity: 0.1,
-    //   y: 0,
-    // },  0)
-    // .from(horizontalScrollStep4.value, {
-    //   opacity: 0.3,
-    //   y: 50,
-    // },  0)
     .to(orgHeaderRef.value, { scale: 1.05 }, 0)
     .to(
       orgHeaderRef.value,
@@ -281,6 +282,43 @@ onMounted(() => {
 // watch(width, () => {
 //   slider1W.value = getSliderW(firstSlide.value.length + 1);
 // });
+
+const email = ref("");
+const isSubscribeLoading = ref(false);
+const subscribedSuccessfully = ref(false);
+const subscribeError = ref();
+const subscribe = async (email: string) => {
+  try {
+    isSubscribeLoading.value = true;
+    const { success, error } = await newsletterSubscribeAPI(email);
+    if (!success) throw new Error(error?.message);
+    subscribedSuccessfully.value = true;
+  } catch (err) {
+    const error = err as Error;
+    console.log(err);
+    console.log(typeof err);
+    console.log(error.message);
+    console.log(typeof error.message);
+    subscribeError.value = getErrorMessage(err);
+  } finally {
+    isSubscribeLoading.value = false;
+  }
+};
+
+const buidlerLottieRef1 = ref();
+const buidlerLottieRef2 = ref();
+const buidlerLottieRef3 = ref();
+
+const playLottie = (elem: any) => {
+  if (!elem) return;
+  elem.setDirection("forward");
+  elem.play();
+};
+const reverseLottie = (elem: any) => {
+  if (!elem) return;
+  elem.setDirection("reverse");
+  elem.play();
+};
 </script>
 
 <template>
@@ -463,9 +501,7 @@ onMounted(() => {
           </div>
 
           <div class="">
-            <div
-              class="flex flex-col gap-8 items-center justify-center py-24 mb-32"
-            >
+            <div class="flex flex-col gap-8 items-center justify-center py-24">
               <GradientTitle class="font-heading text-5xl 2xl:text-6xl"
                 >Elevate your hackathon experience.</GradientTitle
               >
@@ -473,6 +509,7 @@ onMounted(() => {
                 Fostering collaboration between buidlers and organizations,
                 powered by hackathons – all on one seamless platform.
               </h3>
+
               <div class="flex items-center gap-4 mt-4">
                 <Button title="Join a hackathon" />
                 <Button
@@ -489,10 +526,6 @@ onMounted(() => {
                 height="594"
                 class="w-full h-auto test"
               />
-              <!-- <p>tilt: {{ tilt }}</p>
-          <p>roll: {{ roll }}</p>
-          <p>source: {{ source }}</p>
-          <p>pos: {{ x }}, {{ y }}</p> -->
             </div>
           </div>
         </div>
@@ -542,9 +575,9 @@ onMounted(() => {
           <!-- tabs -->
           <div class="rounded-md flex mb-8 w-full">
             <div
-              class="bg-surface w-full p-4 text-on-surface text-center cursor-pointer hover:text-on-surface-tertiary transition-all"
+              class="w-full p-4 text-center cursor-pointer hover:text-on-surface-tertiary transition-all"
               :class="{
-                'font-bold ': !displayBountiesTab,
+                'font-bold bg-surface text-on-surface': !displayBountiesTab,
                 'bg-[#142937] text-on-surface-secondary': displayBountiesTab,
               }"
               @click="displayBountiesTab = false"
@@ -552,9 +585,9 @@ onMounted(() => {
               Hackathons
             </div>
             <div
-              class="bg-surface w-full p-4 text-on-surface text-center cursor-pointer hover:text-on-surface-tertiary transition-all"
+              class="w-full p-4 text-center cursor-pointer hover:text-on-surface-tertiary transition-all"
               :class="{
-                'font-bold ': displayBountiesTab,
+                'font-bold bg-surface text-on-surface': displayBountiesTab,
                 'bg-[#142937] text-on-surface-secondary': !displayBountiesTab,
               }"
               @click="displayBountiesTab = true"
@@ -760,7 +793,12 @@ onMounted(() => {
                     class="rounded-md bg-surface flex flex-col gap-2 items-center justify-center p-4"
                   >
                     <GradientTitle class="font-heading font-bold text-5xl"
-                      >32,000+</GradientTitle
+                      >{{
+                        formatAmount(
+                          metrics?.find((m) => m.property == "buidlers")
+                            ?.value || 0
+                        )
+                      }}+</GradientTitle
                     >
                     <h5 class="font-heading font-semibold uppercase text-sm">
                       Buidler profiles created
@@ -770,7 +808,12 @@ onMounted(() => {
                     class="rounded-md bg-surface flex flex-col gap-2 items-center justify-center p-4"
                   >
                     <GradientTitle class="font-heading font-bold text-5xl"
-                      >$10,000,000+</GradientTitle
+                      >${{
+                        formatAmount(
+                          metrics?.find((m) => m.property == "prizes")?.value ||
+                            0
+                        )
+                      }}+</GradientTitle
                     >
                     <h5 class="font-heading font-semibold uppercase text-sm">
                       Prizes distributed
@@ -781,7 +824,12 @@ onMounted(() => {
                     class="rounded-md bg-surface flex flex-col gap-2 items-center justify-center p-10"
                   >
                     <GradientTitle class="font-heading font-bold text-8xl"
-                      >150+</GradientTitle
+                      >{{
+                        formatAmount(
+                          metrics?.find((m) => m.property == "hackathons")
+                            ?.value || 0
+                        )
+                      }}+</GradientTitle
                     >
                     <GradientTitle
                       class="font-heading font-bold uppercase text-2xl"
@@ -793,7 +841,12 @@ onMounted(() => {
                     class="rounded-md bg-surface flex flex-col gap-2 items-center justify-center p-10"
                   >
                     <GradientTitle class="font-heading font-bold text-8xl"
-                      >15K+</GradientTitle
+                      >{{
+                        formatAmount(
+                          metrics?.find((m) => m.property == "projects")
+                            ?.value || 0
+                        )
+                      }}+</GradientTitle
                     >
                     <GradientTitle
                       class="font-heading font-bold uppercase text-2xl"
@@ -810,7 +863,13 @@ onMounted(() => {
                 class="flex items-center gap-20 px-24 justify-center w-[100vw] m-auto"
               >
                 <div class="rounded border border-around-forms w-full">
-                  <img src="/org-img.png" />
+                  <client-only>
+                    <Vue3Lottie
+                      :animationData="timelineLottie"
+                      :height="350"
+                      speed="0.85"
+                    />
+                  </client-only>
                 </div>
                 <div class="w-full">
                   <h3
@@ -870,6 +929,8 @@ onMounted(() => {
 
           <div class="grid grid-cols-3 gap-2">
             <div
+              @mouseover="playLottie(buidlerLottieRef1)"
+              @mouseout="reverseLottie(buidlerLottieRef1)"
               class="pt-8 flex flex-col gap-8 rounded-lg border border-around-forms"
             >
               <h4
@@ -883,11 +944,22 @@ onMounted(() => {
                 participating in hackathons and bounties on buidlbox.
               </p>
               <div class="rounded-b">
-                <img src="/gm-img.png" />
+                <client-only>
+                  <Vue3Lottie
+                    class="cursor-pointer"
+                    :animationData="buidlerLottie1"
+                    :height="200"
+                    ref="buidlerLottieRef1"
+                    :autoPlay="false"
+                    :loop="1"
+                  />
+                </client-only>
               </div>
             </div>
 
             <div
+              @mouseover="playLottie(buidlerLottieRef2)"
+              @mouseout="reverseLottie(buidlerLottieRef2)"
               class="pt-8 flex flex-col gap-8 rounded-lg border border-around-forms"
             >
               <h4
@@ -901,11 +973,22 @@ onMounted(() => {
                 team members, get support, and share memes.
               </p>
               <div class="rounded-b">
-                <img src="/gm-img.png" />
+                <client-only>
+                  <Vue3Lottie
+                    class="cursor-pointer"
+                    :animationData="buidlerLottie2"
+                    :height="200"
+                    ref="buidlerLottieRef2"
+                    :autoPlay="false"
+                    :loop="1"
+                  />
+                </client-only>
               </div>
             </div>
 
             <div
+              @mouseover="playLottie(buidlerLottieRef3)"
+              @mouseout="reverseLottie(buidlerLottieRef3)"
               class="pt-8 flex flex-col gap-8 rounded-lg border border-around-forms"
             >
               <h4
@@ -919,7 +1002,16 @@ onMounted(() => {
                 your personal buidler profile.
               </p>
               <div class="rounded-b">
-                <img src="/gm-img.png" />
+                <client-only>
+                  <Vue3Lottie
+                    class="cursor-pointer"
+                    :animationData="buidlerLottie3"
+                    :height="200"
+                    ref="buidlerLottieRef3"
+                    :autoPlay="false"
+                    :loop="1"
+                  />
+                </client-only>
               </div>
             </div>
           </div>
@@ -1024,21 +1116,42 @@ onMounted(() => {
                 announcements,<br />
                 and memes – delivered straight to your inbox.
               </p>
-              <input
-                placeholder="Email address"
-                class="mt-4 w-[20rem] px-3 py-1.5 rounded bg-surface border border-around-forms"
-              />
-              <Button
-                title="Signup"
-                :button-type="ButtonType.Gradient"
-                class="w-[20rem]"
-              />
+              <div
+                v-if="!subscribedSuccessfully"
+                class="flex flex-col gap-6 items-center justify-center"
+              >
+                <input
+                  v-model="email"
+                  placeholder="Email address"
+                  class="mt-4 w-[20rem] px-3 py-1.5 rounded bg-surface border border-around-forms"
+                />
+                <Button
+                  title="Signup"
+                  @click="subscribe(email)"
+                  :button-type="ButtonType.Gradient"
+                  :is-loading="isSubscribeLoading"
+                  class="w-[20rem] h-full"
+                />
+              </div>
+              <div v-else-if="subscribedSuccessfully">
+                <GradientTitle
+                  class="font-heading text-xl font-extrabold w-fit py-4"
+                  >Successfully subscribed!</GradientTitle
+                >
+              </div>
+              <div v-if="subscribeError && !subscribedSuccessfully">
+                <p class="text-destructive-secondary">
+                  An error occured: {{ subscribeError }}
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <PageFooter />
+
+      
     </div>
   </div>
 </template>

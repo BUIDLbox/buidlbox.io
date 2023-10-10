@@ -5,9 +5,10 @@ const isTrialModalOpen = ref(false);
 </script>
 
 <template>
+  <div>
   <footer>
     <div
-      class="flex flex-col gap-6 pt-10 pb-20 px-[8vw] border-t border-surface"
+      class="flex flex-col gap-6 pt-10 px-[8vw] border-t border-surface"
     >
       <div>
         <img
@@ -62,4 +63,5 @@ const isTrialModalOpen = ref(false);
     :is-modal-open="isTrialModalOpen"
     @close-modal="isTrialModalOpen = false"
   />
+  </div>
 </template>

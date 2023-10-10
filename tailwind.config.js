@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+const FormKitVariants = require('@formkit/themes/tailwindcss')
+
 export default {
   content: [
     "./components/**/*.{js,vue,ts}",
@@ -6,6 +9,7 @@ export default {
     "./pages/**/*.vue",
     "./plugins/**/*.{js,ts}",
     "./app.vue",
+    "./tailwind-theme.js",
   ],
   theme: {
     extend: {
@@ -58,6 +62,8 @@ export default {
   plugins: [function ({ addVariant }) {
       addVariant("child", "& > *");
       addVariant("child-hover", "& > *:hover");
-    },],
+    },
+  FormKitVariants
+],
 }
 
