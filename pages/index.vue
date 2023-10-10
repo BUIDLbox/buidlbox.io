@@ -12,11 +12,63 @@ import {
   getMetricsAPI,
   newsletterSubscribeAPI,
 } from "../api";
+import buidlerLottie3 from "~/assets/lottie/03-flex.json";
+import buidlerLottie1 from "~/assets/lottie/01-hack.json";
+import buidlerLottie2 from "~/assets/lottie/02-gm.json";
+import timelineLottie from "~/assets/lottie/04-roadmap.json";
 import { getErrorMessage } from "~/utils";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, EasePack);
 const metrics = ref<Metrics[]>();
 const announcements = ref<Announcement[]>();
+
+const logos = [
+  {
+    name: "permissionless",
+    logo: "/logos/permissionless-logo.svg",
+    fullColorLogo: "/logos/permissionless-logo-full.svg",
+  },
+  {
+    name: "funding the commons",
+    logo: "/logos/ftc-logo.svg",
+    fullColorLogo: "/logos/ftc-logo-full.svg",
+  },
+  {
+    name: "ethdenver",
+    logo: "/logos/ethdenver-logo.svg",
+    fullColorLogo: "/logos/ethdenver-logo.svg",
+  },
+  {
+    name: "zksync",
+    logo: "/logos/zksync-logo.svg",
+    fullColorLogo: "/logos/zksync-logo-full.svg",
+  },
+  {
+    name: "ethshanghai",
+    logo: "/logos/ethshanghai-logo.svg",
+    fullColorLogo: "/logos/ethshanghai-logo-full.svg",
+  },
+  {
+    name: "zetachain",
+    logo: "/logos/zetachain-logo.svg",
+    fullColorLogo: "/logos/zetachain-logo-full.svg",
+  },
+  {
+    name: "lukso",
+    logo: "/logos/lukso-logo.svg",
+    fullColorLogo: "/logos/lukso-logo-full.svg",
+  },
+  {
+    name: "gitcoin",
+    logo: "/logos/gitcoin-logo.svg",
+    fullColorLogo: "/logos/gitcoin-logo-full.svg",
+  },
+  {
+    name: "scalingx",
+    logo: "/logos/scalingx-logo.svg",
+    fullColorLogo: "/logos/scalingx-logo-full.svg",
+  },
+];
 
 onMounted(async () => {
   nextTick(() => {
@@ -120,51 +172,67 @@ const userDashboardRef = ref();
 const hackathonsRef = ref(null);
 watch(hackathonsRef, () => {
   if (!hackathonsRef.value) return;
+  gsap.set(".hack-1", {
+    opacity: 0,
+    x: -150,
+  });
+  gsap.set(".hack-2", {
+    opacity: 0,
+    y: -150,
+  });
+  gsap.set(".hack-3", {
+    opacity: 0,
+    x: -150,
+  });
+  gsap.set(".hack-4", {
+    opacity: 0,
+    y: 200,
+  });
 
   let ctx = gsap.context(() => {
     var tl = gsap
       .timeline()
-      .from(".hack-1", {
-        opacity: 0,
-        y: 100,
+      .to(".hack-1", {
+        opacity: 1,
+        x: 0,
         ease: "power3",
         duration: 2,
       })
-      .from(
+      .to(
         ".hack-2",
         {
-          opacity: 0,
-          y: -100,
+          opacity: 1,
+          y: 0,
           ease: "power3",
           duration: 2,
         },
         "<20%"
       )
 
-      .from(
+      .to(
         ".hack-3",
         {
-          opacity: 0,
-          y: -150,
-          ease: "power3",
+          opacity: 1,
+          x: 0,
+          ease: "power1",
           duration: 2,
         },
         0
       )
-      .from(
+      .to(
         ".hack-4",
         {
-          opacity: 0,
-          y: 650,
-          ease: "power3",
+          opacity: 1,
+          y: 0,
+          ease: "power1",
           duration: 2,
         },
-        "-=25%"
+        0
       );
 
     ScrollTrigger.create({
       trigger: hackathonsRef.value,
-      // start: "top 40%",
+      end: "center center",
       animation: tl,
       scrub: 1,
       invalidateOnRefresh: true,
@@ -189,18 +257,6 @@ watch(userDashboardRef, () => {
     ease: "none",
     y: -40,
   });
-
-  // ScrollTrigger.create({
-  //   trigger: userDashboardRef.value,
-  //   start: "top 80%",
-  //   // pin: true,
-  //   animation: tl,
-  //   scrub: true,
-  //   invalidateOnRefresh: true,
-  //   markers: true,
-  //   // onLeave: () => (isOrgSticky.value = false),
-  //   // onEnter: () => (isOrgSticky.value = true),
-  // });
 });
 
 const sponsorsHeader = ref();
@@ -364,7 +420,7 @@ const reverseLottie = (elem: any) => {
               alt="buidlbox user dashboard"
               width="1199"
               height="594"
-              class="w-full h-auto test"
+              class="w-full h-auto"
             />
           </div>
         </div>
@@ -379,16 +435,21 @@ const reverseLottie = (elem: any) => {
       >
         TRUSTED BY TOP ORGANIZATIONS IN WEB3 & BEYOND
       </h2>
-      <div class="flex flex-wrap items-center justify-center gap-x-12 gap-y-16">
-        <img src="/logos/permissionless-logo.png" alt="permissionless logo" />
-        <img src="/logos/ftc-logo.png" alt="ftc logo" />
-        <img src="/logos/ethdenver-logo.png" alt="ethdenver logo" />
-        <img src="/logos/zksync-logo.png" alt="zksync logo" />
-        <img src="/logos/ethshanghai-logo.png" alt="ethshanghai logo" />
-        <img src="/logos/zetachain-logo.png" alt="zetachain logo" />
-        <img src="/logos/lukso-logo.png" alt="lukso logo" />
-        <img src="/logos/gitcoin-logo.png" alt="gitcoin logo" />
-        <img src="/logos/horizen-logo.png" alt="horizen logo" />
+      <div
+        class="flex flex-wrap items-center justify-center gap-x-10 xl:gap-y-16 gap-y-10"
+      >
+        <div
+          class="relative group cursor-pointer"
+          v-for="logo in logos"
+          :key="logo.name"
+        >
+          <img :src="logo.fullColorLogo" :alt="`${logo.name} logo`" />
+          <img
+            :src="logo.logo"
+            :alt="`${logo.name} logo`"
+            class="absolute top-0 left-0 right-0 bottom-0 group-hover:opacity-0 transition-all duration-300"
+          />
+        </div>
       </div>
     </div>
 
