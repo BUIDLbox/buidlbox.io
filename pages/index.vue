@@ -17,10 +17,12 @@ import buidlerLottie1 from "~/assets/lottie/01-hack.json";
 import buidlerLottie2 from "~/assets/lottie/02-gm.json";
 import timelineLottie from "~/assets/lottie/04-roadmap.json";
 import { getErrorMessage } from "~/utils";
+import { Mixpanel } from "mixpanel-browser";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, EasePack);
 const metrics = ref<Metrics[]>();
 const announcements = ref<Announcement[]>();
+const mixpanel = inject("mixpanel") as Mixpanel;
 
 const logos = [
   {
@@ -107,8 +109,6 @@ onMounted(async () => {
 
   const announcementData = await getAnnouncementsAPI();
   announcements.value = announcementData.data?.data;
-  console.log("HELP", announcementData);
-  console.log({ wee: announcementData.data?.data });
 });
 
 const container = ref<any>(null);
@@ -322,6 +322,10 @@ const slider1W = ref("");
 
 onMounted(() => {
   slider1W.value = slideRef.value?.scrollY;
+  mixpanel.track_pageview({
+    page: "buidlbox.io",
+    type: "Main Page",
+  });
 });
 
 // watch(width, () => {
@@ -405,11 +409,27 @@ const reverseLottie = (elem: any) => {
             </h3>
 
             <div class="flex items-center gap-4 mt-4">
-              <Button title="Join a hackathon" />
+              <Button
+                title="Join a hackathon"
+                @clicked="
+                  () => {
+                    mixpanel.track('Join a hackathon', {
+                      type: 'Lead',
+                    });
+                  }
+                "
+              />
               <NuxtLink to="/organizations">
                 <Button
                   title="Host a hackathon"
                   :button-type="ButtonType.Secondary1"
+                  @clicked="
+                    () => {
+                      mixpanel.track('Host a hackathon', {
+                        type: 'Lead',
+                      });
+                    }
+                  "
                 />
               </NuxtLink>
             </div>
@@ -468,6 +488,13 @@ const reverseLottie = (elem: any) => {
         <Button
           title="Explore hackathons"
           :button-type="ButtonType.Secondary1"
+          @clicked="
+            () => {
+              mixpanel.track('Explore hackathons', {
+                type: 'Lead',
+              });
+            }
+          "
         />
       </div>
       <div class="w-full">
@@ -682,7 +709,17 @@ const reverseLottie = (elem: any) => {
                   fund cutting-edge projects built on your ecosystem by
                   hackathon buidlers.
                 </p>
-                <Button title="Learn more" :button-type="ButtonType.Positive" />
+                <Button
+                  title="Learn more"
+                  :button-type="ButtonType.Positive"
+                  @clicked="
+                    () => {
+                      mixpanel.track('Learn more about us', {
+                        type: 'Lead',
+                      });
+                    }
+                  "
+                />
               </div>
               <div class="grid grid-cols-2 gap-2 w-full">
                 <div
@@ -782,6 +819,13 @@ const reverseLottie = (elem: any) => {
                 <Button
                   title="Explore features"
                   :button-type="ButtonType.Positive"
+                  @clicked="
+                    () => {
+                      mixpanel.track('Explore features', {
+                        type: 'Lead',
+                      });
+                    }
+                  "
                 />
               </div>
             </div>
@@ -909,7 +953,17 @@ const reverseLottie = (elem: any) => {
           </div>
         </div>
 
-        <Button title="Start buidling" class="m-auto w-fit" />
+        <Button
+          title="Start buidling"
+          class="m-auto w-fit"
+          @clicked="
+            () => {
+              mixpanel.track('Start buidling', {
+                type: 'Lead',
+              });
+            }
+          "
+        />
       </div>
     </div>
 
@@ -1009,7 +1063,7 @@ const reverseLottie = (elem: any) => {
               />
               <Button
                 title="Signup"
-                @click="subscribe(email)"
+                @clicked="subscribe(email)"
                 :button-type="ButtonType.Gradient"
                 :is-loading="isSubscribeLoading"
                 class="w-[20rem] h-full"

@@ -12,6 +12,7 @@
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@nuxtjs/google-fonts": "^3.0.2",
+    "@types/mixpanel-browser": "^2.47.3",
     "@vueuse/core": "^10.4.1",
     "@vueuse/nuxt": "^10.4.1",
     "autoprefixer": "^10.4.16",
@@ -26,6 +27,7 @@
     "@headlessui/vue": "^1.7.16",
     "@heroicons/vue": "^2.0.18",
     "gsap": "^3.12.2",
+    "mixpanel-browser": "^2.47.0",
     "vue3-lottie": "^3.1.0",
     "vue3-marquee": "^4.1.0"
   }
