@@ -433,12 +433,14 @@ const reverseLottie = (elem: any) => {
       </div>
       <div class="w-full">
         <!-- tabs -->
-        <div class="rounded-md flex mb-8 w-full">
+        <div class="rounded-md overflow-hidden flex mb-8 w-full bg-[#142937]">
           <div
             class="w-full p-4 text-center cursor-pointer hover:text-on-surface-tertiary transition-all"
             :class="{
-              'font-bold bg-surface text-on-surface': !displayBountiesTab,
-              'bg-[#142937] text-on-surface-secondary': displayBountiesTab,
+              'font-bold bg-surface text-on-surface rounded-md':
+                !displayBountiesTab,
+              'text-on-surface-secondary hover:bg-[#162D3E] hover:rounded-md':
+                displayBountiesTab,
             }"
             @click="displayBountiesTab = false"
           >
@@ -447,8 +449,10 @@ const reverseLottie = (elem: any) => {
           <div
             class="w-full p-4 text-center cursor-pointer hover:text-on-surface-tertiary transition-all"
             :class="{
-              'font-bold bg-surface text-on-surface': displayBountiesTab,
-              'bg-[#142937] text-on-surface-secondary': !displayBountiesTab,
+              'font-bold bg-surface text-on-surface rounded-md':
+                displayBountiesTab,
+              'text-on-surface-secondary hover:bg-[#162D3E] hover:rounded-md':
+                !displayBountiesTab,
             }"
             @click="displayBountiesTab = true"
           >
