@@ -1,24 +1,44 @@
+<script setup lang="ts">
+import { ButtonType } from "~/types/button";
+</script>
+
 <template>
-  <div class="bg-background py-5 px-8 flex items-center justify-between border-b border-on-surface">
-    <img
-      src="/buidlbox-logo-horizontal.png"
-      alt="buidlbox logo"
-      width="138"
-      height="35"
-    />
-    <div class="flex items-center gap-8">
-      <a class="text-on-surface text-sm">Platform</a>
-      <a class="text-on-surface text-sm">Solutions</a>
-      <a class="text-on-surface text-sm">Customers</a>
-      <a class="text-on-surface text-sm">Resources</a>
-      <a class="text-on-surface text-sm">Support</a>
-      <a class="text-on-surface text-sm">Company</a>
-      <a class="text-on-surface text-sm">Pricing</a>
+  <div
+    class="bg-background py-5 px-8 flex items-center border-b border-on-surface"
+  >
+    <NuxtLink href="/" class="flex flex-1 flex-grow">
+      <img
+        src="/buidlbox-logo-horizontal.png"
+        alt="buidlbox logo"
+        width="138"
+        height="35"
+      />
+    </NuxtLink>
+
+    <div class="flex justify-center items-center gap-8 mx-auto">
+      <NuxtLink class="text-on-surface text-sm" href="/organizations#features"
+        >Features</NuxtLink
+      >
+      <NuxtLink
+        href="https://app.buidlbox.io/buy-hackathons/tiers"
+        class="text-on-surface text-sm"
+        >Pricing</NuxtLink
+      >
+      <NuxtLink class="text-on-surface text-sm">About Us</NuxtLink>
+      <NuxtLink
+        href="https://medium.com/buidlbox"
+        class="text-on-surface text-sm"
+        >Blog</NuxtLink
+      >
     </div>
 
-    <div class="flex items-center gap-8">
-      <a class="text-on-surface text-sm">Launch app –> </a>
-      <Button title="Organize hackathons" />
+    <div class="flex flex-1 flex-grow items-center justify-end gap-4">
+      <NuxtLink href="https://app.buidlbox.io">
+        <Button title="Launch app 🚀" :button-type="ButtonType.Secondary1" />
+      </NuxtLink>
+      <NuxtLink href="/organizations">
+        <Button title="Organize hackathons" />
+      </NuxtLink>
     </div>
   </div>
 </template>
