@@ -18,11 +18,18 @@ import buidlerLottie2 from "~/assets/lottie/02-gm.json";
 import timelineLottie from "~/assets/lottie/04-roadmap.json";
 import { getErrorMessage } from "~/utils";
 import { Mixpanel } from "mixpanel-browser";
+import MiniProgress from "~/components/MiniProgress.vue";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, EasePack);
 const metrics = ref<Metrics[]>();
 const announcements = ref<Announcement[]>();
 const mixpanel = inject("mixpanel") as Mixpanel;
+const animationFrameId = ref();
+const progress = ref(0);
+const startTime = ref();
+const elapsedPauseTime = ref(0);
+const requireReset = ref(true);
+const INTERVAL_DURATION = 7000;
 
 onMounted(async () => {
   nextTick(() => {
@@ -61,6 +68,16 @@ onMounted(async () => {
 
   const announcementData = await getAnnouncementsAPI();
   announcements.value = announcementData.data?.data;
+});
+onMounted(() => {
+  slider1W.value = slideRef.value?.scrollY;
+});
+onMounted(() => {
+  setTabSwitchInterval();
+});
+
+onUnmounted(() => {
+  cancelAnimationFrame(animationFrameId.value);
 });
 
 const hackathons = [
@@ -116,7 +133,6 @@ function getScrollAmount() {
 }
 
 const orgHeaderRef = ref();
-
 const userDashboardRef = ref();
 
 const hackathonsRef = ref(null);
@@ -314,6 +330,43 @@ const reverseLottie = (elem: any) => {
   elem.setDirection("reverse");
   elem.play();
 };
+const handleTabSwitch = (value: boolean) => {
+  displayBountiesTab.value = value;
+  elapsedPauseTime.value = 0;
+  setTabSwitchInterval();
+  pauseInterval();
+  progress.value = 0;
+  requireReset.value = false;
+};
+const updateProgressBar = () => {
+  const elapsed = Date.now() - startTime.value + elapsedPauseTime.value;
+  progress.value = (elapsed / INTERVAL_DURATION) * 100;
+  if (progress.value < 100) {
+    animationFrameId.value = requestAnimationFrame(updateProgressBar);
+  } else {
+    displayBountiesTab.value = !displayBountiesTab.value;
+    elapsedPauseTime.value = 0;
+    requireReset.value = true;
+    setTabSwitchInterval();
+  }
+};
+const pauseInterval = () => {
+  cancelAnimationFrame(animationFrameId.value);
+  elapsedPauseTime.value =
+    Date.now() - startTime.value + elapsedPauseTime.value;
+  animationFrameId.value = null;
+  requireReset.value = false;
+};
+const setTabSwitchInterval = () => {
+  if (animationFrameId.value) {
+    cancelAnimationFrame(animationFrameId.value);
+  }
+  startTime.value = Date.now();
+  if (requireReset.value) {
+    progress.value = 0;
+  }
+  animationFrameId.value = requestAnimationFrame(updateProgressBar);
+};
 </script>
 
 <template>
@@ -435,28 +488,34 @@ const reverseLottie = (elem: any) => {
         <!-- tabs -->
         <div class="rounded-md overflow-hidden flex mb-8 w-full bg-[#142937]">
           <div
-            class="w-full p-4 text-center cursor-pointer hover:text-on-surface-tertiary transition-all"
+            class="w-full p-4 text-center cursor-pointer hover:text-on-surface-tertiary transition-all ease-in-out relative overflow-hidden"
             :class="{
               'font-bold bg-surface text-on-surface rounded-md':
                 !displayBountiesTab,
               'text-on-surface-secondary hover:bg-[#162D3E] hover:rounded-md':
                 displayBountiesTab,
             }"
-            @click="displayBountiesTab = false"
+            @mouseenter="pauseInterval"
+            @mouseleave="setTabSwitchInterval"
+            @click="() => handleTabSwitch(false)"
           >
             Hackathons
+            <MiniProgress :progress="progress" v-if="!displayBountiesTab" />
           </div>
           <div
-            class="w-full p-4 text-center cursor-pointer hover:text-on-surface-tertiary transition-all"
+            class="w-full p-4 text-center cursor-pointer hover:text-on-surface-tertiary transition-all ease-in-out relative overflow-hidden"
             :class="{
               'font-bold bg-surface text-on-surface rounded-md':
                 displayBountiesTab,
               'text-on-surface-secondary hover:bg-[#162D3E] hover:rounded-md':
                 !displayBountiesTab,
             }"
-            @click="displayBountiesTab = true"
+            @mouseenter="pauseInterval"
+            @mouseleave="setTabSwitchInterval"
+            @click="() => handleTabSwitch(true)"
           >
             Bounties
+            <MiniProgress :progress="progress" v-if="displayBountiesTab" />
           </div>
         </div>
         <div
