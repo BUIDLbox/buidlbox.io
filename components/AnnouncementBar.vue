@@ -20,6 +20,9 @@ defineProps<{
             v-for="(announcement, index) of announcements"
             :key="index"
             class="3xl:text-base text-sm text-center text-black font-bold whitespace-nowrap mr-12 lg:mr-16"
+            :class="{
+              'cursor-default': !announcement.link,
+            }"
           >
             {{ announcement.message }}
           </a>
