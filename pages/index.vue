@@ -24,8 +24,6 @@ const metrics = ref<Metrics[]>();
 const announcements = ref<Announcement[]>();
 const mixpanel = inject("mixpanel") as Mixpanel;
 
-
-
 onMounted(async () => {
   nextTick(() => {
     const slideInSections = gsap.utils.toArray(".slide-in-section");
@@ -274,10 +272,6 @@ const slider1W = ref("");
 
 onMounted(() => {
   slider1W.value = slideRef.value?.scrollY;
-  mixpanel.track_pageview({
-    page: "buidlbox.io",
-    type: "Main Page",
-  });
 });
 
 // watch(width, () => {
@@ -342,6 +336,9 @@ const reverseLottie = (elem: any) => {
                   v-for="(announcement, index) of announcements"
                   :key="index"
                   class="3xl:text-base text-sm text-center text-black font-bold whitespace-nowrap mr-12 lg:mr-16"
+                  :class="{
+                    'cursor-default': !announcement.link,
+                  }"
                 >
                   {{ announcement.message }}
                 </a>
@@ -418,7 +415,7 @@ const reverseLottie = (elem: any) => {
         >
         <p class="2xl:text-lg text-on-surface slide-in-section">
           Through the power of hackathons, buidlers come together to discover
-          solutions to the ecosystem’s most pressing challenges – with
+          solutions to the ecosystem's most pressing challenges – with
           opportunities for prizes, mentorship, and ongoing support from top
           organizations in web3.
         </p>
