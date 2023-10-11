@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 
-const FormKitVariants = require('@formkit/themes/tailwindcss')
+const FormKitVariants = require("@formkit/themes/tailwindcss");
 
 export default {
   content: [
@@ -15,7 +15,7 @@ export default {
     extend: {
       fontFamily: {
         inter: ["Inter", "sans-serif"],
-        heading: ["Big Shoulders Text", "cursive"],
+        heading: ["Big Shoulders Text", "sans-serif"],
       },
       colors: {
         background: "var(--background)",
@@ -64,7 +64,6 @@ export default {
       addVariant("child", "& > *");
       addVariant("child-hover", "& > *:hover");
     },
-    FormKitVariants
+    FormKitVariants,
   ],
 };
-

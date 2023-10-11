@@ -15,10 +15,19 @@ import buidlerLottie1 from "~/assets/lottie/01-hack.json";
 import buidlerLottie2 from "~/assets/lottie/02-gm.json";
 import timelineLottie from "~/assets/lottie/04-roadmap.json";
 import { getErrorMessage } from "~/utils";
+import { Mixpanel } from "mixpanel-browser";
+import MiniProgress from "~/components/MiniProgress.vue";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, EasePack);
 
 const announcements = ref<Announcement[]>();
+const mixpanel = inject("mixpanel") as Mixpanel;
+const animationFrameId = ref();
+const progress = ref(0);
+const startTime = ref();
+const elapsedPauseTime = ref(0);
+const requireReset = ref(true);
+const INTERVAL_DURATION = 7000;
 
 onMounted(async () => {
   nextTick(() => {
@@ -54,6 +63,16 @@ onMounted(async () => {
 
   const announcementData = await getAnnouncementsAPI();
   announcements.value = announcementData.data?.data;
+});
+onMounted(() => {
+  slider1W.value = slideRef.value?.scrollY;
+});
+onMounted(() => {
+  setTabSwitchInterval();
+});
+
+onUnmounted(() => {
+  cancelAnimationFrame(animationFrameId.value);
 });
 
 const hackathons = [
@@ -109,7 +128,6 @@ function getScrollAmount() {
 }
 
 const orgHeaderRef = ref();
-
 const userDashboardRef = ref();
 
 const hackathonsRef = ref(null);
@@ -305,6 +323,43 @@ const reverseLottie = (elem: any) => {
   elem.setDirection("reverse");
   elem.play();
 };
+const handleTabSwitch = (value: boolean) => {
+  displayBountiesTab.value = value;
+  elapsedPauseTime.value = 0;
+  setTabSwitchInterval();
+  pauseInterval();
+  progress.value = 0;
+  requireReset.value = false;
+};
+const updateProgressBar = () => {
+  const elapsed = Date.now() - startTime.value + elapsedPauseTime.value;
+  progress.value = (elapsed / INTERVAL_DURATION) * 100;
+  if (progress.value < 100) {
+    animationFrameId.value = requestAnimationFrame(updateProgressBar);
+  } else {
+    displayBountiesTab.value = !displayBountiesTab.value;
+    elapsedPauseTime.value = 0;
+    requireReset.value = true;
+    setTabSwitchInterval();
+  }
+};
+const pauseInterval = () => {
+  cancelAnimationFrame(animationFrameId.value);
+  elapsedPauseTime.value =
+    Date.now() - startTime.value + elapsedPauseTime.value;
+  animationFrameId.value = null;
+  requireReset.value = false;
+};
+const setTabSwitchInterval = () => {
+  if (animationFrameId.value) {
+    cancelAnimationFrame(animationFrameId.value);
+  }
+  startTime.value = Date.now();
+  if (requireReset.value) {
+    progress.value = 0;
+  }
+  animationFrameId.value = requestAnimationFrame(updateProgressBar);
+};
 </script>
 
 <template>
@@ -326,13 +381,30 @@ const reverseLottie = (elem: any) => {
 
             <div class="flex items-center gap-4 mt-4">
               <a href="https://app.buidlbox.io/">
-                <Button title="Join a hackathon" class="w-52"
-              /></a>
+                <Button
+                  class="w-52"
+                  title="Join a hackathon"
+                  @clicked="
+                    () => {
+                      mixpanel.track('Join a hackathon', {
+                        type: 'Lead',
+                      });
+                    }
+                  "
+                />
+              </a>
               <NuxtLink to="/organizations">
                 <Button
                   title="Host a hackathon"
                   :button-type="ButtonType.Secondary1"
                   class="w-52"
+                  @clicked="
+                    () => {
+                      mixpanel.track('Host a hackathon', {
+                        type: 'Lead',
+                      });
+                    }
+                  "
                 />
               </NuxtLink>
             </div>
@@ -368,44 +440,64 @@ const reverseLottie = (elem: any) => {
           <GradientTitle class="font-heading text-5xl slide-in-section"
             >Where unique challenges find creative solutions.</GradientTitle
           >
+
           <p class="2xl:text-lg text-on-surface slide-in-section">
             Through the power of hackathons, buidlers come together to discover
-            solutions to the ecosystem’s most pressing challenges – with
+            solutions to the ecosystem's most pressing challenges – with
             opportunities for prizes, mentorship, and ongoing support from top
             organizations in web3.
           </p>
           <a href="https://app.buidlbox.io/">
             <Button
               title="Explore hackathons"
-              :button-type="ButtonType.Secondary1"
               class="w-60"
+              :button-type="ButtonType.Secondary1"
+              @clicked="
+                () => {
+                  mixpanel.track('Explore hackathons', {
+                    type: 'Lead',
+                  });
+                }
+              "
             />
           </a>
         </div>
+
         <div class="w-full">
           <!-- tabs -->
-          <div class="rounded-md flex mb-8 w-full">
+          <div class="rounded-md overflow-hidden flex mb-8 w-full bg-[#142937]">
             <div
-              class="w-full p-4 text-center cursor-pointer hover:text-on-surface-tertiary transition-all"
+              class="w-full p-4 text-center cursor-pointer hover:text-on-surface-tertiary transition-all ease-in-out relative overflow-hidden"
               :class="{
-                'font-bold bg-surface text-on-surface': !displayBountiesTab,
-                'bg-[#142937] text-on-surface-secondary': displayBountiesTab,
+                'font-bold bg-surface text-on-surface rounded-md':
+                  !displayBountiesTab,
+                'text-on-surface-secondary hover:bg-[#162D3E] hover:rounded-md':
+                  displayBountiesTab,
               }"
-              @click="displayBountiesTab = false"
+              @mouseenter="pauseInterval"
+              @mouseleave="setTabSwitchInterval"
+              @click="() => handleTabSwitch(false)"
             >
               Hackathons
+              <MiniProgress :progress="progress" v-if="!displayBountiesTab" />
             </div>
             <div
-              class="w-full p-4 text-center cursor-pointer hover:text-on-surface-tertiary transition-all"
+              class="w-full p-4 text-center cursor-pointer hover:text-on-surface-tertiary transition-all ease-in-out relative overflow-hidden"
               :class="{
-                'font-bold bg-surface text-on-surface': displayBountiesTab,
-                'bg-[#142937] text-on-surface-secondary': !displayBountiesTab,
+                'font-bold bg-surface text-on-surface rounded-md':
+                  displayBountiesTab,
+                'text-on-surface-secondary hover:bg-[#162D3E] hover:rounded-md':
+                  !displayBountiesTab,
               }"
-              @click="displayBountiesTab = true"
+              @mouseenter="pauseInterval"
+              @mouseleave="setTabSwitchInterval"
+              @click="() => handleTabSwitch(true)"
             >
               Bounties
+              <MiniProgress :progress="progress" v-if="displayBountiesTab" />
             </div>
           </div>
+
           <div
             class="grid sm:grid-cols-2 gap-4"
             ref="hackathonsRef"
@@ -590,8 +682,8 @@ const reverseLottie = (elem: any) => {
                     FUND INNOVATIVE PROJECTS
                   </h3>
                   <p class="mb-12 slide-in-section">
-                    Discover and source top-tier talent from buidlbox community, and
-                    fund cutting-edge projects built on your ecosystem by
+                    Discover and source top-tier talent from buidlbox community,
+                    and fund cutting-edge projects built on your ecosystem by
                     hackathon buidlers.
                   </p>
                   <NuxtLink to="/organizations">
@@ -627,16 +719,23 @@ const reverseLottie = (elem: any) => {
                     YOUR HACKATHONS WITH EASE
                   </h3>
                   <p class="mb-12 slide-in-section">
-                    Buidlbox hackathon dashboard is fully-equipped with everything
-                    you need: create your landing page, inviting co-sponsors,
-                    publishing challenges, event scheduling, judging projects,
-                    and so much more.
+                    Buidlbox hackathon dashboard is fully-equipped with
+                    everything you need: create your landing page, inviting
+                    co-sponsors, publishing challenges, event scheduling,
+                    judging projects, and so much more.
                   </p>
                   <NuxtLink to="/organizations">
                     <Button
                       title="Explore features"
                       :button-type="ButtonType.Positive"
                       class="w-40"
+                      @clicked="
+                        () => {
+                          mixpanel.track('Explore features', {
+                            type: 'Lead',
+                          });
+                        }
+                      "
                     />
                   </NuxtLink>
                 </div>
@@ -672,9 +771,9 @@ const reverseLottie = (elem: any) => {
             <h5
               class="text-on-surface 2xl:text-lg text-center slide-in-section"
             >
-              Through hackathons and bounties, buidlbox platform provides the tools
-              for our buidler community to learn, earn, and connect with top
-              web3 organizations.
+              Through hackathons and bounties, buidlbox platform provides the
+              tools for our buidler community to learn, earn, and connect with
+              top web3 organizations.
             </h5>
           </div>
 
@@ -767,7 +866,17 @@ const reverseLottie = (elem: any) => {
             </div>
           </div>
           <a href="https://app.buidlbox.io/">
-            <Button title="Start buidling" class="m-auto w-48" />
+            <Button
+              title="Start buidling"
+              class="m-auto w-48"
+              @clicked="
+                () => {
+                  mixpanel.track('Start buidling', {
+                    type: 'Lead',
+                  });
+                }
+              "
+            />
           </a>
         </div>
       </div>
