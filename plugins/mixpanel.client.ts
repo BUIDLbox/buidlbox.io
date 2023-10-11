@@ -3,7 +3,7 @@ import mixpanel from "mixpanel-browser";
 const TOKEN = import.meta.env.VITE_MIXPANEL_TOKEN;
 
 mixpanel.init(TOKEN, {
-  //   debug: true,
+  // debug: true,
   persistence: "localStorage",
   api_host: "https://mpt.buidlbox.io",
 });
