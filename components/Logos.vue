@@ -13,7 +13,7 @@ const logos = [
   {
     name: "ethdenver",
     logo: "/logos/ethdenver-logo.svg",
-    fullColorLogo: "/logos/ethdenver-logo.svg",
+    fullColorLogo: "/logos/ethdenver-logo-full.svg",
   },
   {
     name: "zksync",

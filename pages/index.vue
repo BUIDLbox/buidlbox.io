@@ -7,9 +7,7 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { EasePack } from "gsap/EasePack";
 import {
   Announcement,
-  Metrics,
   getAnnouncementsAPI,
-  getMetricsAPI,
   newsletterSubscribeAPI,
 } from "../api";
 import buidlerLottie3 from "~/assets/lottie/03-flex.json";
@@ -19,10 +17,8 @@ import timelineLottie from "~/assets/lottie/04-roadmap.json";
 import { getErrorMessage } from "~/utils";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, EasePack);
-const metrics = ref<Metrics[]>();
+
 const announcements = ref<Announcement[]>();
-
-
 
 onMounted(async () => {
   nextTick(() => {
@@ -56,13 +52,8 @@ onMounted(async () => {
     });
   });
 
-  const metricsData = await getMetricsAPI();
-  metrics.value = metricsData.data?.data;
-
   const announcementData = await getAnnouncementsAPI();
   announcements.value = announcementData.data?.data;
-  console.log("HELP", announcementData);
-  console.log({ wee: announcementData.data?.data });
 });
 
 const hackathons = [
@@ -113,7 +104,7 @@ const displayBountiesTab = ref(false);
 const horizontalScrollWrapper = ref();
 
 function getScrollAmount() {
-  let racesWidth = horizontalScrollWrapper?.value.scrollWidth;
+  let racesWidth = horizontalScrollWrapper.value?.scrollWidth;
   return -(racesWidth - window.innerWidth);
 }
 
@@ -212,22 +203,24 @@ watch(userDashboardRef, () => {
 });
 
 const sponsorsHeader = ref();
-watch(sponsorsHeader, () => {
-  if (!sponsorsHeader.value) return;
-  gsap.set(sponsorsHeader.value, {
-    opacity: 0,
-  });
-  gsap.to(sponsorsHeader.value, {
-    scrollTrigger: {
-      trigger: sponsorsHeader.value,
-      invalidateOnRefresh: true,
-    },
-    y: -80,
-    scale: 1.4,
-    duration: 1.7,
-    opacity: 1,
-  });
-});
+watch(
+  sponsorsHeader,
+  () => {
+    if (!sponsorsHeader.value) return;
+    gsap.set(sponsorsHeader.value, {
+      opacity: 0,
+    });
+    gsap.to(sponsorsHeader.value, {
+      scrollTrigger: {
+        trigger: sponsorsHeader.value,
+        invalidateOnRefresh: true,
+      },
+      duration: 1.7,
+      opacity: 1,
+    });
+  },
+  { immediate: true }
+);
 
 watch([horizontalScrollWrapper, orgHeaderRef], () => {
   if (!horizontalScrollWrapper.value || !orgHeaderRef.value) return;
@@ -292,10 +285,6 @@ const subscribe = async (email: string) => {
     subscribedSuccessfully.value = true;
   } catch (err) {
     const error = err as Error;
-    console.log(err);
-    console.log(typeof err);
-    console.log(error.message);
-    console.log(typeof error.message);
     subscribeError.value = getErrorMessage(err);
   } finally {
     isSubscribeLoading.value = false;
@@ -319,32 +308,11 @@ const reverseLottie = (elem: any) => {
 </script>
 
 <template>
-  <div class="flex flex-col gap-32">
+  <div>
     <!-- hero -->
     <div class="bg-gradient-to-b from-tertiary-surface to-dark-blue from-35%">
       <div class="bg-hero-bg w-full bg-top bg-contain bg-no-repeat">
-        <div
-          class="bg-secondary py-2 overflow-hidden w-screen relative min-h-[44px]"
-        >
-          <div class="flex items-center justify-center w-full py-1">
-            <ClientOnly>
-              <Vue3Marquee
-                pauseOnHover
-                :clone="true"
-                v-if="announcements && announcements.length > 0"
-              >
-                <a
-                  :href="announcement.link"
-                  v-for="(announcement, index) of announcements"
-                  :key="index"
-                  class="3xl:text-base text-sm text-center text-black font-bold whitespace-nowrap mr-12 lg:mr-16"
-                >
-                  {{ announcement.message }}
-                </a>
-              </Vue3Marquee>
-            </ClientOnly>
-          </div>
-        </div>
+        <AnnouncementBar :announcements="announcements" />
 
         <div class="">
           <div class="flex flex-col gap-8 items-center justify-center py-24">
@@ -357,11 +325,14 @@ const reverseLottie = (elem: any) => {
             </h3>
 
             <div class="flex items-center gap-4 mt-4">
-              <Button title="Join a hackathon" />
+              <a href="https://app.buidlbox.io/">
+                <Button title="Join a hackathon" class="w-52"
+              /></a>
               <NuxtLink to="/organizations">
                 <Button
                   title="Host a hackathon"
                   :button-type="ButtonType.Secondary1"
+                  class="w-52"
                 />
               </NuxtLink>
             </div>
@@ -379,355 +350,303 @@ const reverseLottie = (elem: any) => {
       </div>
     </div>
 
-    <!-- logos -->
-    <div class="px-4">
-      <h2
-        ref="sponsorsHeader"
-        class="font-heading text-on-surface-tertiary text-center text-3xl 2xl:text-4xl mb-20"
-      >
-        TRUSTED BY TOP ORGANIZATIONS IN WEB3 & BEYOND
-      </h2>
-      <Logos />
-    </div>
-
-    <!-- hackathons & bounties -->
-    <div class="flex items-center xl:gap-16 gap-6 max-w-6xl m-auto w-full">
-      <div class="flex flex-col gap-8 max-w-md w-full">
-        <GradientTitle class="font-heading text-5xl slide-in-section"
-          >Where unique challenges find creative solutions.</GradientTitle
+    <div class="flex flex-col gap-32">
+      <!-- logos -->
+      <div class="px-4">
+        <h2
+          ref="sponsorsHeader"
+          class="font-heading text-around-forms text-center text-3xl 2xl:text-4xl mb-16"
         >
-        <p class="2xl:text-lg text-on-surface slide-in-section">
-          Through the power of hackathons, buidlers come together to discover
-          solutions to the ecosystem’s most pressing challenges – with
-          opportunities for prizes, mentorship, and ongoing support from top
-          organizations in web3.
-        </p>
-        <Button
-          title="Explore hackathons"
-          :button-type="ButtonType.Secondary1"
-        />
+          TRUSTED BY TOP ORGANIZATIONS IN WEB3 & BEYOND
+        </h2>
+        <Logos class="slide-in-section" />
       </div>
-      <div class="w-full">
-        <!-- tabs -->
-        <div class="rounded-md flex mb-8 w-full">
-          <div
-            class="w-full p-4 text-center cursor-pointer hover:text-on-surface-tertiary transition-all"
-            :class="{
-              'font-bold bg-surface text-on-surface': !displayBountiesTab,
-              'bg-[#142937] text-on-surface-secondary': displayBountiesTab,
-            }"
-            @click="displayBountiesTab = false"
+
+      <!-- hackathons & bounties -->
+      <div class="flex items-center xl:gap-16 gap-6 max-w-6xl m-auto w-full">
+        <div class="flex flex-col gap-8 max-w-md w-full">
+          <GradientTitle class="font-heading text-5xl slide-in-section"
+            >Where unique challenges find creative solutions.</GradientTitle
           >
-            Hackathons
+          <p class="2xl:text-lg text-on-surface slide-in-section">
+            Through the power of hackathons, buidlers come together to discover
+            solutions to the ecosystem’s most pressing challenges – with
+            opportunities for prizes, mentorship, and ongoing support from top
+            organizations in web3.
+          </p>
+          <a href="https://app.buidlbox.io/">
+            <Button
+              title="Explore hackathons"
+              :button-type="ButtonType.Secondary1"
+              class="w-60"
+            />
+          </a>
+        </div>
+        <div class="w-full">
+          <!-- tabs -->
+          <div class="rounded-md flex mb-8 w-full">
+            <div
+              class="w-full p-4 text-center cursor-pointer hover:text-on-surface-tertiary transition-all"
+              :class="{
+                'font-bold bg-surface text-on-surface': !displayBountiesTab,
+                'bg-[#142937] text-on-surface-secondary': displayBountiesTab,
+              }"
+              @click="displayBountiesTab = false"
+            >
+              Hackathons
+            </div>
+            <div
+              class="w-full p-4 text-center cursor-pointer hover:text-on-surface-tertiary transition-all"
+              :class="{
+                'font-bold bg-surface text-on-surface': displayBountiesTab,
+                'bg-[#142937] text-on-surface-secondary': !displayBountiesTab,
+              }"
+              @click="displayBountiesTab = true"
+            >
+              Bounties
+            </div>
           </div>
           <div
-            class="w-full p-4 text-center cursor-pointer hover:text-on-surface-tertiary transition-all"
-            :class="{
-              'font-bold bg-surface text-on-surface': displayBountiesTab,
-              'bg-[#142937] text-on-surface-secondary': !displayBountiesTab,
-            }"
-            @click="displayBountiesTab = true"
+            class="grid sm:grid-cols-2 gap-4"
+            ref="hackathonsRef"
+            v-if="!displayBountiesTab"
           >
-            Bounties
+            <HackathonCard
+              v-for="(hackathon, index) in hackathons"
+              :key="hackathon.hackathonId"
+              :hackathon="hackathon"
+              :class="`hack-${index + 1}`"
+            />
+          </div>
+          <div v-else class="w-full grid gap-4">
+            <div
+              class="w-full bg-gradient-to-r from-primary via-secondary to-tertiary rounded flex items-center justify-center"
+            >
+              <div class="w-full h-full p-[1px] rounded">
+                <div
+                  class="bg-background py-2 px-4 rounded h-[100px] w-full flex items-center justify-between"
+                >
+                  <div class="flex items-center">
+                    <img
+                      src="/blog-img-1.png"
+                      alt=""
+                      class="w-[30px] h-[30px] rounded-full"
+                    />
+                    <div class="flex flex-col gap-2 p-5">
+                      <h2 class="font-semibold text-lg">
+                        Bounty1 by
+                        <span class="text-on-surface-tertiary">zksync</span>
+                      </h2>
+                    </div>
+                  </div>
+                  <div class="flex gap-3">
+                    <img
+                      src="/winner-cup.svg"
+                      alt="winner cup icon"
+                      width="14"
+                      height="14"
+                      class="max-w-[1rem] max-h-[1rem]"
+                    />
+                    <p class="text-xs font-bold text-secondary">$2.340</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="w-full bg-gradient-to-r from-primary via-secondary to-tertiary rounded flex items-center justify-center"
+            >
+              <div class="w-full h-full p-[1px] rounded">
+                <div
+                  class="bg-background py-2 px-4 rounded h-[100px] w-full flex items-center justify-between"
+                >
+                  <div class="flex items-center">
+                    <img
+                      src="/blog-img-1.png"
+                      alt=""
+                      class="w-[30px] h-[30px] rounded-full"
+                    />
+                    <div class="flex flex-col gap-2 p-5">
+                      <h2 class="font-semibold text-lg">
+                        Bounty1 by
+                        <span class="text-on-surface-tertiary">zksync</span>
+                      </h2>
+                    </div>
+                  </div>
+                  <div class="flex gap-3">
+                    <img
+                      src="/winner-cup.svg"
+                      alt="winner cup icon"
+                      width="14"
+                      height="14"
+                      class="max-w-[1rem] max-h-[1rem]"
+                    />
+                    <p class="text-xs font-bold text-secondary">$2.340</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="w-full bg-gradient-to-r from-primary via-secondary to-tertiary rounded flex items-center justify-center"
+            >
+              <div class="w-full h-full p-[1px] rounded">
+                <div
+                  class="bg-background py-2 px-4 rounded h-[100px] w-full flex items-center justify-between"
+                >
+                  <div class="flex items-center">
+                    <img
+                      src="/blog-img-1.png"
+                      alt=""
+                      class="w-[30px] h-[30px] rounded-full"
+                    />
+                    <div class="flex flex-col gap-2 p-5">
+                      <h2 class="font-semibold text-lg">
+                        Bounty1 by
+                        <span class="text-on-surface-tertiary">zksync</span>
+                      </h2>
+                    </div>
+                  </div>
+                  <div class="flex gap-3">
+                    <img
+                      src="/winner-cup.svg"
+                      alt="winner cup icon"
+                      width="14"
+                      height="14"
+                      class="max-w-[1rem] max-h-[1rem]"
+                    />
+                    <p class="text-xs font-bold text-secondary">$2.340</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="w-full bg-gradient-to-r from-primary via-secondary to-tertiary rounded flex items-center justify-center"
+            >
+              <div class="w-full h-full p-[1px] rounded">
+                <div
+                  class="bg-background py-2 px-4 rounded h-[100px] w-full flex items-center justify-between"
+                >
+                  <div class="flex items-center">
+                    <img
+                      src="/blog-img-1.png"
+                      alt=""
+                      class="w-[30px] h-[30px] rounded-full"
+                    />
+                    <div class="flex flex-col gap-2 p-5">
+                      <h2 class="font-semibold text-lg">
+                        Bounty1 by
+                        <span class="text-on-surface-tertiary">zksync</span>
+                      </h2>
+                    </div>
+                  </div>
+                  <div class="flex gap-3">
+                    <img
+                      src="/winner-cup.svg"
+                      alt="winner cup icon"
+                      width="14"
+                      height="14"
+                      class="max-w-[1rem] max-h-[1rem]"
+                    />
+                    <p class="text-xs font-bold text-secondary">$2.340</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+      </div>
+
+      <!-- for orgs -->
+      <div class="flex-col justify-center items-center">
         <div
-          class="grid sm:grid-cols-2 gap-4"
-          ref="hackathonsRef"
-          v-if="!displayBountiesTab"
+          ref="orgHeaderRef"
+          class="sticky top-[20px] left-0 overflow-hidden w-full flex flex-col items-center text-center max-w-6xl m-auto mb-24"
         >
-          <HackathonCard
-            v-for="(hackathon, index) in hackathons"
-            :key="hackathon.hackathonId"
-            :hackathon="hackathon"
-            :class="`hack-${index + 1}`"
-          />
+          <h5
+            class="font-heading text-xl text-around-forms font-medium uppercase mb-2"
+          >
+            For organizations
+          </h5>
+          <GradientTitle
+            class="font-heading text-4xl xl:text-6xl uppercase mb-6 font-extrabold"
+            >Hackathons made easy</GradientTitle
+          >
+          <h5 class="text-on-surface 2xl:text-lg text-center">
+            As a full-service hackathon platform, we’ve got everything you need
+            to host your next hackathon.
+          </h5>
         </div>
-        <div v-else class="w-full grid gap-4">
-          <div
-            class="w-full bg-gradient-to-r from-primary via-secondary to-tertiary rounded flex items-center justify-center"
-          >
-            <div class="w-full h-full p-[1px] rounded">
+
+        <div ref="horizontalScrollWrapper" class="relative">
+          <div class="w-fit flex no-wrap gap-2">
+            <div class="flex-shrink-0">
               <div
-                class="bg-background py-2 px-4 rounded h-[100px] w-full flex items-center justify-between"
+                class="flex items-center gap-20 px-24 justify-center w-[100vw] m-auto"
               >
-                <div class="flex items-center">
-                  <img
-                    src="/blog-img-1.png"
-                    alt=""
-                    class="w-[30px] h-[30px] rounded-full"
-                  />
-                  <div class="flex flex-col gap-2 p-5">
-                    <h2 class="font-semibold text-lg">
-                      Bounty1 by
-                      <span class="text-on-surface-tertiary">zksync</span>
-                    </h2>
-                  </div>
+                <div class="w-full py-4 px-5">
+                  <h3
+                    class="font-heading text-on-surface-tertiary text-3xl 2xl:text-4xl mb-4 font-extrabold slide-in-section"
+                  >
+                    SOURCE TOP-TIER TALENT & <br />
+                    FUND INNOVATIVE PROJECTS
+                  </h3>
+                  <p class="mb-12 slide-in-section">
+                    Discover and source top-tier talent from buidlbox community, and
+                    fund cutting-edge projects built on your ecosystem by
+                    hackathon buidlers.
+                  </p>
+                  <NuxtLink to="/organizations">
+                    <Button
+                      title="Learn more"
+                      :button-type="ButtonType.Positive"
+                      class="w-40"
+                    />
+                  </NuxtLink>
                 </div>
-                <div class="flex gap-3">
-                  <img
-                    src="/winner-cup.svg"
-                    alt="winner cup icon"
-                    width="14"
-                    height="14"
-                    class="max-w-[1rem] max-h-[1rem]"
-                  />
-                  <p class="text-xs font-bold text-secondary">$2.340</p>
-                </div>
+                <Metrics />
               </div>
             </div>
-          </div>
-          <div
-            class="w-full bg-gradient-to-r from-primary via-secondary to-tertiary rounded flex items-center justify-center"
-          >
-            <div class="w-full h-full p-[1px] rounded">
+
+            <div class="flex-shrink-0">
               <div
-                class="bg-background py-2 px-4 rounded h-[100px] w-full flex items-center justify-between"
+                class="flex items-center gap-20 px-24 justify-center w-[100vw] m-auto"
               >
-                <div class="flex items-center">
-                  <img
-                    src="/blog-img-1.png"
-                    alt=""
-                    class="w-[30px] h-[30px] rounded-full"
-                  />
-                  <div class="flex flex-col gap-2 p-5">
-                    <h2 class="font-semibold text-lg">
-                      Bounty1 by
-                      <span class="text-on-surface-tertiary">zksync</span>
-                    </h2>
-                  </div>
+                <div class="rounded border border-around-forms w-full">
+                  <client-only>
+                    <Vue3Lottie
+                      :animationData="timelineLottie"
+                      :height="350"
+                      speed="0.85"
+                    />
+                  </client-only>
                 </div>
-                <div class="flex gap-3">
-                  <img
-                    src="/winner-cup.svg"
-                    alt="winner cup icon"
-                    width="14"
-                    height="14"
-                    class="max-w-[1rem] max-h-[1rem]"
-                  />
-                  <p class="text-xs font-bold text-secondary">$2.340</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            class="w-full bg-gradient-to-r from-primary via-secondary to-tertiary rounded flex items-center justify-center"
-          >
-            <div class="w-full h-full p-[1px] rounded">
-              <div
-                class="bg-background py-2 px-4 rounded h-[100px] w-full flex items-center justify-between"
-              >
-                <div class="flex items-center">
-                  <img
-                    src="/blog-img-1.png"
-                    alt=""
-                    class="w-[30px] h-[30px] rounded-full"
-                  />
-                  <div class="flex flex-col gap-2 p-5">
-                    <h2 class="font-semibold text-lg">
-                      Bounty1 by
-                      <span class="text-on-surface-tertiary">zksync</span>
-                    </h2>
-                  </div>
-                </div>
-                <div class="flex gap-3">
-                  <img
-                    src="/winner-cup.svg"
-                    alt="winner cup icon"
-                    width="14"
-                    height="14"
-                    class="max-w-[1rem] max-h-[1rem]"
-                  />
-                  <p class="text-xs font-bold text-secondary">$2.340</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            class="w-full bg-gradient-to-r from-primary via-secondary to-tertiary rounded flex items-center justify-center"
-          >
-            <div class="w-full h-full p-[1px] rounded">
-              <div
-                class="bg-background py-2 px-4 rounded h-[100px] w-full flex items-center justify-between"
-              >
-                <div class="flex items-center">
-                  <img
-                    src="/blog-img-1.png"
-                    alt=""
-                    class="w-[30px] h-[30px] rounded-full"
-                  />
-                  <div class="flex flex-col gap-2 p-5">
-                    <h2 class="font-semibold text-lg">
-                      Bounty1 by
-                      <span class="text-on-surface-tertiary">zksync</span>
-                    </h2>
-                  </div>
-                </div>
-                <div class="flex gap-3">
-                  <img
-                    src="/winner-cup.svg"
-                    alt="winner cup icon"
-                    width="14"
-                    height="14"
-                    class="max-w-[1rem] max-h-[1rem]"
-                  />
-                  <p class="text-xs font-bold text-secondary">$2.340</p>
+                <div class="w-full">
+                  <h3
+                    class="font-heading text-on-surface-tertiary text-3xl 2xl:text-4xl mb-4 font-extrabold slide-in-section"
+                  >
+                    A ONE-STOP SHOP TO LAUNCH <br />
+                    YOUR HACKATHONS WITH EASE
+                  </h3>
+                  <p class="mb-12 slide-in-section">
+                    Buidlbox hackathon dashboard is fully-equipped with everything
+                    you need: create your landing page, inviting co-sponsors,
+                    publishing challenges, event scheduling, judging projects,
+                    and so much more.
+                  </p>
+                  <NuxtLink to="/organizations">
+                    <Button
+                      title="Explore features"
+                      :button-type="ButtonType.Positive"
+                      class="w-40"
+                    />
+                  </NuxtLink>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-
-    <!-- for orgs -->
-    <div class="flex-col justify-center items-center">
-      <div
-        ref="orgHeaderRef"
-        class="sticky top-[20px] left-0 overflow-hidden w-full flex flex-col items-center text-center max-w-6xl m-auto mb-24"
-      >
-        <h5
-          class="font-heading text-xl text-around-forms font-medium uppercase mb-2"
-        >
-          For organizations
-        </h5>
-        <GradientTitle
-          class="font-heading text-4xl xl:text-6xl uppercase mb-6 font-extrabold"
-          >Hackathons made easy</GradientTitle
-        >
-        <h5 class="text-on-surface 2xl:text-lg text-center">
-          As a full-service hackathon platform, we’ve got everything you need to
-          host your next hackathon.
-        </h5>
-      </div>
-
-      <div ref="horizontalScrollWrapper" class="relative">
-        <div class="w-fit flex no-wrap gap-2">
-          <div class="flex-shrink-0">
-            <div
-              class="flex items-center gap-20 px-24 justify-center w-[100vw] m-auto"
-            >
-              <div class="w-full py-4 px-5">
-                <h3
-                  class="font-heading text-on-surface-tertiary text-3xl 2xl:text-4xl mb-4 font-extrabold slide-in-section"
-                >
-                  SOURCE TOP-TIER TALENT & <br />
-                  FUND INNOVATIVE PROJECTS
-                </h3>
-                <p class="mb-12 slide-in-section">
-                  Discover and source top-tier talent from our community, and
-                  fund cutting-edge projects built on your ecosystem by
-                  hackathon buidlers.
-                </p>
-                <Button title="Learn more" :button-type="ButtonType.Positive" />
-              </div>
-              <div class="grid grid-cols-2 gap-2 w-full">
-                <div
-                  class="rounded-md bg-surface flex flex-col gap-2 items-center justify-center p-4"
-                >
-                  <GradientTitle class="font-heading font-bold text-5xl"
-                    >{{
-                      formatAmount(
-                        metrics?.find((m) => m.property == "buidlers")?.value ||
-                          0
-                      )
-                    }}+</GradientTitle
-                  >
-                  <h5 class="font-heading font-semibold uppercase text-sm">
-                    Buidler profiles created
-                  </h5>
-                </div>
-                <div
-                  class="rounded-md bg-surface flex flex-col gap-2 items-center justify-center p-4"
-                >
-                  <GradientTitle class="font-heading font-bold text-5xl"
-                    >${{
-                      formatAmount(
-                        metrics?.find((m) => m.property == "prizes")?.value || 0
-                      )
-                    }}+</GradientTitle
-                  >
-                  <h5 class="font-heading font-semibold uppercase text-sm">
-                    Prizes distributed
-                  </h5>
-                </div>
-
-                <div
-                  class="rounded-md bg-surface flex flex-col gap-2 items-center justify-center p-10"
-                >
-                  <GradientTitle class="font-heading font-bold text-8xl"
-                    >{{
-                      formatAmount(
-                        metrics?.find((m) => m.property == "hackathons")
-                          ?.value || 0
-                      )
-                    }}+</GradientTitle
-                  >
-                  <GradientTitle
-                    class="font-heading font-bold uppercase text-2xl"
-                  >
-                    hackathons
-                  </GradientTitle>
-                </div>
-                <div
-                  class="rounded-md bg-surface flex flex-col gap-2 items-center justify-center p-10"
-                >
-                  <GradientTitle class="font-heading font-bold text-8xl"
-                    >{{
-                      formatAmount(
-                        metrics?.find((m) => m.property == "projects")?.value ||
-                          0
-                      )
-                    }}+</GradientTitle
-                  >
-                  <GradientTitle
-                    class="font-heading font-bold uppercase text-2xl"
-                  >
-                    Projects created
-                  </GradientTitle>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="flex-shrink-0">
-            <div
-              class="flex items-center gap-20 px-24 justify-center w-[100vw] m-auto"
-            >
-              <div class="rounded border border-around-forms w-full">
-                <client-only>
-                  <Vue3Lottie
-                    :animationData="timelineLottie"
-                    :height="350"
-                    speed="0.85"
-                  />
-                </client-only>
-              </div>
-              <div class="w-full">
-                <h3
-                  class="font-heading text-on-surface-tertiary text-3xl 2xl:text-4xl mb-4 font-extrabold slide-in-section"
-                >
-                  A ONE-STOP SHOP TO LAUNCH <br />
-                  YOUR HACKATHONS WITH EASE
-                </h3>
-                <p class="mb-12 slide-in-section">
-                  Our hackathon dashboard is fully-equipped with everything you
-                  need: create your landing page, inviting co-sponsors,
-                  publishing challenges, event scheduling, judging projects, and
-                  so much more.
-                </p>
-                <Button
-                  title="Explore features"
-                  :button-type="ButtonType.Positive"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- testimonials -->
-    <!-- <div class="w-screen">
+      <!-- testimonials -->
+      <!-- <div class="w-screen">
           <div class="z-20 relative">
             <Carousel
               class="w-screen"
@@ -737,231 +656,173 @@ const reverseLottie = (elem: any) => {
           </div>
         </div> -->
 
-    <!-- for buidlers -->
-    <div class="bg-gradient-to-b from-dark-blue to-tertiary-surface pb-24">
-      <div class="grid gap-24 max-w-6xl m-auto">
-        <div class="flex flex-col items-center text-center">
-          <h5
-            class="font-heading text-xl text-around-forms font-medium uppercase mb-2 slide-in-section"
-          >
-            For buidlers
-          </h5>
-          <GradientTitle
-            class="font-heading text-4xl xl:text-6xl uppercase mb-6 font-extrabold slide-in-section"
-            >A PLACE TO LEARN, EARN, & CONNECT</GradientTitle
-          >
-          <h5 class="text-on-surface 2xl:text-lg text-center slide-in-section">
-            Through hackathons and bounties, our platform provides the tools for
-            our buidler community to learn, earn, and connect with top web3
-            organizations.
-          </h5>
-        </div>
-
-        <div class="grid grid-cols-3 gap-2">
-          <div
-            @mouseover="playLottie(buidlerLottieRef1)"
-            @mouseout="reverseLottie(buidlerLottieRef1)"
-            class="pt-8 flex flex-col gap-8 rounded-lg border border-around-forms"
-          >
-            <h4
-              class="px-4 text-center font-heading text-xl font-extrabold text-on-surface-tertiary"
+      <!-- for buidlers -->
+      <div class="bg-gradient-to-b from-dark-blue to-tertiary-surface pb-24">
+        <div class="grid gap-24 max-w-6xl m-auto">
+          <div class="flex flex-col items-center text-center">
+            <h5
+              class="font-heading text-xl text-around-forms font-medium uppercase mb-2 slide-in-section"
             >
-              Participate in hackathons hosted by <br />
-              top web3 organizations
-            </h4>
-            <p class="text-xs text-center px-2">
-              Grow your skills, buidl innovative projects, and earn prizes by
-              participating in hackathons and bounties on buidlbox.
-            </p>
-            <div class="rounded-b">
-              <client-only>
-                <Vue3Lottie
-                  class="cursor-pointer"
-                  :animationData="buidlerLottie1"
-                  :height="200"
-                  ref="buidlerLottieRef1"
-                  :autoPlay="false"
-                  :loop="1"
-                />
-              </client-only>
-            </div>
-          </div>
-
-          <div
-            @mouseover="playLottie(buidlerLottieRef2)"
-            @mouseout="reverseLottie(buidlerLottieRef2)"
-            class="pt-8 flex flex-col gap-8 rounded-lg border border-around-forms"
-          >
-            <h4
-              class="px-4 text-center font-heading text-xl font-extrabold text-on-surface-tertiary"
-            >
-              Connect with buidlers<br />
-              from around the world
-            </h4>
-            <p class="text-xs text-center px-2">
-              Join our Discord community to access upcoming hackathons, find
-              team members, get support, and share memes.
-            </p>
-            <div class="rounded-b">
-              <client-only>
-                <Vue3Lottie
-                  class="cursor-pointer"
-                  :animationData="buidlerLottie2"
-                  :height="200"
-                  ref="buidlerLottieRef2"
-                  :autoPlay="false"
-                  :loop="1"
-                />
-              </client-only>
-            </div>
-          </div>
-
-          <div
-            @mouseover="playLottie(buidlerLottieRef3)"
-            @mouseout="reverseLottie(buidlerLottieRef3)"
-            class="pt-8 flex flex-col gap-8 rounded-lg border border-around-forms"
-          >
-            <h4
-              class="px-4 text-center font-heading text-xl font-extrabold text-on-surface-tertiary"
-            >
-              Flex your skills on your buidler profile <br />
-              & project pages
-            </h4>
-            <p class="text-xs text-center px-2">
-              Showcase your skills, projects, and make connections through your
-              personal buidler profile.
-            </p>
-            <div class="rounded-b">
-              <client-only>
-                <Vue3Lottie
-                  class="cursor-pointer"
-                  :animationData="buidlerLottie3"
-                  :height="200"
-                  ref="buidlerLottieRef3"
-                  :autoPlay="false"
-                  :loop="1"
-                />
-              </client-only>
-            </div>
-          </div>
-        </div>
-
-        <Button title="Start buidling" class="m-auto w-fit" />
-      </div>
-    </div>
-
-    <!-- blog -->
-    <div class="bg-hero-bg w-full bg-top bg-cover bg-no-repeat py-20">
-      <div class="flex items-center xl:gap-16 gap-6 max-w-6xl m-auto">
-        <div class="flex flex-col gap-8 w-full">
-          <GradientTitle class="font-heading text-5xl slide-in-section"
-            >THE POSSIBILITIES ARE <br />
-            ENDLESS ON BUIDLBOX.</GradientTitle
-          >
-          <p class="2xl:text-lg text-on-surface slide-in-section">
-            Browse our blog for hackathon recaps and learn about how <br />
-            buidlbox does really really cool things
-          </p>
-          <a
-            href=""
-            target="_blank"
-            class="text-secondary font-semibold slide-in-section"
-            >Read more hackathon highlights →</a
-          >
-        </div>
-
-        <div class="flex flex-col gap-2 w-full">
-          <div class="flex rounded-lg border border-around-forms">
-            <img
-              src="/blog-img-1.png"
-              alt=""
-              class="max-w-[186px] h-auto rounded-l-lg blog-image"
-            />
-            <div class="flex flex-col gap-2 p-5">
-              <h2 class="font-semibold text-lg">Permissionless II Hackathon</h2>
-              <p class="text-sm mb-2">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              </p>
-              <a class="text-xs text-secondary">Read more</a>
-            </div>
-          </div>
-          <div class="flex rounded-lg border border-around-forms">
-            <img
-              src="/blog-img-1.png"
-              alt=""
-              class="max-w-[186px] h-auto rounded-l-lg blog-image"
-            />
-            <div class="flex flex-col gap-2 p-5">
-              <h2 class="font-semibold text-lg">Permissionless II Hackathon</h2>
-              <p class="text-sm mb-2">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              </p>
-              <a class="text-xs text-secondary">Read more</a>
-            </div>
-          </div>
-          <div class="flex rounded-lg border border-around-forms">
-            <img
-              src="/blog-img-1.png"
-              alt=""
-              class="max-w-[186px] h-auto rounded-l-lg blog-image"
-            />
-            <div class="flex flex-col gap-2 p-5">
-              <h2 class="font-semibold text-lg">Permissionless II Hackathon</h2>
-              <p class="text-sm mb-2">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              </p>
-              <a class="text-xs text-secondary">Read more</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- newsletter -->
-    <div
-      class="bg-gradient-to-b from-transparent via-secondary-surface to-transparent"
-    >
-      <div class="w-full py-12">
-        <div class="flex items-center xl:gap-16 gap-6 max-w-7xl m-auto">
-          <div
-            class="flex flex-col gap-6 items-center justify-center py-8 m-auto w-full"
-          >
+              For buidlers
+            </h5>
             <GradientTitle
-              class="font-heading text-3xl font-extrabold w-fit slide-in-section"
-              >SIGN UP FOR OUR WEEKLY NEWSLETTER</GradientTitle
+              class="font-heading text-4xl xl:text-6xl uppercase mb-6 font-extrabold slide-in-section"
+              >A PLACE TO EARN, LEARN, & CONNECT</GradientTitle
             >
-            <p class="2xl:text-lg text-on-surface text-center slide-in-section">
-              Get the latest scoop on buidlbox hackathons, product
-              announcements,<br />
-              and memes – delivered straight to your inbox.
-            </p>
+            <h5
+              class="text-on-surface 2xl:text-lg text-center slide-in-section"
+            >
+              Through hackathons and bounties, buidlbox platform provides the tools
+              for our buidler community to learn, earn, and connect with top
+              web3 organizations.
+            </h5>
+          </div>
+
+          <div class="grid grid-cols-3 gap-2">
             <div
-              v-if="!subscribedSuccessfully"
-              class="flex flex-col gap-6 items-center justify-center"
+              @mouseover="playLottie(buidlerLottieRef1)"
+              @mouseout="reverseLottie(buidlerLottieRef1)"
+              class="pt-8 flex flex-col gap-8 rounded-lg border border-around-forms"
             >
-              <input
-                v-model="email"
-                placeholder="Email address"
-                class="mt-4 w-[20rem] px-3 py-1.5 rounded bg-surface border border-around-forms"
-              />
-              <Button
-                title="Signup"
-                @click="subscribe(email)"
-                :button-type="ButtonType.Gradient"
-                :is-loading="isSubscribeLoading"
-                class="w-[20rem] h-full"
-              />
-            </div>
-            <div v-else-if="subscribedSuccessfully">
-              <GradientTitle
-                class="font-heading text-xl font-extrabold w-fit py-4"
-                >Successfully subscribed!</GradientTitle
+              <h4
+                class="px-4 text-center font-heading text-xl font-extrabold text-on-surface-tertiary"
               >
-            </div>
-            <div v-if="subscribeError && !subscribedSuccessfully">
-              <p class="text-destructive-secondary">
-                An error occured: {{ subscribeError }}
+                Participate in hackathons hosted by <br />
+                top web3 organizations
+              </h4>
+              <p class="text-xs text-center px-2">
+                Grow your skills, buidl innovative projects, and earn prizes by
+                participating in hackathons and bounties on buidlbox.
               </p>
+              <div class="rounded-b">
+                <client-only>
+                  <Vue3Lottie
+                    class="cursor-pointer"
+                    :animationData="buidlerLottie1"
+                    :height="200"
+                    ref="buidlerLottieRef1"
+                    :autoPlay="false"
+                    :loop="1"
+                  />
+                </client-only>
+              </div>
+            </div>
+
+            <div
+              @mouseover="playLottie(buidlerLottieRef2)"
+              @mouseout="reverseLottie(buidlerLottieRef2)"
+              class="pt-8 flex flex-col gap-8 rounded-lg border border-around-forms"
+            >
+              <h4
+                class="px-4 text-center font-heading text-xl font-extrabold text-on-surface-tertiary"
+              >
+                Connect with buidlers<br />
+                from around the world
+              </h4>
+              <p class="text-xs text-center px-2">
+                Join our Discord community to access upcoming hackathons, find
+                team members, get support, and share memes.
+              </p>
+              <div class="rounded-b">
+                <client-only>
+                  <Vue3Lottie
+                    class="cursor-pointer"
+                    :animationData="buidlerLottie2"
+                    :height="200"
+                    ref="buidlerLottieRef2"
+                    :autoPlay="false"
+                    :loop="1"
+                  />
+                </client-only>
+              </div>
+            </div>
+
+            <div
+              @mouseover="playLottie(buidlerLottieRef3)"
+              @mouseout="reverseLottie(buidlerLottieRef3)"
+              class="pt-8 flex flex-col gap-8 rounded-lg border border-around-forms"
+            >
+              <h4
+                class="px-4 text-center font-heading text-xl font-extrabold text-on-surface-tertiary"
+              >
+                Flex your skills on your buidler profile <br />
+                & project pages
+              </h4>
+              <p class="text-xs text-center px-2">
+                Showcase your skills, projects, and make connections through
+                your personal buidler profile.
+              </p>
+              <div class="rounded-b">
+                <client-only>
+                  <Vue3Lottie
+                    class="cursor-pointer"
+                    :animationData="buidlerLottie3"
+                    :height="200"
+                    ref="buidlerLottieRef3"
+                    :autoPlay="false"
+                    :loop="1"
+                  />
+                </client-only>
+              </div>
+            </div>
+          </div>
+          <a href="https://app.buidlbox.io/">
+            <Button title="Start buidling" class="m-auto w-48" />
+          </a>
+        </div>
+      </div>
+
+      <!-- blog -->
+      <BlogSection />
+
+      <!-- newsletter -->
+      <div
+        class="bg-gradient-to-b from-transparent via-secondary-surface to-transparent"
+      >
+        <div class="w-full py-12">
+          <div class="flex items-center xl:gap-16 gap-6 max-w-7xl m-auto">
+            <div
+              class="flex flex-col gap-6 items-center justify-center py-8 m-auto w-full"
+            >
+              <GradientTitle
+                class="font-heading text-3xl font-extrabold w-fit slide-in-section"
+                >SIGN UP FOR OUR WEEKLY NEWSLETTER</GradientTitle
+              >
+              <p
+                class="2xl:text-lg text-on-surface text-center slide-in-section"
+              >
+                Get the latest scoop on buidlbox hackathons, product
+                announcements,<br />
+                and memes – delivered straight to your inbox.
+              </p>
+              <div
+                v-if="!subscribedSuccessfully"
+                class="flex flex-col gap-6 items-center justify-center"
+              >
+                <input
+                  v-model="email"
+                  placeholder="Email address"
+                  class="mt-4 w-[20rem] px-3 py-1.5 rounded bg-surface border border-around-forms"
+                />
+                <Button
+                  title="Signup"
+                  @click="email && subscribe(email)"
+                  :button-type="ButtonType.Gradient"
+                  :is-loading="isSubscribeLoading"
+                  class="w-[20rem] h-full"
+                />
+              </div>
+              <div v-else-if="subscribedSuccessfully">
+                <GradientTitle
+                  class="font-heading text-xl font-extrabold w-fit py-4"
+                  >Successfully subscribed!</GradientTitle
+                >
+              </div>
+              <div v-if="subscribeError && !subscribedSuccessfully">
+                <p class="text-destructive-secondary">
+                  Error: {{ subscribeError }}
+                </p>
+              </div>
             </div>
           </div>
         </div>

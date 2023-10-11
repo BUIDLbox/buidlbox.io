@@ -10,7 +10,10 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "@fortawesome/free-brands-svg-icons": "^6.4.2",
+    "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@nuxt/devtools": "latest",
+    "@nuxtjs/fontawesome": "^1.1.2",
     "@nuxtjs/google-fonts": "^3.0.2",
     "@vueuse/core": "^10.4.1",
     "@vueuse/nuxt": "^10.4.1",
@@ -23,6 +26,8 @@
     "@formkit/icons": "^1.2.2",
     "@formkit/nuxt": "^1.2.2",
     "@formkit/themes": "^1.2.2",
+    "@fortawesome/fontawesome-free": "^6.4.2",
+    "@fortawesome/vue-fontawesome": "github:fortawesome/vue-fontawesome",
     "@headlessui/vue": "^1.7.16",
     "@heroicons/vue": "^2.0.18",
     "gsap": "^3.12.2",
