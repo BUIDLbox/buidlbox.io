@@ -17,12 +17,19 @@ import buidlerLottie1 from "~/assets/lottie/01-hack.json";
 import buidlerLottie2 from "~/assets/lottie/02-gm.json";
 import timelineLottie from "~/assets/lottie/04-roadmap.json";
 import { getErrorMessage } from "~/utils";
+import { Mixpanel } from "mixpanel-browser";
+import MiniProgress from "~/components/MiniProgress.vue";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, EasePack);
 const metrics = ref<Metrics[]>();
 const announcements = ref<Announcement[]>();
-
-
+const mixpanel = inject("mixpanel") as Mixpanel;
+const animationFrameId = ref();
+const progress = ref(0);
+const startTime = ref();
+const elapsedPauseTime = ref(0);
+const requireReset = ref(true);
+const INTERVAL_DURATION = 7000;
 
 onMounted(async () => {
   nextTick(() => {
@@ -61,8 +68,16 @@ onMounted(async () => {
 
   const announcementData = await getAnnouncementsAPI();
   announcements.value = announcementData.data?.data;
-  console.log("HELP", announcementData);
-  console.log({ wee: announcementData.data?.data });
+});
+onMounted(() => {
+  slider1W.value = slideRef.value?.scrollY;
+});
+onMounted(() => {
+  setTabSwitchInterval();
+});
+
+onUnmounted(() => {
+  cancelAnimationFrame(animationFrameId.value);
 });
 
 const hackathons = [
@@ -118,7 +133,6 @@ function getScrollAmount() {
 }
 
 const orgHeaderRef = ref();
-
 const userDashboardRef = ref();
 
 const hackathonsRef = ref(null);
@@ -316,6 +330,43 @@ const reverseLottie = (elem: any) => {
   elem.setDirection("reverse");
   elem.play();
 };
+const handleTabSwitch = (value: boolean) => {
+  displayBountiesTab.value = value;
+  elapsedPauseTime.value = 0;
+  setTabSwitchInterval();
+  pauseInterval();
+  progress.value = 0;
+  requireReset.value = false;
+};
+const updateProgressBar = () => {
+  const elapsed = Date.now() - startTime.value + elapsedPauseTime.value;
+  progress.value = (elapsed / INTERVAL_DURATION) * 100;
+  if (progress.value < 100) {
+    animationFrameId.value = requestAnimationFrame(updateProgressBar);
+  } else {
+    displayBountiesTab.value = !displayBountiesTab.value;
+    elapsedPauseTime.value = 0;
+    requireReset.value = true;
+    setTabSwitchInterval();
+  }
+};
+const pauseInterval = () => {
+  cancelAnimationFrame(animationFrameId.value);
+  elapsedPauseTime.value =
+    Date.now() - startTime.value + elapsedPauseTime.value;
+  animationFrameId.value = null;
+  requireReset.value = false;
+};
+const setTabSwitchInterval = () => {
+  if (animationFrameId.value) {
+    cancelAnimationFrame(animationFrameId.value);
+  }
+  startTime.value = Date.now();
+  if (requireReset.value) {
+    progress.value = 0;
+  }
+  animationFrameId.value = requestAnimationFrame(updateProgressBar);
+};
 </script>
 
 <template>
@@ -338,6 +389,9 @@ const reverseLottie = (elem: any) => {
                   v-for="(announcement, index) of announcements"
                   :key="index"
                   class="3xl:text-base text-sm text-center text-black font-bold whitespace-nowrap mr-12 lg:mr-16"
+                  :class="{
+                    'cursor-default': !announcement.link,
+                  }"
                 >
                   {{ announcement.message }}
                 </a>
@@ -357,11 +411,27 @@ const reverseLottie = (elem: any) => {
             </h3>
 
             <div class="flex items-center gap-4 mt-4">
-              <Button title="Join a hackathon" />
+              <Button
+                title="Join a hackathon"
+                @clicked="
+                  () => {
+                    mixpanel.track('Join a hackathon', {
+                      type: 'Lead',
+                    });
+                  }
+                "
+              />
               <NuxtLink to="/organizations">
                 <Button
                   title="Host a hackathon"
                   :button-type="ButtonType.Secondary1"
+                  @clicked="
+                    () => {
+                      mixpanel.track('Host a hackathon', {
+                        type: 'Lead',
+                      });
+                    }
+                  "
                 />
               </NuxtLink>
             </div>
@@ -398,37 +468,54 @@ const reverseLottie = (elem: any) => {
         >
         <p class="2xl:text-lg text-on-surface slide-in-section">
           Through the power of hackathons, buidlers come together to discover
-          solutions to the ecosystem’s most pressing challenges – with
+          solutions to the ecosystem's most pressing challenges – with
           opportunities for prizes, mentorship, and ongoing support from top
           organizations in web3.
         </p>
         <Button
           title="Explore hackathons"
           :button-type="ButtonType.Secondary1"
+          @clicked="
+            () => {
+              mixpanel.track('Explore hackathons', {
+                type: 'Lead',
+              });
+            }
+          "
         />
       </div>
       <div class="w-full">
         <!-- tabs -->
-        <div class="rounded-md flex mb-8 w-full">
+        <div class="rounded-md overflow-hidden flex mb-8 w-full bg-[#142937]">
           <div
-            class="w-full p-4 text-center cursor-pointer hover:text-on-surface-tertiary transition-all"
+            class="w-full p-4 text-center cursor-pointer hover:text-on-surface-tertiary transition-all ease-in-out relative overflow-hidden"
             :class="{
-              'font-bold bg-surface text-on-surface': !displayBountiesTab,
-              'bg-[#142937] text-on-surface-secondary': displayBountiesTab,
+              'font-bold bg-surface text-on-surface rounded-md':
+                !displayBountiesTab,
+              'text-on-surface-secondary hover:bg-[#162D3E] hover:rounded-md':
+                displayBountiesTab,
             }"
-            @click="displayBountiesTab = false"
+            @mouseenter="pauseInterval"
+            @mouseleave="setTabSwitchInterval"
+            @click="() => handleTabSwitch(false)"
           >
             Hackathons
+            <MiniProgress :progress="progress" v-if="!displayBountiesTab" />
           </div>
           <div
-            class="w-full p-4 text-center cursor-pointer hover:text-on-surface-tertiary transition-all"
+            class="w-full p-4 text-center cursor-pointer hover:text-on-surface-tertiary transition-all ease-in-out relative overflow-hidden"
             :class="{
-              'font-bold bg-surface text-on-surface': displayBountiesTab,
-              'bg-[#142937] text-on-surface-secondary': !displayBountiesTab,
+              'font-bold bg-surface text-on-surface rounded-md':
+                displayBountiesTab,
+              'text-on-surface-secondary hover:bg-[#162D3E] hover:rounded-md':
+                !displayBountiesTab,
             }"
-            @click="displayBountiesTab = true"
+            @mouseenter="pauseInterval"
+            @mouseleave="setTabSwitchInterval"
+            @click="() => handleTabSwitch(true)"
           >
             Bounties
+            <MiniProgress :progress="progress" v-if="displayBountiesTab" />
           </div>
         </div>
         <div
@@ -619,7 +706,17 @@ const reverseLottie = (elem: any) => {
                   fund cutting-edge projects built on your ecosystem by
                   hackathon buidlers.
                 </p>
-                <Button title="Learn more" :button-type="ButtonType.Positive" />
+                <Button
+                  title="Learn more"
+                  :button-type="ButtonType.Positive"
+                  @clicked="
+                    () => {
+                      mixpanel.track('Learn more about us', {
+                        type: 'Lead',
+                      });
+                    }
+                  "
+                />
               </div>
               <div class="grid grid-cols-2 gap-2 w-full">
                 <div
@@ -719,6 +816,13 @@ const reverseLottie = (elem: any) => {
                 <Button
                   title="Explore features"
                   :button-type="ButtonType.Positive"
+                  @clicked="
+                    () => {
+                      mixpanel.track('Explore features', {
+                        type: 'Lead',
+                      });
+                    }
+                  "
                 />
               </div>
             </div>
@@ -846,7 +950,17 @@ const reverseLottie = (elem: any) => {
           </div>
         </div>
 
-        <Button title="Start buidling" class="m-auto w-fit" />
+        <Button
+          title="Start buidling"
+          class="m-auto w-fit"
+          @clicked="
+            () => {
+              mixpanel.track('Start buidling', {
+                type: 'Lead',
+              });
+            }
+          "
+        />
       </div>
     </div>
 
@@ -946,7 +1060,7 @@ const reverseLottie = (elem: any) => {
               />
               <Button
                 title="Signup"
-                @click="subscribe(email)"
+                @clicked="subscribe(email)"
                 :button-type="ButtonType.Gradient"
                 :is-loading="isSubscribeLoading"
                 class="w-[20rem] h-full"
