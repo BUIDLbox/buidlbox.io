@@ -28,12 +28,14 @@ export const getHackathonSubmissionEndDate = (
   )?.endDate;
 };
 
-
 export const formatAmount = (amount: string | number) => {
   return Number(amount).toLocaleString("en-US");
 };
 
-export const floorAmount = (amount: string | number) => {
+export const floorAmount = (
+  amount: string | number,
+  formatToThousands?: boolean
+) => {
   if (Number(amount) >= 1000000) {
     const mil = (
       (Math.floor(Number(amount) / 10000) * 10000) /
@@ -43,6 +45,8 @@ export const floorAmount = (amount: string | number) => {
   } else if (Number(amount) >= 100000) {
     return (Math.floor(Number(amount) / 1000) * 1000).toLocaleString("en-US");
   } else {
+    if (formatToThousands)
+      return `${Math.floor(Number(amount) / 1000).toLocaleString("en-US")}K`;
     return (Math.floor(Number(amount) / 100) * 100).toLocaleString("en-US");
   }
 };
@@ -56,7 +60,6 @@ export const getErrorMessage = (
   err: unknown,
   fallback = "There was a problem"
 ) => {
-
   try {
     const parsedError = typeof err === "string" ? JSON.parse(err) : err;
 
@@ -64,9 +67,9 @@ export const getErrorMessage = (
     const message = JSON.parse(parsedError?.message).message ?? err ?? fallback;
 
     if (parsedError instanceof APIError) {
-      return message
+      return message;
     } else {
-      return message
+      return message;
     }
   } catch {
     // If JSON parsing fails, use the original error or fallback
