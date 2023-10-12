@@ -1,6 +1,11 @@
 import { APIError } from "~/api/apiService";
 import { ScheduleEvent, ScheduleType } from "~/types/hackathon";
 
+export const termsLink =
+  "https://buidlbox-app-resources.s3.amazonaws.com/buidlbox_ToS.pdf";
+export const privacyLink =
+  "https://buidlbox-app-resources.s3.amazonaws.com/buidlbox_Privacy_Policy.pdf";
+
 export const sortHackathonByRecent = <
   T extends { scheduleList: ScheduleEvent[] }[]
 >(

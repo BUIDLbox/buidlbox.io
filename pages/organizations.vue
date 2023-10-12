@@ -27,7 +27,7 @@ const selectedCarouselTag = ref<{ name: string; imgSrc: string }>(
 
 <template>
   <div>
-    <div class="grid gap-32">
+    <!-- <div class="grid gap-32">
       <div class="bg-hero-bg w-full bg-top bg-contain bg-no-repeat grid gap-10">
         <div
           class="flex flex-col gap-8 items-center justify-center py-24 pt-24"
@@ -159,6 +159,6 @@ const selectedCarouselTag = ref<{ name: string; imgSrc: string }>(
     <RequestTrial
       :is-modal-open="isTrialModalOpen"
       @close-modal="isTrialModalOpen = false"
-    />
+    /> -->
   </div>
 </template>

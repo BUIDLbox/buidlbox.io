@@ -57,11 +57,11 @@ const logos = [
       v-for="logo in logos"
       :key="logo.name"
     >
-      <img :src="logo.fullColorLogo" :alt="`${logo.name} logo`" />
+      <img :src="logo.fullColorLogo" :alt="`${logo.name} logo`" class="w-full h-auto md:max-w-[220px] max-w-[70px] 2xl:max-w-none"/>
       <img
         :src="logo.logo"
         :alt="`${logo.name} logo`"
-        class="absolute top-0 left-0 right-0 bottom-0 group-hover:opacity-0 transition-all duration-300"
+        class="absolute top-0 left-0 right-0 bottom-0 group-hover:opacity-0 transition-all duration-300 w-full h-auto md:max-w-[220px] max-w-[70px] 2xl:max-w-none"
       />
     </div>
   </div>
