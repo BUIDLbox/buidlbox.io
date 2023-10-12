@@ -22,13 +22,13 @@ const isTrialModalOpen = ref(false);
           <div
             class="flex gap-x-6 gap-y-2 child:text-sm child:text-on-surface-secondary flex-wrap"
           >
-           <a
+            <a
               class="hover:underline"
               href="https://buidlbox.zendesk.com"
               target="_blank"
               >Organize a hackathon</a
             >
-             <a
+            <a
               class="hover:underline"
               href="https://app.buidlbox.io/buy-hackathons/tiers"
               target="_blank"
@@ -55,19 +55,19 @@ const isTrialModalOpen = ref(false);
             <a class="hover:underline" @click="isTrialModalOpen = true"
               >Request a demo</a
             >
-            <a
+            <NuxtLink
+              to="/privacy"
               class="hover:underline"
-              href="https://buidlbox.io/privacy"
               target="_blank"
             >
               Privacy
-            </a>
-            <a
+            </NuxtLink>
+            <NuxtLink
+              to="/terms"
               class="hover:underline"
-              href="https://buidlbox.io/terms"
               target="_blank"
-              >Terms</a
-            >
+              >Terms
+            </NuxtLink>
           </div>
           <div class="flex items-center gap-3">
             <a href="https://twitter.com/buidlbox" target="_blank">

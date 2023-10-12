@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ButtonType } from "~/types/button";
-import { testimonials } from "~/data/index";
+import { testimonials, hackathons } from "~/data/index";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
@@ -28,7 +28,29 @@ const startTime = ref();
 const elapsedPauseTime = ref(0);
 const requireReset = ref(true);
 const INTERVAL_DURATION = 7000;
+const { width } = useWindowSize();
 
+const displayBountiesTab = ref(false);
+
+const horizontalScrollWrapper = ref();
+const orgHeaderRef = ref();
+const userDashboardRef = ref();
+const hackathonsRef = ref();
+const sponsorsHeader = ref();
+const buidlerLottieRef1 = ref();
+const buidlerLottieRef2 = ref();
+const buidlerLottieRef3 = ref();
+
+const email = ref("");
+const isSubscribeLoading = ref(false);
+const subscribedSuccessfully = ref(false);
+const subscribeError = ref();
+const unmutatedTestimonials = [...testimonials];
+let mm = gsap.matchMedia();
+
+onUnmounted(() => {
+  mm.revert();
+});
 onMounted(async () => {
   nextTick(() => {
     const slideInSections = gsap.utils.toArray(".slide-in-section");
@@ -64,9 +86,7 @@ onMounted(async () => {
   const announcementData = await getAnnouncementsAPI();
   announcements.value = announcementData.data?.data;
 });
-onMounted(() => {
-  slider1W.value = slideRef.value?.scrollY;
-});
+
 onMounted(() => {
   setTabSwitchInterval();
 });
@@ -75,62 +95,11 @@ onUnmounted(() => {
   cancelAnimationFrame(animationFrameId.value);
 });
 
-const hackathons = [
-  {
-    hackathonId: "1",
-    hackathonName: "BUIDLEra",
-    sponsor: "zkSync Era",
-    sponsorLogo: "/zksync-logo.jpg",
-    hackathonLogo: "/zksync-logo.jpg",
-    prizes: "42.000",
-    projects: 55,
-    participants: 207,
-  },
-  {
-    hackathonId: "2",
-    hackathonName: "ETHDenver 2023",
-    sponsor: "ETHDenver",
-    sponsorLogo: "/ethdenver-logo.jpg",
-    hackathonLogo: "/ethdenver-hack-logo.png",
-    prizes: "1.23M",
-    projects: 426,
-    participants: 972,
-  },
-  {
-    hackathonId: "3",
-    hackathonName: "Permissionless II",
-    sponsor: "Blockworks",
-    sponsorLogo: "/blockworks-logo.jpg",
-    hackathonLogo: "/permissionless-logo.png",
-    prizes: "63.500",
-    projects: 53,
-    participants: 153,
-  },
-  {
-    hackathonId: "4",
-    hackathonName: "Fund Public Goods",
-    sponsor: "Funding the Commons",
-    sponsorLogo: "funding-the-commons-logo.png",
-    hackathonLogo: "fund-public-goods-logo.png",
-    prizes: "99.700",
-    projects: 116,
-    participants: 431,
-  },
-];
-
-const displayBountiesTab = ref(false);
-
-const horizontalScrollWrapper = ref();
-
 function getScrollAmount() {
-  let racesWidth = horizontalScrollWrapper.value?.scrollWidth;
-  return -(racesWidth - window.innerWidth);
+  let elemWidth = horizontalScrollWrapper.value?.scrollWidth;
+  return -(elemWidth - window.innerWidth);
 }
 
-const orgHeaderRef = ref();
-const userDashboardRef = ref();
-
-const hackathonsRef = ref(null);
 watch(hackathonsRef, () => {
   if (!hackathonsRef.value) return;
   gsap.set(".hack-1", {
@@ -197,10 +166,10 @@ watch(hackathonsRef, () => {
       animation: tl,
       scrub: 1,
       invalidateOnRefresh: true,
-      // markers: true,
     });
-  }, hackathonsRef.value); // <- scopes all selector text inside the context to this component (optional, default is document)
+  }, hackathonsRef.value);
 });
+
 watch(userDashboardRef, () => {
   if (!userDashboardRef.value) return;
   gsap.set(userDashboardRef.value, { transformPerspective: 500 });
@@ -210,7 +179,6 @@ watch(userDashboardRef, () => {
       start: "bottom 100%",
       scrub: 1.5,
       invalidateOnRefresh: true,
-      // markers: true,
     },
     rotationX: -90,
     transformOrigin: "50% 0%",
@@ -220,7 +188,6 @@ watch(userDashboardRef, () => {
   });
 });
 
-const sponsorsHeader = ref();
 watch(
   sponsorsHeader,
   () => {
@@ -243,58 +210,43 @@ watch(
 watch([horizontalScrollWrapper, orgHeaderRef], () => {
   if (!horizontalScrollWrapper.value || !orgHeaderRef.value) return;
 
-  var tl = gsap
-    .timeline()
-    .to(horizontalScrollWrapper.value, {
-      x: getScrollAmount,
-      duration: 3,
-      ease: "none",
-    })
-    .to(orgHeaderRef.value, { scale: 1.05 }, 0)
-    .to(
-      orgHeaderRef.value,
-      {
-        // ease: '',
-        opacity: 0,
-      },
-      "-=10%"
-    );
-  ScrollTrigger.create({
-    trigger: horizontalScrollWrapper.value,
-    start: "top 40%",
-    end: () => `+=${getScrollAmount() * -1}`,
-    pin: true,
-    animation: tl,
-    scrub: 1,
-    invalidateOnRefresh: true,
-    // markers: true,
+  mm.add("(min-width: 1280px)", () => {
+    // gsap.to(...);
+    // gsap.from(...);
+    // ScrollTrigger.create({...});
+
+    // return () => { // optional
+    //   // custom cleanup code here (runs when it STOPS matching)
+    // };
+
+    var tl = gsap
+      .timeline()
+      .to(horizontalScrollWrapper.value, {
+        x: getScrollAmount,
+        duration: 3,
+        ease: "none",
+      })
+      .to(orgHeaderRef.value, { scale: 1.05 }, 0)
+      .to(
+        orgHeaderRef.value,
+        {
+          // ease: '',
+          opacity: 0,
+        },
+        "-=10%"
+      );
+    ScrollTrigger.create({
+      trigger: horizontalScrollWrapper.value,
+      start: "top 40%",
+      end: () => `+=${getScrollAmount() * -1}`,
+      pin: true,
+      animation: tl,
+      scrub: 1,
+      invalidateOnRefresh: true,
+    });
   });
 });
 
-const target = ref(null);
-const firstSlide = ref(["lorem1", "lorem2"]);
-const slideRef = ref();
-
-const slider1W = ref("");
-// const getSliderW = (elementsNumber: number) => {
-//   // 2xl = 1536px; sm = 640px;
-//   const logoWidth = width.value < 640 ? 60 : width.value > 1536 ? 120 : 90;
-//   const gap = width.value < 640 ? 1.3 : 2;
-//   return `${elementsNumber * logoWidth * gap}`;
-// };
-
-onMounted(() => {
-  slider1W.value = slideRef.value?.scrollY;
-});
-
-// watch(width, () => {
-//   slider1W.value = getSliderW(firstSlide.value.length + 1);
-// });
-
-const email = ref("");
-const isSubscribeLoading = ref(false);
-const subscribedSuccessfully = ref(false);
-const subscribeError = ref();
 const subscribe = async (email: string) => {
   try {
     isSubscribeLoading.value = true;
@@ -302,16 +254,11 @@ const subscribe = async (email: string) => {
     if (!success) throw new Error(error?.message);
     subscribedSuccessfully.value = true;
   } catch (err) {
-    const error = err as Error;
     subscribeError.value = getErrorMessage(err);
   } finally {
     isSubscribeLoading.value = false;
   }
 };
-
-const buidlerLottieRef1 = ref();
-const buidlerLottieRef2 = ref();
-const buidlerLottieRef3 = ref();
 
 const playLottie = (elem: any) => {
   if (!elem) return;
@@ -323,6 +270,7 @@ const reverseLottie = (elem: any) => {
   elem.setDirection("reverse");
   elem.play();
 };
+
 const handleTabSwitch = (value: boolean) => {
   displayBountiesTab.value = value;
   elapsedPauseTime.value = 0;
@@ -369,12 +317,15 @@ const setTabSwitchInterval = () => {
       <div class="bg-hero-bg w-full bg-top bg-contain bg-no-repeat">
         <AnnouncementBar :announcements="announcements" />
 
-        <div class="">
+        <div class="px-2">
           <div class="flex flex-col gap-8 items-center justify-center py-24">
-            <GradientTitle class="font-heading text-5xl 2xl:text-6xl"
+            <GradientTitle
+              class="font-heading text-3xl sm:text-5xl 2xl:text-6xl sm:text-left text-center"
               >Elevate your hackathon experience.</GradientTitle
             >
-            <h3 class="2xl:text-lg max-w-md text-center text-on-surface">
+            <h3
+              class="text-base 2xl:text-lg max-w-md text-center text-on-surface"
+            >
               Fostering collaboration between buidlers and organizations,
               powered by hackathons – all on one seamless platform.
             </h3>
@@ -382,7 +333,7 @@ const setTabSwitchInterval = () => {
             <div class="flex items-center gap-4 mt-4">
               <a href="https://app.buidlbox.io/">
                 <Button
-                  class="w-52"
+                  class="sm:w-52"
                   title="Join a hackathon"
                   @clicked="
                     () => {
@@ -393,14 +344,14 @@ const setTabSwitchInterval = () => {
                   "
                 />
               </a>
-              <NuxtLink to="/organizations">
+              <NuxtLink href="https://app.buidlbox.io/buy-hackathons/tiers">
                 <Button
-                  title="Host a hackathon"
+                  title="Organize a hackathon"
                   :button-type="ButtonType.Secondary1"
-                  class="w-52"
+                  class="sm:w-52"
                   @clicked="
                     () => {
-                      mixpanel.track('Host a hackathon', {
+                      mixpanel.track('Organize a hackathon', {
                         type: 'Lead',
                       });
                     }
@@ -422,12 +373,12 @@ const setTabSwitchInterval = () => {
       </div>
     </div>
 
-    <div class="flex flex-col gap-32">
+    <div class="flex flex-col sm:gap-32 gap-28">
       <!-- logos -->
-      <div class="px-4">
+      <div class="px-6">
         <h2
           ref="sponsorsHeader"
-          class="font-heading text-around-forms text-center text-3xl 2xl:text-4xl mb-16"
+          class="font-heading text-around-forms text-center text-2xl sm:text-3xl 2xl:text-4xl mb-16"
         >
           TRUSTED BY TOP ORGANIZATIONS IN WEB3 & BEYOND
         </h2>
@@ -435,13 +386,17 @@ const setTabSwitchInterval = () => {
       </div>
 
       <!-- hackathons & bounties -->
-      <div class="flex items-center xl:gap-16 gap-6 max-w-6xl m-auto w-full">
+      <div
+        class="px-4 flex items-center xl:gap-16 sm:gap-6 gap-10 max-w-6xl m-auto w-full xl:flex-row flex-col"
+      >
         <div class="flex flex-col gap-8 max-w-md w-full">
-          <GradientTitle class="font-heading text-5xl slide-in-section"
+          <GradientTitle
+            class="font-heading text-2xl sm:text-3xl xl:text-5xl slide-in-section xl:text-left text-center"
             >Where unique challenges find creative solutions.</GradientTitle
           >
-
-          <p class="2xl:text-lg text-on-surface slide-in-section">
+          <p
+            class="2xl:text-lg text-on-surface slide-in-section sm:text-left text-justify"
+          >
             Through the power of hackathons, buidlers come together to discover
             solutions to the ecosystem's most pressing challenges – with
             opportunities for prizes, mentorship, and ongoing support from top
@@ -450,7 +405,7 @@ const setTabSwitchInterval = () => {
           <a href="https://app.buidlbox.io/">
             <Button
               title="Explore hackathons"
-              class="w-60"
+              class="w-60 sm:m-0 m-auto"
               :button-type="ButtonType.Secondary1"
               @clicked="
                 () => {
@@ -463,7 +418,7 @@ const setTabSwitchInterval = () => {
           </a>
         </div>
 
-        <div class="w-full">
+        <div class="w-full max-w-2xl xl:px-0 px-4">
           <!-- tabs -->
           <div class="rounded-md overflow-hidden flex mb-8 w-full bg-[#142937]">
             <div
@@ -520,14 +475,15 @@ const setTabSwitchInterval = () => {
                 >
                   <div class="flex items-center">
                     <img
-                      src="/blog-img-1.png"
-                      alt=""
+                      src="/logos/algorand-logo.png"
+                      alt="algorand logo"
                       class="w-[30px] h-[30px] rounded-full"
                     />
                     <div class="flex flex-col gap-2 p-5">
-                      <h2 class="font-semibold text-lg">
-                        Bounty1 by
-                        <span class="text-on-surface-tertiary">zksync</span>
+                      <h2 class="font-semibold sm:text-base text-sm">
+                        Algorand Azure Tutorials For The Algorand Developer
+                        Portal <br /><span class="font-thin">by </span>
+                        <span class="text-on-surface-tertiary">Algorand</span>
                       </h2>
                     </div>
                   </div>
@@ -539,7 +495,7 @@ const setTabSwitchInterval = () => {
                       height="14"
                       class="max-w-[1rem] max-h-[1rem]"
                     />
-                    <p class="text-xs font-bold text-secondary">$2.340</p>
+                    <p class="text-xs font-bold text-secondary">$1.250</p>
                   </div>
                 </div>
               </div>
@@ -553,14 +509,15 @@ const setTabSwitchInterval = () => {
                 >
                   <div class="flex items-center">
                     <img
-                      src="/blog-img-1.png"
-                      alt=""
+                      src="/logos/giveth-logo.png"
+                      alt="giveth logo"
                       class="w-[30px] h-[30px] rounded-full"
                     />
                     <div class="flex flex-col gap-2 p-5">
-                      <h2 class="font-semibold text-lg">
-                        Bounty1 by
-                        <span class="text-on-surface-tertiary">zksync</span>
+                      <h2 class="font-semibold sm:text-base text-sm">
+                        Allow apps to sign arbitrary data via a RPC call<br />
+                        <span class="font-thin">by </span>
+                        <span class="text-on-surface-tertiary">Giveth</span>
                       </h2>
                     </div>
                   </div>
@@ -572,7 +529,7 @@ const setTabSwitchInterval = () => {
                       height="14"
                       class="max-w-[1rem] max-h-[1rem]"
                     />
-                    <p class="text-xs font-bold text-secondary">$2.340</p>
+                    <p class="text-xs font-bold text-secondary">$1.250</p>
                   </div>
                 </div>
               </div>
@@ -586,14 +543,15 @@ const setTabSwitchInterval = () => {
                 >
                   <div class="flex items-center">
                     <img
-                      src="/blog-img-1.png"
-                      alt=""
+                      src="/logos/livepeer-logo.png"
+                      alt="livepeer logo"
                       class="w-[30px] h-[30px] rounded-full"
                     />
                     <div class="flex flex-col gap-2 p-5">
-                      <h2 class="font-semibold text-lg">
-                        Bounty1 by
-                        <span class="text-on-surface-tertiary">zksync</span>
+                      <h2 class="font-semibold sm:text-base text-sm">
+                        Improve RemoteTranscoder error handling<br />
+                        <span class="font-thin">by </span>
+                        <span class="text-on-surface-tertiary">Livepeer</span>
                       </h2>
                     </div>
                   </div>
@@ -605,7 +563,7 @@ const setTabSwitchInterval = () => {
                       height="14"
                       class="max-w-[1rem] max-h-[1rem]"
                     />
-                    <p class="text-xs font-bold text-secondary">$2.340</p>
+                    <p class="text-xs font-bold text-secondary">$500</p>
                   </div>
                 </div>
               </div>
@@ -619,14 +577,15 @@ const setTabSwitchInterval = () => {
                 >
                   <div class="flex items-center">
                     <img
-                      src="/blog-img-1.png"
-                      alt=""
+                      src="/logos/aragon-logo.png"
+                      alt="aragon logo"
                       class="w-[30px] h-[30px] rounded-full"
                     />
                     <div class="flex flex-col gap-2 p-5">
-                      <h2 class="font-semibold text-lg">
-                        Bounty1 by
-                        <span class="text-on-surface-tertiary">zksync</span>
+                      <h2 class="font-semibold sm:text-base text-sm">
+                        Pop over component<br />
+                        <span class="font-thin">by </span>
+                        <span class="text-on-surface-tertiary">Aragon</span>
                       </h2>
                     </div>
                   </div>
@@ -638,7 +597,7 @@ const setTabSwitchInterval = () => {
                       height="14"
                       class="max-w-[1rem] max-h-[1rem]"
                     />
-                    <p class="text-xs font-bold text-secondary">$2.340</p>
+                    <p class="text-xs font-bold text-secondary">$3.972</p>
                   </div>
                 </div>
               </div>
@@ -648,10 +607,10 @@ const setTabSwitchInterval = () => {
       </div>
 
       <!-- for orgs -->
-      <div class="flex-col justify-center items-center">
+      <div class="px-4 flex-col justify-center items-center relative">
         <div
           ref="orgHeaderRef"
-          class="sticky top-[20px] left-0 overflow-hidden w-full flex flex-col items-center text-center max-w-6xl m-auto mb-24"
+          class="xl:sticky top-[70px] left-0 overflow-hidden w-full flex flex-col items-center text-center max-w-6xl m-auto mb-24"
         >
           <h5
             class="font-heading text-xl text-around-forms font-medium uppercase mb-2"
@@ -662,102 +621,114 @@ const setTabSwitchInterval = () => {
             class="font-heading text-4xl xl:text-6xl uppercase mb-6 font-extrabold"
             >Hackathons made easy</GradientTitle
           >
-          <h5 class="text-on-surface 2xl:text-lg text-center">
+          <h5
+            class="text-on-surface 2xl:text-lg text-center md:max-w-none max-w-md"
+          >
             As a full-service hackathon platform, we’ve got everything you need
             to host your next hackathon.
           </h5>
         </div>
-
-        <div ref="horizontalScrollWrapper" class="relative">
-          <div class="w-fit flex no-wrap gap-2">
-            <div class="flex-shrink-0">
-              <div
-                class="flex items-center gap-20 px-24 justify-center w-[100vw] m-auto"
-              >
-                <div class="w-full py-4 px-5">
-                  <h3
-                    class="font-heading text-on-surface-tertiary text-3xl 2xl:text-4xl mb-4 font-extrabold slide-in-section"
-                  >
-                    SOURCE TOP-TIER TALENT & <br />
-                    FUND INNOVATIVE PROJECTS
-                  </h3>
-                  <p class="mb-12 slide-in-section">
-                    Discover and source top-tier talent from buidlbox community,
-                    and fund cutting-edge projects built on your ecosystem by
-                    hackathon buidlers.
-                  </p>
-                  <NuxtLink to="/organizations">
-                    <Button
-                      title="Learn more"
-                      :button-type="ButtonType.Positive"
-                      class="w-40"
-                    />
-                  </NuxtLink>
+        <div class="max-w-screen overflow-x-hidden">
+          <div ref="horizontalScrollWrapper" class="relative">
+            <div
+              class="w-fit flex xl:no-wrap xl:gap-2 gap-10 xl:flex-row flex-col"
+            >
+              <div class="xl:flex-shrink-0">
+                <div
+                  class="flex items-center gap-6 lg:gap-20 lg:px-24 px-8 justify-center w-[100vw] m-auto md:flex-row flex-col"
+                >
+                  <div class="w-full py-4">
+                    <h3
+                      class="font-heading text-on-surface-tertiary text-xl sm:text-2xl xl:text-3xl 2xl:text-4xl mb-4 font-extrabold slide-in-section"
+                    >
+                      SOURCE TOP-TIER TALENT & <br />
+                      FUND INNOVATIVE PROJECTS
+                    </h3>
+                    <p class="md:text-base text-sm mb-12 slide-in-section">
+                      Discover and source top-tier talent from buidlbox
+                      community, and fund cutting-edge projects built on your
+                      ecosystem by hackathon buidlers.
+                    </p>
+                    <NuxtLink
+                      href="https://app.buidlbox.io/buy-hackathons/tiers"
+                    >
+                      <Button
+                        title="Learn more"
+                        :button-type="ButtonType.Positive"
+                        class="w-40"
+                      />
+                    </NuxtLink>
+                  </div>
+                  <Metrics />
                 </div>
-                <Metrics />
               </div>
-            </div>
 
-            <div class="flex-shrink-0">
-              <div
-                class="flex items-center gap-20 px-24 justify-center w-[100vw] m-auto"
-              >
-                <div class="rounded border border-around-forms w-full">
-                  <client-only>
-                    <Vue3Lottie
-                      :animationData="timelineLottie"
-                      :height="350"
-                      speed="0.85"
-                    />
-                  </client-only>
-                </div>
-                <div class="w-full">
-                  <h3
-                    class="font-heading text-on-surface-tertiary text-3xl 2xl:text-4xl mb-4 font-extrabold slide-in-section"
-                  >
-                    A ONE-STOP SHOP TO LAUNCH <br />
-                    YOUR HACKATHONS WITH EASE
-                  </h3>
-                  <p class="mb-12 slide-in-section">
-                    Buidlbox hackathon dashboard is fully-equipped with
-                    everything you need: create your landing page, inviting
-                    co-sponsors, publishing challenges, event scheduling,
-                    judging projects, and so much more.
-                  </p>
-                  <NuxtLink to="/organizations">
-                    <Button
-                      title="Explore features"
-                      :button-type="ButtonType.Positive"
-                      class="w-40"
-                      @clicked="
-                        () => {
-                          mixpanel.track('Explore features', {
-                            type: 'Lead',
-                          });
-                        }
-                      "
-                    />
-                  </NuxtLink>
+              <div class="xl:flex-shrink-0">
+                <div
+                  class="flex items-center gap-6 lg:gap-20 lg:px-24 px-8 justify-center w-[100vw] m-auto sm:flex-row flex-col-reverse"
+                >
+                  <div class="rounded border border-around-forms w-full">
+                    <client-only>
+                      <Vue3Lottie
+                        :animationData="timelineLottie"
+                        :height="350"
+                        speed="0.85"
+                      />
+                    </client-only>
+                  </div>
+                  <div class="w-full">
+                    <h3
+                      class="font-heading text-on-surface-tertiary text-xl sm:text-2xl xl:text-3xl 2xl:text-4xl mb-4 font-extrabold slide-in-section"
+                    >
+                      A ONE-STOP SHOP TO LAUNCH <br />
+                      YOUR HACKATHONS WITH EASE
+                    </h3>
+                    <p class="md:text-base text-sm mb-12 slide-in-section">
+                      Buidlbox hackathon dashboard is fully-equipped with
+                      everything you need: create your landing page, inviting
+                      co-sponsors, publishing challenges, event scheduling,
+                      judging projects, and so much more.
+                    </p>
+                    <NuxtLink
+                      href="https://app.buidlbox.io/buy-hackathons/tiers"
+                    >
+                      <Button
+                        title="Explore features"
+                        :button-type="ButtonType.Positive"
+                        class="w-40"
+                        @clicked="
+                          () => {
+                            mixpanel.track('Explore features', {
+                              type: 'Lead',
+                            });
+                          }
+                        "
+                      />
+                    </NuxtLink>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
       <!-- testimonials -->
-      <!-- <div class="w-screen">
-          <div class="z-20 relative">
-            <Carousel
-              class="w-screen"
-              :testimonial-cards="testimonials"
-              :un-mutated-cards="unmutatedTestimonials"
-            />
-          </div>
-        </div> -->
+      <div class="w-screen">
+        <div class="z-20 relative">
+          <Carousel
+            class="w-screen"
+            :testimonial-cards="testimonials"
+            :un-mutated-cards="unmutatedTestimonials"
+          />
+        </div>
+      </div>
 
       <!-- for buidlers -->
-      <div class="bg-gradient-to-b from-dark-blue to-tertiary-surface pb-24">
-        <div class="grid gap-24 max-w-6xl m-auto">
+      <div
+        class="bg-gradient-to-b from-dark-blue to-tertiary-surface pb-24 px-4"
+      >
+        <div class="grid sm:gap-24 gap-12 max-w-6xl m-auto">
           <div class="flex flex-col items-center text-center">
             <h5
               class="font-heading text-xl text-around-forms font-medium uppercase mb-2 slide-in-section"
@@ -765,7 +736,7 @@ const setTabSwitchInterval = () => {
               For buidlers
             </h5>
             <GradientTitle
-              class="font-heading text-4xl xl:text-6xl uppercase mb-6 font-extrabold slide-in-section"
+              class="font-heading text-3xl xl:text-6xl uppercase mb-6 font-extrabold slide-in-section"
               >A PLACE TO EARN, LEARN, & CONNECT</GradientTitle
             >
             <h5
@@ -777,14 +748,14 @@ const setTabSwitchInterval = () => {
             </h5>
           </div>
 
-          <div class="grid grid-cols-3 gap-2">
+          <div class="grid md:grid-cols-3 gap-2 child:max-w-xl child: m-auto">
             <div
               @mouseover="playLottie(buidlerLottieRef1)"
               @mouseout="reverseLottie(buidlerLottieRef1)"
-              class="pt-8 flex flex-col gap-8 rounded-lg border border-around-forms"
+              class="pt-8 flex flex-col sm:gap-8 rounded-lg border border-around-forms"
             >
               <h4
-                class="px-4 text-center font-heading text-xl font-extrabold text-on-surface-tertiary"
+                class="px-4 sm:mb-0 mb-6 text-center font-heading text-xl font-extrabold text-on-surface-tertiary"
               >
                 Participate in hackathons hosted by <br />
                 top web3 organizations
@@ -810,10 +781,10 @@ const setTabSwitchInterval = () => {
             <div
               @mouseover="playLottie(buidlerLottieRef2)"
               @mouseout="reverseLottie(buidlerLottieRef2)"
-              class="pt-8 flex flex-col gap-8 rounded-lg border border-around-forms"
+              class="pt-8 flex flex-col sm:gap-8 rounded-lg border border-around-forms"
             >
               <h4
-                class="px-4 text-center font-heading text-xl font-extrabold text-on-surface-tertiary"
+                class="px-4 sm:mb-0 mb-6 text-center font-heading text-xl font-extrabold text-on-surface-tertiary"
               >
                 Connect with buidlers<br />
                 from around the world
@@ -839,13 +810,12 @@ const setTabSwitchInterval = () => {
             <div
               @mouseover="playLottie(buidlerLottieRef3)"
               @mouseout="reverseLottie(buidlerLottieRef3)"
-              class="pt-8 flex flex-col gap-8 rounded-lg border border-around-forms"
+              class="pt-8 flex flex-col sm:gap-8 rounded-lg border border-around-forms"
             >
               <h4
-                class="px-4 text-center font-heading text-xl font-extrabold text-on-surface-tertiary"
+                class="px-4 sm:mb-0 mb-6 text-center font-heading text-xl font-extrabold text-on-surface-tertiary"
               >
-                Flex your skills on your buidler profile <br />
-                & project pages
+                Flex your skills on your buidler <br />profile & project pages
               </h4>
               <p class="text-xs text-center px-2">
                 Showcase your skills, projects, and make connections through
@@ -882,27 +852,26 @@ const setTabSwitchInterval = () => {
       </div>
 
       <!-- blog -->
-      <BlogSection />
+      <!-- <BlogSection /> -->
 
       <!-- newsletter -->
       <div
-        class="bg-gradient-to-b from-transparent via-secondary-surface to-transparent"
+        class="px-4 bg-gradient-to-b from-transparent via-secondary-surface to-transparent"
       >
-        <div class="w-full py-12">
+        <div class="w-full sm:py-12 py-4">
           <div class="flex items-center xl:gap-16 gap-6 max-w-7xl m-auto">
             <div
               class="flex flex-col gap-6 items-center justify-center py-8 m-auto w-full"
             >
               <GradientTitle
-                class="font-heading text-3xl font-extrabold w-fit slide-in-section"
+                class="font-heading sm:text-3xl text-2xl font-extrabold w-fit slide-in-section"
                 >SIGN UP FOR OUR WEEKLY NEWSLETTER</GradientTitle
               >
               <p
-                class="2xl:text-lg text-on-surface text-center slide-in-section"
+                class="2xl:text-lg text-on-surface text-center slide-in-section max-w-[34rem]"
               >
                 Get the latest scoop on buidlbox hackathons, product
-                announcements,<br />
-                and memes – delivered straight to your inbox.
+                announcements, and memes – delivered straight to your inbox.
               </p>
               <div
                 v-if="!subscribedSuccessfully"

@@ -33,14 +33,20 @@
                   class="bg-background py-6 px-10 flex flex-col justify-between gap-10 rounded-2xl"
                 >
                   <GradientTitle
-                    class="w-fit m-auto font-heading text-4xl xl:text-4xl uppercase font-extrabold text-center"
+                    class="w-fit m-auto font-heading text-2xl md:text-3xl xl:text-4xl uppercase font-extrabold text-center"
                     >What buidlers are saying</GradientTitle
                   >
-                  <p class="break-words whitespace-pre-line text-center">
+                  <p
+                    class="break-words whitespace-pre-line text-center sm:text-base text-sm min-h-[7rem]"
+                  >
                     {{ card.content }}
                   </p>
                   <div class="flex items-center gap-8">
-                    <div class="w-[60px] h-[60px] rounded-full bg-gray-200" />
+                    <img
+                      :src="card.avatarUrl"
+                      :alt="card.name"
+                      class="w-[60px] h-[60px] rounded-full"
+                    />
                     <div>
                       <h5 class="text-sm mb-1">{{ card.name }}</h5>
                       <p class="text-sm text-secondary">{{ card.role }}</p>
@@ -50,24 +56,6 @@
               </div>
             </div>
           </div>
-          <!-- {{ card.name }} -->
-          <!-- <NavTo
-            :to="
-              card.id !==
-              unMutatedCardsRef[currentStep % unMutatedCardsRef.length]?.id
-                ? { name: HomeRouteNames.Homepage, params: {} }
-                : {
-                    name: HackathonDashboardRouteNames.HackathonLandingPage,
-                    params: {
-                      guidl: hackathon.hostOrgSlug,
-                      slug: hackathon.hackathonSlug,
-                    },
-                  }
-            "
-            class="w-full"
-          > -->
-          <!-- <TestimonialCard :card="card" class="w-full" /> -->
-          <!-- </NavTo> -->
         </div>
       </div>
       <!-- overlay next/prev buttons -->

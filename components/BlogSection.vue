@@ -1,8 +1,8 @@
 <template>
   <div class="bg-hero-bg w-full bg-top bg-cover bg-no-repeat py-20">
-    <div class="flex items-center xl:gap-16 gap-6 max-w-6xl m-auto">
+    <div class="flex items-center xl:gap-16 gap-6 max-w-6xl m-auto xl:flex-row flex-col">
       <div class="flex flex-col gap-8 w-full">
-        <GradientTitle class="font-heading text-5xl slide-in-section"
+        <GradientTitle class="font-heading text-3xl xl:text-5xl slide-in-section xl:text-left text-center"
           >THE POSSIBILITIES ARE <br />
           ENDLESS ON BUIDLBOX.</GradientTitle
         >
