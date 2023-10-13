@@ -316,11 +316,11 @@ const setTabSwitchInterval = () => {
 
       <!-- hackathons & bounties -->
       <div
-        class="px-4 flex items-center xl:gap-16 sm:gap-6 gap-10 max-w-6xl m-auto w-full xl:flex-row flex-col"
+        class="px-4 flex items-center xl:gap-16 sm:gap-6 gap-10 max-w-[74rem] m-auto w-full xl:flex-row flex-col"
       >
         <div class="flex flex-col gap-8 max-w-md w-full">
           <GradientTitle
-            class="font-heading text-2xl sm:text-3xl xl:text-5xl slide-in-section xl:text-left text-center"
+            class="font-heading text-3xl xl:text-5xl slide-in-section xl:text-left text-center"
             >Where unique challenges find creative solutions.</GradientTitle
           >
           <p
@@ -347,7 +347,7 @@ const setTabSwitchInterval = () => {
           </a>
         </div>
 
-        <div class="w-full max-w-2xl xl:px-0 px-4">
+        <div class="w-full max-w-3xl xl:px-0 px-4">
           <!-- tabs -->
           <div class="rounded-md overflow-hidden flex mb-8 w-full bg-[#142937]">
             <div
@@ -684,7 +684,7 @@ const setTabSwitchInterval = () => {
                 Participate in hackathons hosted by <br />
                 top web3 organizations
               </h4>
-              <p class="text-xs text-center px-2">
+              <p class="text-xs text-center px-4">
                 Grow your skills, buidl innovative projects, and earn prizes by
                 participating in hackathons and bounties on buidlbox.
               </p>
@@ -713,7 +713,7 @@ const setTabSwitchInterval = () => {
                 Connect with buidlers<br />
                 from around the world
               </h4>
-              <p class="text-xs text-center px-2">
+              <p class="text-xs text-center px-4">
                 Join our Discord community to access upcoming hackathons, find
                 team members, get support, and share memes.
               </p>
@@ -741,7 +741,7 @@ const setTabSwitchInterval = () => {
               >
                 Flex your skills on your buidler <br />profile & project pages
               </h4>
-              <p class="text-xs text-center px-2">
+              <p class="text-xs text-center px-4">
                 Showcase your skills, projects, and make connections through
                 your personal buidler profile.
               </p>
@@ -762,7 +762,7 @@ const setTabSwitchInterval = () => {
           <a href="https://app.buidlbox.io/">
             <Button
               title="Start buidling"
-              class="m-auto w-48"
+              class="m-auto w-72"
               @clicked="
                 () => {
                   mixpanel.track('Start buidling', {
@@ -788,7 +788,7 @@ const setTabSwitchInterval = () => {
               class="flex flex-col gap-6 items-center justify-center py-8 m-auto w-full"
             >
               <GradientTitle
-                class="font-heading sm:text-3xl text-2xl font-extrabold w-fit slide-in-section"
+                class="font-heading sm:text-3xl text-2xl font-extrabold w-fit slide-in-section text-center"
                 >SIGN UP FOR OUR WEEKLY NEWSLETTER</GradientTitle
               >
               <p
