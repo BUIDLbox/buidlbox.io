@@ -35,7 +35,6 @@ const displayBountiesTab = ref(false);
 const horizontalScrollWrapper = ref();
 const orgHeaderRef = ref();
 const userDashboardRef = ref();
-const hackathonsRef = ref();
 const sponsorsHeader = ref();
 const buidlerLottieRef1 = ref();
 const buidlerLottieRef2 = ref();
@@ -68,7 +67,7 @@ onMounted(async () => {
     });
 
     const blogImages = gsap.utils.toArray(".blog-image");
-    blogImages.forEach((img: any) => {
+    blogImages?.forEach((img: any) => {
       gsap.set(img, { transformPerspective: 500 });
       gsap.from(img, {
         opacity: 0,
@@ -99,76 +98,6 @@ function getScrollAmount() {
   let elemWidth = horizontalScrollWrapper.value?.scrollWidth;
   return -(elemWidth - window.innerWidth);
 }
-
-watch(hackathonsRef, () => {
-  if (!hackathonsRef.value) return;
-  gsap.set(".hack-1", {
-    opacity: 0,
-    x: -150,
-  });
-  gsap.set(".hack-2", {
-    opacity: 0,
-    y: -150,
-  });
-  gsap.set(".hack-3", {
-    opacity: 0,
-    x: -150,
-  });
-  gsap.set(".hack-4", {
-    opacity: 0,
-    y: 200,
-  });
-
-  let ctx = gsap.context(() => {
-    var tl = gsap
-      .timeline()
-      .to(".hack-1", {
-        opacity: 1,
-        x: 0,
-        ease: "power3",
-        duration: 2,
-      })
-      .to(
-        ".hack-2",
-        {
-          opacity: 1,
-          y: 0,
-          ease: "power3",
-          duration: 2,
-        },
-        "<20%"
-      )
-
-      .to(
-        ".hack-3",
-        {
-          opacity: 1,
-          x: 0,
-          ease: "power1",
-          duration: 2,
-        },
-        0
-      )
-      .to(
-        ".hack-4",
-        {
-          opacity: 1,
-          y: 0,
-          ease: "power1",
-          duration: 2,
-        },
-        0
-      );
-
-    ScrollTrigger.create({
-      trigger: hackathonsRef.value,
-      end: "center center",
-      animation: tl,
-      scrub: 1,
-      invalidateOnRefresh: true,
-    });
-  }, hackathonsRef.value);
-});
 
 watch(userDashboardRef, () => {
   if (!userDashboardRef.value) return;
@@ -453,16 +382,11 @@ const setTabSwitchInterval = () => {
             </div>
           </div>
 
-          <div
-            class="grid sm:grid-cols-2 gap-4"
-            ref="hackathonsRef"
-            v-if="!displayBountiesTab"
-          >
+          <div class="grid sm:grid-cols-2 gap-4" v-if="!displayBountiesTab">
             <HackathonCard
               v-for="(hackathon, index) in hackathons"
               :key="hackathon.hackathonId"
               :hackathon="hackathon"
-              :class="`hack-${index + 1}`"
             />
           </div>
           <div v-else class="w-full grid gap-4">
@@ -495,7 +419,7 @@ const setTabSwitchInterval = () => {
                       height="14"
                       class="max-w-[1rem] max-h-[1rem]"
                     />
-                    <p class="text-xs font-bold text-secondary">$1.250</p>
+                    <p class="text-xs font-bold text-secondary">$1,250</p>
                   </div>
                 </div>
               </div>
@@ -529,7 +453,7 @@ const setTabSwitchInterval = () => {
                       height="14"
                       class="max-w-[1rem] max-h-[1rem]"
                     />
-                    <p class="text-xs font-bold text-secondary">$1.250</p>
+                    <p class="text-xs font-bold text-secondary">$1,250</p>
                   </div>
                 </div>
               </div>
@@ -597,7 +521,7 @@ const setTabSwitchInterval = () => {
                       height="14"
                       class="max-w-[1rem] max-h-[1rem]"
                     />
-                    <p class="text-xs font-bold text-secondary">$3.972</p>
+                    <p class="text-xs font-bold text-secondary">$3,972</p>
                   </div>
                 </div>
               </div>

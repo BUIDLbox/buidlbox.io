@@ -22,12 +22,12 @@ const isTrialModalOpen = ref(false);
           <div
             class="flex gap-x-6 gap-y-2 child:text-sm child:text-on-surface-secondary flex-wrap"
           >
-            <a
+            <!-- <a
               class="hover:underline"
               href="https://buidlbox.zendesk.com"
               target="_blank"
               >Organize a hackathon</a
-            >
+            > -->
             <a
               class="hover:underline"
               href="https://app.buidlbox.io/buy-hackathons/tiers"
@@ -88,7 +88,7 @@ const isTrialModalOpen = ref(false);
                 class="cursor-pointer rounded-full text-on-surface-secondary hover:text-positive transition-all w-5 h-5"
               />
             </a>
-            <a href="https://www.instagram.com/buidlbox" target="_blank">
+            <a href="https://www.linkedin.com/company/buidlbox" target="_blank">
               <font-awesome-icon
                 :icon="['fab', 'linkedin']"
                 class="cursor-pointer rounded-full text-on-surface-secondary hover:text-positive transition-all w-5 h-5"
