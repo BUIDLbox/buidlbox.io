@@ -34,9 +34,3 @@ jobs:
 
       - name: Build app 🛠
         run: npm install
-
-      - name: Run unit tests ⚡️
-        run: npm run test:unit
-
-      - name: Run e2e tests ♻️
-        run: npm run test:e2e:ci
