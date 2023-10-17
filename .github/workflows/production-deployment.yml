@@ -1,0 +1,77 @@
+# Production deployment only happens when the release tag is created!
+# This can either be a manual release or via a PR merged with the prefix
+
+name: Deploy production to Vercel 🔥
+
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+  TEAM_SCOPE: buidl-box
+
+on:
+  push:
+    tags:
+      - v**
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/')
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Vercel CLI 🔼
+        run: npm install --global vercel@latest
+
+      - name: Pull Vercel Environment Information ⏬
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }} --scope ${{ env.TEAM_SCOPE }}
+
+      - name: Build Project Artifacts 🛠
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }} --scope ${{ env.TEAM_SCOPE }}
+
+      - name: Deploy Project Artifacts to Vercel 🚀
+        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }} --scope ${{ env.TEAM_SCOPE }}
+
+      - name: Get commit message
+        id: commit
+        run: |
+          MESSAGE=$(git log -1 --pretty=format:"%b")
+          TITLE=$(git log -1 --pretty=format:"%s")
+          URL="https://github.com/${{ github.repository }}/commit/$(git rev-parse HEAD)"
+
+          # Check for empty message and set default if necessary
+          if [ -z "$MESSAGE" ]; then
+            MESSAGE="No changelog info provided."
+          fi
+
+          if [[ "${{ job.status }}" == "success" ]]; then
+            echo "message<<EOF" >> $GITHUB_OUTPUT
+            echo "**A new release is up!**" >> $GITHUB_OUTPUT
+            echo "" >> $GITHUB_OUTPUT
+            echo $MESSAGE >> $GITHUB_OUTPUT
+            echo "EOF" >> $GITHUB_OUTPUT
+          elif [[ "${{ job.status }}" == "failure" ]]; then
+            echo "message=Deployment Failed!" >> $GITHUB_OUTPUT
+          elif [[ "${{ job.status }}" == "cancelled" ]]; then
+            echo "message=Deployment Cancelled!" >> $GITHUB_OUTPUT
+          else
+            echo "message=Unknown status: ${{ job.status }}" >> $GITHUB_OUTPUT
+          fi
+          echo "title=$TITLE" >> $GITHUB_OUTPUT
+          echo "url=$URL" >> $GITHUB_OUTPUT
+
+      - uses: sarisia/actions-status-discord@v1
+        if: always()
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          status: ${{ job.status }}
+          content: ${{ steps.commit.outputs.message }}
+          title: "[Landing Page] Production Release 🔥"
+          description: "${{ steps.commit.outputs.title }}"
+          color: 0x42f58d
+          url: "${{ steps.commit.outputs.url }}"
+          username: Buidlbox Deployments

@@ -1,0 +1,36 @@
+# Each time a push to main or a PR is opened, it will run tests
+# This is just as a basic CI practice to ensure we don't introduce changes that break things
+
+name: Run tests 🧪
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, reopened, synchronize]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref }}
+  cancel-in-progress: true
+
+jobs:
+  run-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30 # Let's cap it to 30 minutes for now
+
+    steps:
+      - name: Checkout code 🛎
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js 🧊
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          cache: "npm"
+
+      - name: Install dependencies 📦
+        run: npm install
+
+      - name: Build app 🛠
+        run: npm install
