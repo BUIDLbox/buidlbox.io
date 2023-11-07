@@ -3,5 +3,6 @@
     "deploymentEnabled": {
       "main": false
     }
-  }
+  },
+  "outputDirectory": ".output"
 }
