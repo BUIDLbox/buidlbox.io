@@ -666,7 +666,7 @@ const setTabSwitchInterval = () => {
             <h5
               class="text-on-surface 2xl:text-lg text-center slide-in-section"
             >
-              Through hackathons and bounties, buidlbox platform provides the
+              Through hackathons and bounties, buidlbox provides the
               tools for our buidler community to learn, earn, and connect with
               top web3 organizations.
             </h5>
