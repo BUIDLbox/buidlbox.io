@@ -17,6 +17,7 @@ import timelineLottie from "~/assets/lottie/04-roadmap.json";
 import { getErrorMessage } from "~/utils";
 import { Mixpanel } from "mixpanel-browser";
 import MiniProgress from "~/components/MiniProgress.vue";
+import { FEATURES_URL } from "~/constants/links";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, EasePack);
 
@@ -273,7 +274,7 @@ const setTabSwitchInterval = () => {
                   "
                 />
               </a>
-              <NuxtLink href="https://app.buidlbox.io/buy-hackathons/tiers">
+              <NuxtLink :href="FEATURES_URL">
                 <Button
                   title="Organize a hackathon"
                   :button-type="ButtonType.Secondary1"
@@ -573,9 +574,7 @@ const setTabSwitchInterval = () => {
                       community, and fund cutting-edge projects built on your
                       ecosystem by hackathon buidlers.
                     </p>
-                    <NuxtLink
-                      href="https://app.buidlbox.io/buy-hackathons/tiers"
-                    >
+                    <NuxtLink :href="FEATURES_URL">
                       <Button
                         title="Learn more"
                         :button-type="ButtonType.Positive"
@@ -613,9 +612,7 @@ const setTabSwitchInterval = () => {
                       co-sponsors, publishing challenges, event scheduling,
                       judging projects, and so much more.
                     </p>
-                    <NuxtLink
-                      href="https://app.buidlbox.io/buy-hackathons/tiers"
-                    >
+                    <NuxtLink :href="FEATURES_URL">
                       <Button
                         title="Explore features"
                         :button-type="ButtonType.Positive"
@@ -666,9 +663,9 @@ const setTabSwitchInterval = () => {
             <h5
               class="text-on-surface 2xl:text-lg text-center slide-in-section"
             >
-              Through hackathons and bounties, buidlbox provides the
-              tools for our buidler community to learn, earn, and connect with
-              top web3 organizations.
+              Through hackathons and bounties, buidlbox provides the tools for
+              our buidler community to learn, earn, and connect with top web3
+              organizations.
             </h5>
           </div>
 
