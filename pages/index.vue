@@ -20,8 +20,6 @@ import MiniProgress from "~/components/MiniProgress.vue";
 import { FEATURES_URL } from "~/constants/links";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, EasePack);
-
-const announcements = ref<Announcement[]>();
 const mixpanel = inject("mixpanel") as Mixpanel;
 const animationFrameId = ref();
 const progress = ref(0);
@@ -47,6 +45,14 @@ const subscribedSuccessfully = ref(false);
 const subscribeError = ref();
 const unmutatedTestimonials = [...testimonials];
 let mm = gsap.matchMedia();
+
+const apiUrl = import.meta.env.VITE_BUIDL_API;
+const url = `${apiUrl}/landing-page/announcements`;
+const {
+  data: announcements,
+  error,
+  pending,
+} = await useFetch<{ data: { data: Announcement[] } }>(url);
 
 onUnmounted(() => {
   mm.revert();
@@ -82,9 +88,6 @@ onMounted(async () => {
       });
     });
   });
-
-  const announcementData = await getAnnouncementsAPI();
-  announcements.value = announcementData.data?.data;
 });
 
 onMounted(() => {
@@ -245,7 +248,7 @@ const setTabSwitchInterval = () => {
     <!-- hero -->
     <div class="bg-gradient-to-b from-tertiary-surface to-dark-blue from-35%">
       <div class="bg-hero-bg w-full bg-top bg-contain bg-no-repeat">
-        <AnnouncementBar :announcements="announcements" />
+        <AnnouncementBar :announcements="announcements?.data" v-if="!error" />
 
         <div class="px-2">
           <div class="flex flex-col gap-8 items-center justify-center py-24">

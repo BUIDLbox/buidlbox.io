@@ -1,11 +1,22 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  ssr: true,
+  app: {
+    head: {
+      title: "buidlbox",
+    },
+  },
   modules: [
     "@nuxtjs/google-fonts",
     "@vueuse/nuxt",
     "@formkit/nuxt",
     "nuxt-gtag",
   ],
+  nitro: {
+    prerender: {
+      routes: ["/"],
+    },
+  },
   googleFonts: {
     families: {
       Inter: [200, 300, 400, 500, 600, 700, 800],

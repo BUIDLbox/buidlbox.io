@@ -1,21 +1,19 @@
 <script setup lang="ts">
 import { Metrics, getMetricsAPI } from "../api";
-const metrics = ref<Metrics[]>();
 
-onMounted(async () => {
-  const metricsData = await getMetricsAPI();
-  metrics.value = metricsData.data?.data;
-});
+const apiUrl = import.meta.env.VITE_BUIDL_API;
+const url = `${apiUrl}/landing-page/metrics`;
+const { data: metrics, error } = await useFetch<{data: Metrics[]}>(url);
 </script>
 <template>
-  <div class="grid grid-cols-2 gap-2 w-full">
+  <div v-if="!error" class="grid grid-cols-2 gap-2 w-full">
     <div
       class="rounded-md bg-surface flex flex-col gap-2 items-center justify-center py-4 sm:py-4 py-2"
     >
       <GradientTitle class="font-heading font-bold text-2xl sm:text-3xl xl:text-5xl"
         >{{
           formatAmount(
-            metrics?.find((m) => m.property == "buidlers")?.value || 0
+            metrics?.data?.find((m) => m.property == "buidlers")?.value || 0
           )
         }}+</GradientTitle
       >
@@ -29,7 +27,7 @@ onMounted(async () => {
       <GradientTitle class="font-heading font-bold text-2xl sm:text-3xl xl:text-5xl"
         >${{
           formatAmount(
-            metrics?.find((m) => m.property == "prizes")?.value || 0
+            metrics?.data?.find((m) => m.property == "prizes")?.value || 0
           )
         }}+</GradientTitle
       >
@@ -44,7 +42,7 @@ onMounted(async () => {
       <GradientTitle class="font-heading font-bold xl:text-8xl text-5xl"
         >{{
           formatAmount(
-            metrics?.find((m) => m.property == "hackathons")?.value || 0
+            metrics?.data?.find((m) => m.property == "hackathons")?.value || 0
           )
         }}+</GradientTitle
       >
@@ -58,7 +56,7 @@ onMounted(async () => {
       <GradientTitle class="font-heading font-bold xl:text-8xl text-5xl"
         >{{
           floorAmount(
-            metrics?.find((m) => m.property == "projects")?.value || 0,
+            metrics?.data?.find((m) => m.property == "projects")?.value || 0,
             true
           )
         }}+</GradientTitle
