@@ -3,6 +3,7 @@ import { Announcement } from "~/api";
 
 defineProps<{
   announcements: Announcement[];
+  isGetAnnouncementsLoading: boolean;
 }>();
 </script>
 
@@ -10,10 +11,11 @@ defineProps<{
   <div class="bg-secondary py-2 overflow-hidden w-screen relative min-h-[44px]">
     <div class="flex items-center justify-center w-full py-1">
       <ClientOnly>
+        <div v-if="isGetAnnouncementsLoading" />
         <Vue3Marquee
           pauseOnHover
           :clone="true"
-          v-if="announcements && announcements.length > 0"
+          v-else-if="announcements && announcements.length > 0"
         >
           <a
             :href="announcement.link"
@@ -27,6 +29,13 @@ defineProps<{
             {{ announcement.message }}
           </a>
         </Vue3Marquee>
+        <button
+          v-else
+          @click="$emit('openNewsletterModal')"
+          class="text-center font-heading uppercase font-bold tracking-widest text-surface hover:opacity-85 transition-opacity"
+        >
+          Get our latest hack updates
+        </button>
       </ClientOnly>
     </div>
   </div>

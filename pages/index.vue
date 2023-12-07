@@ -5,11 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { EasePack } from "gsap/EasePack";
-import {
-  Announcement,
-  getAnnouncementsAPI,
-  newsletterSubscribeAPI,
-} from "../api";
+import { Announcement, getAnnouncementsAPI } from "../api";
 import buidlerLottie3 from "~/assets/lottie/03-flex.json";
 import buidlerLottie1 from "~/assets/lottie/01-hack.json";
 import buidlerLottie2 from "~/assets/lottie/02-gm.json";
@@ -21,6 +17,7 @@ import MiniProgress from "~/components/MiniProgress.vue";
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, EasePack);
 
 const announcements = ref<Announcement[]>();
+const isGetAnnouncementsLoading = ref(true);
 const mixpanel = inject("mixpanel") as Mixpanel;
 const animationFrameId = ref();
 const progress = ref(0);
@@ -40,10 +37,9 @@ const buidlerLottieRef1 = ref();
 const buidlerLottieRef2 = ref();
 const buidlerLottieRef3 = ref();
 
-const email = ref("");
-const isSubscribeLoading = ref(false);
+const isNewsletterModalOpen = ref(false);
 const subscribedSuccessfully = ref(false);
-const subscribeError = ref();
+
 const unmutatedTestimonials = [...testimonials];
 let mm = gsap.matchMedia();
 
@@ -84,6 +80,7 @@ onMounted(async () => {
 
   const announcementData = await getAnnouncementsAPI();
   announcements.value = announcementData.data?.data;
+  isGetAnnouncementsLoading.value = false;
 });
 
 onMounted(() => {
@@ -176,19 +173,6 @@ watch([horizontalScrollWrapper, orgHeaderRef], () => {
   });
 });
 
-const subscribe = async (email: string) => {
-  try {
-    isSubscribeLoading.value = true;
-    const { success, error } = await newsletterSubscribeAPI(email);
-    if (!success) throw new Error(error?.message);
-    subscribedSuccessfully.value = true;
-  } catch (err) {
-    subscribeError.value = getErrorMessage(err);
-  } finally {
-    isSubscribeLoading.value = false;
-  }
-};
-
 const playLottie = (elem: any) => {
   if (!elem) return;
   elem.setDirection("forward");
@@ -244,7 +228,11 @@ const setTabSwitchInterval = () => {
     <!-- hero -->
     <div class="bg-gradient-to-b from-tertiary-surface to-dark-blue from-35%">
       <div class="bg-hero-bg w-full bg-top bg-contain bg-no-repeat">
-        <AnnouncementBar :announcements="announcements" />
+        <AnnouncementBar
+          :announcements="announcements"
+          :isGetAnnouncementsLoading="isGetAnnouncementsLoading"
+          @open-newsletter-modal="isNewsletterModalOpen = true"
+        />
 
         <div class="px-2">
           <div class="flex flex-col gap-8 items-center justify-center py-24">
@@ -776,61 +764,35 @@ const setTabSwitchInterval = () => {
       </div>
 
       <!-- blog -->
-      <!-- <BlogSection /> -->
+      <BlogSection />
 
       <!-- newsletter -->
       <div
-        class="px-4 bg-gradient-to-b from-transparent via-secondary-surface to-transparent"
+        class="bg-gradient-to-b from-transparent via-secondary-surface to-transparent"
       >
-        <div class="w-full sm:py-12 py-4">
-          <div class="flex items-center xl:gap-16 gap-6 max-w-7xl m-auto">
-            <div
-              class="flex flex-col gap-6 items-center justify-center py-8 m-auto w-full"
-            >
-              <GradientTitle
-                class="font-heading sm:text-3xl text-2xl font-extrabold w-fit slide-in-section text-center"
-                >SIGN UP FOR OUR WEEKLY NEWSLETTER</GradientTitle
-              >
-              <p
-                class="2xl:text-lg text-on-surface text-center slide-in-section max-w-[34rem]"
-              >
-                Get the latest scoop on buidlbox hackathons, product
-                announcements, and memes – delivered straight to your inbox.
-              </p>
-              <div
-                v-if="!subscribedSuccessfully"
-                class="flex flex-col gap-6 items-center justify-center"
-              >
-                <input
-                  v-model="email"
-                  placeholder="Email address"
-                  class="mt-4 w-[20rem] px-3 py-1.5 rounded bg-surface border border-around-forms"
-                />
-                <Button
-                  title="Signup"
-                  @click="email && subscribe(email)"
-                  :button-type="ButtonType.Gradient"
-                  :is-loading="isSubscribeLoading"
-                  class="w-[20rem] h-full"
-                />
-              </div>
-              <div v-else-if="subscribedSuccessfully">
-                <GradientTitle
-                  class="font-heading text-xl font-extrabold w-fit py-4"
-                  >Successfully subscribed!</GradientTitle
-                >
-              </div>
-              <div v-if="subscribeError && !subscribedSuccessfully">
-                <p class="text-destructive-secondary">
-                  Error: {{ subscribeError }}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <NewsletterForm
+          @subscribed="subscribedSuccessfully = true"
+          :subscribed-successfully="subscribedSuccessfully"
+        />
       </div>
     </div>
   </div>
+  <ClientOnly>
+    <Teleport to="body">
+      <DashboardModal
+        v-if="isNewsletterModalOpen"
+        class="w-full z-[100]"
+        @close="isNewsletterModalOpen = false"
+      >
+        <div class="bg-gradient-to-b from-transparent to-secondary-surface">
+          <NewsletterForm
+            @subscribed="subscribedSuccessfully = true"
+            :subscribed-successfully="subscribedSuccessfully"
+          />
+        </div>
+      </DashboardModal>
+    </Teleport>
+  </ClientOnly>
 </template>
 <style>
 .sticky-header {
