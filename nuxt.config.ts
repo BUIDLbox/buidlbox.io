@@ -12,11 +12,6 @@ export default defineNuxtConfig({
     "@formkit/nuxt",
     "nuxt-gtag",
   ],
-  nitro: {
-    prerender: {
-      routes: ["/"],
-    },
-  },
   googleFonts: {
     families: {
       Inter: [200, 300, 400, 500, 600, 700, 800],
