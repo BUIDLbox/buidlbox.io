@@ -31,7 +31,7 @@ jobs:
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }} --scope ${{ env.TEAM_SCOPE }}
 
       - name: Deploy Project Artifacts to Vercel 🚀
-        run: vercel deploy --prod --token=${{ secrets.VERCEL_TOKEN }} --scope ${{ env.TEAM_SCOPE }}
+        run: vercel deploy --token=${{ secrets.VERCEL_TOKEN }} --scope ${{ env.TEAM_SCOPE }}
 
       - name: Get commit message
         id: commit
