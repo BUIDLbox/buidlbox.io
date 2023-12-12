@@ -31,23 +31,32 @@ const selectedCarouselTag = ref<{ name: string; imgSrc: string }>(
 </script>
 
 <template>
-
-  <img src="/images/background-gradient.png" alt="buidlbox logo" 
-            class="absolute -rotate-90 -top-80  left-0 right-0 m-auto" />
+  <img src="/images/background-gradient.png" alt="buidlbox logo"
+    class="absolute -rotate-90 -top-80  left-0 right-0 m-auto" />
   <section class="pt-64 padding flex pb-40 relative">
     <div class="self-center justify-self-center max-w-md">
       <h1 class="section-title text-7xl pb-6">We grow <br /><span class="gradient-text">ecosystems</span></h1>
       <p class="pb-20">Unlock innovation and grow developer communities through hackathons & bounties with buidlbox</p>
       <NuxtLink :href="FEATURES_URL">
-        <Button title="Request a demo" class="sm:w-52" @clicked="() => {
+        <GradientButton class="flex-shrink-0 flex-grow-0" @clicked="() => {
           mixpanel.track('Request a demo', {
             type: 'Lead',
           });
         }
-          " />
+          ">Request a demo</GradientButton>
       </NuxtLink>
     </div>
-    <div></div>
+    <div class="relative w-full h-90">
+      <img
+        class="animate-grow absolute h-32 w-32 animation-delay-0  top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+        src="/images/circle1.svg" alt="buidlbox logo" style="transform-origin: center;" />
+      <img
+        class="animate-grow absolute  h-32 w-32 animation-delay-2000 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+        src="/images/circle2.svg" alt="buidlbox logo" style="transform-origin: center;" />
+      <img
+        class="animate-grow absolute  h-32 w-32 animation-delay-4000 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+        src="/images/circle1.svg" alt="buidlbox logo" style="transform-origin: center;" />
+    </div>
 
   </section>
 
@@ -190,5 +199,4 @@ const selectedCarouselTag = ref<{ name: string; imgSrc: string }>(
       :is-modal-open="isTrialModalOpen"
       @close-modal="isTrialModalOpen = false"
     /> -->
-  </div>
-</template>
+  </div></template>

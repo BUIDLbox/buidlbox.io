@@ -53,9 +53,18 @@ export default {
           "0%": { transform: "translateX(0%)" },
           "100%": { transform: "translateX(-100%)" },
         },
+        grow: {
+          '0%': { transform: 'scale(1)',
+        opacity: 0 },
+          '70%': {
+            opacity: 1
+          },
+          '100%': { transform: 'scale(10)', opacity: 0 },
+        },
       },
       animation: {
         scroll: "scroll 25s linear infinite",
+        grow: "grow 8s cubic-bezier(0.42, 0, 0.58, 1) infinite"
       },
     },
   },
@@ -64,6 +73,8 @@ export default {
       addVariant("child", "& > *");
       addVariant("child-hover", "& > *:hover");
     },
+    require("tailwindcss-animation-delay"),
+
     FormKitVariants,
   ],
 };
