@@ -240,7 +240,7 @@ const buidlboxTeam = [
 
 
   <!-- team section -->
-  <section class="mt-52 flex flex-col items-center">
+  <section class="mt-52 flex flex-col items-center max-w-full overflow-hidden">
 
     <!--header-->
     <div class=" top-40 h-fit flex flex-col items-center ">
@@ -257,17 +257,21 @@ const buidlboxTeam = [
     </div>
 
     <!--Team carousel-->
-    <ul class="flex gap-6 mt-20">
-      <li v-for="(item, index) in buidlboxTeam" class="relative rounded-2xl h-[592px] w-40 bg-slate-600 overflow-hidden hover:w-96 transition-all group">
-        <div class="absolute bottom-0 bg-secondary-surface p-4 opacity-0 group-hover:opacity-100">
-          <h4 class="section-eyebrow">{{ item.eyebrow }}</h4>
-          <h3>{{ item.name }}</h3>
-        </div>
-        <img :src="`/team/${item.image}.jpg`" class="h-full w-full object-cover object-center" alt="buidlbox logo" style="transform-origin: center;" />
-      </li>
+    <div class=" w-screen hide-scrollbar">
+      <ul class="flex gap-6 mt-20 w-full overflow-x-scroll padding hide-scrollbar">
+        <li v-for="(item, index) in buidlboxTeam" :class="[
+          'flex-shrink-0 relative rounded-2xl h-[592px] w-40 bg-slate-600 overflow-hidden hover:w-96 transition-all group',
 
-
-    </ul>
+        ]">
+          <div class="absolute bottom-0 left-0 bg-secondary-surface transition-all p-4 opacity-0 group-hover:opacity-100">
+            <h4 class="section-eyebrow">{{ item.eyebrow }}</h4>
+            <h3>{{ item.name }}</h3>
+          </div>
+          <img :src="`/team/${item.image}.jpg`" class="h-full w-full object-cover object-center" alt="buidlbox logo"
+            style="transform-origin: center;" />
+        </li>
+      </ul>
+    </div>
 
   </section>
 
@@ -409,3 +413,17 @@ const buidlboxTeam = [
     /> -->
   </div>
 </template>
+
+<style scoped>
+/* Custom class to hide the scrollbar */
+.hide-scrollbar {
+  /* Hide scrollbar for Chrome, Safari, and Edge */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge, and Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+</style>
