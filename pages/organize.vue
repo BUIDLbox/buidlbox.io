@@ -6,8 +6,8 @@ import { EasePack } from "gsap/EasePack";
 import { ButtonType } from "~/types/button";
 
 definePageMeta({
-  layout: 'new-design'
-})
+  layout: "new-design",
+});
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, EasePack);
 
@@ -31,31 +31,176 @@ const selectedCarouselTag = ref<{ name: string; imgSrc: string }>(
 </script>
 
 <template>
-
-  <img src="/images/background-gradient.png" alt="buidlbox logo" 
-            class="absolute -rotate-90 -top-80  left-0 right-0 m-auto" />
+  <img
+    src="/images/background-gradient.png"
+    alt="buidlbox logo"
+    class="absolute -rotate-90 -top-80 left-0 right-0 m-auto"
+  />
   <section class="pt-64 padding flex pb-40 relative">
     <div class="self-center justify-self-center max-w-md">
-      <h1 class="section-title text-7xl pb-6">We grow <br /><span class="gradient-text">ecosystems</span></h1>
-      <p class="pb-20">Unlock innovation and grow developer communities through hackathons & bounties with buidlbox</p>
+      <h1 class="section-title text-7xl pb-6">
+        We grow <br /><span class="gradient-text">ecosystems</span>
+      </h1>
+      <p class="pb-20">
+        Unlock innovation and grow developer communities through hackathons &
+        bounties with buidlbox
+      </p>
       <NuxtLink :href="FEATURES_URL">
-        <Button title="Request a demo" class="sm:w-52" @clicked="() => {
-          mixpanel.track('Request a demo', {
-            type: 'Lead',
-          });
-        }
-          " />
+        <Button
+          title="Request a demo"
+          class="sm:w-52"
+          @clicked="
+            () => {
+              mixpanel.track('Request a demo', {
+                type: 'Lead',
+              });
+            }
+          "
+        />
       </NuxtLink>
     </div>
     <div></div>
-
   </section>
 
   <!--Client Logos-->
   <section class="padding flex flex-wrap">
     <Logos class="slide-in-section" />
-
   </section>
+
+  <!-- quote section -->
+  <section class="mt-52">
+    <h1
+      class="section-title text-[2.5rem] max-w-[58rem] m-auto text-center leading-[3.5rem] tracking-wider"
+    >
+      We believe the best way to
+      <span class="text-primary">grow</span> developer
+      <span class="text-secondary">ecosystems</span> is through the power of
+      <span class="text-tertiary">hackathons</span>.
+    </h1>
+  </section>
+
+  <!-- ecosystem section -->
+  <section class="mt-52">
+    <div class="grid sm:grid-cols-2 gap-12 max-w-[65rem] m-auto justify-center">
+      <div class="max-w-lg">
+        <div class="flex items-center gap-2 mb-4">
+          <span>[i]</span>
+          <h4 class="section-eyebrow">Ecosystem</h4>
+        </div>
+        <h1 class="section-title text-6xl mb-7">
+          Grow your community with the right people
+        </h1>
+        <p class="font-medium">
+          Elevate your hackathon experience by buidling meaningful connections
+          and fostering collaboration.
+        </p>
+      </div>
+      <div class="flex flex-col gap-4">
+        <div class="h-72 rounded-[32px] border border-surface p-8">
+          <p class="mb-3 section-title text-2xl">35k buidlers worldwide</p>
+          <p class="font-medium max-w-xs">
+            Our community consists of buidlers from 155 countries on the
+            platform.
+          </p>
+        </div>
+        <div class="h-72 rounded-[32px] border border-surface p-8">
+          <p class="mb-3 section-title text-2xl">
+            Find the champions of your ecosystem
+          </p>
+          <p class="font-medium max-w-xs">
+            Discover and source top-tier talent from our community, and fund
+            cutting-edge projects built on your ecosystem by hackathon buidlers.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- tools section -->
+  <section class="mt-52">
+    <div
+      class="relative h-full grid sm:grid-cols-2 gap-12 max-w-[65rem] m-auto justify-center"
+    >
+      <div class="max-w-md sticky top-40 h-fit">
+        <div class="flex items-center gap-2 mb-4">
+          <span>[i]</span>
+          <h4 class="section-eyebrow">platform tools</h4>
+        </div>
+        <h1 class="section-title text-6xl mb-7">
+          All the tools for engagement
+        </h1>
+        <p class="font-medium mb-10 max-w-sm">
+          Your vision, our platform: We’ve got everything you need to
+          successfully organize your hackathon and power your community.
+        </p>
+        <NuxtLink :href="FEATURES_URL">
+          <Button
+            title="Request a demo"
+            class="sm:w-52"
+            @clicked="
+              () => {
+                mixpanel.track('Request a demo', {
+                  type: 'Lead',
+                });
+              }
+            "
+          />
+        </NuxtLink>
+      </div>
+      <div class="flex flex-col gap-4">
+        <div
+          class="h-52 rounded-[32px] border border-surface p-8 flex flex-col gap-2.5"
+        >
+          <p class="section-eyebrow text-primary">buidling</p>
+          <p class="font-extrabold text-2xl">buidlbot</p>
+          <p class="font-medium max-w-xs">
+            We have a full judging platform that is simple and very effective
+          </p>
+        </div>
+        <div
+          class="h-52 rounded-[32px] border border-surface p-8 flex flex-col gap-2.5"
+        >
+          <p class="section-eyebrow text-tertiary">marketing</p>
+          <p class="font-extrabold text-2xl">Bounties</p>
+          <p class="font-medium max-w-xs">
+            Engage your developer community in between hackathons. Source great
+            ideas. Solve problems. Find bugs.
+          </p>
+        </div>
+        <div
+          class="h-52 rounded-[32px] border border-surface p-8 flex flex-col gap-2.5"
+        >
+          <p class="section-eyebrow text-secondary">marketing</p>
+          <p class="font-extrabold text-2xl">Allowlist</p>
+          <p class="font-medium max-w-xs">
+            We have a full judging platform that is simple and very effective
+          </p>
+        </div>
+        <div
+          class="h-52 rounded-[32px] border border-surface p-8 flex flex-col gap-2.5"
+        >
+          <p class="section-eyebrow text-secondary">marketing</p>
+          <p class="font-extrabold text-2xl">Allowlist</p>
+          <p class="font-medium max-w-xs">
+            We have a full judging platform that is simple and very effective
+          </p>
+        </div>
+        <div
+          class="h-52 rounded-[32px] border border-surface p-8 flex flex-col gap-2.5"
+        >
+          <p class="section-eyebrow text-secondary">marketing</p>
+          <p class="font-extrabold text-2xl">Allowlist</p>
+          <p class="font-medium max-w-xs">
+            We have a full judging platform that is simple and very effective
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- marketing section -->
+  <section class="mt-52"></section>
+
   <div>
     <!-- <div class="grid gap-32">
       <div class="bg-hero-bg w-full bg-top bg-contain bg-no-repeat grid gap-10">
