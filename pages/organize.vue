@@ -28,14 +28,64 @@ const carouselTags = [
 const selectedCarouselTag = ref<{ name: string; imgSrc: string }>(
   carouselTags[0]
 );
+
+const buidlboxTeam = [
+  {
+    name: "Emma Clarkson",
+    eyebrow: "Lead Developer",
+    image: "test1"
+  },
+  {
+    name: "John Doe",
+    eyebrow: "Marketing Strategist",
+    image: "test2"
+  },
+  {
+    name: "Sophia Turner",
+    eyebrow: "Product Manager",
+    image: "test3"
+  },
+  {
+    name: "Liam Smith",
+    eyebrow: "Creative Director",
+    image: "test4"
+  },
+  {
+    name: "Isabella Johnson",
+    eyebrow: "Financial Analyst",
+    image: "test5"
+  },
+  {
+    name: "Oliver Williams",
+    eyebrow: "UX Designer",
+    image: "test1"
+  },
+  {
+    name: "Mia Brown",
+    eyebrow: "HR Coordinator",
+    image: "test2"
+  },
+  {
+    name: "Lucas Jones",
+    eyebrow: "IT Specialist",
+    image: "test3"
+  },
+  {
+    name: "Amelia Garcia",
+    eyebrow: "Sales Executive",
+    image: "test4"
+  },
+  {
+    name: "Ethan Martinez",
+    eyebrow: "Operations Manager",
+    image: "test5"
+  }
+]
 </script>
 
 <template>
-  <img
-    src="/images/background-gradient.png"
-    alt="buidlbox logo"
-    class="absolute -rotate-90 -top-80 left-0 right-0 m-auto"
-  />
+  <img src="/images/background-gradient.png" alt="buidlbox logo"
+    class="absolute -rotate-90 -top-80 left-0 right-0 m-auto" />
   <section class="pt-64 padding flex pb-40 relative">
     <div class="self-center justify-self-center max-w-md">
       <h1 class="section-title text-7xl pb-6">
@@ -75,9 +125,7 @@ const selectedCarouselTag = ref<{ name: string; imgSrc: string }>(
 
   <!-- quote section -->
   <section class="mt-52">
-    <h1
-      class="section-title text-[2.5rem] max-w-[58rem] m-auto text-center leading-[3.5rem] tracking-wider"
-    >
+    <h1 class="section-title text-[2.5rem] max-w-[58rem] m-auto text-center leading-[3.5rem] tracking-wider">
       We believe the best way to
       <span class="text-primary">grow</span> developer
       <span class="text-secondary">ecosystems</span> is through the power of
@@ -124,9 +172,7 @@ const selectedCarouselTag = ref<{ name: string; imgSrc: string }>(
 
   <!-- tools section -->
   <section class="mt-52">
-    <div
-      class="relative h-full grid sm:grid-cols-2 gap-12 max-w-[65rem] m-auto justify-center"
-    >
+    <div class="relative h-full grid sm:grid-cols-2 gap-12 max-w-[65rem] m-auto justify-center">
       <div class="max-w-md sticky top-40 h-fit">
         <div class="flex items-center gap-2 mb-4">
           <span>[i]</span>
@@ -140,32 +186,23 @@ const selectedCarouselTag = ref<{ name: string; imgSrc: string }>(
           successfully organize your hackathon and power your community.
         </p>
         <NuxtLink :href="FEATURES_URL">
-          <Button
-            title="Request a demo"
-            class="sm:w-52"
-            @clicked="
-              () => {
-                mixpanel.track('Request a demo', {
-                  type: 'Lead',
-                });
-              }
-            "
-          />
+          <Button title="Request a demo" class="sm:w-52" @clicked="() => {
+            mixpanel.track('Request a demo', {
+              type: 'Lead',
+            });
+          }
+            " />
         </NuxtLink>
       </div>
       <div class="flex flex-col gap-4">
-        <div
-          class="h-52 rounded-[32px] border border-surface p-8 flex flex-col gap-2.5"
-        >
+        <div class="h-52 rounded-[32px] border border-surface p-8 flex flex-col gap-2.5">
           <p class="section-eyebrow text-primary">buidling</p>
           <p class="font-extrabold text-2xl">buidlbot</p>
           <p class="font-medium max-w-xs">
             We have a full judging platform that is simple and very effective
           </p>
         </div>
-        <div
-          class="h-52 rounded-[32px] border border-surface p-8 flex flex-col gap-2.5"
-        >
+        <div class="h-52 rounded-[32px] border border-surface p-8 flex flex-col gap-2.5">
           <p class="section-eyebrow text-tertiary">marketing</p>
           <p class="font-extrabold text-2xl">Bounties</p>
           <p class="font-medium max-w-xs">
@@ -173,27 +210,21 @@ const selectedCarouselTag = ref<{ name: string; imgSrc: string }>(
             ideas. Solve problems. Find bugs.
           </p>
         </div>
-        <div
-          class="h-52 rounded-[32px] border border-surface p-8 flex flex-col gap-2.5"
-        >
+        <div class="h-52 rounded-[32px] border border-surface p-8 flex flex-col gap-2.5">
           <p class="section-eyebrow text-secondary">marketing</p>
           <p class="font-extrabold text-2xl">Allowlist</p>
           <p class="font-medium max-w-xs">
             We have a full judging platform that is simple and very effective
           </p>
         </div>
-        <div
-          class="h-52 rounded-[32px] border border-surface p-8 flex flex-col gap-2.5"
-        >
+        <div class="h-52 rounded-[32px] border border-surface p-8 flex flex-col gap-2.5">
           <p class="section-eyebrow text-secondary">marketing</p>
           <p class="font-extrabold text-2xl">Allowlist</p>
           <p class="font-medium max-w-xs">
             We have a full judging platform that is simple and very effective
           </p>
         </div>
-        <div
-          class="h-52 rounded-[32px] border border-surface p-8 flex flex-col gap-2.5"
-        >
+        <div class="h-52 rounded-[32px] border border-surface p-8 flex flex-col gap-2.5">
           <p class="section-eyebrow text-secondary">marketing</p>
           <p class="font-extrabold text-2xl">Allowlist</p>
           <p class="font-medium max-w-xs">
@@ -206,6 +237,41 @@ const selectedCarouselTag = ref<{ name: string; imgSrc: string }>(
 
   <!-- marketing section -->
   <section class="mt-52"></section>
+
+
+  <!-- team section -->
+  <section class="mt-52 flex flex-col items-center">
+
+    <!--header-->
+    <div class=" top-40 h-fit flex flex-col items-center ">
+      <div class="flex items-center gap-2 mb-4">
+        <span>[i]</span>
+        <h4 class="section-eyebrow">the team</h4>
+      </div>
+      <h1 class="section-title text-6xl mb-7 ">
+        Meet the buidlbox team
+      </h1>
+      <p class="font-medium mb-10 max-w-sm text-center">
+        We've got your back (and your hack) at every stage, providing support throughout your hackathon journey.
+      </p>
+    </div>
+
+    <!--Team carousel-->
+    <ul class="flex gap-6 mt-20">
+      <li v-for="(item, index) in buidlboxTeam" class="relative rounded-2xl h-[592px] w-40 bg-slate-600 overflow-hidden hover:w-96 transition-all group">
+        <div class="absolute bottom-0 bg-secondary-surface p-4 opacity-0 group-hover:opacity-100">
+          <h4 class="section-eyebrow">{{ item.eyebrow }}</h4>
+          <h3>{{ item.name }}</h3>
+        </div>
+        <img :src="`/team/${item.image}.jpg`" class="h-full w-full object-cover object-center" alt="buidlbox logo" style="transform-origin: center;" />
+      </li>
+
+
+    </ul>
+
+  </section>
+
+
 
   <div>
     <!-- <div class="grid gap-32">
@@ -341,4 +407,5 @@ const selectedCarouselTag = ref<{ name: string; imgSrc: string }>(
       :is-modal-open="isTrialModalOpen"
       @close-modal="isTrialModalOpen = false"
     /> -->
-  </div></template>
+  </div>
+</template>
