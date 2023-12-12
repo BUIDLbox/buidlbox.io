@@ -2,8 +2,9 @@
 import { newsletterSubscribeAPI } from "~/api";
 import { ButtonType } from "~/types/button";
 
-defineProps<{
+const props = defineProps<{
   subscribedSuccessfully: boolean;
+  source: "source-banner" | "source-footer";
 }>();
 const emit = defineEmits(["subscribed"]);
 
@@ -15,7 +16,7 @@ const subscribeError = ref();
 const subscribe = async (email: string) => {
   try {
     isSubscribeLoading.value = true;
-    const { success, error } = await newsletterSubscribeAPI(email);
+    const { success, error } = await newsletterSubscribeAPI({email, source: props.source});
     if (!success) throw new Error(error?.message);
     emit("subscribed");
   } catch (err) {

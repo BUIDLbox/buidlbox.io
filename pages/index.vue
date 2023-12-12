@@ -764,7 +764,7 @@ const setTabSwitchInterval = () => {
       </div>
 
       <!-- blog -->
-      <BlogSection />
+      <!-- <BlogSection /> -->
 
       <!-- newsletter -->
       <div
@@ -773,6 +773,7 @@ const setTabSwitchInterval = () => {
         <NewsletterForm
           @subscribed="subscribedSuccessfully = true"
           :subscribed-successfully="subscribedSuccessfully"
+          source="source-footer"
         />
       </div>
     </div>
@@ -788,6 +789,7 @@ const setTabSwitchInterval = () => {
           <NewsletterForm
             @subscribed="subscribedSuccessfully = true"
             :subscribed-successfully="subscribedSuccessfully"
+            source="source-banner"
           />
         </div>
       </DashboardModal>
