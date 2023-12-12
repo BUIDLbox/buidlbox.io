@@ -31,7 +31,10 @@ const selectedCarouselTag = ref<{ name: string; imgSrc: string }>(
 </script>
 
 <template>
-  <section class="h-screen padding flex">
+
+  <img src="/images/background-gradient.png" alt="buidlbox logo" 
+            class="absolute -rotate-90 -top-80  left-0 right-0 m-auto" />
+  <section class="pt-64 padding flex pb-40 relative">
     <div class="self-center justify-self-center max-w-md">
       <h1 class="section-title text-7xl pb-6">We grow <br /><span class="gradient-text">ecosystems</span></h1>
       <p class="pb-20">Unlock innovation and grow developer communities through hackathons & bounties with buidlbox</p>
@@ -45,6 +48,12 @@ const selectedCarouselTag = ref<{ name: string; imgSrc: string }>(
       </NuxtLink>
     </div>
     <div></div>
+
+  </section>
+
+  <!--Client Logos-->
+  <section class="padding flex flex-wrap">
+    <Logos class="slide-in-section" />
 
   </section>
   <div>

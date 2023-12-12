@@ -18,8 +18,10 @@ watch(
 </script>
 
 <template>
-    <div class="bg-secondary-surface mb-16 w-screen max-w-screen sm:overflow-visible overflow-hidden min-h-screen">
+    <div class="bg-secondary-surface mb-16 w-screen max-w-screen sm:overflow-visible overflow-hidden min-h-screen relative">
+
         <div class="w-full py-4 flex justify-between padding fixed">
+           
             <img src="/buidlbox-logo-horizontal.png" alt="buidlbox logo" width="180" height="40"
                 class=" h-auto" />
             <NuxtLink :href="FEATURES_URL">
