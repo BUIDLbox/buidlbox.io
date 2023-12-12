@@ -18,7 +18,7 @@ watch(
 </script>
 
 <template>
-    <div class="bg-secondary-surface mb-16 w-screen max-w-screen sm:overflow-visible overflow-hidden min-h-screen relative">
+    <div class="bg-secondary-surface w-screen max-w-screen sm:overflow-visible overflow-hidden min-h-screen relative">
 
         <div class="w-full py-4 flex items-center justify-between padding fixed z-[999]">
 
@@ -34,7 +34,6 @@ watch(
         </div>
 
         <slot />
-        <p>Fake Footer</p>
 
     </div>
 </template>
