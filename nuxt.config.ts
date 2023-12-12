@@ -1,5 +1,11 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  ssr: true,
+  app: {
+    head: {
+      title: "buidlbox",
+    },
+  },
   modules: [
     "@nuxtjs/google-fonts",
     "@vueuse/nuxt",

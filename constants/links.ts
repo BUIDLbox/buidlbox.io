@@ -1,0 +1,1 @@
+export const FEATURES_URL = `${import.meta.env.VITE_APP_URL}/buy-hackathons/tiers`;

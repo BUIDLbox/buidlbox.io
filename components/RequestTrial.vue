@@ -52,7 +52,7 @@ const submitForm = async (data: any) => {
   <div>
     <Teleport to="body">
       <SlideInModal
-        title="Request a free trial"
+        title="Request a demo"
         :size="ModalSize.MD"
         :isOpen="isModalOpen"
         @close="$emit('closeModal')"

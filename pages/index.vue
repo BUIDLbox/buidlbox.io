@@ -13,11 +13,10 @@ import timelineLottie from "~/assets/lottie/04-roadmap.json";
 import { getErrorMessage } from "~/utils";
 import { Mixpanel } from "mixpanel-browser";
 import MiniProgress from "~/components/MiniProgress.vue";
+import { FEATURES_URL } from "~/constants/links";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, EasePack);
 
-const announcements = ref<Announcement[]>();
-const isGetAnnouncementsLoading = ref(true);
 const mixpanel = inject("mixpanel") as Mixpanel;
 const animationFrameId = ref();
 const progress = ref(0);
@@ -42,6 +41,14 @@ const subscribedSuccessfully = ref(false);
 
 const unmutatedTestimonials = [...testimonials];
 let mm = gsap.matchMedia();
+
+const apiUrl = import.meta.env.VITE_BUIDL_API;
+const url = `${apiUrl}/landing-page/announcements`;
+const {
+  data: announcements,
+  error: announcementsError,
+  pending: isGetAnnouncementsLoading,
+} = await useFetch<{ data: { data: Announcement[] } }>(url);
 
 onUnmounted(() => {
   mm.revert();
@@ -77,10 +84,6 @@ onMounted(async () => {
       });
     });
   });
-
-  const announcementData = await getAnnouncementsAPI();
-  announcements.value = announcementData.data?.data;
-  isGetAnnouncementsLoading.value = false;
 });
 
 onMounted(() => {
@@ -229,7 +232,7 @@ const setTabSwitchInterval = () => {
     <div class="bg-gradient-to-b from-tertiary-surface to-dark-blue from-35%">
       <div class="bg-hero-bg w-full bg-top bg-contain bg-no-repeat">
         <AnnouncementBar
-          :announcements="announcements"
+          :announcements="announcements?.data?.data"
           :isGetAnnouncementsLoading="isGetAnnouncementsLoading"
           @open-newsletter-modal="isNewsletterModalOpen = true"
         />
@@ -261,7 +264,7 @@ const setTabSwitchInterval = () => {
                   "
                 />
               </a>
-              <NuxtLink href="https://app.buidlbox.io/buy-hackathons/tiers">
+              <NuxtLink :href="FEATURES_URL">
                 <Button
                   title="Organize a hackathon"
                   :button-type="ButtonType.Secondary1"
@@ -561,9 +564,7 @@ const setTabSwitchInterval = () => {
                       community, and fund cutting-edge projects built on your
                       ecosystem by hackathon buidlers.
                     </p>
-                    <NuxtLink
-                      href="https://app.buidlbox.io/buy-hackathons/tiers"
-                    >
+                    <NuxtLink :href="FEATURES_URL">
                       <Button
                         title="Learn more"
                         :button-type="ButtonType.Positive"
@@ -601,9 +602,7 @@ const setTabSwitchInterval = () => {
                       co-sponsors, publishing challenges, event scheduling,
                       judging projects, and so much more.
                     </p>
-                    <NuxtLink
-                      href="https://app.buidlbox.io/buy-hackathons/tiers"
-                    >
+                    <NuxtLink :href="FEATURES_URL">
                       <Button
                         title="Explore features"
                         :button-type="ButtonType.Positive"
@@ -654,9 +653,9 @@ const setTabSwitchInterval = () => {
             <h5
               class="text-on-surface 2xl:text-lg text-center slide-in-section"
             >
-              Through hackathons and bounties, buidlbox platform provides the
-              tools for our buidler community to learn, earn, and connect with
-              top web3 organizations.
+              Through hackathons and bounties, buidlbox provides the tools for
+              our buidler community to learn, earn, and connect with top web3
+              organizations.
             </h5>
           </div>
 
