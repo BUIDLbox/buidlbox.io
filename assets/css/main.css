@@ -40,6 +40,9 @@
 }
 
 @layer components {
+  .section-eyebrow {
+    @apply text-xs font-medium tracking-widest uppercase;
+  }
   .gradient {
     @apply bg-gradient-to-r from-primary via-secondary to-tertiary;
   }
