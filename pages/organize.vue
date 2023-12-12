@@ -4,6 +4,11 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { EasePack } from "gsap/EasePack";
 import { ButtonType } from "~/types/button";
+
+definePageMeta({
+  layout: 'new-design'
+})
+
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, EasePack);
 
 const isTrialModalOpen = ref(false);
@@ -26,6 +31,22 @@ const selectedCarouselTag = ref<{ name: string; imgSrc: string }>(
 </script>
 
 <template>
+  <section class="h-screen padding flex">
+    <div class="self-center justify-self-center max-w-md">
+      <h1 class="section-title text-7xl pb-6">We grow <br /><span class="gradient-text">ecosystems</span></h1>
+      <p class="pb-20">Unlock innovation and grow developer communities through hackathons & bounties with buidlbox</p>
+      <NuxtLink :href="FEATURES_URL">
+        <Button title="Request a demo" class="sm:w-52" @clicked="() => {
+          mixpanel.track('Request a demo', {
+            type: 'Lead',
+          });
+        }
+          " />
+      </NuxtLink>
+    </div>
+    <div></div>
+
+  </section>
   <div>
     <!-- <div class="grid gap-32">
       <div class="bg-hero-bg w-full bg-top bg-contain bg-no-repeat grid gap-10">

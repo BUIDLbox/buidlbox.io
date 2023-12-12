@@ -2,11 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
   --background: #11232f;
   --surface: #1b374a;
-  --secondary-surface: #0e1a23;
+  --secondary-surface: #101418;
   --forms: #11232f;
   --around-forms: #5c7d93;
   --primary: #e54de5;
@@ -40,11 +39,25 @@
   --destructive-secondary: #fa876d;
 }
 
+@layer components {
+  .gradient {
+    @apply bg-gradient-to-r from-primary via-secondary to-tertiary;
+  }
+  .section-title {
+    @apply font-heading font-extrabold text-lg sm:text-2xl text-on-surface tracking-wider	uppercase;
+  }
+  .gradient-text {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-tertiary;
+  }
+  .padding {
+    @apply px-40;
+  }
+}
+
 body {
-  background-color: var(--background);
   color: var(--on-surface);
-  margin:0;
-	overflow-x:hidden;
+  margin: 0;
+  overflow-x: hidden;
 }
 
 input::-webkit-outer-spin-button,
@@ -53,13 +66,17 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
 }
 :focus-visible {
-    outline: none ;
+  outline: none;
 }
 
 a {
   cursor: pointer;
+}
+
+p {
+  color: var(--on-surface);
 }
