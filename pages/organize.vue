@@ -211,9 +211,9 @@ const selectSlide = (e: any) => {
 </script>
 
 <template>
-  <img src="/images/background-gradient.png" alt="buidlbox logo"
-    class="absolute -rotate-90 -top-80 left-0 right-0 m-auto" />
   <section class="pt-64 padding flex pb-40 relative">
+    <img src="/images/background-gradient.png" alt="buidlbox logo"
+      class="absolute -rotate-90 -top-[600px] w-[800px] z-40 left-0 right-0 m-auto" />
     <div class="self-center justify-self-center max-w-md">
       <h1 class="section-title text-7xl pb-6">
         We grow <br /><span class="gradient-text">ecosystems</span>
@@ -231,15 +231,15 @@ const selectSlide = (e: any) => {
           ">Request a demo</GradientButton>
       </NuxtLink>
     </div>
-    <div class="relative w-full h-90">
+    <div class="relative w-full h-90 z-0">
       <img
-        class="animate-grow absolute h-32 w-32 animation-delay-0 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+        class="animate-grow absolute h-32 z-0 w-32 animation-delay-0 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
         src="/images/circle1.svg" alt="buidlbox logo" style="transform-origin: center" />
       <img
-        class="animate-grow absolute h-32 w-32 animation-delay-2000 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+        class="animate-grow absolute z-0 h-32 w-32 animation-delay-2000 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
         src="/images/circle2.svg" alt="buidlbox logo" style="transform-origin: center" />
       <img
-        class="animate-grow absolute h-32 w-32 animation-delay-4000 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+        class="animate-grow absolute z-0 h-32 w-32 animation-delay-4000 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
         src="/images/circle1.svg" alt="buidlbox logo" style="transform-origin: center" />
     </div>
   </section>
