@@ -28,12 +28,7 @@ const isTrialModalOpen = ref(false);
               target="_blank"
               >Organize a hackathon</a
             > -->
-            <a
-              class="hover:underline"
-              href="https://app.buidlbox.io/buy-hackathons/tiers"
-              target="_blank"
-              >Pricing</a
-            >
+
             <!-- <a
               class="hover:underline"
               href="https://buidlbox.io/"
@@ -55,17 +50,10 @@ const isTrialModalOpen = ref(false);
             <a class="hover:underline" @click="isTrialModalOpen = true"
               >Request a demo</a
             >
-            <NuxtLink
-              to="/privacy"
-              class="hover:underline"
-              target="_blank"
-            >
+            <NuxtLink to="/privacy" class="hover:underline" target="_blank">
               Privacy
             </NuxtLink>
-            <NuxtLink
-              to="/terms"
-              class="hover:underline"
-              target="_blank"
+            <NuxtLink to="/terms" class="hover:underline" target="_blank"
               >Terms
             </NuxtLink>
           </div>
