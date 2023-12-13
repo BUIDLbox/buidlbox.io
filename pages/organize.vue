@@ -474,32 +474,6 @@ const selectSlide = (e: any) => {
 
   </section>
 
-  <!-- final CTA -->
-  <section class="relative mt-52 flex flex-col items-center max-w-full overflow-hidden h-screen justify-center">
-    <h1 class="section-title text-6xl mb-7 text-center">Ready to grow your community?</h1>
-    <p class="font-medium mb-10 max-w-sm text-center">
-      Arrange a call with us to go through the next steps!
-    </p>
-    <NuxtLink :href="FEATURES_URL">
-      <GradientButton class="flex-shrink-0 flex-grow-0" @clicked="() => {
-        mixpanel.track('Request a demo', {
-          type: 'Lead',
-        });
-      }
-        ">Request a demo</GradientButton>
-    </NuxtLink>
-    <img
-      class="animate-grow absolute h-32 w-32 animation-delay-0 bottom-0 left-1/2 mr-80 transform -translate-x-1/2 -translate-y-1/2"
-      src="/images/circle1.svg" alt="buidlbox logo" />
-    <img
-      class="animate-grow absolute h-32 w-32 animation-delay-2000 bottom-0 left-1/2 mr-80 transform -translate-x-1/2 -translate-y-1/2"
-      src="/images/circle2.svg" alt="buidlbox logo" />
-    <img
-      class="animate-grow absolute h-32 w-32 animation-delay-4000 bottom-0 left-1/2 mr-80 transform -translate-x-1/2 -translate-y-1/2"
-      src="/images/circle1.svg" alt="buidlbox logo" />
-    <div class="absolute bottom-0 left-0 right-0 m-auto">
-    </div>
-  </section>
 
   <!-- testimonials section -->
   <section class="mt-52">
@@ -607,7 +581,33 @@ const selectSlide = (e: any) => {
     </div>
   </section>
 
-  <section class="mt-52"></section>
+
+  <!-- final CTA -->
+  <section class="relative mt-52 flex flex-col items-center max-w-full overflow-hidden h-screen justify-center">
+    <h1 class="section-title text-6xl mb-7 text-center">Ready to grow your community?</h1>
+    <p class="font-medium mb-10 max-w-sm text-center">
+      Arrange a call with us to go through the next steps!
+    </p>
+    <NuxtLink :href="FEATURES_URL">
+      <GradientButton class="flex-shrink-0 flex-grow-0" @clicked="() => {
+        mixpanel.track('Request a demo', {
+          type: 'Lead',
+        });
+      }
+        ">Request a demo</GradientButton>
+    </NuxtLink>
+    <img
+      class="animate-grow absolute h-32 w-32 animation-delay-0 bottom-0 left-1/2 mr-80 transform -translate-x-1/2 -translate-y-1/2"
+      src="/images/circle1.svg" alt="buidlbox logo" />
+    <img
+      class="animate-grow absolute h-32 w-32 animation-delay-2000 bottom-0 left-1/2 mr-80 transform -translate-x-1/2 -translate-y-1/2"
+      src="/images/circle2.svg" alt="buidlbox logo" />
+    <img
+      class="animate-grow absolute h-32 w-32 animation-delay-4000 bottom-0 left-1/2 mr-80 transform -translate-x-1/2 -translate-y-1/2"
+      src="/images/circle1.svg" alt="buidlbox logo" />
+    <div class="absolute bottom-0 left-0 right-0 m-auto">
+    </div>
+  </section>
 
   <div>
     <!-- <div class="grid gap-32">
