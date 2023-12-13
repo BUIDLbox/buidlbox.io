@@ -13,6 +13,109 @@ gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, EasePack);
 
 const isTrialModalOpen = ref(false);
 
+const testimonialsRow1 = [
+  {
+    avatar: "",
+    role: "buidler",
+    name: "Johnny john",
+    testimonial:
+      "“This was a great hackathon to be apart of and I totally liked it and thought it was great “",
+  },
+  {
+    avatar: "",
+    role: "buidler",
+    name: "Johnny john",
+    testimonial:
+      "“This was a great hackathon to be apart of and I totally liked it and thought it was great “",
+  },
+  {
+    avatar: "",
+    role: "organiser",
+    name: "Joen, ceo buidlbox",
+    testimonial: "“Loved working with the buidlbox team! “",
+  },
+  {
+    avatar: "",
+    role: "sponsor",
+    name: "Joen, ceo buidlbox",
+    testimonial:
+      "“This was a great hackathon to be apart of and I totally liked it and thought it was great ",
+  },
+  {
+    avatar: "",
+    role: "buidler",
+    name: "Johnny john",
+    testimonial:
+      "“This was a great hackathon to be apart of and I totally liked it and thought it was great “",
+  },
+];
+const testimonialsRow2 = [
+  {
+    avatar: "",
+    role: "organiser",
+    name: "Joen, ceo buidlbox",
+    testimonial: "“Loved working with the buidlbox team! “",
+  },
+  {
+    avatar: "",
+    role: "sponsor",
+    name: "Joen, ceo buidlbox",
+    testimonial:
+      "“This was a great hackathon to be apart of and I totally liked it and thought it was great ",
+  },
+  {
+    avatar: "",
+    role: "buidler",
+    name: "Johnny john",
+    testimonial:
+      "“This was a great hackathon to be apart of and I totally liked it and thought it was great “",
+  },
+  {
+    avatar: "",
+    role: "sponsor",
+    name: "Joen, ceo buidlbox",
+    testimonial:
+      "“This was a great hackathon to be apart of and I totally liked it and thought it was great ",
+  },
+];
+
+const testimonialsRow3 = [
+  {
+    avatar: "",
+    role: "buidler",
+    name: "Johnny john",
+    testimonial:
+      "“This was a great hackathon to be apart of and I totally liked it and thought it was great “",
+  },
+  {
+    avatar: "",
+    role: "sponsor",
+    name: "Joen, ceo buidlbox",
+    testimonial:
+      "“This was a great hackathon to be apart of and I totally liked it and thought it was great ",
+  },
+  {
+    avatar: "",
+    role: "buidler",
+    name: "Johnny john",
+    testimonial:
+      "“This was a great hackathon to be apart of and I totally liked it and thought it was great “",
+  },
+  {
+    avatar: "",
+    role: "organiser",
+    name: "Joen, ceo buidlbox",
+    testimonial: "“Loved working with the buidlbox team! “",
+  },
+  {
+    avatar: "",
+    role: "sponsor",
+    name: "Joen, ceo buidlbox",
+    testimonial:
+      "“This was a great hackathon to be apart of and I totally liked it and thought it was great ",
+  },
+];
+
 const carouselTags = [
   { name: "Guidl dashboard", imgSrc: "/carouselTags/guidl-dashboard.png" },
   { name: "Hackathon setup wizard", imgSrc: "/buidlbox-user-dashboard.png" },
@@ -397,6 +500,114 @@ const selectSlide = (e: any) => {
     <div class="absolute bottom-0 left-0 right-0 m-auto">
     </div>
   </section>
+
+  <!-- testimonials section -->
+  <section class="mt-52">
+    <div
+      class="flex items-center justify-center flex-col sm:gap-16 gap-28 px-6"
+    >
+      <div class="child:mx-auto max-w-8xl">
+        <div class="flex items-center gap-2 mb-4 justify-center">
+          <span>[i]</span>
+          <h4 class="section-eyebrow leading-[120%]">Testimonials</h4>
+        </div>
+        <h1 class="section-title text-6xl mb-7 text-center max-w-2xl">
+          Don’t take it from us
+        </h1>
+        <p class="font-medium text-center max-w-md">
+          We've got your back (and your hack) at every stage, providing support
+          throughout your hackathon journey.
+        </p>
+      </div>
+      <div
+        class="child:flex child:items-stretch child:justify-center child:gap-x-5 child:gap-y-2 flex flex-col gap-2"
+      >
+        <div class="overflex-x-hidden -mx-60 h-auto">
+          <div
+            v-for="(person, index) in testimonialsRow1"
+            :key="index"
+            class="rounded-[32px] border border-surface xl:px-14 sm:px-6 px-3 sm:py-8 py-4 w-[200px] md:w-[363px]"
+          >
+            <div class="flex items-center gap-4 mb-6">
+              <div class="bg-gray-400 rounded-full sm:w-[46px] sm:h-[46px] w-7 h-7"></div>
+              <div>
+                <p
+                  class="section-eyebrow sm:mb-2 mb-1"
+                  :class="{
+                    'text-primary': person.role == 'buidler',
+                    'text-secondary': person.role == 'sponsor',
+                    'text-tertiary': person.role == 'organizer',
+                  }"
+                >
+                  {{ person.role }}
+                </p>
+                <p class="sm:text-base text-xs">{{ person.name }}</p>
+              </div>
+            </div>
+            <p class="font-extrabold xl:text-base sm:text-sm text-xs">
+              {{ person.testimonial }}
+            </p>
+          </div>
+        </div>
+        <div class="">
+          <div
+            v-for="(person, index) in testimonialsRow2"
+            :key="index"
+            class="rounded-[32px] border border-surface xl:px-14 sm:px-6 px-3 sm:py-8 py-4 w-[200px] md:w-[363px]"
+          >
+            <div class="flex items-center gap-4 mb-6">
+              <div class="bg-gray-400 rounded-full sm:w-[46px] sm:h-[46px] w-7 h-7"></div>
+              <div>
+                <p
+                  class="section-eyebrow sm:mb-2 mb-1"
+                  :class="{
+                    'text-primary': person.role == 'buidler',
+                    'text-secondary': person.role == 'sponsor',
+                    'text-tertiary': person.role == 'organizer',
+                  }"
+                >
+                  {{ person.role }}
+                </p>
+                <p class="sm:text-base text-xs">{{ person.name }}</p>
+              </div>
+            </div>
+            <p class="font-extrabold xl:text-base sm:text-sm text-xs">
+              {{ person.testimonial }}
+            </p>
+          </div>
+        </div>
+        <div class="2xl:-mx-50 2xl:-ml-50 -ml-52">
+          <div
+            v-for="(person, index) in testimonialsRow3"
+            :key="index"
+            class="rounded-[32px] border border-surface xl:px-14 sm:px-6 px-3 sm:py-8 py-4 w-[200px] md:w-[363px]"
+          >
+            <div class="flex items-center gap-4 mb-6">
+              <div class="bg-gray-400 rounded-full sm:w-[46px] sm:h-[46px] w-7 h-7"></div>
+              <div>
+                <p
+                  class="section-eyebrow sm:mb-2 mb-1"
+                  :class="{
+                    'text-primary': person.role == 'buidler',
+                    'text-secondary': person.role == 'sponsor',
+                    'text-tertiary': person.role == 'organizer',
+                  }"
+                >
+                  {{ person.role }}
+                </p>
+                <p class="sm:text-base text-xs">{{ person.name }}</p>
+              </div>
+            </div>
+            <p class="font-extrabold xl:text-base sm:text-sm text-xs">
+              {{ person.testimonial }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-52"></section>
 
   <div>
     <!-- <div class="grid gap-32">
