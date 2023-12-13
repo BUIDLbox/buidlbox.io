@@ -220,8 +220,8 @@ const selectSlide = (e: any) => {
 </script>
 
 <template>
-  <div>
-    <div class="relative max-w-screen overflow-x-hidden">
+  <div class="max-w-screen">
+    <div class="relative max-w-screen">
       <img
         src="/images/background-gradient.png"
         alt="buidlbox logo"
@@ -229,10 +229,10 @@ const selectSlide = (e: any) => {
       />
     </div>
     <section
-      class="pt-[25vh] padding flex sm:flex-row flex-col pb-40 relative overflow-visible"
+      class="pt-[25vh] padding flex sm:flex-row flex-col pb-40 relative overflow-hidden"
     >
       <div class="self-center justify-self-center max-w-md z-50">
-        <h1 class="section-title text-7xl pb-6">
+        <h1 class="section-title leading-[120%] text-6xl sm:text-7xl pb-6">
           We grow <br /><span class="gradient-text">ecosystems</span>
         </h1>
         <p class="pb-20 sm:text-lg">
@@ -280,7 +280,7 @@ const selectSlide = (e: any) => {
 
     <section class="max-w-[85rem] mx-auto px-4 w-fit relative">
       <div
-        class="w-screen h-[650px] background-gradient absolute -top-48"
+        class="w-screen overflow-x-hidden h-[650px] background-gradient absolute left-0 right-0 -top-48"
       ></div>
       <div class="w-fit">
         <Logos class="slide-in-section" :default-white="true"
@@ -295,28 +295,29 @@ const selectSlide = (e: any) => {
     </section>
 
     <!-- quote section -->
-    <section class="mt-52 relative px-4">
-      <h1
-        class="section-title text-3xl sm:text-4xl md:text-5xl xl:text-6xl max-w-[58rem] m-auto text-center !leading-[140%] tracking-wider"
-      >
-        We believe the best way to
-        <span class="text-primary">grow</span> developer
-        <span class="text-secondary">ecosystems</span> is through the power of
-        <span class="text-tertiary">hackathons</span>.
-      </h1>
+    <div class="relative">
+      <section class="mt-52 px-4 overflow-x-hidden max-w-screen">
+        <h1
+          class="section-title text-3xl sm:text-4xl md:text-5xl xl:text-6xl max-w-[58rem] m-auto text-center !leading-[140%] tracking-wider"
+        >
+          We believe the best way to
+          <span class="text-primary">grow</span> developer
+          <span class="text-secondary">ecosystems</span> is through the power of
+          <span class="text-tertiary">hackathons</span>.
+        </h1>
 
-      <img
-        src="/images/background-gradient.png"
-        alt=""
-        class="absolute -top-80 -right-[100px] w-[800px] z-40 m-auto"
-      />
-    </section>
+        <img
+          src="/images/background-gradient.png"
+          alt=""
+          class="absolute -top-80 -right-[100px] w-[800px] z-40 m-auto"
+        />
+      </section>
+    </div>
 
     <div class="relative scale-100">
       <!-- bg circles -->
-
       <div
-        class="fixed h-full origin-center -left-[250px] top-20 m-auto transform -translate-x-1/2"
+        class="absolute h-full origin-center -left-[250px] top-20 m-auto transform -translate-x-1/2"
       >
         <img
           class="animate-grow origin-center h-32 w-32 animation-delay-0"
@@ -325,7 +326,7 @@ const selectSlide = (e: any) => {
         />
       </div>
       <div
-        class="fixed h-full origin-center -left-[250px] top-20 m-auto transform -translate-x-1/2"
+        class="absolute h-full origin-center -left-[250px] top-20 m-auto transform -translate-x-1/2"
       >
         <img
           class="animate-grow origin-center h-32 w-32 animation-delay-2000"
@@ -334,7 +335,7 @@ const selectSlide = (e: any) => {
         />
       </div>
       <div
-        class="fixed h-full origin-center -left-[250px] top-20 m-auto transform -translate-x-1/2"
+        class="absolute h-full origin-center -left-[250px] top-20 m-auto transform -translate-x-1/2"
       >
         <img
           class="animate-grow origin-center h-32 w-32 animation-delay-4000"
@@ -344,11 +345,11 @@ const selectSlide = (e: any) => {
       </div>
 
       <!-- ecosystem section -->
-      <section class="mt-52 px-4">
+      <section class="mt-52 px-4 z-50">
         <div
           class="grid sm:grid-cols-2 md:gap-12 gap-6 max-w-[65rem] m-auto justify-center"
         >
-          <div class="max-w-lg h-fit top-40 sm:sticky">
+          <div class="max-w-lg h-fit top-40 sm:sticky z-50 child:z-50">
             <div class="flex items-center gap-2 mb-4">
               <GlobeAltIcon class="text-on-surface h-4 w-4" />
               <h4 class="section-eyebrow">Ecosystem</h4>
@@ -402,7 +403,7 @@ const selectSlide = (e: any) => {
       <!-- tools section -->
       <section class="mt-52 relative px-4">
         <div
-          class="relative h-full grid sm:grid-cols-2 gap-6 md:gap-12 max-w-[65rem] m-auto justify-center"
+          class="relative h-full grid sm:grid-cols-2 gap-16 sm:gap-6 md:gap-12 max-w-[65rem] m-auto justify-center"
         >
           <div class="max-w-md sm:sticky top-40 h-fit">
             <div class="flex items-center gap-2 mb-4">
@@ -488,11 +489,11 @@ const selectSlide = (e: any) => {
     </div>
 
     <!-- marketing section -->
-    <section class="mt-52">
+    <section class="mt-52 px-4">
       <div
         class="flex items-center justify-center flex-col sm:gap-16 gap-28 max-w-[85rem] mx-auto px-2 sm:px-6"
       >
-        <div class="child:mx-auto px-2">
+        <div class="child:mx-auto">
           <div class="flex items-center gap-2 mb-4 justify-center">
             <ChartBarIcon class="text-on-surface h-4 w-4" />
             <h4 class="section-eyebrow !leading-[120%]">Marketing</h4>
@@ -617,7 +618,7 @@ const selectSlide = (e: any) => {
 
     <!-- team section -->
     <section
-      class="mt-52 flex flex-col items-center max-w-full overflow-hidden"
+      class="mt-52 px-4 flex flex-col items-center max-w-full overflow-hidden"
     >
       <!--header-->
       <div class="top-40 h-fit flex flex-col items-center">
@@ -807,7 +808,7 @@ const selectSlide = (e: any) => {
     </section>
 
     <!-- final CTA -->
-    <section class="relative w-screen mt-52 overflow-hidden h-screen">
+    <section class="relative w-screen px-4 mt-52 overflow-hidden h-screen">
       <div
         class="flex flex-col items-center max-w-full justify-center child:z-50"
       >
