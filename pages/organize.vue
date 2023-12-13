@@ -296,7 +296,7 @@ const selectSlide = (e: any) => {
     <!-- quote section -->
     <section class="mt-52 relative px-4">
       <h1
-        class="section-title text-3xl sm:text-[2.5rem] max-w-[58rem] m-auto text-center leading-[140%] tracking-wider"
+        class="section-title text-3xl sm:text-4xl md:text-5xl xl:text-6xl max-w-[58rem] m-auto text-center !leading-[140%] tracking-wider"
       >
         We believe the best way to
         <span class="text-primary">grow</span> developer
