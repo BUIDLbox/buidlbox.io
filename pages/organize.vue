@@ -312,164 +312,231 @@ const selectSlide = (e: any) => {
     </section>
 
     <!-- ecosystem section -->
-    <section class="mt-52 px-4">
-      <div
-        class="grid sm:grid-cols-2 md:gap-12 gap-6 max-w-[65rem] m-auto justify-center"
-      >
-        <div class="max-w-lg h-fit top-40 sm:sticky">
-          <div class="flex items-center gap-2 mb-4">
-            <GlobeAltIcon class="text-on-surface h-4 w-4" />
-            <h4 class="section-eyebrow">Ecosystem</h4>
-          </div>
-          <h1 class="section-title text-4xl md:text-6xl mb-7 leading-[120%]">
-            Grow your community with the right people
-          </h1>
-          <p class="font-medium sm:text-lg">
-            Elevate your hackathon experience by buidling meaningful connections
-            and fostering collaboration.
-          </p>
-        </div>
-        <div class="flex flex-col gap-4">
-          <div class="h-72 rounded-[32px] bg-card-bg border border-surface p-8">
-            <p class="mb-3 section-title text-2xl">35k buidlers worldwide</p>
-            <p class="font-medium max-w-xs">
-              Our community consists of buidlers from 155 countries on the
-              platform.
-            </p>
-          </div>
-          <div class="h-72 rounded-[32px] bg-card-bg border border-surface p-8">
-            <p class="mb-3 section-title text-2xl">
-              Find the champions of your ecosystem
-            </p>
-            <p class="font-medium max-w-xs">
-              Discover and source top-tier talent from our community, and fund
-              cutting-edge projects built on your ecosystem by hackathon
-              buidlers.
-            </p>
-          </div>
-          <div class="h-72 rounded-[32px] bg-card-bg border border-surface p-8">
-            <p class="mb-3 section-title text-2xl">
-              Wow something else goes here
-            </p>
-            <p class="font-medium max-w-xs">
-              Discover and source top-tier talent from our community, and fund
-              cutting-edge projects built on your ecosystem by hackathon
-              buidlers.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
+    <div class="relative scale-100">
+      <!-- bg circles -->
 
-    <!-- tools section -->
-    <section class="mt-52 relative px-4">
       <div
-        class="origin-center absolute h-32 w-32 -left-[250px] top-20 m-auto transform -translate-x-1/2"
+        class="fixed h-full origin-center -left-[250px] top-20 m-auto transform -translate-x-1/2"
       >
         <img
           class="animate-grow origin-center h-32 w-32 animation-delay-0"
           src="/images/circle1.svg"
-          alt="buidlbox logo"
+          alt=""
         />
       </div>
       <div
-        class="origin-center absolute h-32 w-32 -left-[250px] top-20 m-auto transform -translate-x-1/2"
+        class="fixed h-full origin-center -left-[250px] top-20 m-auto transform -translate-x-1/2"
       >
         <img
           class="animate-grow origin-center h-32 w-32 animation-delay-2000"
           src="/images/circle2.svg"
-          alt="buidlbox logo"
+          alt=""
         />
       </div>
       <div
-        class="origin-center absolute h-32 w-32 -left-[250px] top-20 m-auto transform -translate-x-1/2"
+        class="fixed h-full origin-center -left-[250px] top-20 m-auto transform -translate-x-1/2"
       >
         <img
           class="animate-grow origin-center h-32 w-32 animation-delay-4000"
           src="/images/circle1.svg"
-          alt="buidlbox logo"
+          alt=""
         />
       </div>
-
-      <div
-        class="relative h-full grid sm:grid-cols-2 gap-6 md:gap-12 max-w-[65rem] m-auto justify-center"
-      >
-        <div class="max-w-md sm:sticky top-40 h-fit">
-          <div class="flex items-center gap-2 mb-4">
-            <WrenchScrewdriverIcon class="text-on-surface h-4 w-4" />
-            <h4 class="section-eyebrow">platform tools</h4>
+      <section class="mt-52 px-4">
+        <div
+          class="grid sm:grid-cols-2 md:gap-12 gap-6 max-w-[65rem] m-auto justify-center"
+        >
+          <div class="max-w-lg h-fit top-40 sm:sticky">
+            <div class="flex items-center gap-2 mb-4">
+              <GlobeAltIcon class="text-on-surface h-4 w-4" />
+              <h4 class="section-eyebrow">Ecosystem</h4>
+            </div>
+            <h1 class="section-title text-4xl md:text-6xl mb-7 leading-[120%]">
+              Grow your community with the right people
+            </h1>
+            <p class="font-medium sm:text-lg">
+              Elevate your hackathon experience by buidling meaningful
+              connections and fostering collaboration.
+            </p>
           </div>
-          <h1 class="section-title text-4xl md:text-6xl mb-7 leading-[120%]">
-            All the tools for engagement
-          </h1>
-          <p class="font-medium mb-10 max-w-sm sm:text-lg">
-            Your vision, our platform: We’ve got everything you need to
-            successfully organize your hackathon and power your community.
-          </p>
-          <NuxtLink :href="FEATURES_URL">
-            <GradientButton
-              class="flex-shrink-0 flex-grow-0"
-              @clicked="
-                () => {
-                  mixpanel.track('Request a demo', {
-                    type: 'Lead',
-                  });
-                }
-              "
-              >Request a demo</GradientButton
+          <div class="flex flex-col gap-4">
+            <div
+              class="h-72 rounded-[32px] bg-card-bg border border-surface p-8"
             >
-          </NuxtLink>
-        </div>
-        <div class="flex flex-col gap-4">
-          <div
-            class="h-52 rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5"
-          >
-            <p class="section-eyebrow text-primary">buidling</p>
-            <p class="font-extrabold text-2xl">buidlbot</p>
-            <p class="font-medium max-w-xs">
-              We have a full judging platform that is simple and very effective
-            </p>
-          </div>
-          <div
-            class="h-52 rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5"
-          >
-            <p class="section-eyebrow text-tertiary">marketing</p>
-            <p class="font-extrabold text-2xl">Bounties</p>
-            <p class="font-medium max-w-xs">
-              Engage your developer community in between hackathons. Source
-              great ideas. Solve problems. Find bugs.
-            </p>
-          </div>
-          <div
-            class="h-52 rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5"
-          >
-            <p class="section-eyebrow text-secondary">marketing</p>
-            <p class="font-extrabold text-2xl">Allowlist</p>
-            <p class="font-medium max-w-xs">
-              We have a full judging platform that is simple and very effective
-            </p>
-          </div>
-          <div
-            class="h-52 rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5"
-          >
-            <p class="section-eyebrow text-secondary">marketing</p>
-            <p class="font-extrabold text-2xl">Allowlist</p>
-            <p class="font-medium max-w-xs">
-              We have a full judging platform that is simple and very effective
-            </p>
-          </div>
-          <div
-            class="h-52 rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5"
-          >
-            <p class="section-eyebrow text-secondary">marketing</p>
-            <p class="font-extrabold text-2xl">Allowlist</p>
-            <p class="font-medium max-w-xs">
-              We have a full judging platform that is simple and very effective
-            </p>
+              <p class="mb-3 section-title text-2xl">35k buidlers worldwide</p>
+              <p class="font-medium max-w-xs">
+                Our community consists of buidlers from 155 countries on the
+                platform.
+              </p>
+            </div>
+            <div
+              class="h-72 rounded-[32px] bg-card-bg border border-surface p-8"
+            >
+              <p class="mb-3 section-title text-2xl">
+                Find the champions of your ecosystem
+              </p>
+              <p class="font-medium max-w-xs">
+                Discover and source top-tier talent from our community, and fund
+                cutting-edge projects built on your ecosystem by hackathon
+                buidlers.
+              </p>
+            </div>
+            <div
+              class="h-72 rounded-[32px] bg-card-bg border border-surface p-8"
+            >
+              <p class="mb-3 section-title text-2xl">
+                Wow something else goes here
+              </p>
+              <p class="font-medium max-w-xs">
+                Discover and source top-tier talent from our community, and fund
+                cutting-edge projects built on your ecosystem by hackathon
+                buidlers.
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <!-- ecosystem section -->
+      <section class="mt-52 px-4">
+        <div
+          class="grid sm:grid-cols-2 md:gap-12 gap-6 max-w-[65rem] m-auto justify-center"
+        >
+          <div class="max-w-lg h-fit top-40 sm:sticky">
+            <div class="flex items-center gap-2 mb-4">
+              <GlobeAltIcon class="text-on-surface h-4 w-4" />
+              <h4 class="section-eyebrow">Ecosystem</h4>
+            </div>
+            <h1 class="section-title text-4xl md:text-6xl mb-7 leading-[120%]">
+              Grow your community with the right people
+            </h1>
+            <p class="font-medium sm:text-lg">
+              Elevate your hackathon experience by buidling meaningful
+              connections and fostering collaboration.
+            </p>
+          </div>
+          <div class="flex flex-col gap-4">
+            <div
+              class="h-72 rounded-[32px] bg-card-bg border border-surface p-8"
+            >
+              <p class="mb-3 section-title text-2xl">35k buidlers worldwide</p>
+              <p class="font-medium max-w-xs">
+                Our community consists of buidlers from 155 countries on the
+                platform.
+              </p>
+            </div>
+            <div
+              class="h-72 rounded-[32px] bg-card-bg border border-surface p-8"
+            >
+              <p class="mb-3 section-title text-2xl">
+                Find the champions of your ecosystem
+              </p>
+              <p class="font-medium max-w-xs">
+                Discover and source top-tier talent from our community, and fund
+                cutting-edge projects built on your ecosystem by hackathon
+                buidlers.
+              </p>
+            </div>
+            <div class="h-72 rounded-[32px] border border-surface p-8">
+              <p class="mb-3 section-title text-2xl">
+                Wow something else goes here
+              </p>
+              <p class="font-medium max-w-xs">
+                Discover and source top-tier talent from our community, and fund
+                cutting-edge projects built on your ecosystem by hackathon
+                buidlers.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- tools section -->
+      <section class="mt-52 relative px-4">
+        <div
+          class="relative h-full grid sm:grid-cols-2 gap-6 md:gap-12 max-w-[65rem] m-auto justify-center"
+        >
+          <div class="max-w-md sm:sticky top-40 h-fit">
+            <div class="flex items-center gap-2 mb-4">
+              <WrenchScrewdriverIcon class="text-on-surface h-4 w-4" />
+              <h4 class="section-eyebrow">platform tools</h4>
+            </div>
+            <h1 class="section-title text-4xl md:text-6xl mb-7 leading-[120%]">
+              All the tools for engagement
+            </h1>
+            <p class="font-medium mb-10 max-w-sm sm:text-lg">
+              Your vision, our platform: We’ve got everything you need to
+              successfully organize your hackathon and power your community.
+            </p>
+            <NuxtLink :href="FEATURES_URL">
+              <GradientButton
+                class="flex-shrink-0 flex-grow-0"
+                @clicked="
+                  () => {
+                    mixpanel.track('Request a demo', {
+                      type: 'Lead',
+                    });
+                  }
+                "
+                >Request a demo</GradientButton
+              >
+            </NuxtLink>
+          </div>
+          <div class="flex flex-col gap-4">
+            <div
+              class="h-52 rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5"
+            >
+              <p class="section-eyebrow text-primary">buidling</p>
+              <p class="font-extrabold text-2xl">buidlbot</p>
+              <p class="font-medium max-w-xs">
+                We have a full judging platform that is simple and very
+                effective
+              </p>
+            </div>
+            <div
+              class="h-52 rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5"
+            >
+              <p class="section-eyebrow text-tertiary">marketing</p>
+              <p class="font-extrabold text-2xl">Bounties</p>
+              <p class="font-medium max-w-xs">
+                Engage your developer community in between hackathons. Source
+                great ideas. Solve problems. Find bugs.
+              </p>
+            </div>
+            <div
+              class="h-52 rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5"
+            >
+              <p class="section-eyebrow text-secondary">marketing</p>
+              <p class="font-extrabold text-2xl">Allowlist</p>
+              <p class="font-medium max-w-xs">
+                We have a full judging platform that is simple and very
+                effective
+              </p>
+            </div>
+            <div
+              class="h-52 rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5"
+            >
+              <p class="section-eyebrow text-secondary">marketing</p>
+              <p class="font-extrabold text-2xl">Allowlist</p>
+              <p class="font-medium max-w-xs">
+                We have a full judging platform that is simple and very
+                effective
+              </p>
+            </div>
+            <div
+              class="h-52 rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5"
+            >
+              <p class="section-eyebrow text-secondary">marketing</p>
+              <p class="font-extrabold text-2xl">Allowlist</p>
+              <p class="font-medium max-w-xs">
+                We have a full judging platform that is simple and very
+                effective
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
 
     <!-- marketing section -->
     <section class="mt-52">
@@ -645,11 +712,19 @@ const selectSlide = (e: any) => {
                 />
               </div>
               <div class="carousel__contents">
-                <h2 class="user__name ">{{ item.name }}</h2>
-                <h3 class="user__title section-eyebrow " :class="[
-                   index % 3 === 0 ?'text-secondary' : index % 2 === 0 ? 'text-primary' : 'text-tertiary',
-
-                ]">{{ item.eyebrow }}</h3>
+                <h2 class="user__name">{{ item.name }}</h2>
+                <h3
+                  class="user__title section-eyebrow"
+                  :class="[
+                    index % 3 === 0
+                      ? 'text-secondary'
+                      : index % 2 === 0
+                      ? 'text-primary'
+                      : 'text-tertiary',
+                  ]"
+                >
+                  {{ item.eyebrow }}
+                </h3>
               </div>
             </div>
             <!-- <div class="absolute bottom-0 left-0 bg-secondary-surface transition-all p-4 opacity-0 group-hover:opacity-100">
