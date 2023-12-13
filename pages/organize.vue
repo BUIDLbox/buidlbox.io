@@ -188,13 +188,13 @@ const buidlboxTeam = [
 ];
 
 const getSlideIndex = ($slide: Element) => {
-  const slides = [...document.getElementsByClassName(".carousel__item")];
+  const slides = [...document.getElementsByClassName("carousel__item")];
   return slides.indexOf($slide);
 };
 
 const activateSlide = ($slide: Element) => {
   if (!$slide) return;
-  const $slides = [...document.getElementsByClassName(".carousel__item")];
+  const $slides = [...document.getElementsByClassName("carousel__item")];
   $slides.forEach((el) => el.removeAttribute("data-active"));
   $slide.setAttribute("data-active", "true");
   $slide.focus();
@@ -339,7 +339,7 @@ const selectSlide = (e: any) => {
               buidlers.
             </p>
           </div>
-          <div class="h-72 rounded-[32px] border border-surface p-8">
+          <div class="h-72 rounded-[32px] bg-card-bg border border-surface p-8">
             <p class="mb-3 section-title text-2xl">
               Wow something else goes here
             </p>
@@ -623,6 +623,7 @@ const selectSlide = (e: any) => {
         <ul class="hide-scrollbar carousel__list">
           <li
             v-for="(item, index) in buidlboxTeam"
+            :key="index"
             class="carousel__item"
             tabindex="0"
             @click="selectSlide"
@@ -636,8 +637,11 @@ const selectSlide = (e: any) => {
                 />
               </div>
               <div class="carousel__contents">
-                <h2 class="user__name">{{ item.name }}</h2>
-                <h3 class="user__title">{{ item.eyebrow }}</h3>
+                <h2 class="user__name ">{{ item.name }}</h2>
+                <h3 class="user__title section-eyebrow " :class="[
+                   index % 3 === 0 ?'text-secondary' : index % 2 === 0 ? 'text-primary' : 'text-tertiary',
+
+                ]">{{ item.eyebrow }}</h3>
               </div>
             </div>
             <!-- <div class="absolute bottom-0 left-0 bg-secondary-surface transition-all p-4 opacity-0 group-hover:opacity-100">
@@ -1185,7 +1189,7 @@ background: linear-gradient(180deg, rgba(16,20,24,0) 0%, rgba(16,20,24,1) 30%, r
   z-index: 2;
   background-image: radial-gradient(
     ellipse at 0px 0px,
-    rgba(0, 0, 0, 0.4) 20%,
+    rgba(0, 0, 0, 0.4) 30%,
     transparent 50%
   );
   background-size: 170% 200px;
@@ -1204,15 +1208,10 @@ background: linear-gradient(180deg, rgba(16,20,24,0) 0%, rgba(16,20,24,1) 30%, r
 }
 
 .carousel__contents .user__title {
-  font-family: lexend;
   font-size: 0.875em;
   letter-spacing: 1.25px;
   font-weight: 500;
   text-transform: uppercase;
-  color: transparent;
-  background: linear-gradient(270deg, rgb(67, 255, 0), rgb(0, 255, 247));
-  background-clip: text;
-  -webkit-background-clip: text;
   opacity: 0.85;
   text-wrap: balance;
   margin-bottom: 0.5em;
