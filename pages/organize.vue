@@ -351,7 +351,7 @@ const selectSlide = (e: any) => {
               <GlobeAltIcon class="text-on-surface h-4 w-4" />
               <h4 class="section-eyebrow">Ecosystem</h4>
             </div>
-            <h1 class="section-title text-4xl md:text-6xl mb-7 leading-[120%]">
+            <h1 class="section-title text-4xl md:text-6xl mb-7 !leading-[120%]">
               Grow your community with the right people
             </h1>
             <p class="font-medium sm:text-lg">
@@ -407,7 +407,7 @@ const selectSlide = (e: any) => {
               <GlobeAltIcon class="text-on-surface h-4 w-4" />
               <h4 class="section-eyebrow">Ecosystem</h4>
             </div>
-            <h1 class="section-title text-4xl md:text-6xl mb-7 leading-[120%]">
+            <h1 class="section-title text-4xl md:text-6xl mb-7 !leading-[120%]">
               Grow your community with the right people
             </h1>
             <p class="font-medium sm:text-lg">
@@ -461,7 +461,7 @@ const selectSlide = (e: any) => {
               <WrenchScrewdriverIcon class="text-on-surface h-4 w-4" />
               <h4 class="section-eyebrow">platform tools</h4>
             </div>
-            <h1 class="section-title text-4xl md:text-6xl mb-7 leading-[120%]">
+            <h1 class="section-title text-4xl md:text-6xl mb-7 !leading-[120%]">
               All the tools for engagement
             </h1>
             <p class="font-medium mb-10 max-w-sm sm:text-lg">
@@ -546,10 +546,10 @@ const selectSlide = (e: any) => {
         <div class="child:mx-auto px-2">
           <div class="flex items-center gap-2 mb-4 justify-center">
             <ChartBarIcon class="text-on-surface h-4 w-4" />
-            <h4 class="section-eyebrow leading-[120%]">Marketing</h4>
+            <h4 class="section-eyebrow !leading-[120%]">Marketing</h4>
           </div>
           <h1
-            class="section-title text-4xl sm:text-6xl mb-7 text-center max-w-xl"
+            class="section-title text-4xl sm:text-6xl !leading-[120%] mb-7 text-center max-w-xl"
           >
             A full stack marketing strategy
           </h1>
@@ -676,7 +676,7 @@ const selectSlide = (e: any) => {
           <UserGroupIcon class="text-on-surface h-4 w-4" />
           <h4 class="section-eyebrow">the team</h4>
         </div>
-        <h1 class="section-title text-4xl sm:text-6xl text-center mb-7">
+        <h1 class="section-title !leading-[120%] text-4xl sm:text-6xl text-center mb-7">
           Meet the buidlbox team
         </h1>
         <p class="font-medium mb-10 max-w-sm text-center sm:text-lg">
@@ -749,10 +749,10 @@ const selectSlide = (e: any) => {
           <div class="flex items-center gap-2 mb-4 justify-center">
             <EnvelopeIcon class="text-on-surface h-4 w-4" />
 
-            <h4 class="section-eyebrow leading-[120%]">Testimonials</h4>
+            <h4 class="section-eyebrow !leading-[120%]">Testimonials</h4>
           </div>
           <h1
-            class="section-title text-4xl sm:text-6xl mb-7 text-center max-w-2xl"
+            class="section-title !leading-[120%] text-4xl sm:text-6xl mb-7 text-center max-w-2xl"
           >
             Don’t take it from us
           </h1>
@@ -859,7 +859,7 @@ const selectSlide = (e: any) => {
     <section
       class="relative w-screen mt-52 flex flex-col items-center max-w-full overflow-hidden h-screen justify-center"
     >
-      <h1 class="section-title text-4xl sm:text-6xl mb-7 text-center">
+      <h1 class="section-title !leading-[120%] text-4xl sm:text-6xl mb-7 text-center">
         Ready to grow your community?
       </h1>
       <p class="font-medium mb-10 max-w-sm text-center">
