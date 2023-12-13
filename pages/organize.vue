@@ -231,7 +231,7 @@ const selectSlide = (e: any) => {
     <section
       class="pt-[25vh] padding flex sm:flex-row flex-col pb-40 relative overflow-visible"
     >
-      <div class="self-center justify-self-center max-w-md">
+      <div class="self-center justify-self-center max-w-md z-50">
         <h1 class="section-title text-7xl pb-6">
           We grow <br /><span class="gradient-text">ecosystems</span>
         </h1>
@@ -311,7 +311,6 @@ const selectSlide = (e: any) => {
       />
     </section>
 
-    <!-- ecosystem section -->
     <div class="relative scale-100">
       <!-- bg circles -->
 
@@ -342,60 +341,6 @@ const selectSlide = (e: any) => {
           alt=""
         />
       </div>
-      <section class="mt-52 px-4">
-        <div
-          class="grid sm:grid-cols-2 md:gap-12 gap-6 max-w-[65rem] m-auto justify-center"
-        >
-          <div class="max-w-lg h-fit top-40 sm:sticky">
-            <div class="flex items-center gap-2 mb-4">
-              <GlobeAltIcon class="text-on-surface h-4 w-4" />
-              <h4 class="section-eyebrow">Ecosystem</h4>
-            </div>
-            <h1 class="section-title text-4xl md:text-6xl mb-7 !leading-[120%]">
-              Grow your community with the right people
-            </h1>
-            <p class="font-medium sm:text-lg">
-              Elevate your hackathon experience by buidling meaningful
-              connections and fostering collaboration.
-            </p>
-          </div>
-          <div class="flex flex-col gap-4">
-            <div
-              class="h-72 rounded-[32px] bg-card-bg border border-surface p-8"
-            >
-              <p class="mb-3 section-title text-2xl">35k buidlers worldwide</p>
-              <p class="font-medium max-w-xs">
-                Our community consists of buidlers from 155 countries on the
-                platform.
-              </p>
-            </div>
-            <div
-              class="h-72 rounded-[32px] bg-card-bg border border-surface p-8"
-            >
-              <p class="mb-3 section-title text-2xl">
-                Find the champions of your ecosystem
-              </p>
-              <p class="font-medium max-w-xs">
-                Discover and source top-tier talent from our community, and fund
-                cutting-edge projects built on your ecosystem by hackathon
-                buidlers.
-              </p>
-            </div>
-            <div
-              class="h-72 rounded-[32px] bg-card-bg border border-surface p-8"
-            >
-              <p class="mb-3 section-title text-2xl">
-                Wow something else goes here
-              </p>
-              <p class="font-medium max-w-xs">
-                Discover and source top-tier talent from our community, and fund
-                cutting-edge projects built on your ecosystem by hackathon
-                buidlers.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <!-- ecosystem section -->
       <section class="mt-52 px-4">
@@ -437,7 +382,9 @@ const selectSlide = (e: any) => {
                 buidlers.
               </p>
             </div>
-            <div class="h-72 rounded-[32px] border border-surface p-8">
+            <div
+              class="h-72 rounded-[32px] bg-card-bg border border-surface p-8"
+            >
               <p class="mb-3 section-title text-2xl">
                 Wow something else goes here
               </p>
@@ -676,7 +623,9 @@ const selectSlide = (e: any) => {
           <UserGroupIcon class="text-on-surface h-4 w-4" />
           <h4 class="section-eyebrow">the team</h4>
         </div>
-        <h1 class="section-title !leading-[120%] text-4xl sm:text-6xl text-center mb-7">
+        <h1
+          class="section-title !leading-[120%] text-4xl sm:text-6xl text-center mb-7"
+        >
           Meet the buidlbox team
         </h1>
         <p class="font-medium mb-10 max-w-sm text-center sm:text-lg">
@@ -856,30 +805,34 @@ const selectSlide = (e: any) => {
     </section>
 
     <!-- final CTA -->
-    <section
-      class="relative w-screen mt-52 flex flex-col items-center max-w-full overflow-hidden h-screen justify-center"
-    >
-      <h1 class="section-title !leading-[120%] text-4xl sm:text-6xl mb-7 text-center">
-        Ready to grow your community?
-      </h1>
-      <p class="font-medium mb-10 max-w-sm text-center">
-        Arrange a call with us to go through the next steps!
-      </p>
-      <NuxtLink :href="FEATURES_URL">
-        <GradientButton
-          class="flex-shrink-0 flex-grow-0"
-          @clicked="
-            () => {
-              mixpanel.track('Request a demo', {
-                type: 'Lead',
-              });
-            }
-          "
-          >Request a demo</GradientButton
-        >
-      </NuxtLink>
+    <section class="relative w-screen mt-52 overflow-hidden h-screen">
       <div
-        class="origin-center absolute h-32 w-32 bottom-0 left-1/2 m-auto transform -translate-x-1/2"
+        class="flex flex-col items-center max-w-full justify-center child:z-50"
+      >
+        <h1
+          class="section-title !leading-[120%] text-4xl sm:text-6xl mb-7 text-center"
+        >
+          Ready to grow your community?
+        </h1>
+        <p class="font-medium mb-10 max-w-md text-center sm:text-lg">
+          Arrange a call with us to go through the next steps!
+        </p>
+        <NuxtLink :href="FEATURES_URL">
+          <GradientButton
+            class="flex-shrink-0 flex-grow-0"
+            @clicked="
+              () => {
+                mixpanel.track('Request a demo', {
+                  type: 'Lead',
+                });
+              }
+            "
+            >Request a demo</GradientButton
+          >
+        </NuxtLink>
+      </div>
+      <div
+        class="origin-center z-0 absolute h-32 w-32 bottom-0 left-1/2 m-auto transform -translate-x-1/2"
       >
         <img
           class="animate-grow origin-center h-32 w-32 animation-delay-0"
@@ -888,19 +841,19 @@ const selectSlide = (e: any) => {
         />
       </div>
       <div
-        class="origin-center absolute h-32 w-32 bottom-0 left-1/2 m-auto transform -translate-x-1/2"
+        class="origin-center z-0 absolute h-32 w-32 bottom-0 left-1/2 m-auto transform -translate-x-1/2"
       >
         <img
-          class="animate-grow origin-center h-32 w-32 animation-delay-2000"
+          class="animate-grow origin-center z-0 h-32 w-32 animation-delay-2000"
           src="/images/circle2.svg"
           alt="buidlbox logo"
         />
       </div>
       <div
-        class="origin-center absolute h-32 w-32 bottom-0 left-1/2 m-auto transform -translate-x-1/2"
+        class="origin-center z-0 absolute h-32 w-32 bottom-0 left-1/2 m-auto transform -translate-x-1/2"
       >
         <img
-          class="animate-grow origin-center h-32 w-32 animation-delay-4000"
+          class="animate-grow origin-center z-0 h-32 w-32 animation-delay-4000"
           src="/images/circle1.svg"
           alt="buidlbox logo"
         />
