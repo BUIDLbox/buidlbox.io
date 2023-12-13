@@ -562,14 +562,12 @@ const selectSlide = (e: any) => {
           <div
             class="rounded-[32px] bg-card-bg border border-surface p-4 sm:p-10"
           >
-            <div
-              class="flex items-center justify-center w-[3.75rem] h-[3.75rem]"
-            >
-              <font-awesome-icon
-                :icon="['fab', 'discord']"
-                class="sm:!w-[3.75rem] sm:!h-[3.75rem] !w-10 !h-10 text-red-200 text-transparent bg-clip-text !bg-gradient-to-br from-primary via-secondary to-tertiary hover:bg-positive transition-all"
-              />
-            </div>
+            <img
+              src="/images/discord-gradient-icon.svg"
+              width="60"
+              height="60"
+              class="sm:!w-[3.75rem] sm:!h-[3.75rem] !w-10 !h-10"
+            />
           </div>
 
           <MarketingCard type="tertiary"
@@ -588,12 +586,12 @@ const selectSlide = (e: any) => {
           <div
             class="rounded-[32px] bg-card-bg border border-surface p-4 sm:p-10"
           >
-            <div class="flex items-center justify-center">
-              <font-awesome-icon
-                :icon="['fab', 'telegram']"
-                class="sm:!w-[3.75rem] sm:!h-[3.75rem] !w-10 !h-10 border border-red-500 bg-transparent bg-gradient-to-br from-primary via-secondary to-tertiary rounded-full"
-              />
-            </div>
+            <img
+              src="/images/telegram-gradient-icon.svg"
+              width="60"
+              height="60"
+              class="sm:!w-[3.75rem] sm:!h-[3.75rem] !w-10 !h-10"
+            />
           </div>
           <MarketingCard type="primary"
             ><template v-slot:eyebrow>medium</template
@@ -609,14 +607,12 @@ const selectSlide = (e: any) => {
           <div
             class="rounded-[32px] bg-card-bg border border-surface p-4 sm:p-10"
           >
-            <div
-              class="flex items-center justify-center w-[3.75rem] h-[3.75rem]"
-            >
-              <font-awesome-icon
-                :icon="['fab', 'telegram']"
-                class="sm:!w-[3.75rem] sm:!h-[3.75rem] !w-10 !h-10 border border-red-500 bg-transparent bg-gradient-to-br from-primary via-secondary to-tertiary rounded-full"
-              />
-            </div>
+            <img
+              src="/images/reddit-gradient-icon.svg"
+              width="60"
+              height="60"
+              class="sm:!w-[3.75rem] sm:!h-[3.75rem] !w-10 !h-10"
+            />
           </div>
           <MarketingCard type="secondary"
             ><template v-slot:eyebrow>workshops</template
@@ -645,14 +641,12 @@ const selectSlide = (e: any) => {
           <div
             class="rounded-[32px] bg-card-bg border border-surface p-4 sm:p-10"
           >
-            <div
-              class="flex items-center justify-center w-[3.75rem] h-[3.75rem]"
-            >
-              <font-awesome-icon
-                :icon="['fab', 'telegram']"
-                class="sm:!w-[3.75rem] sm:!h-[3.75rem] !w-10 !h-10 border border-red-500 bg-transparent bg-gradient-to-br from-primary via-secondary to-tertiary rounded-full"
-              />
-            </div>
+            <img
+              src="/images/twitter-gradient-icon.svg"
+              width="60"
+              height="60"
+              class="sm:!w-[3.75rem] sm:!h-[3.75rem] !w-10 !h-10"
+            />
           </div>
           <MarketingCard type="primary"
             ><template v-slot:eyebrow>twitter</template
@@ -661,14 +655,12 @@ const selectSlide = (e: any) => {
           <div
             class="rounded-[32px] bg-card-bg border border-surface p-4 sm:p-10"
           >
-            <div
-              class="flex items-center justify-center w-[3.75rem] h-[3.75rem]"
-            >
-              <font-awesome-icon
-                :icon="['fab', 'telegram']"
-                class="sm:!w-[3.75rem] sm:!h-[3.75rem] !w-10 !h-10 border border-red-500 bg-transparent bg-gradient-to-br from-primary via-secondary to-tertiary rounded-full"
-              />
-            </div>
+            <img
+              src="/images/instagram-gradient-icon.svg"
+              width="60"
+              height="60"
+              class="sm:!w-[3.75rem] sm:!h-[3.75rem] !w-10 !h-10"
+            />
           </div>
         </div>
       </div>
