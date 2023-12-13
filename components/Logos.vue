@@ -54,10 +54,17 @@ const logos = [
   >
     <div
       class="relative group cursor-pointer"
-      v-for="logo in logos"
+      v-for="(logo, index) in logos"
       :key="logo.name"
     >
-      <img :src="logo.fullColorLogo" :alt="`${logo.name} logo`" class="w-full h-auto md:max-w-[220px] max-w-[70px] 2xl:max-w-none"/>
+      <div v-if="index == 0" class="absolute -top-14">
+        <slot name="eyebrow" />
+      </div>
+      <img
+        :src="logo.fullColorLogo"
+        :alt="`${logo.name} logo`"
+        class="w-full h-auto md:max-w-[220px] max-w-[70px] 2xl:max-w-none"
+      />
       <img
         :src="logo.logo"
         :alt="`${logo.name} logo`"

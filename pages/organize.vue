@@ -212,49 +212,78 @@ const selectSlide = (e: any) => {
 </script>
 
 <template>
-  <div class="overflow-x-hidden">
-    <section class="pt-64 padding flex pb-40 relative">
-    <img src="/images/background-gradient.png" alt="buidlbox logo"
-      class="absolute -rotate-90 -top-[600px] w-[800px] z-40 left-0 right-0 m-auto" />
-    <div class="self-center justify-self-center max-w-md">
-      <h1 class="section-title text-7xl pb-6">
-        We grow <br /><span class="gradient-text">ecosystems</span>
-      </h1>
-      <p class="pb-20">
-        Unlock innovation and grow developer communities through hackathons &
-        bounties with buidlbox
-      </p>
-      <NuxtLink :href="FEATURES_URL">
-        <GradientButton class="flex-shrink-0 flex-grow-0" @clicked="() => {
-          mixpanel.track('Request a demo', {
-            type: 'Lead',
-          });
-        }
-          ">Request a demo</GradientButton>
-      </NuxtLink>
+  <div>
+    <div class="relative max-w-screen overflow-x-hidden">
+      <img
+        src="/images/background-gradient.png"
+        alt="buidlbox logo"
+        class="absolute -rotate-90 -top-[25rem] left-0 right-0 m-auto"
+      />
     </div>
-    <div class="relative w-full h-90 z-0">
-      <img
-        class="animate-grow absolute h-32 z-0 w-32 animation-delay-0 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-        src="/images/circle1.svg" alt="buidlbox logo" style="transform-origin: center" />
-      <img
-        class="animate-grow absolute z-0 h-32 w-32 animation-delay-2000 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-        src="/images/circle2.svg" alt="buidlbox logo" style="transform-origin: center" />
-      <img
-        class="animate-grow absolute z-0 h-32 w-32 animation-delay-4000 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-        src="/images/circle1.svg" alt="buidlbox logo" style="transform-origin: center" />
-    </div>
-  </section>
+    <section class="pt-[25vh] padding flex sm:flex-row flex-col pb-40 relative overflow-visible">
+      <div class="self-center justify-self-center max-w-md">
+        <h1 class="section-title text-7xl pb-6">
+          We grow <br /><span class="gradient-text">ecosystems</span>
+        </h1>
+        <p class="pb-20">
+          Unlock innovation and grow developer communities through hackathons &
+          bounties with buidlbox
+        </p>
+        <NuxtLink :href="FEATURES_URL">
+          <GradientButton
+            class="flex-shrink-0 flex-grow-0"
+            @clicked="
+              () => {
+                mixpanel.track('Request a demo', {
+                  type: 'Lead',
+                });
+              }
+            "
+            >Request a demo</GradientButton
+          >
+        </NuxtLink>
+      </div>
+      <div class="relative w-full h-90">
+        <img
+          class="animate-grow absolute h-32 w-32 animation-delay-0 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          src="/images/circle1.svg"
+          alt="buidlbox logo"
+          style="transform-origin: center"
+        />
+        <img
+          class="animate-grow absolute h-32 w-32 animation-delay-2000 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          src="/images/circle2.svg"
+          alt="buidlbox logo"
+          style="transform-origin: center"
+        />
+        <img
+          class="animate-grow absolute h-32 w-32 animation-delay-4000 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          src="/images/circle1.svg"
+          alt="buidlbox logo"
+          style="transform-origin: center"
+        />
+      </div>
+    </section>
 
     <!--Client Logos-->
-    <section class="padding flex flex-wrap">
-      <Logos class="slide-in-section" />
+
+    <section class="max-w-[85rem] mx-auto px-4 w-fit">
+      <div class="w-fit">
+        <Logos class="slide-in-section" :default-white="true"
+          ><template v-slot:eyebrow
+            ><div class="flex items-center gap-2 mb-4">
+              <span>[i]</span>
+              <h4 class="section-eyebrow">Clients</h4>
+            </div></template
+          ></Logos
+        >
+      </div>
     </section>
 
     <!-- quote section -->
-    <section class="mt-52 relative">
+    <section class="mt-52 relative px-4">
       <h1
-        class="section-title text-[2.5rem] max-w-[58rem] m-auto text-center leading-[140%] tracking-wider"
+        class="section-title text-3xl sm:text-[2.5rem] max-w-[58rem] m-auto text-center leading-[140%] tracking-wider"
       >
         We believe the best way to
         <span class="text-primary">grow</span> developer
@@ -267,16 +296,16 @@ const selectSlide = (e: any) => {
     </section>
 
     <!-- ecosystem section -->
-    <section class="mt-52">
+    <section class="mt-52 px-4">
       <div
-        class="grid sm:grid-cols-2 gap-12 max-w-[65rem] m-auto justify-center"
+        class="grid sm:grid-cols-2 md:gap-12 gap-6 max-w-[65rem] m-auto justify-center"
       >
         <div class="max-w-lg">
           <div class="flex items-center gap-2 mb-4">
             <span>[i]</span>
             <h4 class="section-eyebrow">Ecosystem</h4>
           </div>
-          <h1 class="section-title text-6xl mb-7 leading-[120%]">
+          <h1 class="section-title text-4xl md:text-6xl mb-7 leading-[120%]">
             Grow your community with the right people
           </h1>
           <p class="font-medium">
@@ -307,7 +336,7 @@ const selectSlide = (e: any) => {
     </section>
 
     <!-- tools section -->
-    <section class="mt-52 relative">
+    <section class="mt-52 relative px-4">
       <div
         class="origin-center absolute h-32 w-32 -left-[250px] top-20  m-auto transform -translate-x-1/2"
       >
@@ -337,14 +366,14 @@ const selectSlide = (e: any) => {
       </div>
 
       <div
-        class="relative h-full grid sm:grid-cols-2 gap-12 max-w-[65rem] m-auto justify-center"
+        class="relative h-full grid sm:grid-cols-2 gap-6 md:gap-12 max-w-[65rem] m-auto justify-center"
       >
-        <div class="max-w-md sticky top-40 h-fit">
+        <div class="max-w-md sm:sticky top-40 h-fit">
           <div class="flex items-center gap-2 mb-4">
             <span>[i]</span>
             <h4 class="section-eyebrow">platform tools</h4>
           </div>
-          <h1 class="section-title text-6xl mb-7 leading-[120%]">
+          <h1 class="section-title text-4xl md:text-6xl mb-7 leading-[120%]">
             All the tools for engagement
           </h1>
           <p class="font-medium mb-10 max-w-sm">
@@ -419,14 +448,16 @@ const selectSlide = (e: any) => {
     <!-- marketing section -->
     <section class="mt-52">
       <div
-        class="flex items-center justify-center flex-col sm:gap-16 gap-28 max-w-[85rem] mx-auto px-6"
+        class="flex items-center justify-center flex-col sm:gap-16 gap-28 max-w-[85rem] mx-auto px-2 sm:px-6"
       >
-        <div class="child:mx-auto">
+        <div class="child:mx-auto px-2">
           <div class="flex items-center gap-2 mb-4 justify-center">
             <span>[i]</span>
             <h4 class="section-eyebrow leading-[120%]">Marketing</h4>
           </div>
-          <h1 class="section-title text-6xl mb-7 text-center max-w-xl">
+          <h1
+            class="section-title text-4xl sm:text-6xl mb-7 text-center max-w-xl"
+          >
             A full stack marketing strategy
           </h1>
           <p class="font-medium text-center max-w-md">
@@ -434,14 +465,14 @@ const selectSlide = (e: any) => {
             support tailored to your unique needs.
           </p>
         </div>
-        <div class="flex items-center justify-center flex-wrap gap-4">
-          <div class="rounded-[32px] border border-surface p-10">
+        <div class="flex items-center justify-center flex-wrap gap-3 sm:gap-4">
+          <div class="rounded-[32px] border border-surface p-4 sm:p-10">
             <div
               class="flex items-center justify-center w-[3.75rem] h-[3.75rem]"
             >
               <font-awesome-icon
                 :icon="['fab', 'discord']"
-                class="!w-[3.75rem] !h-[3.75rem] text-red-200 text-transparent bg-clip-text !bg-gradient-to-br from-primary via-secondary to-tertiary hover:bg-positive transition-all"
+                class="sm:!w-[3.75rem] sm:!h-[3.75rem] !w-10 !h-10 text-red-200 text-transparent bg-clip-text !bg-gradient-to-br from-primary via-secondary to-tertiary hover:bg-positive transition-all"
               />
             </div>
           </div>
@@ -459,13 +490,11 @@ const selectSlide = (e: any) => {
               >Schedule <br />planning</template
             ></MarketingCard
           >
-          <div class="rounded-[32px] border border-surface p-10">
-            <div
-              class="flex items-center justify-center w-[3.75rem] h-[3.75rem]"
-            >
+          <div class="rounded-[32px] border border-surface p-4 sm:p-10">
+            <div class="flex items-center justify-center">
               <font-awesome-icon
                 :icon="['fab', 'telegram']"
-                class="!w-[3.75rem] !h-[3.75rem] border border-red-500 bg-transparent bg-gradient-to-br from-primary via-secondary to-tertiary rounded-full"
+                class="sm:!w-[3.75rem] sm:!h-[3.75rem] !w-10 !h-10 border border-red-500 bg-transparent bg-gradient-to-br from-primary via-secondary to-tertiary rounded-full"
               />
             </div>
           </div>
@@ -480,13 +509,13 @@ const selectSlide = (e: any) => {
               by analytics</template
             ></MarketingCard
           >
-          <div class="rounded-[32px] border border-surface p-10">
+          <div class="rounded-[32px] border border-surface p-4 sm:p-10">
             <div
               class="flex items-center justify-center w-[3.75rem] h-[3.75rem]"
             >
               <font-awesome-icon
                 :icon="['fab', 'telegram']"
-                class="!w-[3.75rem] !h-[3.75rem] border border-red-500 bg-transparent bg-gradient-to-br from-primary via-secondary to-tertiary rounded-full"
+                class="sm:!w-[3.75rem] sm:!h-[3.75rem] !w-10 !h-10 border border-red-500 bg-transparent bg-gradient-to-br from-primary via-secondary to-tertiary rounded-full"
               />
             </div>
           </div>
@@ -514,13 +543,13 @@ const selectSlide = (e: any) => {
               >Reddit pages and <br />engagements</template
             ></MarketingCard
           >
-          <div class="rounded-[32px] border border-surface p-10">
+          <div class="rounded-[32px] border border-surface p-4 sm:p-10">
             <div
               class="flex items-center justify-center w-[3.75rem] h-[3.75rem]"
             >
               <font-awesome-icon
                 :icon="['fab', 'telegram']"
-                class="!w-[3.75rem] !h-[3.75rem] border border-red-500 bg-transparent bg-gradient-to-br from-primary via-secondary to-tertiary rounded-full"
+                class="sm:!w-[3.75rem] sm:!h-[3.75rem] !w-10 !h-10 border border-red-500 bg-transparent bg-gradient-to-br from-primary via-secondary to-tertiary rounded-full"
               />
             </div>
           </div>
@@ -528,13 +557,13 @@ const selectSlide = (e: any) => {
             ><template v-slot:eyebrow>twitter</template
             ><template v-slot:title>Twitter spaces</template></MarketingCard
           >
-          <div class="rounded-[32px] border border-surface p-10">
+          <div class="rounded-[32px] border border-surface p-4 sm:p-10">
             <div
               class="flex items-center justify-center w-[3.75rem] h-[3.75rem]"
             >
               <font-awesome-icon
                 :icon="['fab', 'telegram']"
-                class="!w-[3.75rem] !h-[3.75rem] border border-red-500 bg-transparent bg-gradient-to-br from-primary via-secondary to-tertiary rounded-full"
+                class="sm:!w-[3.75rem] sm:!h-[3.75rem] !w-10 !h-10 border border-red-500 bg-transparent bg-gradient-to-br from-primary via-secondary to-tertiary rounded-full"
               />
             </div>
           </div>
@@ -552,7 +581,9 @@ const selectSlide = (e: any) => {
           <span>[i]</span>
           <h4 class="section-eyebrow">the team</h4>
         </div>
-        <h1 class="section-title text-6xl mb-7">Meet the buidlbox team</h1>
+        <h1 class="section-title text-4xl sm:text-6xl text-center mb-7">
+          Meet the buidlbox team
+        </h1>
         <p class="font-medium mb-10 max-w-sm text-center">
           We've got your back (and your hack) at every stage, providing support
           throughout your hackathon journey.
@@ -606,7 +637,9 @@ const selectSlide = (e: any) => {
             <span>[i]</span>
             <h4 class="section-eyebrow leading-[120%]">Testimonials</h4>
           </div>
-          <h1 class="section-title text-6xl mb-7 text-center max-w-2xl">
+          <h1
+            class="section-title text-4xl sm:text-6xl mb-7 text-center max-w-2xl"
+          >
             Don’t take it from us
           </h1>
           <p class="font-medium text-center max-w-md">
@@ -712,7 +745,7 @@ const selectSlide = (e: any) => {
     <section
       class="relative w-screen mt-52 flex flex-col items-center max-w-full overflow-hidden h-screen justify-center"
     >
-      <h1 class="section-title text-6xl mb-7 text-center">
+      <h1 class="section-title text-4xl sm:text-6xl mb-7 text-center">
         Ready to grow your community?
       </h1>
       <p class="font-medium mb-10 max-w-sm text-center">
