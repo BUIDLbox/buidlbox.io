@@ -212,126 +212,20 @@ const selectSlide = (e: any) => {
 </script>
 
 <template>
-  <img
-    src="/images/background-gradient.png"
-    alt="buidlbox logo"
-    class="absolute -rotate-90 -top-80 left-0 right-0 m-auto"
-  />
-  <section class="pt-64 padding flex pb-40 relative">
-    <div class="self-center justify-self-center max-w-md">
-      <h1 class="section-title text-7xl pb-6">
-        We grow <br /><span class="gradient-text">ecosystems</span>
-      </h1>
-      <p class="pb-20">
-        Unlock innovation and grow developer communities through hackathons &
-        bounties with buidlbox
-      </p>
-      <NuxtLink :href="FEATURES_URL">
-        <GradientButton
-          class="flex-shrink-0 flex-grow-0"
-          @clicked="
-            () => {
-              mixpanel.track('Request a demo', {
-                type: 'Lead',
-              });
-            }
-          "
-          >Request a demo</GradientButton
-        >
-      </NuxtLink>
-    </div>
-    <div class="relative w-full h-90">
-      <img
-        class="animate-grow absolute h-32 w-32 animation-delay-0 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-        src="/images/circle1.svg"
-        alt="buidlbox logo"
-        style="transform-origin: center"
-      />
-      <img
-        class="animate-grow absolute h-32 w-32 animation-delay-2000 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-        src="/images/circle2.svg"
-        alt="buidlbox logo"
-        style="transform-origin: center"
-      />
-      <img
-        class="animate-grow absolute h-32 w-32 animation-delay-4000 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-        src="/images/circle1.svg"
-        alt="buidlbox logo"
-        style="transform-origin: center"
-      />
-    </div>
-  </section>
-
-  <!--Client Logos-->
-  <section class="padding flex flex-wrap">
-    <Logos class="slide-in-section" />
-  </section>
-
-  <!-- quote section -->
-  <section class="mt-52">
-    <h1
-      class="section-title text-[2.5rem] max-w-[58rem] m-auto text-center leading-[140%] tracking-wider"
-    >
-      We believe the best way to
-      <span class="text-primary">grow</span> developer
-      <span class="text-secondary">ecosystems</span> is through the power of
-      <span class="text-tertiary">hackathons</span>.
-    </h1>
-  </section>
-
-  <!-- ecosystem section -->
-  <section class="mt-52">
-    <div class="grid sm:grid-cols-2 gap-12 max-w-[65rem] m-auto justify-center">
-      <div class="max-w-lg">
-        <div class="flex items-center gap-2 mb-4">
-          <span>[i]</span>
-          <h4 class="section-eyebrow">Ecosystem</h4>
-        </div>
-        <h1 class="section-title text-6xl mb-7 leading-[120%]">
-          Grow your community with the right people
+  <div class="overflow-x-hidden">
+    <img
+      src="/images/background-gradient.png"
+      alt="buidlbox logo"
+      class="absolute -rotate-90 -top-80 left-0 right-0 m-auto"
+    />
+    <section class="pt-64 padding flex pb-40 relative">
+      <div class="self-center justify-self-center max-w-md">
+        <h1 class="section-title text-7xl pb-6">
+          We grow <br /><span class="gradient-text">ecosystems</span>
         </h1>
-        <p class="font-medium">
-          Elevate your hackathon experience by buidling meaningful connections
-          and fostering collaboration.
-        </p>
-      </div>
-      <div class="flex flex-col gap-4">
-        <div class="h-72 rounded-[32px] border border-surface p-8">
-          <p class="mb-3 section-title text-2xl">35k buidlers worldwide</p>
-          <p class="font-medium max-w-xs">
-            Our community consists of buidlers from 155 countries on the
-            platform.
-          </p>
-        </div>
-        <div class="h-72 rounded-[32px] border border-surface p-8">
-          <p class="mb-3 section-title text-2xl">
-            Find the champions of your ecosystem
-          </p>
-          <p class="font-medium max-w-xs">
-            Discover and source top-tier talent from our community, and fund
-            cutting-edge projects built on your ecosystem by hackathon buidlers.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- tools section -->
-  <section class="mt-52">
-    <div
-      class="relative h-full grid sm:grid-cols-2 gap-12 max-w-[65rem] m-auto justify-center"
-    >
-      <div class="max-w-md sticky top-40 h-fit">
-        <div class="flex items-center gap-2 mb-4">
-          <span>[i]</span>
-          <h4 class="section-eyebrow">platform tools</h4>
-        </div>
-        <h1 class="section-title text-6xl mb-7 leading-[120%]">
-          All the tools for engagement
-        </h1>
-        <p class="font-medium mb-10 max-w-sm">
-          Your vision, our platform: We’ve got everything you need to
-          successfully organize your hackathon and power your community.
+        <p class="pb-20">
+          Unlock innovation and grow developer communities through hackathons &
+          bounties with buidlbox
         </p>
         <NuxtLink :href="FEATURES_URL">
           <GradientButton
@@ -347,387 +241,509 @@ const selectSlide = (e: any) => {
           >
         </NuxtLink>
       </div>
-      <div class="flex flex-col gap-4">
-        <div
-          class="h-52 rounded-[32px] border border-surface p-8 flex flex-col gap-2.5"
-        >
-          <p class="section-eyebrow text-primary">buidling</p>
-          <p class="font-extrabold text-2xl">buidlbot</p>
-          <p class="font-medium max-w-xs">
-            We have a full judging platform that is simple and very effective
-          </p>
-        </div>
-        <div
-          class="h-52 rounded-[32px] border border-surface p-8 flex flex-col gap-2.5"
-        >
-          <p class="section-eyebrow text-tertiary">marketing</p>
-          <p class="font-extrabold text-2xl">Bounties</p>
-          <p class="font-medium max-w-xs">
-            Engage your developer community in between hackathons. Source great
-            ideas. Solve problems. Find bugs.
-          </p>
-        </div>
-        <div
-          class="h-52 rounded-[32px] border border-surface p-8 flex flex-col gap-2.5"
-        >
-          <p class="section-eyebrow text-secondary">marketing</p>
-          <p class="font-extrabold text-2xl">Allowlist</p>
-          <p class="font-medium max-w-xs">
-            We have a full judging platform that is simple and very effective
-          </p>
-        </div>
-        <div
-          class="h-52 rounded-[32px] border border-surface p-8 flex flex-col gap-2.5"
-        >
-          <p class="section-eyebrow text-secondary">marketing</p>
-          <p class="font-extrabold text-2xl">Allowlist</p>
-          <p class="font-medium max-w-xs">
-            We have a full judging platform that is simple and very effective
-          </p>
-        </div>
-        <div
-          class="h-52 rounded-[32px] border border-surface p-8 flex flex-col gap-2.5"
-        >
-          <p class="section-eyebrow text-secondary">marketing</p>
-          <p class="font-extrabold text-2xl">Allowlist</p>
-          <p class="font-medium max-w-xs">
-            We have a full judging platform that is simple and very effective
-          </p>
-        </div>
+      <div class="relative w-full h-90">
+        <img
+          class="animate-grow absolute h-32 w-32 animation-delay-0 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          src="/images/circle1.svg"
+          alt="buidlbox logo"
+          style="transform-origin: center"
+        />
+        <img
+          class="animate-grow absolute h-32 w-32 animation-delay-2000 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          src="/images/circle2.svg"
+          alt="buidlbox logo"
+          style="transform-origin: center"
+        />
+        <img
+          class="animate-grow absolute h-32 w-32 animation-delay-4000 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          src="/images/circle1.svg"
+          alt="buidlbox logo"
+          style="transform-origin: center"
+        />
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- marketing section -->
-  <section class="mt-52">
-    <div
-      class="flex items-center justify-center flex-col sm:gap-16 gap-28 max-w-8xl px-6"
-    >
-      <div class="child:mx-auto">
-        <div class="flex items-center gap-2 mb-4 justify-center">
-          <span>[i]</span>
-          <h4 class="section-eyebrow leading-[120%]">Marketing</h4>
-        </div>
-        <h1 class="section-title text-6xl mb-7 text-center max-w-xl">
-          A full stack marketing strategy
-        </h1>
-        <p class="font-medium text-center max-w-md">
-          We’re here to navigate your marketing journey — comprehensive support
-          tailored to your unique needs.
-        </p>
-      </div>
-      <div class="flex items-center justify-center flex-wrap gap-4">
-        <div class="rounded-[32px] border border-surface p-10">
-          <div class="flex items-center justify-center w-[3.75rem] h-[3.75rem]">
-            <font-awesome-icon
-              :icon="['fab', 'discord']"
-              class="!w-[3.75rem] !h-[3.75rem] text-red-200 text-transparent bg-clip-text !bg-gradient-to-br from-primary via-secondary to-tertiary hover:bg-positive transition-all"
-            />
-          </div>
-        </div>
+    <!--Client Logos-->
+    <section class="padding flex flex-wrap">
+      <Logos class="slide-in-section" />
+    </section>
 
-        <MarketingCard type="tertiary"
-          ><template v-slot:eyebrow>discord</template
-          ><template v-slot:title
-            >Discord <br />
-            bot</template
-          ></MarketingCard
-        >
-        <MarketingCard type="secondary"
-          ><template v-slot:eyebrow>planner</template
-          ><template v-slot:title
-            >Schedule <br />planning</template
-          ></MarketingCard
-        >
-        <div class="rounded-[32px] border border-surface p-10">
-          <div class="flex items-center justify-center w-[3.75rem] h-[3.75rem]">
-            <font-awesome-icon
-              :icon="['fab', 'telegram']"
-              class="!w-[3.75rem] !h-[3.75rem] border border-red-500 bg-transparent bg-gradient-to-br from-primary via-secondary to-tertiary rounded-full"
-            />
+    <!-- quote section -->
+    <section class="mt-52">
+      <h1
+        class="section-title text-[2.5rem] max-w-[58rem] m-auto text-center leading-[140%] tracking-wider"
+      >
+        We believe the best way to
+        <span class="text-primary">grow</span> developer
+        <span class="text-secondary">ecosystems</span> is through the power of
+        <span class="text-tertiary">hackathons</span>.
+      </h1>
+    </section>
+
+    <!-- ecosystem section -->
+    <section class="mt-52">
+      <div
+        class="grid sm:grid-cols-2 gap-12 max-w-[65rem] m-auto justify-center"
+      >
+        <div class="max-w-lg">
+          <div class="flex items-center gap-2 mb-4">
+            <span>[i]</span>
+            <h4 class="section-eyebrow">Ecosystem</h4>
           </div>
+          <h1 class="section-title text-6xl mb-7 leading-[120%]">
+            Grow your community with the right people
+          </h1>
+          <p class="font-medium">
+            Elevate your hackathon experience by buidling meaningful connections
+            and fostering collaboration.
+          </p>
         </div>
-        <MarketingCard type="primary"
-          ><template v-slot:eyebrow>medium</template
-          ><template v-slot:title> Blog posts</template></MarketingCard
-        >
-        <MarketingCard type="primary"
-          ><template v-slot:eyebrow>analytics</template
-          ><template v-slot:title>
-            Marketing driven<br />
-            by analytics</template
-          ></MarketingCard
-        >
-        <div class="rounded-[32px] border border-surface p-10">
-          <div class="flex items-center justify-center w-[3.75rem] h-[3.75rem]">
-            <font-awesome-icon
-              :icon="['fab', 'telegram']"
-              class="!w-[3.75rem] !h-[3.75rem] border border-red-500 bg-transparent bg-gradient-to-br from-primary via-secondary to-tertiary rounded-full"
-            />
+        <div class="flex flex-col gap-4">
+          <div class="h-72 rounded-[32px] border border-surface p-8">
+            <p class="mb-3 section-title text-2xl">35k buidlers worldwide</p>
+            <p class="font-medium max-w-xs">
+              Our community consists of buidlers from 155 countries on the
+              platform.
+            </p>
           </div>
-        </div>
-        <MarketingCard type="secondary"
-          ><template v-slot:eyebrow>workshops</template
-          ><template v-slot:title
-            >Hosting <br />workshops</template
-          ></MarketingCard
-        >
-        <MarketingCard type="tertiary"
-          ><template v-slot:eyebrow>emails</template
-          ><template v-slot:title
-            >Continuos email <br />marketing</template
-          ></MarketingCard
-        >
-        <MarketingCard type="tertiary"
-          ><template v-slot:eyebrow>emails</template
-          ><template v-slot:title
-            >Continuos email <br />marketing</template
-          ></MarketingCard
-        >
-        <MarketingCard type="tertiary"
-          ><template v-slot:eyebrow>reddit</template
-          ><template v-slot:title
-            >Reddit pages and <br />engagements</template
-          ></MarketingCard
-        >
-        <div class="rounded-[32px] border border-surface p-10">
-          <div class="flex items-center justify-center w-[3.75rem] h-[3.75rem]">
-            <font-awesome-icon
-              :icon="['fab', 'telegram']"
-              class="!w-[3.75rem] !h-[3.75rem] border border-red-500 bg-transparent bg-gradient-to-br from-primary via-secondary to-tertiary rounded-full"
-            />
-          </div>
-        </div>
-        <MarketingCard type="primary"
-          ><template v-slot:eyebrow>twitter</template
-          ><template v-slot:title>Twitter spaces</template></MarketingCard
-        >
-        <div class="rounded-[32px] border border-surface p-10">
-          <div class="flex items-center justify-center w-[3.75rem] h-[3.75rem]">
-            <font-awesome-icon
-              :icon="['fab', 'telegram']"
-              class="!w-[3.75rem] !h-[3.75rem] border border-red-500 bg-transparent bg-gradient-to-br from-primary via-secondary to-tertiary rounded-full"
-            />
+          <div class="h-72 rounded-[32px] border border-surface p-8">
+            <p class="mb-3 section-title text-2xl">
+              Find the champions of your ecosystem
+            </p>
+            <p class="font-medium max-w-xs">
+              Discover and source top-tier talent from our community, and fund
+              cutting-edge projects built on your ecosystem by hackathon
+              buidlers.
+            </p>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- team section -->
-  <section class="mt-52 flex flex-col items-center max-w-full overflow-hidden">
-    <!--header-->
-    <div class="top-40 h-fit flex flex-col items-center">
-      <div class="flex items-center gap-2 mb-4">
-        <span>[i]</span>
-        <h4 class="section-eyebrow">the team</h4>
+    <!-- tools section -->
+    <section class="mt-52">
+      <div
+        class="relative h-full grid sm:grid-cols-2 gap-12 max-w-[65rem] m-auto justify-center"
+      >
+        <div class="max-w-md sticky top-40 h-fit">
+          <div class="flex items-center gap-2 mb-4">
+            <span>[i]</span>
+            <h4 class="section-eyebrow">platform tools</h4>
+          </div>
+          <h1 class="section-title text-6xl mb-7 leading-[120%]">
+            All the tools for engagement
+          </h1>
+          <p class="font-medium mb-10 max-w-sm">
+            Your vision, our platform: We’ve got everything you need to
+            successfully organize your hackathon and power your community.
+          </p>
+          <NuxtLink :href="FEATURES_URL">
+            <GradientButton
+              class="flex-shrink-0 flex-grow-0"
+              @clicked="
+                () => {
+                  mixpanel.track('Request a demo', {
+                    type: 'Lead',
+                  });
+                }
+              "
+              >Request a demo</GradientButton
+            >
+          </NuxtLink>
+        </div>
+        <div class="flex flex-col gap-4">
+          <div
+            class="h-52 rounded-[32px] border border-surface p-8 flex flex-col gap-2.5"
+          >
+            <p class="section-eyebrow text-primary">buidling</p>
+            <p class="font-extrabold text-2xl">buidlbot</p>
+            <p class="font-medium max-w-xs">
+              We have a full judging platform that is simple and very effective
+            </p>
+          </div>
+          <div
+            class="h-52 rounded-[32px] border border-surface p-8 flex flex-col gap-2.5"
+          >
+            <p class="section-eyebrow text-tertiary">marketing</p>
+            <p class="font-extrabold text-2xl">Bounties</p>
+            <p class="font-medium max-w-xs">
+              Engage your developer community in between hackathons. Source
+              great ideas. Solve problems. Find bugs.
+            </p>
+          </div>
+          <div
+            class="h-52 rounded-[32px] border border-surface p-8 flex flex-col gap-2.5"
+          >
+            <p class="section-eyebrow text-secondary">marketing</p>
+            <p class="font-extrabold text-2xl">Allowlist</p>
+            <p class="font-medium max-w-xs">
+              We have a full judging platform that is simple and very effective
+            </p>
+          </div>
+          <div
+            class="h-52 rounded-[32px] border border-surface p-8 flex flex-col gap-2.5"
+          >
+            <p class="section-eyebrow text-secondary">marketing</p>
+            <p class="font-extrabold text-2xl">Allowlist</p>
+            <p class="font-medium max-w-xs">
+              We have a full judging platform that is simple and very effective
+            </p>
+          </div>
+          <div
+            class="h-52 rounded-[32px] border border-surface p-8 flex flex-col gap-2.5"
+          >
+            <p class="section-eyebrow text-secondary">marketing</p>
+            <p class="font-extrabold text-2xl">Allowlist</p>
+            <p class="font-medium max-w-xs">
+              We have a full judging platform that is simple and very effective
+            </p>
+          </div>
+        </div>
       </div>
-      <h1 class="section-title text-6xl mb-7">Meet the buidlbox team</h1>
-      <p class="font-medium mb-10 max-w-sm text-center">
-        We've got your back (and your hack) at every stage, providing support
-        throughout your hackathon journey.
-      </p>
-    </div>
+    </section>
 
-    <!--Team carousel-->
-    <div class="w-screen hide-scrollbar carousel">
-      <ul class="hide-scrollbar carousel__list">
-        <li
-          v-for="(item, index) in buidlboxTeam"
-          class="carousel__item"
-          tabindex="0"
-          @click="selectSlide"
-        >
-          <div class="carousel__box">
-            <div class="carousel__image">
-              <img
-                :src="`team/${item.image}.jpg?fit=crop&h=720&q=80`"
-                width="480"
-                height="720"
+    <!-- marketing section -->
+    <section class="mt-52">
+      <div
+        class="flex items-center justify-center flex-col sm:gap-16 gap-28 max-w-[85rem] mx-auto px-6"
+      >
+        <div class="child:mx-auto">
+          <div class="flex items-center gap-2 mb-4 justify-center">
+            <span>[i]</span>
+            <h4 class="section-eyebrow leading-[120%]">Marketing</h4>
+          </div>
+          <h1 class="section-title text-6xl mb-7 text-center max-w-xl">
+            A full stack marketing strategy
+          </h1>
+          <p class="font-medium text-center max-w-md">
+            We’re here to navigate your marketing journey — comprehensive
+            support tailored to your unique needs.
+          </p>
+        </div>
+        <div class="flex items-center justify-center flex-wrap gap-4">
+          <div class="rounded-[32px] border border-surface p-10">
+            <div
+              class="flex items-center justify-center w-[3.75rem] h-[3.75rem]"
+            >
+              <font-awesome-icon
+                :icon="['fab', 'discord']"
+                class="!w-[3.75rem] !h-[3.75rem] text-red-200 text-transparent bg-clip-text !bg-gradient-to-br from-primary via-secondary to-tertiary hover:bg-positive transition-all"
               />
             </div>
-            <div class="carousel__contents">
-              <h2 class="user__name">{{ item.name }}</h2>
-              <h3 class="user__title">{{ item.eyebrow }}</h3>
+          </div>
+
+          <MarketingCard type="tertiary"
+            ><template v-slot:eyebrow>discord</template
+            ><template v-slot:title
+              >Discord <br />
+              bot</template
+            ></MarketingCard
+          >
+          <MarketingCard type="secondary"
+            ><template v-slot:eyebrow>planner</template
+            ><template v-slot:title
+              >Schedule <br />planning</template
+            ></MarketingCard
+          >
+          <div class="rounded-[32px] border border-surface p-10">
+            <div
+              class="flex items-center justify-center w-[3.75rem] h-[3.75rem]"
+            >
+              <font-awesome-icon
+                :icon="['fab', 'telegram']"
+                class="!w-[3.75rem] !h-[3.75rem] border border-red-500 bg-transparent bg-gradient-to-br from-primary via-secondary to-tertiary rounded-full"
+              />
             </div>
           </div>
-          <!-- <div class="absolute bottom-0 left-0 bg-secondary-surface transition-all p-4 opacity-0 group-hover:opacity-100">
+          <MarketingCard type="primary"
+            ><template v-slot:eyebrow>medium</template
+            ><template v-slot:title> Blog posts</template></MarketingCard
+          >
+          <MarketingCard type="primary"
+            ><template v-slot:eyebrow>analytics</template
+            ><template v-slot:title>
+              Marketing driven<br />
+              by analytics</template
+            ></MarketingCard
+          >
+          <div class="rounded-[32px] border border-surface p-10">
+            <div
+              class="flex items-center justify-center w-[3.75rem] h-[3.75rem]"
+            >
+              <font-awesome-icon
+                :icon="['fab', 'telegram']"
+                class="!w-[3.75rem] !h-[3.75rem] border border-red-500 bg-transparent bg-gradient-to-br from-primary via-secondary to-tertiary rounded-full"
+              />
+            </div>
+          </div>
+          <MarketingCard type="secondary"
+            ><template v-slot:eyebrow>workshops</template
+            ><template v-slot:title
+              >Hosting <br />workshops</template
+            ></MarketingCard
+          >
+          <MarketingCard type="tertiary"
+            ><template v-slot:eyebrow>emails</template
+            ><template v-slot:title
+              >Continuos email <br />marketing</template
+            ></MarketingCard
+          >
+          <MarketingCard type="tertiary"
+            ><template v-slot:eyebrow>emails</template
+            ><template v-slot:title
+              >Continuos email <br />marketing</template
+            ></MarketingCard
+          >
+          <MarketingCard type="tertiary"
+            ><template v-slot:eyebrow>reddit</template
+            ><template v-slot:title
+              >Reddit pages and <br />engagements</template
+            ></MarketingCard
+          >
+          <div class="rounded-[32px] border border-surface p-10">
+            <div
+              class="flex items-center justify-center w-[3.75rem] h-[3.75rem]"
+            >
+              <font-awesome-icon
+                :icon="['fab', 'telegram']"
+                class="!w-[3.75rem] !h-[3.75rem] border border-red-500 bg-transparent bg-gradient-to-br from-primary via-secondary to-tertiary rounded-full"
+              />
+            </div>
+          </div>
+          <MarketingCard type="primary"
+            ><template v-slot:eyebrow>twitter</template
+            ><template v-slot:title>Twitter spaces</template></MarketingCard
+          >
+          <div class="rounded-[32px] border border-surface p-10">
+            <div
+              class="flex items-center justify-center w-[3.75rem] h-[3.75rem]"
+            >
+              <font-awesome-icon
+                :icon="['fab', 'telegram']"
+                class="!w-[3.75rem] !h-[3.75rem] border border-red-500 bg-transparent bg-gradient-to-br from-primary via-secondary to-tertiary rounded-full"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- team section -->
+    <section
+      class="mt-52 flex flex-col items-center max-w-full overflow-hidden"
+    >
+      <!--header-->
+      <div class="top-40 h-fit flex flex-col items-center">
+        <div class="flex items-center gap-2 mb-4">
+          <span>[i]</span>
+          <h4 class="section-eyebrow">the team</h4>
+        </div>
+        <h1 class="section-title text-6xl mb-7">Meet the buidlbox team</h1>
+        <p class="font-medium mb-10 max-w-sm text-center">
+          We've got your back (and your hack) at every stage, providing support
+          throughout your hackathon journey.
+        </p>
+      </div>
+
+      <!--Team carousel-->
+      <div class="w-screen hide-scrollbar carousel">
+        <ul class="hide-scrollbar carousel__list">
+          <li
+            v-for="(item, index) in buidlboxTeam"
+            class="carousel__item"
+            tabindex="0"
+            @click="selectSlide"
+          >
+            <div class="carousel__box">
+              <div class="carousel__image">
+                <img
+                  :src="`team/${item.image}.jpg?fit=crop&h=720&q=80`"
+                  width="480"
+                  height="720"
+                />
+              </div>
+              <div class="carousel__contents">
+                <h2 class="user__name">{{ item.name }}</h2>
+                <h3 class="user__title">{{ item.eyebrow }}</h3>
+              </div>
+            </div>
+            <!-- <div class="absolute bottom-0 left-0 bg-secondary-surface transition-all p-4 opacity-0 group-hover:opacity-100">
             <h4 class="section-eyebrow">{{ item.eyebrow }}</h4>
             <h3>{{ item.name }}</h3>
           </div>
           <img :src="`/team/${item.image}.jpg`" class="h-full w-full object-cover object-center" alt="buidlbox logo"
             style="transform-origin: center;" /> -->
-        </li>
-      </ul>
-    </div>
-  </section>
+          </li>
+        </ul>
+      </div>
+    </section>
 
-  <!-- testimonials section -->
-  <section class="mt-52 overflow-x-hidden">
-    <div
-      class="flex items-center justify-center flex-col sm:gap-16 gap-28 px-6"
-    >
-      <div class="child:mx-auto max-w-8xl">
-        <div class="flex items-center gap-2 mb-4 justify-center">
-          <span>[i]</span>
-          <h4 class="section-eyebrow leading-[120%]">Testimonials</h4>
+    <!-- testimonials section -->
+    <section class="mt-52 overflow-x-hidden">
+      <div
+        class="flex items-center justify-center flex-col sm:gap-16 gap-28 px-6"
+      >
+        <div class="child:mx-auto max-w-8xl">
+          <div class="flex items-center gap-2 mb-4 justify-center">
+            <span>[i]</span>
+            <h4 class="section-eyebrow leading-[120%]">Testimonials</h4>
+          </div>
+          <h1 class="section-title text-6xl mb-7 text-center max-w-2xl">
+            Don’t take it from us
+          </h1>
+          <p class="font-medium text-center max-w-md">
+            We've got your back (and your hack) at every stage, providing
+            support throughout your hackathon journey.
+          </p>
         </div>
-        <h1 class="section-title text-6xl mb-7 text-center max-w-2xl">
-          Don’t take it from us
-        </h1>
-        <p class="font-medium text-center max-w-md">
-          We've got your back (and your hack) at every stage, providing support
-          throughout your hackathon journey.
-        </p>
+        <div
+          class="child:flex child:items-stretch child:justify-center child:gap-x-5 child:gap-y-2 flex flex-col gap-2"
+        >
+          <div class="overflex-x-hidden -mx-60 h-auto">
+            <div
+              v-for="(person, index) in testimonialsRow1"
+              :key="index"
+              class="rounded-[32px] border border-surface xl:px-14 sm:px-6 px-3 sm:py-8 py-4 w-[200px] md:w-[363px]"
+            >
+              <div class="flex items-center gap-4 mb-6">
+                <div
+                  class="bg-gray-400 rounded-full sm:w-[46px] sm:h-[46px] w-7 h-7"
+                ></div>
+                <div>
+                  <p
+                    class="section-eyebrow sm:mb-2 mb-1"
+                    :class="{
+                      'text-primary': person.role == 'buidler',
+                      'text-secondary': person.role == 'sponsor',
+                      'text-tertiary': person.role == 'organizer',
+                    }"
+                  >
+                    {{ person.role }}
+                  </p>
+                  <p class="sm:text-base text-xs">{{ person.name }}</p>
+                </div>
+              </div>
+              <p class="font-extrabold xl:text-base sm:text-sm text-xs">
+                {{ person.testimonial }}
+              </p>
+            </div>
+          </div>
+          <div class="">
+            <div
+              v-for="(person, index) in testimonialsRow2"
+              :key="index"
+              class="rounded-[32px] border border-surface xl:px-14 sm:px-6 px-3 sm:py-8 py-4 w-[200px] md:w-[363px]"
+            >
+              <div class="flex items-center gap-4 mb-6">
+                <div
+                  class="bg-gray-400 rounded-full sm:w-[46px] sm:h-[46px] w-7 h-7"
+                ></div>
+                <div>
+                  <p
+                    class="section-eyebrow sm:mb-2 mb-1"
+                    :class="{
+                      'text-primary': person.role == 'buidler',
+                      'text-secondary': person.role == 'sponsor',
+                      'text-tertiary': person.role == 'organizer',
+                    }"
+                  >
+                    {{ person.role }}
+                  </p>
+                  <p class="sm:text-base text-xs">{{ person.name }}</p>
+                </div>
+              </div>
+              <p class="font-extrabold xl:text-base sm:text-sm text-xs">
+                {{ person.testimonial }}
+              </p>
+            </div>
+          </div>
+          <div class="2xl:-mx-50 2xl:-ml-50 -ml-52">
+            <div
+              v-for="(person, index) in testimonialsRow3"
+              :key="index"
+              class="rounded-[32px] border border-surface xl:px-14 sm:px-6 px-3 sm:py-8 py-4 w-[200px] md:w-[363px]"
+            >
+              <div class="flex items-center gap-4 mb-6">
+                <div
+                  class="bg-gray-400 rounded-full sm:w-[46px] sm:h-[46px] w-7 h-7"
+                ></div>
+                <div>
+                  <p
+                    class="section-eyebrow sm:mb-2 mb-1"
+                    :class="{
+                      'text-primary': person.role == 'buidler',
+                      'text-secondary': person.role == 'sponsor',
+                      'text-tertiary': person.role == 'organizer',
+                    }"
+                  >
+                    {{ person.role }}
+                  </p>
+                  <p class="sm:text-base text-xs">{{ person.name }}</p>
+                </div>
+              </div>
+              <p class="font-extrabold xl:text-base sm:text-sm text-xs">
+                {{ person.testimonial }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- final CTA -->
+    <section
+      class="relative w-screen mt-52 flex flex-col items-center max-w-full overflow-hidden h-screen justify-center"
+    >
+      <h1 class="section-title text-6xl mb-7 text-center">
+        Ready to grow your community?
+      </h1>
+      <p class="font-medium mb-10 max-w-sm text-center">
+        Arrange a call with us to go through the next steps!
+      </p>
+      <NuxtLink :href="FEATURES_URL">
+        <GradientButton
+          class="flex-shrink-0 flex-grow-0"
+          @clicked="
+            () => {
+              mixpanel.track('Request a demo', {
+                type: 'Lead',
+              });
+            }
+          "
+          >Request a demo</GradientButton
+        >
+      </NuxtLink>
+      <div
+        class="origin-center absolute h-32 w-32 bottom-0 left-1/2 m-auto transform -translate-x-1/2"
+      >
+        <img
+          class="animate-grow origin-center h-32 w-32 animation-delay-0"
+          src="/images/circle1.svg"
+          alt="buidlbox logo"
+        />
       </div>
       <div
-        class="child:flex child:items-stretch child:justify-center child:gap-x-5 child:gap-y-2 flex flex-col gap-2"
+        class="origin-center absolute h-32 w-32 bottom-0 left-1/2 m-auto transform -translate-x-1/2"
       >
-        <div class="overflex-x-hidden -mx-60 h-auto">
-          <div
-            v-for="(person, index) in testimonialsRow1"
-            :key="index"
-            class="rounded-[32px] border border-surface xl:px-14 sm:px-6 px-3 sm:py-8 py-4 w-[200px] md:w-[363px]"
-          >
-            <div class="flex items-center gap-4 mb-6">
-              <div
-                class="bg-gray-400 rounded-full sm:w-[46px] sm:h-[46px] w-7 h-7"
-              ></div>
-              <div>
-                <p
-                  class="section-eyebrow sm:mb-2 mb-1"
-                  :class="{
-                    'text-primary': person.role == 'buidler',
-                    'text-secondary': person.role == 'sponsor',
-                    'text-tertiary': person.role == 'organizer',
-                  }"
-                >
-                  {{ person.role }}
-                </p>
-                <p class="sm:text-base text-xs">{{ person.name }}</p>
-              </div>
-            </div>
-            <p class="font-extrabold xl:text-base sm:text-sm text-xs">
-              {{ person.testimonial }}
-            </p>
-          </div>
-        </div>
-        <div class="">
-          <div
-            v-for="(person, index) in testimonialsRow2"
-            :key="index"
-            class="rounded-[32px] border border-surface xl:px-14 sm:px-6 px-3 sm:py-8 py-4 w-[200px] md:w-[363px]"
-          >
-            <div class="flex items-center gap-4 mb-6">
-              <div
-                class="bg-gray-400 rounded-full sm:w-[46px] sm:h-[46px] w-7 h-7"
-              ></div>
-              <div>
-                <p
-                  class="section-eyebrow sm:mb-2 mb-1"
-                  :class="{
-                    'text-primary': person.role == 'buidler',
-                    'text-secondary': person.role == 'sponsor',
-                    'text-tertiary': person.role == 'organizer',
-                  }"
-                >
-                  {{ person.role }}
-                </p>
-                <p class="sm:text-base text-xs">{{ person.name }}</p>
-              </div>
-            </div>
-            <p class="font-extrabold xl:text-base sm:text-sm text-xs">
-              {{ person.testimonial }}
-            </p>
-          </div>
-        </div>
-        <div class="2xl:-mx-50 2xl:-ml-50 -ml-52">
-          <div
-            v-for="(person, index) in testimonialsRow3"
-            :key="index"
-            class="rounded-[32px] border border-surface xl:px-14 sm:px-6 px-3 sm:py-8 py-4 w-[200px] md:w-[363px]"
-          >
-            <div class="flex items-center gap-4 mb-6">
-              <div
-                class="bg-gray-400 rounded-full sm:w-[46px] sm:h-[46px] w-7 h-7"
-              ></div>
-              <div>
-                <p
-                  class="section-eyebrow sm:mb-2 mb-1"
-                  :class="{
-                    'text-primary': person.role == 'buidler',
-                    'text-secondary': person.role == 'sponsor',
-                    'text-tertiary': person.role == 'organizer',
-                  }"
-                >
-                  {{ person.role }}
-                </p>
-                <p class="sm:text-base text-xs">{{ person.name }}</p>
-              </div>
-            </div>
-            <p class="font-extrabold xl:text-base sm:text-sm text-xs">
-              {{ person.testimonial }}
-            </p>
-          </div>
-        </div>
+        <img
+          class="animate-grow origin-center h-32 w-32 animation-delay-2000"
+          src="/images/circle2.svg"
+          alt="buidlbox logo"
+        />
       </div>
-    </div>
-  </section>
-
-  <!-- final CTA -->
-  <section
-    class="relative w-screen mt-52 flex flex-col items-center max-w-full overflow-hidden h-screen justify-center"
-  >
-    <h1 class="section-title text-6xl mb-7 text-center">
-      Ready to grow your community?
-    </h1>
-    <p class="font-medium mb-10 max-w-sm text-center">
-      Arrange a call with us to go through the next steps!
-    </p>
-    <NuxtLink :href="FEATURES_URL">
-      <GradientButton
-        class="flex-shrink-0 flex-grow-0"
-        @clicked="
-          () => {
-            mixpanel.track('Request a demo', {
-              type: 'Lead',
-            });
-          }
-        "
-        >Request a demo</GradientButton
+      <div
+        class="origin-center absolute h-32 w-32 bottom-0 left-1/2 m-auto transform -translate-x-1/2"
       >
-    </NuxtLink>
-    <div
-      class="origin-center absolute h-32 w-32 bottom-0 left-1/2 m-auto transform -translate-x-1/2"
-    >
-      <img
-        class="animate-grow origin-center h-32 w-32 animation-delay-0 "
-        src="/images/circle1.svg"
-        alt="buidlbox logo"
-      />
-    </div>
-    <div
-      class="origin-center absolute h-32 w-32 bottom-0 left-1/2 m-auto transform -translate-x-1/2"
-    >
-      <img
-        class="animate-grow origin-center h-32 w-32 animation-delay-2000 "
-        src="/images/circle2.svg"
-        alt="buidlbox logo"
-      />
-    </div>
-    <div
-      class="origin-center absolute h-32 w-32 bottom-0 left-1/2 m-auto transform -translate-x-1/2"
-    >
-      <img
-        class="animate-grow origin-center h-32 w-32 animation-delay-4000 "
-        src="/images/circle1.svg"
-        alt="buidlbox logo"
-      />
-    </div>
+        <img
+          class="animate-grow origin-center h-32 w-32 animation-delay-4000"
+          src="/images/circle1.svg"
+          alt="buidlbox logo"
+        />
+      </div>
 
-    <div class="absolute bottom-0 left-0 right-0 m-auto"></div>
-  </section>
-
+      <div class="absolute bottom-0 left-0 right-0 m-auto"></div>
+    </section>
+  </div>
   <div>
     <!-- <div class="grid gap-32">
       <div class="bg-hero-bg w-full bg-top bg-contain bg-no-repeat grid gap-10">
