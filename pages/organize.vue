@@ -222,12 +222,14 @@ const selectSlide = (e: any) => {
         class="absolute -rotate-90 -top-[25rem] left-0 right-0 m-auto"
       />
     </div>
-    <section class="pt-[25vh] padding flex sm:flex-row flex-col pb-40 relative overflow-visible">
+    <section
+      class="pt-[25vh] padding flex sm:flex-row flex-col pb-40 relative overflow-visible"
+    >
       <div class="self-center justify-self-center max-w-md">
         <h1 class="section-title text-7xl pb-6">
           We grow <br /><span class="gradient-text">ecosystems</span>
         </h1>
-        <p class="pb-20">
+        <p class="pb-20 sm:text-lg">
           Unlock innovation and grow developer communities through hackathons &
           bounties with buidlbox
         </p>
@@ -294,8 +296,11 @@ const selectSlide = (e: any) => {
         <span class="text-tertiary">hackathons</span>.
       </h1>
 
-      <img src="/images/background-gradient.png" alt="background gradient"
-      class="absolute -top-80  -right-[100px] w-[800px] z-40 m-auto" />
+      <img
+        src="/images/background-gradient.png"
+        alt=""
+        class="absolute -top-80 -right-[100px] w-[800px] z-40 m-auto"
+      />
     </section>
 
     <!-- ecosystem section -->
@@ -311,20 +316,20 @@ const selectSlide = (e: any) => {
           <h1 class="section-title text-4xl md:text-6xl mb-7 leading-[120%]">
             Grow your community with the right people
           </h1>
-          <p class="font-medium">
+          <p class="font-medium sm:text-lg">
             Elevate your hackathon experience by buidling meaningful connections
             and fostering collaboration.
           </p>
         </div>
         <div class="flex flex-col gap-4">
-          <div class="h-72 rounded-[32px] border border-surface p-8">
+          <div class="h-72 rounded-[32px] bg-card-bg border border-surface p-8">
             <p class="mb-3 section-title text-2xl">35k buidlers worldwide</p>
             <p class="font-medium max-w-xs">
               Our community consists of buidlers from 155 countries on the
               platform.
             </p>
           </div>
-          <div class="h-72 rounded-[32px] border border-surface p-8">
+          <div class="h-72 rounded-[32px] bg-card-bg border border-surface p-8">
             <p class="mb-3 section-title text-2xl">
               Find the champions of your ecosystem
             </p>
@@ -351,7 +356,7 @@ const selectSlide = (e: any) => {
     <!-- tools section -->
     <section class="mt-52 relative px-4">
       <div
-        class="origin-center absolute h-32 w-32 -left-[250px] top-20  m-auto transform -translate-x-1/2"
+        class="origin-center absolute h-32 w-32 -left-[250px] top-20 m-auto transform -translate-x-1/2"
       >
         <img
           class="animate-grow origin-center h-32 w-32 animation-delay-0"
@@ -360,7 +365,7 @@ const selectSlide = (e: any) => {
         />
       </div>
       <div
-        class="origin-center absolute h-32 w-32 -left-[250px] top-20  m-auto transform -translate-x-1/2"
+        class="origin-center absolute h-32 w-32 -left-[250px] top-20 m-auto transform -translate-x-1/2"
       >
         <img
           class="animate-grow origin-center h-32 w-32 animation-delay-2000"
@@ -369,7 +374,7 @@ const selectSlide = (e: any) => {
         />
       </div>
       <div
-        class="origin-center absolute h-32 w-32 -left-[250px] top-20  m-auto transform -translate-x-1/2"
+        class="origin-center absolute h-32 w-32 -left-[250px] top-20 m-auto transform -translate-x-1/2"
       >
         <img
           class="animate-grow origin-center h-32 w-32 animation-delay-4000"
@@ -389,7 +394,7 @@ const selectSlide = (e: any) => {
           <h1 class="section-title text-4xl md:text-6xl mb-7 leading-[120%]">
             All the tools for engagement
           </h1>
-          <p class="font-medium mb-10 max-w-sm">
+          <p class="font-medium mb-10 max-w-sm sm:text-lg">
             Your vision, our platform: We’ve got everything you need to
             successfully organize your hackathon and power your community.
           </p>
@@ -409,7 +414,7 @@ const selectSlide = (e: any) => {
         </div>
         <div class="flex flex-col gap-4">
           <div
-            class="h-52 rounded-[32px] border border-surface p-8 flex flex-col gap-2.5"
+            class="h-52 rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5"
           >
             <p class="section-eyebrow text-primary">buidling</p>
             <p class="font-extrabold text-2xl">buidlbot</p>
@@ -418,7 +423,7 @@ const selectSlide = (e: any) => {
             </p>
           </div>
           <div
-            class="h-52 rounded-[32px] border border-surface p-8 flex flex-col gap-2.5"
+            class="h-52 rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5"
           >
             <p class="section-eyebrow text-tertiary">marketing</p>
             <p class="font-extrabold text-2xl">Bounties</p>
@@ -428,7 +433,7 @@ const selectSlide = (e: any) => {
             </p>
           </div>
           <div
-            class="h-52 rounded-[32px] border border-surface p-8 flex flex-col gap-2.5"
+            class="h-52 rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5"
           >
             <p class="section-eyebrow text-secondary">marketing</p>
             <p class="font-extrabold text-2xl">Allowlist</p>
@@ -437,7 +442,7 @@ const selectSlide = (e: any) => {
             </p>
           </div>
           <div
-            class="h-52 rounded-[32px] border border-surface p-8 flex flex-col gap-2.5"
+            class="h-52 rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5"
           >
             <p class="section-eyebrow text-secondary">marketing</p>
             <p class="font-extrabold text-2xl">Allowlist</p>
@@ -446,7 +451,7 @@ const selectSlide = (e: any) => {
             </p>
           </div>
           <div
-            class="h-52 rounded-[32px] border border-surface p-8 flex flex-col gap-2.5"
+            class="h-52 rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5"
           >
             <p class="section-eyebrow text-secondary">marketing</p>
             <p class="font-extrabold text-2xl">Allowlist</p>
@@ -473,13 +478,15 @@ const selectSlide = (e: any) => {
           >
             A full stack marketing strategy
           </h1>
-          <p class="font-medium text-center max-w-md">
+          <p class="font-medium text-center max-w-md sm:text-lg">
             We’re here to navigate your marketing journey — comprehensive
             support tailored to your unique needs.
           </p>
         </div>
         <div class="flex items-center justify-center flex-wrap gap-3 sm:gap-4">
-          <div class="rounded-[32px] border border-surface p-4 sm:p-10">
+          <div
+            class="rounded-[32px] bg-card-bg border border-surface p-4 sm:p-10"
+          >
             <div
               class="flex items-center justify-center w-[3.75rem] h-[3.75rem]"
             >
@@ -503,7 +510,9 @@ const selectSlide = (e: any) => {
               >Schedule <br />planning</template
             ></MarketingCard
           >
-          <div class="rounded-[32px] border border-surface p-4 sm:p-10">
+          <div
+            class="rounded-[32px] bg-card-bg border border-surface p-4 sm:p-10"
+          >
             <div class="flex items-center justify-center">
               <font-awesome-icon
                 :icon="['fab', 'telegram']"
@@ -522,7 +531,9 @@ const selectSlide = (e: any) => {
               by analytics</template
             ></MarketingCard
           >
-          <div class="rounded-[32px] border border-surface p-4 sm:p-10">
+          <div
+            class="rounded-[32px] bg-card-bg border border-surface p-4 sm:p-10"
+          >
             <div
               class="flex items-center justify-center w-[3.75rem] h-[3.75rem]"
             >
@@ -556,7 +567,9 @@ const selectSlide = (e: any) => {
               >Reddit pages and <br />engagements</template
             ></MarketingCard
           >
-          <div class="rounded-[32px] border border-surface p-4 sm:p-10">
+          <div
+            class="rounded-[32px] bg-card-bg border border-surface p-4 sm:p-10"
+          >
             <div
               class="flex items-center justify-center w-[3.75rem] h-[3.75rem]"
             >
@@ -570,7 +583,9 @@ const selectSlide = (e: any) => {
             ><template v-slot:eyebrow>twitter</template
             ><template v-slot:title>Twitter spaces</template></MarketingCard
           >
-          <div class="rounded-[32px] border border-surface p-4 sm:p-10">
+          <div
+            class="rounded-[32px] bg-card-bg border border-surface p-4 sm:p-10"
+          >
             <div
               class="flex items-center justify-center w-[3.75rem] h-[3.75rem]"
             >
@@ -597,7 +612,7 @@ const selectSlide = (e: any) => {
         <h1 class="section-title text-4xl sm:text-6xl text-center mb-7">
           Meet the buidlbox team
         </h1>
-        <p class="font-medium mb-10 max-w-sm text-center">
+        <p class="font-medium mb-10 max-w-sm text-center sm:text-lg">
           We've got your back (and your hack) at every stage, providing support
           throughout your hackathon journey.
         </p>
@@ -637,11 +652,17 @@ const selectSlide = (e: any) => {
     </section>
 
     <!-- testimonials section -->
-    <section class="mt-52 overflow-x-hidden relative">
-      <img src="/images/background-gradient.png" alt="background gradient"
-      class="absolute -top-80  -right-[100px] w-[800px] z-0 m-auto" />
-      <img src="/images/background-gradient.png" alt="background gradient"
-      class="absolute -top-80  -left-[100px] rotate-180 z-0 w-[800px]  m-auto" />
+    <section class="mt-52 overflow-hidden relative pb-4">
+      <img
+        src="/images/background-gradient.png"
+        alt=""
+        class="absolute -top-120 -right-[10px] h-full w-auto z-0 m-auto"
+      />
+      <img
+        src="/images/background-gradient.png"
+        alt=""
+        class="absolute -top-120 -left-[10px] rotate-180 z-0 h-full w-auto m-auto"
+      />
       <div
         class="flex items-center justify-center flex-col sm:gap-16 gap-28 px-6 relative z-10"
       >
@@ -656,7 +677,7 @@ const selectSlide = (e: any) => {
           >
             Don’t take it from us
           </h1>
-          <p class="font-medium text-center max-w-md">
+          <p class="font-medium text-center max-w-md sm:text-lg">
             We've got your back (and your hack) at every stage, providing
             support throughout your hackathon journey.
           </p>
@@ -668,7 +689,7 @@ const selectSlide = (e: any) => {
             <div
               v-for="(person, index) in testimonialsRow1"
               :key="index"
-              class="rounded-[32px] border border-surface xl:px-14 sm:px-6 px-3 sm:py-8 py-4 w-[200px] md:w-[363px]"
+              class="rounded-[32px] bg-card-bg border border-surface xl:px-14 sm:px-6 px-3 sm:py-8 py-4 w-[200px] md:w-[363px]"
             >
               <div class="flex items-center gap-4 mb-6">
                 <div
@@ -697,7 +718,7 @@ const selectSlide = (e: any) => {
             <div
               v-for="(person, index) in testimonialsRow2"
               :key="index"
-              class="rounded-[32px] border border-surface xl:px-14 sm:px-6 px-3 sm:py-8 py-4 w-[200px] md:w-[363px]"
+              class="rounded-[32px] bg-card-bg border border-surface xl:px-14 sm:px-6 px-3 sm:py-8 py-4 w-[200px] md:w-[363px]"
             >
               <div class="flex items-center gap-4 mb-6">
                 <div
@@ -726,7 +747,7 @@ const selectSlide = (e: any) => {
             <div
               v-for="(person, index) in testimonialsRow3"
               :key="index"
-              class="rounded-[32px] border border-surface xl:px-14 sm:px-6 px-3 sm:py-8 py-4 w-[200px] md:w-[363px]"
+              class="rounded-[32px] bg-card-bg border border-surface xl:px-14 sm:px-6 px-3 sm:py-8 py-4 w-[200px] md:w-[363px]"
             >
               <div class="flex items-center gap-4 mb-6">
                 <div

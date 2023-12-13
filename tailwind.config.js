@@ -48,6 +48,7 @@ export default {
       },
       backgroundImage: {
         "hero-bg": "url('/hero-bg.png')",
+        "card-bg": "linear-gradient(131deg, #101419 49.05%, #14181E 96.1%)"
       },
       keyframes: {
         scroll: {
