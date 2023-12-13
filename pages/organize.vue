@@ -185,34 +185,38 @@ const buidlboxTeam = [
   },
 ];
 
-
 const getSlideIndex = ($slide: Element) => {
   const slides = [...document.getElementsByClassName(".carousel__item")];
-    return slides.indexOf( $slide );
-}
+  return slides.indexOf($slide);
+};
 
 const activateSlide = ($slide: Element) => {
-    if (!$slide) return;
-    const $slides = [...document.getElementsByClassName(".carousel__item")];;
-    $slides.forEach(el => el.removeAttribute('data-active'));
-    $slide.setAttribute( 'data-active', "true" );
-    $slide.focus();
-}
+  if (!$slide) return;
+  const $slides = [...document.getElementsByClassName(".carousel__item")];
+  $slides.forEach((el) => el.removeAttribute("data-active"));
+  $slide.setAttribute("data-active", "true");
+  $slide.focus();
+};
 const selectSlide = (e: any) => {
-  console.log("here")
-    const max = (window.matchMedia("screen and ( max-width: 600px)").matches) ? 5 : 8;
-    const $slide = e.target.closest( ".carousel__item" );
-    const index = getSlideIndex( $slide );
-    // if ( index < 3 || index > max ) return;
-    // if ( index === max ) nextSlide();
-    // if ( index === 3 ) prevSlide();
-    activateSlide($slide);
-}
+  console.log("here");
+  const max = window.matchMedia("screen and ( max-width: 600px)").matches
+    ? 5
+    : 8;
+  const $slide = e.target.closest(".carousel__item");
+  const index = getSlideIndex($slide);
+  // if ( index < 3 || index > max ) return;
+  // if ( index === max ) nextSlide();
+  // if ( index === 3 ) prevSlide();
+  activateSlide($slide);
+};
 </script>
 
 <template>
-  <img src="/images/background-gradient.png" alt="buidlbox logo"
-    class="absolute -rotate-90 -top-80 left-0 right-0 m-auto" />
+  <img
+    src="/images/background-gradient.png"
+    alt="buidlbox logo"
+    class="absolute -rotate-90 -top-80 left-0 right-0 m-auto"
+  />
   <section class="pt-64 padding flex pb-40 relative">
     <div class="self-center justify-self-center max-w-md">
       <h1 class="section-title text-7xl pb-6">
@@ -223,24 +227,38 @@ const selectSlide = (e: any) => {
         bounties with buidlbox
       </p>
       <NuxtLink :href="FEATURES_URL">
-        <GradientButton class="flex-shrink-0 flex-grow-0" @clicked="() => {
-          mixpanel.track('Request a demo', {
-            type: 'Lead',
-          });
-        }
-          ">Request a demo</GradientButton>
+        <GradientButton
+          class="flex-shrink-0 flex-grow-0"
+          @clicked="
+            () => {
+              mixpanel.track('Request a demo', {
+                type: 'Lead',
+              });
+            }
+          "
+          >Request a demo</GradientButton
+        >
       </NuxtLink>
     </div>
     <div class="relative w-full h-90">
       <img
         class="animate-grow absolute h-32 w-32 animation-delay-0 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-        src="/images/circle1.svg" alt="buidlbox logo" style="transform-origin: center" />
+        src="/images/circle1.svg"
+        alt="buidlbox logo"
+        style="transform-origin: center"
+      />
       <img
         class="animate-grow absolute h-32 w-32 animation-delay-2000 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-        src="/images/circle2.svg" alt="buidlbox logo" style="transform-origin: center" />
+        src="/images/circle2.svg"
+        alt="buidlbox logo"
+        style="transform-origin: center"
+      />
       <img
         class="animate-grow absolute h-32 w-32 animation-delay-4000 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-        src="/images/circle1.svg" alt="buidlbox logo" style="transform-origin: center" />
+        src="/images/circle1.svg"
+        alt="buidlbox logo"
+        style="transform-origin: center"
+      />
     </div>
   </section>
 
@@ -251,7 +269,9 @@ const selectSlide = (e: any) => {
 
   <!-- quote section -->
   <section class="mt-52">
-    <h1 class="section-title text-[2.5rem] max-w-[58rem] m-auto text-center leading-[140%] tracking-wider">
+    <h1
+      class="section-title text-[2.5rem] max-w-[58rem] m-auto text-center leading-[140%] tracking-wider"
+    >
       We believe the best way to
       <span class="text-primary">grow</span> developer
       <span class="text-secondary">ecosystems</span> is through the power of
@@ -298,7 +318,9 @@ const selectSlide = (e: any) => {
 
   <!-- tools section -->
   <section class="mt-52">
-    <div class="relative h-full grid sm:grid-cols-2 gap-12 max-w-[65rem] m-auto justify-center">
+    <div
+      class="relative h-full grid sm:grid-cols-2 gap-12 max-w-[65rem] m-auto justify-center"
+    >
       <div class="max-w-md sticky top-40 h-fit">
         <div class="flex items-center gap-2 mb-4">
           <span>[i]</span>
@@ -312,23 +334,32 @@ const selectSlide = (e: any) => {
           successfully organize your hackathon and power your community.
         </p>
         <NuxtLink :href="FEATURES_URL">
-          <GradientButton class="flex-shrink-0 flex-grow-0" @clicked="() => {
-            mixpanel.track('Request a demo', {
-              type: 'Lead',
-            });
-          }
-            ">Request a demo</GradientButton>
+          <GradientButton
+            class="flex-shrink-0 flex-grow-0"
+            @clicked="
+              () => {
+                mixpanel.track('Request a demo', {
+                  type: 'Lead',
+                });
+              }
+            "
+            >Request a demo</GradientButton
+          >
         </NuxtLink>
       </div>
       <div class="flex flex-col gap-4">
-        <div class="h-52 rounded-[32px] border border-surface p-8 flex flex-col gap-2.5">
+        <div
+          class="h-52 rounded-[32px] border border-surface p-8 flex flex-col gap-2.5"
+        >
           <p class="section-eyebrow text-primary">buidling</p>
           <p class="font-extrabold text-2xl">buidlbot</p>
           <p class="font-medium max-w-xs">
             We have a full judging platform that is simple and very effective
           </p>
         </div>
-        <div class="h-52 rounded-[32px] border border-surface p-8 flex flex-col gap-2.5">
+        <div
+          class="h-52 rounded-[32px] border border-surface p-8 flex flex-col gap-2.5"
+        >
           <p class="section-eyebrow text-tertiary">marketing</p>
           <p class="font-extrabold text-2xl">Bounties</p>
           <p class="font-medium max-w-xs">
@@ -336,21 +367,27 @@ const selectSlide = (e: any) => {
             ideas. Solve problems. Find bugs.
           </p>
         </div>
-        <div class="h-52 rounded-[32px] border border-surface p-8 flex flex-col gap-2.5">
+        <div
+          class="h-52 rounded-[32px] border border-surface p-8 flex flex-col gap-2.5"
+        >
           <p class="section-eyebrow text-secondary">marketing</p>
           <p class="font-extrabold text-2xl">Allowlist</p>
           <p class="font-medium max-w-xs">
             We have a full judging platform that is simple and very effective
           </p>
         </div>
-        <div class="h-52 rounded-[32px] border border-surface p-8 flex flex-col gap-2.5">
+        <div
+          class="h-52 rounded-[32px] border border-surface p-8 flex flex-col gap-2.5"
+        >
           <p class="section-eyebrow text-secondary">marketing</p>
           <p class="font-extrabold text-2xl">Allowlist</p>
           <p class="font-medium max-w-xs">
             We have a full judging platform that is simple and very effective
           </p>
         </div>
-        <div class="h-52 rounded-[32px] border border-surface p-8 flex flex-col gap-2.5">
+        <div
+          class="h-52 rounded-[32px] border border-surface p-8 flex flex-col gap-2.5"
+        >
           <p class="section-eyebrow text-secondary">marketing</p>
           <p class="font-extrabold text-2xl">Allowlist</p>
           <p class="font-medium max-w-xs">
@@ -363,7 +400,9 @@ const selectSlide = (e: any) => {
 
   <!-- marketing section -->
   <section class="mt-52">
-    <div class="flex items-center justify-center flex-col sm:gap-16 gap-28 max-w-8xl px-6">
+    <div
+      class="flex items-center justify-center flex-col sm:gap-16 gap-28 max-w-8xl px-6"
+    >
       <div class="child:mx-auto">
         <div class="flex items-center gap-2 mb-4 justify-center">
           <span>[i]</span>
@@ -380,52 +419,95 @@ const selectSlide = (e: any) => {
       <div class="flex items-center justify-center flex-wrap gap-4">
         <div class="rounded-[32px] border border-surface p-10">
           <div class="flex items-center justify-center w-[3.75rem] h-[3.75rem]">
-            <font-awesome-icon :icon="['fab', 'discord']"
-              class="!w-[3.75rem] !h-[3.75rem] text-red-200 text-transparent bg-clip-text !bg-gradient-to-br from-primary via-secondary to-tertiary hover:bg-positive transition-all" />
+            <font-awesome-icon
+              :icon="['fab', 'discord']"
+              class="!w-[3.75rem] !h-[3.75rem] text-red-200 text-transparent bg-clip-text !bg-gradient-to-br from-primary via-secondary to-tertiary hover:bg-positive transition-all"
+            />
           </div>
         </div>
 
-        <MarketingCard type="tertiary"><template v-slot:eyebrow>discord</template><template v-slot:title>Discord <br />
-            bot</template></MarketingCard>
-        <MarketingCard type="secondary"><template v-slot:eyebrow>planner</template><template v-slot:title>Schedule
-            <br />planning</template></MarketingCard>
+        <MarketingCard type="tertiary"
+          ><template v-slot:eyebrow>discord</template
+          ><template v-slot:title
+            >Discord <br />
+            bot</template
+          ></MarketingCard
+        >
+        <MarketingCard type="secondary"
+          ><template v-slot:eyebrow>planner</template
+          ><template v-slot:title
+            >Schedule <br />planning</template
+          ></MarketingCard
+        >
         <div class="rounded-[32px] border border-surface p-10">
           <div class="flex items-center justify-center w-[3.75rem] h-[3.75rem]">
-            <font-awesome-icon :icon="['fab', 'telegram']"
-              class="!w-[3.75rem] !h-[3.75rem] border border-red-500 bg-transparent bg-gradient-to-br from-primary via-secondary to-tertiary rounded-full" />
+            <font-awesome-icon
+              :icon="['fab', 'telegram']"
+              class="!w-[3.75rem] !h-[3.75rem] border border-red-500 bg-transparent bg-gradient-to-br from-primary via-secondary to-tertiary rounded-full"
+            />
           </div>
         </div>
-        <MarketingCard type="primary"><template v-slot:eyebrow>medium</template><template v-slot:title> Blog
-            posts</template></MarketingCard>
-        <MarketingCard type="primary"><template v-slot:eyebrow>analytics</template><template v-slot:title>
+        <MarketingCard type="primary"
+          ><template v-slot:eyebrow>medium</template
+          ><template v-slot:title> Blog posts</template></MarketingCard
+        >
+        <MarketingCard type="primary"
+          ><template v-slot:eyebrow>analytics</template
+          ><template v-slot:title>
             Marketing driven<br />
-            by analytics</template></MarketingCard>
+            by analytics</template
+          ></MarketingCard
+        >
         <div class="rounded-[32px] border border-surface p-10">
           <div class="flex items-center justify-center w-[3.75rem] h-[3.75rem]">
-            <font-awesome-icon :icon="['fab', 'telegram']"
-              class="!w-[3.75rem] !h-[3.75rem] border border-red-500 bg-transparent bg-gradient-to-br from-primary via-secondary to-tertiary rounded-full" />
+            <font-awesome-icon
+              :icon="['fab', 'telegram']"
+              class="!w-[3.75rem] !h-[3.75rem] border border-red-500 bg-transparent bg-gradient-to-br from-primary via-secondary to-tertiary rounded-full"
+            />
           </div>
         </div>
-        <MarketingCard type="secondary"><template v-slot:eyebrow>workshops</template><template v-slot:title>Hosting
-            <br />workshops</template></MarketingCard>
-        <MarketingCard type="tertiary"><template v-slot:eyebrow>emails</template><template v-slot:title>Continuos email
-            <br />marketing</template></MarketingCard>
-        <MarketingCard type="tertiary"><template v-slot:eyebrow>emails</template><template v-slot:title>Continuos email
-            <br />marketing</template></MarketingCard>
-        <MarketingCard type="tertiary"><template v-slot:eyebrow>reddit</template><template v-slot:title>Reddit pages and
-            <br />engagements</template></MarketingCard>
+        <MarketingCard type="secondary"
+          ><template v-slot:eyebrow>workshops</template
+          ><template v-slot:title
+            >Hosting <br />workshops</template
+          ></MarketingCard
+        >
+        <MarketingCard type="tertiary"
+          ><template v-slot:eyebrow>emails</template
+          ><template v-slot:title
+            >Continuos email <br />marketing</template
+          ></MarketingCard
+        >
+        <MarketingCard type="tertiary"
+          ><template v-slot:eyebrow>emails</template
+          ><template v-slot:title
+            >Continuos email <br />marketing</template
+          ></MarketingCard
+        >
+        <MarketingCard type="tertiary"
+          ><template v-slot:eyebrow>reddit</template
+          ><template v-slot:title
+            >Reddit pages and <br />engagements</template
+          ></MarketingCard
+        >
         <div class="rounded-[32px] border border-surface p-10">
           <div class="flex items-center justify-center w-[3.75rem] h-[3.75rem]">
-            <font-awesome-icon :icon="['fab', 'telegram']"
-              class="!w-[3.75rem] !h-[3.75rem] border border-red-500 bg-transparent bg-gradient-to-br from-primary via-secondary to-tertiary rounded-full" />
+            <font-awesome-icon
+              :icon="['fab', 'telegram']"
+              class="!w-[3.75rem] !h-[3.75rem] border border-red-500 bg-transparent bg-gradient-to-br from-primary via-secondary to-tertiary rounded-full"
+            />
           </div>
         </div>
-        <MarketingCard type="primary"><template v-slot:eyebrow>twitter</template><template v-slot:title>Twitter
-            spaces</template></MarketingCard>
+        <MarketingCard type="primary"
+          ><template v-slot:eyebrow>twitter</template
+          ><template v-slot:title>Twitter spaces</template></MarketingCard
+        >
         <div class="rounded-[32px] border border-surface p-10">
           <div class="flex items-center justify-center w-[3.75rem] h-[3.75rem]">
-            <font-awesome-icon :icon="['fab', 'telegram']"
-              class="!w-[3.75rem] !h-[3.75rem] border border-red-500 bg-transparent bg-gradient-to-br from-primary via-secondary to-tertiary rounded-full" />
+            <font-awesome-icon
+              :icon="['fab', 'telegram']"
+              class="!w-[3.75rem] !h-[3.75rem] border border-red-500 bg-transparent bg-gradient-to-br from-primary via-secondary to-tertiary rounded-full"
+            />
           </div>
         </div>
       </div>
@@ -434,7 +516,6 @@ const selectSlide = (e: any) => {
 
   <!-- team section -->
   <section class="mt-52 flex flex-col items-center max-w-full overflow-hidden">
-
     <!--header-->
     <div class="top-40 h-fit flex flex-col items-center">
       <div class="flex items-center gap-2 mb-4">
@@ -449,12 +530,21 @@ const selectSlide = (e: any) => {
     </div>
 
     <!--Team carousel-->
-    <div class=" w-screen hide-scrollbar carousel">
+    <div class="w-screen hide-scrollbar carousel">
       <ul class="hide-scrollbar carousel__list">
-        <li v-for="(item, index) in buidlboxTeam" class="carousel__item" tabindex="0" @click="selectSlide">
+        <li
+          v-for="(item, index) in buidlboxTeam"
+          class="carousel__item"
+          tabindex="0"
+          @click="selectSlide"
+        >
           <div class="carousel__box">
             <div class="carousel__image">
-              <img :src="`team/${item.image}.jpg?fit=crop&h=720&q=80`" width="480" height="720">
+              <img
+                :src="`team/${item.image}.jpg?fit=crop&h=720&q=80`"
+                width="480"
+                height="720"
+              />
             </div>
             <div class="carousel__contents">
               <h2 class="user__name">{{ item.name }}</h2>
@@ -467,16 +557,13 @@ const selectSlide = (e: any) => {
           </div>
           <img :src="`/team/${item.image}.jpg`" class="h-full w-full object-cover object-center" alt="buidlbox logo"
             style="transform-origin: center;" /> -->
-         
         </li>
       </ul>
     </div>
-
   </section>
 
-
   <!-- testimonials section -->
-  <section class="mt-52">
+  <section class="mt-52 overflow-x-hidden">
     <div
       class="flex items-center justify-center flex-col sm:gap-16 gap-28 px-6"
     >
@@ -503,7 +590,9 @@ const selectSlide = (e: any) => {
             class="rounded-[32px] border border-surface xl:px-14 sm:px-6 px-3 sm:py-8 py-4 w-[200px] md:w-[363px]"
           >
             <div class="flex items-center gap-4 mb-6">
-              <div class="bg-gray-400 rounded-full sm:w-[46px] sm:h-[46px] w-7 h-7"></div>
+              <div
+                class="bg-gray-400 rounded-full sm:w-[46px] sm:h-[46px] w-7 h-7"
+              ></div>
               <div>
                 <p
                   class="section-eyebrow sm:mb-2 mb-1"
@@ -530,7 +619,9 @@ const selectSlide = (e: any) => {
             class="rounded-[32px] border border-surface xl:px-14 sm:px-6 px-3 sm:py-8 py-4 w-[200px] md:w-[363px]"
           >
             <div class="flex items-center gap-4 mb-6">
-              <div class="bg-gray-400 rounded-full sm:w-[46px] sm:h-[46px] w-7 h-7"></div>
+              <div
+                class="bg-gray-400 rounded-full sm:w-[46px] sm:h-[46px] w-7 h-7"
+              ></div>
               <div>
                 <p
                   class="section-eyebrow sm:mb-2 mb-1"
@@ -557,7 +648,9 @@ const selectSlide = (e: any) => {
             class="rounded-[32px] border border-surface xl:px-14 sm:px-6 px-3 sm:py-8 py-4 w-[200px] md:w-[363px]"
           >
             <div class="flex items-center gap-4 mb-6">
-              <div class="bg-gray-400 rounded-full sm:w-[46px] sm:h-[46px] w-7 h-7"></div>
+              <div
+                class="bg-gray-400 rounded-full sm:w-[46px] sm:h-[46px] w-7 h-7"
+              ></div>
               <div>
                 <p
                   class="section-eyebrow sm:mb-2 mb-1"
@@ -581,32 +674,58 @@ const selectSlide = (e: any) => {
     </div>
   </section>
 
-
   <!-- final CTA -->
-  <section class="relative mt-52 flex flex-col items-center max-w-full overflow-hidden h-screen justify-center">
-    <h1 class="section-title text-6xl mb-7 text-center">Ready to grow your community?</h1>
+  <section
+    class="relative w-screen mt-52 flex flex-col items-center max-w-full overflow-hidden h-screen justify-center"
+  >
+    <h1 class="section-title text-6xl mb-7 text-center">
+      Ready to grow your community?
+    </h1>
     <p class="font-medium mb-10 max-w-sm text-center">
       Arrange a call with us to go through the next steps!
     </p>
     <NuxtLink :href="FEATURES_URL">
-      <GradientButton class="flex-shrink-0 flex-grow-0" @clicked="() => {
-        mixpanel.track('Request a demo', {
-          type: 'Lead',
-        });
-      }
-        ">Request a demo</GradientButton>
+      <GradientButton
+        class="flex-shrink-0 flex-grow-0"
+        @clicked="
+          () => {
+            mixpanel.track('Request a demo', {
+              type: 'Lead',
+            });
+          }
+        "
+        >Request a demo</GradientButton
+      >
     </NuxtLink>
-    <img
-      class="animate-grow absolute h-32 w-32 animation-delay-0 bottom-0 left-1/2 mr-80 transform -translate-x-1/2 -translate-y-1/2"
-      src="/images/circle1.svg" alt="buidlbox logo" />
-    <img
-      class="animate-grow absolute h-32 w-32 animation-delay-2000 bottom-0 left-1/2 mr-80 transform -translate-x-1/2 -translate-y-1/2"
-      src="/images/circle2.svg" alt="buidlbox logo" />
-    <img
-      class="animate-grow absolute h-32 w-32 animation-delay-4000 bottom-0 left-1/2 mr-80 transform -translate-x-1/2 -translate-y-1/2"
-      src="/images/circle1.svg" alt="buidlbox logo" />
-    <div class="absolute bottom-0 left-0 right-0 m-auto">
+    <div
+      class="origin-center absolute h-32 w-32 bottom-0 left-1/2 m-auto transform -translate-x-1/2"
+    >
+      <img
+        class="animate-grow origin-center h-32 w-32 animation-delay-0 "
+        src="/images/circle1.svg"
+        alt="buidlbox logo"
+      />
     </div>
+    <div
+      class="origin-center absolute h-32 w-32 bottom-0 left-1/2 m-auto transform -translate-x-1/2"
+    >
+      <img
+        class="animate-grow origin-center h-32 w-32 animation-delay-2000 "
+        src="/images/circle2.svg"
+        alt="buidlbox logo"
+      />
+    </div>
+    <div
+      class="origin-center absolute h-32 w-32 bottom-0 left-1/2 m-auto transform -translate-x-1/2"
+    >
+      <img
+        class="animate-grow origin-center h-32 w-32 animation-delay-4000 "
+        src="/images/circle1.svg"
+        alt="buidlbox logo"
+      />
+    </div>
+
+    <div class="absolute bottom-0 left-0 right-0 m-auto"></div>
   </section>
 
   <div>
@@ -747,14 +866,12 @@ const selectSlide = (e: any) => {
 </template>
 
 <style scoped>
-
 :root {
-    --height: calc( 80vh - 50px );
-    --width: 450px;
+  --height: calc(80vh - 50px);
+  --width: 450px;
 }
 /* Custom class to hide the scrollbar */
 .hide-scrollbar {
-
   /* Hide scrollbar for Chrome, Safari, and Edge */
   ::-webkit-scrollbar {
     display: none;
@@ -794,14 +911,16 @@ const selectSlide = (e: any) => {
   background: rgba(255, 255, 255, 0.2);
   border-radius: 16px;
   transform: translate3d(0, 0, 0.1px);
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 3px 15px 2px, rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 3px 15px 2px,
+    rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
+    rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
   contain: layout;
   isolation: isolate;
 }
 
 .carousel__item,
 .carousel__item * {
-  transition: all .6s cubic-bezier(.55, .24, .18, 1);
+  transition: all 0.6s cubic-bezier(0.55, 0.24, 0.18, 1);
   user-select: none;
 }
 
@@ -828,7 +947,6 @@ const selectSlide = (e: any) => {
 }
 
 @media screen and (max-width: 600px) {
-
   .carousel__item {
     flex-basis: 10%;
     margin: 0 5px;
@@ -873,11 +991,9 @@ const selectSlide = (e: any) => {
   .carousel__item:nth-child(n + 7) * {
     opacity: 0 !important;
   }
-
 }
 
 @media screen and (min-width: 600px) {
-
   .carousel__item:nth-child(3),
   .carousel__item:nth-child(10) {
     flex: 0 0 10px;
@@ -910,7 +1026,6 @@ const selectSlide = (e: any) => {
   .carousel__item:nth-child(n + 10) * {
     opacity: 0 !important;
   }
-
 }
 
 .carousel__item img {
@@ -935,8 +1050,13 @@ const selectSlide = (e: any) => {
   height: 100%;
   z-index: 1;
   opacity: 1;
-  background: linear-gradient(160deg, rgba(2, 0, 36, 0) 40%, rgba(118, 221, 136, .5) 70%, rgba(0, 255, 246, .6) 100%);
-  transition: all .66s cubic-bezier(.55, .24, .18, 1);
+  background: linear-gradient(
+    160deg,
+    rgba(2, 0, 36, 0) 40%,
+    rgba(118, 221, 136, 0.5) 70%,
+    rgba(0, 255, 246, 0.6) 100%
+  );
+  transition: all 0.66s cubic-bezier(0.55, 0.24, 0.18, 1);
 }
 
 .carousel__item[data-active]::after {
@@ -956,7 +1076,11 @@ const selectSlide = (e: any) => {
   min-height: 200px;
   padding: 1em;
   z-index: 2;
-  background-image: radial-gradient(ellipse at 0px 0px, rgba(0, 0, 0, 0.4) 20%, transparent 50%);
+  background-image: radial-gradient(
+    ellipse at 0px 0px,
+    rgba(0, 0, 0, 0.4) 20%,
+    transparent 50%
+  );
   background-size: 170% 200px;
   background-repeat: no-repeat;
   position: absolute;
@@ -968,13 +1092,13 @@ const selectSlide = (e: any) => {
   color: #e8eff4;
   font-size: 1.75em;
   font-weight: 600;
-  letter-spacing: .8px;
+  letter-spacing: 0.8px;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
 }
 
 .carousel__contents .user__title {
   font-family: lexend;
-  font-size: .875em;
+  font-size: 0.875em;
   letter-spacing: 1.25px;
   font-weight: 500;
   text-transform: uppercase;
@@ -1007,7 +1131,11 @@ const selectSlide = (e: any) => {
     transform-origin: bottom right;
     align-items: end;
     justify-content: end;
-    background-image: radial-gradient(ellipse at 100% 100%, rgba(0, 0, 0, .4) 0%, transparent 50%);
+    background-image: radial-gradient(
+      ellipse at 100% 100%,
+      rgba(0, 0, 0, 0.4) 0%,
+      transparent 50%
+    );
     background-position: -100% 100%;
     flex-direction: column;
     position: absolute;
