@@ -81,6 +81,30 @@ const buidlboxTeam = [
     image: "test5",
   },
 ];
+
+
+const getSlideIndex = ($slide: Element) => {
+  const slides = [...document.getElementsByClassName(".carousel__item")];
+    return slides.indexOf( $slide );
+}
+
+const activateSlide = ($slide: Element) => {
+    if (!$slide) return;
+    const $slides = [...document.getElementsByClassName(".carousel__item")];;
+    $slides.forEach(el => el.removeAttribute('data-active'));
+    $slide.setAttribute( 'data-active', "true" );
+    $slide.focus();
+}
+const selectSlide = (e: any) => {
+  console.log("here")
+    const max = (window.matchMedia("screen and ( max-width: 600px)").matches) ? 5 : 8;
+    const $slide = e.target.closest( ".carousel__item" );
+    const index = getSlideIndex( $slide );
+    // if ( index < 3 || index > max ) return;
+    // if ( index === max ) nextSlide();
+    // if ( index === 3 ) prevSlide();
+    activateSlide($slide);
+}
 </script>
 
 <template>
@@ -322,18 +346,25 @@ const buidlboxTeam = [
     </div>
 
     <!--Team carousel-->
-    <div class=" w-screen hide-scrollbar">
-      <ul class="flex gap-6 mt-20 w-full overflow-x-scroll padding hide-scrollbar">
-        <li v-for="(item, index) in buidlboxTeam" :class="[
-          'flex-shrink-0 relative rounded-2xl h-[592px] w-40 bg-slate-600 overflow-hidden hover:w-96 transition-all group',
-
-        ]">
-          <div class="absolute bottom-0 left-0 bg-secondary-surface transition-all p-4 opacity-0 group-hover:opacity-100">
+    <div class=" w-screen hide-scrollbar carousel">
+      <ul class="hide-scrollbar carousel__list">
+        <li v-for="(item, index) in buidlboxTeam" class="carousel__item" tabindex="0" @click="selectSlide">
+          <div class="carousel__box">
+            <div class="carousel__image">
+              <img :src="`team/${item.image}.jpg?fit=crop&h=720&q=80`" width="480" height="720">
+            </div>
+            <div class="carousel__contents">
+              <h2 class="user__name">{{ item.name }}</h2>
+              <h3 class="user__title">{{ item.eyebrow }}</h3>
+            </div>
+          </div>
+          <!-- <div class="absolute bottom-0 left-0 bg-secondary-surface transition-all p-4 opacity-0 group-hover:opacity-100">
             <h4 class="section-eyebrow">{{ item.eyebrow }}</h4>
             <h3>{{ item.name }}</h3>
           </div>
           <img :src="`/team/${item.image}.jpg`" class="h-full w-full object-cover object-center" alt="buidlbox logo"
-            style="transform-origin: center;" />
+            style="transform-origin: center;" /> -->
+         
         </li>
       </ul>
     </div>
@@ -356,13 +387,13 @@ const buidlboxTeam = [
     </NuxtLink>
     <img
       class="animate-grow absolute h-32 w-32 animation-delay-0 bottom-0 left-1/2 mr-80 transform -translate-x-1/2 -translate-y-1/2"
-      src="/images/circle1.svg" alt="buidlbox logo"  />
+      src="/images/circle1.svg" alt="buidlbox logo" />
     <img
       class="animate-grow absolute h-32 w-32 animation-delay-2000 bottom-0 left-1/2 mr-80 transform -translate-x-1/2 -translate-y-1/2"
-      src="/images/circle2.svg" alt="buidlbox logo"  />
+      src="/images/circle2.svg" alt="buidlbox logo" />
     <img
       class="animate-grow absolute h-32 w-32 animation-delay-4000 bottom-0 left-1/2 mr-80 transform -translate-x-1/2 -translate-y-1/2"
-      src="/images/circle1.svg" alt="buidlbox logo"  />
+      src="/images/circle1.svg" alt="buidlbox logo" />
     <div class="absolute bottom-0 left-0 right-0 m-auto">
     </div>
   </section>
@@ -505,6 +536,11 @@ const buidlboxTeam = [
 </template>
 
 <style scoped>
+
+:root {
+    --height: calc( 80vh - 50px );
+    --width: 450px;
+}
 /* Custom class to hide the scrollbar */
 .hide-scrollbar {
 
@@ -518,5 +554,280 @@ const buidlboxTeam = [
   /* IE and Edge */
   scrollbar-width: none;
   /* Firefox */
+}
+
+.carousel {
+  display: grid;
+  transform: translate3d(0, 0, 0.1px);
+}
+
+.carousel__list {
+  display: flex;
+  overflow: hidden;
+  list-style: none;
+  padding: 2em 0 3em;
+  margin: 0;
+  contain: layout;
+  isolation: isolate;
+}
+
+.carousel__item {
+  display: grid;
+  position: relative;
+  align-content: start;
+  margin: 0 10px;
+  padding: 0;
+  flex: 1 1 10%;
+  height: 526px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  transform: translate3d(0, 0, 0.1px);
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 3px 15px 2px, rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+  contain: layout;
+  isolation: isolate;
+}
+
+.carousel__item,
+.carousel__item * {
+  transition: all .6s cubic-bezier(.55, .24, .18, 1);
+  user-select: none;
+}
+
+.carousel__image,
+.carousel__contents {
+  width: 450px;
+  height: auto;
+}
+
+.carousel__item:hover {
+  flex-basis: 225px;
+  transition: all 0.3s ease;
+}
+
+.carousel__item[data-active] {
+  flex-basis: 450px;
+  flex-grow: 0;
+}
+
+@media screen and (max-width: 800px) {
+  .carousel__item {
+    flex-basis: 15%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+
+  .carousel__item {
+    flex-basis: 10%;
+    margin: 0 5px;
+    border-radius: 8px;
+    font-size: 3vw;
+  }
+
+  .carousel__item[data-active] {
+    flex-basis: 45%;
+    flex-grow: 0;
+  }
+
+  .carousel__item:nth-child(3),
+  .carousel__item:nth-child(7) {
+    flex: 0 0 10px;
+  }
+
+  .carousel__item:nth-child(2),
+  .carousel__item:nth-child(8) {
+    flex: 0 0 5px;
+    transform: translateX(-50px);
+  }
+
+  .carousel__item:nth-child(8) {
+    transform: translateX(50px);
+  }
+
+  .carousel__item:nth-child(1),
+  .carousel__item:nth-child(n + 9) {
+    flex: 0 0 0px;
+    margin: 0;
+    box-shadow: none;
+    opacity: 0 !important;
+  }
+
+  .carousel__item:not(:nth-child(n + 5)) img,
+  .carousel__item:nth-child(n + 7) img {
+    opacity: 0.8;
+  }
+
+  .carousel__item:not(:nth-child(n + 4)) *,
+  .carousel__item:nth-child(n + 7) * {
+    opacity: 0 !important;
+  }
+
+}
+
+@media screen and (min-width: 600px) {
+
+  .carousel__item:nth-child(3),
+  .carousel__item:nth-child(10) {
+    flex: 0 0 10px;
+  }
+
+  .carousel__item:nth-child(2),
+  .carousel__item:nth-child(11) {
+    flex: 0 0 5px;
+    transform: translateX(-50px);
+  }
+
+  .carousel__item:nth-child(11) {
+    transform: translateX(50px);
+  }
+
+  .carousel__item:nth-child(1),
+  .carousel__item:nth-child(n + 12) {
+    flex: 0 0 0px;
+    margin: 0;
+    box-shadow: none;
+    opacity: 0 !important;
+  }
+
+  .carousel__item:not(:nth-child(n + 5)) img,
+  .carousel__item:nth-child(n + 9) img {
+    opacity: 0.8;
+  }
+
+  .carousel__item:not(:nth-child(n + 4)) *,
+  .carousel__item:nth-child(n + 10) * {
+    opacity: 0 !important;
+  }
+
+}
+
+.carousel__item img {
+  display: block;
+  position: absolute;
+  width: 450px;
+  height: 100%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+  filter: saturate(0.2) contrast(0.75) brightness(1.1);
+}
+
+.carousel__item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 1;
+  background: linear-gradient(160deg, rgba(2, 0, 36, 0) 40%, rgba(118, 221, 136, .5) 70%, rgba(0, 255, 246, .6) 100%);
+  transition: all .66s cubic-bezier(.55, .24, .18, 1);
+}
+
+.carousel__item[data-active]::after {
+  transform: translateY(100%);
+}
+
+.carousel__item[data-active],
+.carousel__item[data-active] * {
+  opacity: 1;
+  filter: none;
+}
+
+.carousel__contents {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: start;
+  min-height: 200px;
+  padding: 1em;
+  z-index: 2;
+  background-image: radial-gradient(ellipse at 0px 0px, rgba(0, 0, 0, 0.4) 20%, transparent 50%);
+  background-size: 170% 200px;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.carousel__contents .user__name {
+  color: #e8eff4;
+  font-size: 1.75em;
+  font-weight: 600;
+  letter-spacing: .8px;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+}
+
+.carousel__contents .user__title {
+  font-family: lexend;
+  font-size: .875em;
+  letter-spacing: 1.25px;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: transparent;
+  background: linear-gradient(270deg, rgb(67, 255, 0), rgb(0, 255, 247));
+  background-clip: text;
+  -webkit-background-clip: text;
+  opacity: 0.85;
+  text-wrap: balance;
+  margin-bottom: 0.5em;
+}
+
+.carousel__contents .user__title,
+.carousel__contents .user__name {
+  margin: 0;
+  line-height: 1.1;
+  opacity: 0;
+  transform: translateX(-200px);
+  transition-duration: 1s;
+  max-width: 18em;
+}
+
+@media screen and (max-width: 800px) {
+  .carousel__item img {
+    width: 225px;
+  }
+
+  .carousel__contents {
+    transform: translateX(-100%) rotate(90deg);
+    transform-origin: bottom right;
+    align-items: end;
+    justify-content: end;
+    background-image: radial-gradient(ellipse at 100% 100%, rgba(0, 0, 0, .4) 0%, transparent 50%);
+    background-position: -100% 100%;
+    flex-direction: column;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    text-align: right;
+  }
+
+  [data-active] .carousel__contents {
+    background-position: 100% 100%;
+  }
+
+  .carousel__contents .user__title,
+  .carousel__contents .user__name {
+    max-width: 70vh;
+    transform: translateX(200px);
+  }
+}
+
+[data-active] .carousel__contents * {
+  transform: translateX(0px);
+  transition-duration: 0.66s;
+  opacity: 1;
+}
+
+[data-active] .carousel__contents .user__name {
+  transition-delay: 0.1s;
+}
+
+[data-active] .carousel__contents .user__title {
+  opacity: 0.85;
+  transition-delay: 0.05s;
 }
 </style>
