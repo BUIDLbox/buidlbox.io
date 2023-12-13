@@ -303,7 +303,7 @@ const selectSlide = (e: any) => {
       <div
         class="grid sm:grid-cols-2 md:gap-12 gap-6 max-w-[65rem] m-auto justify-center"
       >
-        <div class="max-w-lg">
+        <div class="max-w-lg h-fit top-40 sm:sticky">
           <div class="flex items-center gap-2 mb-4">
             <GlobeAltIcon class="text-on-surface h-4 w-4"/>
             <h4 class="section-eyebrow">Ecosystem</h4>
@@ -327,6 +327,16 @@ const selectSlide = (e: any) => {
           <div class="h-72 rounded-[32px] border border-surface p-8">
             <p class="mb-3 section-title text-2xl">
               Find the champions of your ecosystem
+            </p>
+            <p class="font-medium max-w-xs">
+              Discover and source top-tier talent from our community, and fund
+              cutting-edge projects built on your ecosystem by hackathon
+              buidlers.
+            </p>
+          </div>
+          <div class="h-72 rounded-[32px] border border-surface p-8">
+            <p class="mb-3 section-title text-2xl">
+              Wow something else goes here
             </p>
             <p class="font-medium max-w-xs">
               Discover and source top-tier talent from our community, and fund
