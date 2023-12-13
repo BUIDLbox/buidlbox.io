@@ -36,6 +36,7 @@ export default {
         "on-surface-tertiary": "var(--on-surface-tertiary)",
         "on-forms": "var(--on-forms)",
         "surface-gradient": ["rgb(33,54,69)", "var(--surface-gradient)"],
+        "background-gradient": "linear-gradient(180deg, rgba(16,20,24,0.8016456582633054) 0%, rgba(16,20,24,1) 34%, rgba(16,20,24,1) 98%)",
         purple: "var(--purple)",
         "dark-blue": "var(--dark-blue)",
         "light-blue": "var(--light-blue)",
