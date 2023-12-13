@@ -4,7 +4,13 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { EasePack } from "gsap/EasePack";
 import { ButtonType } from "~/types/button";
-import { BriefcaseIcon, ChartBarIcon, EnvelopeIcon, UserGroupIcon, WrenchScrewdriverIcon } from "@heroicons/vue/24/outline";
+import {
+  BriefcaseIcon,
+  ChartBarIcon,
+  EnvelopeIcon,
+  UserGroupIcon,
+  WrenchScrewdriverIcon,
+} from "@heroicons/vue/24/outline";
 import { GlobeAltIcon } from "@heroicons/vue/20/solid";
 
 definePageMeta({
@@ -272,12 +278,14 @@ const selectSlide = (e: any) => {
     <!--Client Logos-->
 
     <section class="max-w-[85rem] mx-auto px-4 w-fit relative">
-      <div class="w-screen h-[650px] background-gradient absolute  -top-48"></div>
+      <div
+        class="w-screen h-[650px] background-gradient absolute -top-48"
+      ></div>
       <div class="w-fit">
         <Logos class="slide-in-section" :default-white="true"
           ><template v-slot:eyebrow
             ><div class="flex items-center gap-2 mb-4">
-              <BriefcaseIcon class="text-on-surface h-4 w-4"/>
+              <BriefcaseIcon class="text-on-surface h-4 w-4" />
               <h4 class="section-eyebrow">Clients</h4>
             </div></template
           ></Logos
@@ -310,7 +318,7 @@ const selectSlide = (e: any) => {
       >
         <div class="max-w-lg h-fit top-40 sm:sticky">
           <div class="flex items-center gap-2 mb-4">
-            <GlobeAltIcon class="text-on-surface h-4 w-4"/>
+            <GlobeAltIcon class="text-on-surface h-4 w-4" />
             <h4 class="section-eyebrow">Ecosystem</h4>
           </div>
           <h1 class="section-title text-4xl md:text-6xl mb-7 leading-[120%]">
@@ -388,7 +396,7 @@ const selectSlide = (e: any) => {
       >
         <div class="max-w-md sm:sticky top-40 h-fit">
           <div class="flex items-center gap-2 mb-4">
-            <WrenchScrewdriverIcon class="text-on-surface h-4 w-4"/>
+            <WrenchScrewdriverIcon class="text-on-surface h-4 w-4" />
             <h4 class="section-eyebrow">platform tools</h4>
           </div>
           <h1 class="section-title text-4xl md:text-6xl mb-7 leading-[120%]">
@@ -470,7 +478,7 @@ const selectSlide = (e: any) => {
       >
         <div class="child:mx-auto px-2">
           <div class="flex items-center gap-2 mb-4 justify-center">
-            <ChartBarIcon class="text-on-surface h-4 w-4"/>
+            <ChartBarIcon class="text-on-surface h-4 w-4" />
             <h4 class="section-eyebrow leading-[120%]">Marketing</h4>
           </div>
           <h1
@@ -606,7 +614,7 @@ const selectSlide = (e: any) => {
       <!--header-->
       <div class="top-40 h-fit flex flex-col items-center">
         <div class="flex items-center gap-2 mb-4">
-          <UserGroupIcon class="text-on-surface h-4 w-4"/>
+          <UserGroupIcon class="text-on-surface h-4 w-4" />
           <h4 class="section-eyebrow">the team</h4>
         </div>
         <h1 class="section-title text-4xl sm:text-6xl text-center mb-7">
@@ -672,7 +680,7 @@ const selectSlide = (e: any) => {
       >
         <div class="child:mx-auto max-w-8xl">
           <div class="flex items-center gap-2 mb-4 justify-center">
-            <EnvelopeIcon class="text-on-surface h-4 w-4"/>
+            <EnvelopeIcon class="text-on-surface h-4 w-4" />
 
             <h4 class="section-eyebrow leading-[120%]">Testimonials</h4>
           </div>
@@ -978,8 +986,13 @@ const selectSlide = (e: any) => {
 }
 
 .background-gradient {
-  background: rgb(16,20,24);
-background: linear-gradient(180deg, rgba(16,20,24,0) 0%, rgba(16,20,24,1) 30%, rgba(16,20,24,1) 98%);
+  background: rgb(16, 20, 24);
+  background: linear-gradient(
+    180deg,
+    rgba(16, 20, 24, 0) 0%,
+    rgba(16, 20, 24, 1) 30%,
+    rgba(16, 20, 24, 1) 98%
+  );
 }
 /* Custom class to hide the scrollbar */
 .hide-scrollbar {
