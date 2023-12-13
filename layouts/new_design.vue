@@ -19,7 +19,6 @@ watch(
 
 const showHeaderBackground = ref(false);
 const checkPosition = () => {
-  console.log(window.scrollY);
   showHeaderBackground.value = window.scrollY >= 10;
 };
 
@@ -34,7 +33,7 @@ onUnmounted(() => {
 <template>
   <div class="bg-secondary-surface w-screen max-w-screen min-h-screen relative pb-12">
     <div
-      class="w-screen py-4 flex items-center justify-between px-[7vw] fixed z-[999] transition-all duration-300"
+      class="w-screen py-4 flex items-center justify-between px-[7vw] fixed z-[90] transition-all duration-300"
       :class="{'bg-secondary-surface': showHeaderBackground}"
     >
       <img

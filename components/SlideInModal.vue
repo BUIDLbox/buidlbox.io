@@ -26,7 +26,7 @@ const sliderSize = computed(() => {
 
 <template>
   <TransitionRoot as="template" :show="isOpen">
-    <Dialog as="div" class="relative z-50" @close="$emit('close')">
+    <Dialog as="div" class="relative z-[99]" @close="$emit('close')">
       <div class="fixed inset-0" />
 
       <div class="fixed inset-0 overflow-hidden">

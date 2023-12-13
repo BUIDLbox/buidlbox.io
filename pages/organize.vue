@@ -242,8 +242,9 @@ const selectSlide = (e: any) => {
         <NuxtLink :href="FEATURES_URL">
           <GradientButton
             class="flex-shrink-0 flex-grow-0"
-            @clicked="
+            @click="
               () => {
+                isTrialModalOpen = true;
                 mixpanel.track('Request a demo', {
                   type: 'Lead',
                 });
@@ -418,8 +419,9 @@ const selectSlide = (e: any) => {
             <NuxtLink :href="FEATURES_URL">
               <GradientButton
                 class="flex-shrink-0 flex-grow-0"
-                @clicked="
+                @click="
                   () => {
+                    isTrialModalOpen = true;
                     mixpanel.track('Request a demo', {
                       type: 'Lead',
                     });
@@ -820,8 +822,9 @@ const selectSlide = (e: any) => {
         <NuxtLink :href="FEATURES_URL">
           <GradientButton
             class="flex-shrink-0 flex-grow-0"
-            @clicked="
+            @click="
               () => {
+                isTrialModalOpen = true;
                 mixpanel.track('Request a demo', {
                   type: 'Lead',
                 });
@@ -862,8 +865,13 @@ const selectSlide = (e: any) => {
       <div class="absolute bottom-0 left-0 right-0 m-auto"></div>
     </section>
   </div>
-  <div>
-    <!-- <div class="grid gap-32">
+
+  <RequestTrial
+    :is-modal-open="isTrialModalOpen"
+    @close-modal="isTrialModalOpen = false"
+  />
+
+  <!-- <div class="grid gap-32">
       <div class="bg-hero-bg w-full bg-top bg-contain bg-no-repeat grid gap-10">
         <div
           class="flex flex-col gap-8 items-center justify-center py-24 pt-24"
@@ -996,7 +1004,6 @@ const selectSlide = (e: any) => {
       :is-modal-open="isTrialModalOpen"
       @close-modal="isTrialModalOpen = false"
     /> -->
-  </div>
 </template>
 
 <style scoped>
