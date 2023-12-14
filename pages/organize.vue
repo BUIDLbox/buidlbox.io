@@ -27,7 +27,7 @@ onMounted(async () => {
     slideInSections.forEach((section: any) => {
       gsap.from(section, {
         y: 50,
-        opacity: 0,
+        autoAlpha: 0,
         duration: 1,
         immediateRender: true,
         scrollTrigger: {
@@ -44,7 +44,7 @@ onMounted(async () => {
     slideFromRightSections.forEach((section: any) => {
       gsap.from(section, {
         x: 50,
-        opacity: 0,
+        autoAlpha: 0,
         duration: 1,
         scrollTrigger: {
           start: "top 80%",
