@@ -423,7 +423,7 @@ const nextSlide = () => {
         <div
           class="grid sm:grid-cols-2 md:gap-12 gap-6 max-w-[65rem] m-auto justify-center"
         >
-          <div class="max-w-lg h-fit top-40 sm:sticky z-50 child:z-50">
+          <div class="max-w-lg h-fit top-40 lg:sticky z-50 child:z-50">
             <div class="flex items-center gap-2 mb-4">
               <GlobeAltIcon class="text-on-surface h-4 w-4" />
               <h4 class="section-eyebrow">Ecosystem</h4>
@@ -495,7 +495,7 @@ const nextSlide = () => {
         <div
           class="relative h-full grid sm:grid-cols-2 gap-16 sm:gap-6 md:gap-12 max-w-[65rem] m-auto justify-center"
         >
-          <div class="max-w-md sm:sticky top-40 h-fit">
+          <div class="max-w-md lg:sticky top-40 h-fit">
             <div class="flex items-center gap-2 mb-4">
               <WrenchScrewdriverIcon class="text-on-surface h-4 w-4" />
               <h4 class="section-eyebrow">platform tools</h4>

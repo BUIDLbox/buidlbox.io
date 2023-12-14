@@ -38,7 +38,7 @@ onUnmounted(() => {
   >
     <div
       class="w-screen py-4 flex items-center justify-between px-[7vw] fixed z-[90] transition-all duration-300"
-      :class="{ 'bg-secondary-surface': showHeaderBackground }"
+      :class="{ 'bg-secondary-surface backdrop-blur-xl': showHeaderBackground }"
     >
       <img
         src="/buidlbox-logo-horizontal.png"
@@ -74,3 +74,14 @@ onUnmounted(() => {
     @close-modal="isTrialModalOpen = false"
   />
 </template>
+<style scoped>
+.background-gradient {
+  background: rgb(16, 20, 24);
+  background: linear-gradient(
+    0deg,
+    rgba(16, 20, 24, 0) 0%,
+    rgba(16, 20, 24, 1) 30%,
+    rgba(16, 20, 24, 1) 98%
+  );
+}
+</style>
