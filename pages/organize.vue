@@ -740,14 +740,15 @@ const nextSlide = () => {
       <div class="top-40 h-fit flex flex-col items-center">
         <div class="flex items-center gap-2 mb-4">
           <UserGroupIcon class="text-on-surface h-4 w-4" />
-          <h4 class="section-eyebrow">the team</h4>
+          <h4 class="section-eyebrow">meet the team</h4>
         </div>
         <h1
           class="slide-in-section section-title !leading-[120%] text-4xl sm:text-6xl text-center mb-7"
         >
-          Meet the buidlbox team
+          The team behind<br />
+          <span class="gradient-text">160+</span> hackathons
         </h1>
-        <p class="font-medium mb-10 max-w-sm text-center sm:text-lg">
+        <p class="font-medium mb-10 max-w-md text-center sm:text-lg">
           We've got your back (and your hack) at every stage, providing support
           throughout your hackathon journey.
         </p>
@@ -766,7 +767,7 @@ const nextSlide = () => {
             <div class="carousel__box">
               <div class="carousel__image">
                 <img
-                  :src="`team/${item.image}.jpg?fit=crop&h=720&q=80`"
+                  :src="`/team/${item.image}.jpg?fit=crop&h=720&q=80`"
                   width="480"
                   height="720"
                 />
