@@ -47,20 +47,19 @@ onUnmounted(() => {
         height="40"
         class="xl:w-[180px] w-28 h-auto"
       />
-      <NuxtLink :href="FEATURES_URL">
-        <GradientButton
-          class="flex-shrink-0 flex-grow-0"
-          @click="
-            () => {
-              isTrialModalOpen = true;
-              mixpanel.track('Request a demo', {
-                type: 'Lead',
-              });
-            }
-          "
-          >Request a demo</GradientButton
-        >
-      </NuxtLink>
+
+      <GradientButton
+        class="flex-shrink-0 flex-grow-0"
+        @click="
+          () => {
+            isTrialModalOpen = true;
+            mixpanel.track('Request a demo', {
+              type: 'Lead',
+            });
+          }
+        "
+        >Request a demo</GradientButton
+      >
     </div>
 
     <slot />

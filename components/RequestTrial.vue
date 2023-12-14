@@ -118,11 +118,19 @@ const submitForm = async (data: any) => {
               />
               <div class="max-w-2xl flex w-full justify-end">
                 <Button
+                  v-if="!darkBg"
                   title="Request demo"
                   class="mt-2"
                   :is-loading="isRequestTrialLoading"
                   @clicked="submit()"
                 />
+                <GradientButton
+                  v-else
+                  class="mt-2"
+                  :is-loading="isRequestTrialLoading"
+                  @clicked="submit()"
+                  >Request demo</GradientButton
+                >
               </div>
             </FormKit>
           </div>
