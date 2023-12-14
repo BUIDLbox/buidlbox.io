@@ -292,7 +292,7 @@ const nextSlide = () => {
 </script>
 
 <template>
-  <div class="max-w-screen overflow-x-hidden lg:overflow-x-visible">
+  <div class="max-w-screen overflow-x-hidden lg:overflow-x-clip">
     <div class="relative max-w-screen">
       <img
         src="/images/background-gradient.png"
