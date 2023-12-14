@@ -459,15 +459,15 @@ const nextSlide = () => {
                 35k buidlers worldwide
               </p>
               <p class="font-medium max-w-xs">
-                Our community consists of buidlers from 155 countries on the
-                platform.
+                Extend your reach by accessing our community of buidlers from
+                all over the world.
               </p>
             </div>
             <div
               class="h-72 rounded-[32px] bg-card-bg border border-surface p-8 slide-from-right-section"
             >
               <p class="mb-3 section-title text-2xl">
-                Find the champions of your ecosystem
+                Find your ecosystem champions
               </p>
               <p class="font-medium max-w-xs">
                 Discover and source top-tier talent from our community, and fund
@@ -478,11 +478,10 @@ const nextSlide = () => {
             <div
               class="h-72 rounded-[32px] bg-card-bg border border-surface p-8 slide-from-right-section"
             >
-              <p class="mb-3 section-title text-2xl">Truly valuable feedback</p>
+              <p class="mb-3 section-title text-2xl">Developer feedback</p>
               <p class="font-medium max-w-xs">
-                Gain insights to what your true fans think of your product by
-                harnessing the power of our custom feedback forms at the end of
-                every hackathon.
+                Collect true feedback from developers buidling with your product
+                at every stage of your hackathons.
               </p>
             </div>
           </div>
@@ -506,7 +505,7 @@ const nextSlide = () => {
             </h1>
             <p class="font-medium mb-10 max-w-sm sm:text-lg">
               Your vision, our platform: We’ve got everything you need to
-              successfully organize your hackathon and power your community.
+              successfully organize your hackathons and power your community.
             </p>
             <GradientButton
               class="flex-shrink-0 flex-grow-0"
@@ -530,9 +529,9 @@ const nextSlide = () => {
                 Hackathon platform
               </p>
               <p class="font-medium max-w-xs">
-                All the features you would expect to run an amazing hackathon in
-                one platform. Submissions, judging, feedback, winner
-                announcements, allowlist and many more.
+                All the features you need to run amazing hackathons in one
+                platform. Submissions, judging, feedback, winner announcements,
+                allowlist and many more.
               </p>
             </div>
             <div
@@ -555,7 +554,7 @@ const nextSlide = () => {
                 1:1 support
               </p>
               <p class="font-medium max-w-xs">
-                Receive dedicated support from our team, from challenge
+                Receive dedicated support from our global team, from challenge
                 brainstorming to assistance with judging (and everything in
                 between).
               </p>
@@ -568,8 +567,9 @@ const nextSlide = () => {
                 Measurable impact
               </p>
               <p class="font-medium max-w-xs">
-                Live metrics about your community: including number of projects
-                submitted, buidler demographics, and more
+                Real time metrics about your community: including ongoing
+                hackathon stats, product feedback, builder rentention, buidler
+                sentiment & demographics
               </p>
             </div>
             <div
@@ -583,6 +583,18 @@ const nextSlide = () => {
                 Vibrant Discord server with dedicated channels where you can get
                 to know builders. Actively engage with your growing community
                 through bounties, email announcements, and X (Twitter) Spaces.
+              </p>
+            </div>
+            <div
+              class="rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5 slide-from-right-section"
+            >
+              <p class="section-eyebrow text-primary">buidling</p>
+              <p class="slide-from-right-section font-extrabold text-2xl">
+                buidlbot
+              </p>
+              <p class="font-medium max-w-xs">
+                buidlbot is our AI tool that trains on your documentation to
+                help builders with their projects.
               </p>
             </div>
           </div>
