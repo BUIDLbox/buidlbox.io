@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ButtonSize, ButtonType } from "~/types/button";
+import { FEATURES_URL } from "~/constants/links";
 </script>
 
 <template>
@@ -17,22 +18,24 @@ import { ButtonSize, ButtonType } from "~/types/button";
         />
       </NuxtLink>
 
-      <!-- <div class="justify-center items-center gap-8 mx-auto sm:flex hidden">
-       <NuxtLink class="text-on-surface text-sm" href="/organizations#features"
-          >Features</NuxtLink
-        > 
-        <NuxtLink
+      <div class="justify-center items-center gap-8 mx-auto sm:flex hidden">
+        <a
+          class="text-on-surface text-sm"
+          :href="`${FEATURES_URL}/#features`"
+          >Features</a
+        >
+        <!-- <NuxtLink
           href="https://app.buidlbox.io/buy-hackathons/tiers"
           class="text-on-surface text-sm "
           >Pricing</NuxtLink
         >
-         <NuxtLink class="text-on-surface text-sm">About Us</NuxtLink>
+         <NuxtLink class="text-on-surface text-sm">About Us</NuxtLink> -->
         <NuxtLink
-          href="https://medium.com/buidlbox"
+          href="https://blog.buidlbox.io/"
           class="text-on-surface text-sm"
           >Blog</NuxtLink
-        > 
-      </div> -->
+        >
+      </div>
 
       <div class="flex flex-1 flex-grow items-center justify-end gap-4">
         <NuxtLink href="https://app.buidlbox.io">
@@ -48,7 +51,7 @@ import { ButtonSize, ButtonType } from "~/types/button";
             class="md:flex hidden"
           />
         </NuxtLink>
-        <NuxtLink href="https://app.buidlbox.io/buy-hackathons/tiers">
+        <NuxtLink :to="FEATURES_URL">
           <Button
             title="Organize hackathons"
             :size="ButtonSize.XSmall"

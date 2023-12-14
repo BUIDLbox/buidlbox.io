@@ -29,8 +29,10 @@ onMounted(async () => {
         y: 50,
         opacity: 0,
         duration: 1,
+        immediateRender: true,
         scrollTrigger: {
           trigger: section,
+          start: "top 90%",
           end: "center center",
         },
       });
@@ -45,6 +47,7 @@ onMounted(async () => {
         opacity: 0,
         duration: 1,
         scrollTrigger: {
+          start: "top 80%",
           trigger: section,
           end: "center center",
         },
@@ -58,6 +61,7 @@ onMounted(async () => {
 
         ease: "none",
         scrollTrigger: {
+          start: "bottom 80%",
           trigger: section,
           scrub: 1,
         },
@@ -238,9 +242,6 @@ const buidlboxTeam = [
   },
 ];
 
-
-
-
 const getSlideIndex = ($slide: Element) => {
   const slides = [...document.getElementsByClassName("carousel__item")];
   return slides.indexOf($slide);
@@ -259,36 +260,35 @@ const selectSlide = (e: any) => {
     : 8;
   const $slide = e.target.closest(".carousel__item");
   const index = getSlideIndex($slide);
-  if ( index < 3 || index > max ) return;
-  if ( index === max ) nextSlide();
-  if ( index === 3 ) prevSlide();
+  if (index < 3 || index > max) return;
+  if (index === max) nextSlide();
+  if (index === 3) prevSlide();
   activateSlide($slide);
 };
 
 const getActiveIndex = () => {
-    const $active = [...document.querySelectorAll('[data-active]')][0];
-    return getSlideIndex($active);
-}
-
+  const $active = [...document.querySelectorAll("[data-active]")][0];
+  return getSlideIndex($active);
+};
 
 const prevSlide = () => {
-    const index = getActiveIndex();
-    const slides = [...document.getElementsByClassName("carousel__item")];
-    const list = [...document.getElementsByClassName("carousel__list")][0];
-    const last = slides[slides.length-1];
-    last.remove();
-    list.prepend(last);
-    activateSlide( [...document.getElementsByClassName("carousel__item")][index] );
-}
+  const index = getActiveIndex();
+  const slides = [...document.getElementsByClassName("carousel__item")];
+  const list = [...document.getElementsByClassName("carousel__list")][0];
+  const last = slides[slides.length - 1];
+  last.remove();
+  list.prepend(last);
+  activateSlide([...document.getElementsByClassName("carousel__item")][index]);
+};
 const nextSlide = () => {
-    const index = getActiveIndex();
-    const slides = [...document.getElementsByClassName("carousel__item")];
-    const list = [...document.getElementsByClassName("carousel__list")][0];
-    const first = slides[0];
-    first.remove();
-    list.append(first);
-    activateSlide( [...document.getElementsByClassName("carousel__item")][index] );
-}
+  const index = getActiveIndex();
+  const slides = [...document.getElementsByClassName("carousel__item")];
+  const list = [...document.getElementsByClassName("carousel__list")][0];
+  const first = slides[0];
+  first.remove();
+  list.append(first);
+  activateSlide([...document.getElementsByClassName("carousel__item")][index]);
+};
 </script>
 
 <template>
@@ -311,20 +311,19 @@ const nextSlide = () => {
           Unlock innovation and grow developer communities through hackathons &
           bounties with buidlbox
         </p>
-        <NuxtLink :href="FEATURES_URL">
-          <GradientButton
-            class="flex-shrink-0 flex-grow-0"
-            @click="
-              () => {
-                isTrialModalOpen = true;
-                mixpanel.track('Request a demo', {
-                  type: 'Lead',
-                });
-              }
-            "
-            >Request a demo</GradientButton
-          >
-        </NuxtLink>
+
+        <GradientButton
+          class="flex-shrink-0 flex-grow-0"
+          @click="
+            () => {
+              isTrialModalOpen = true;
+              mixpanel.track('Request a demo', {
+                type: 'Lead',
+              });
+            }
+          "
+          >Request a demo</GradientButton
+        >
       </div>
       <div class="relative w-full h-90">
         <img
@@ -460,15 +459,15 @@ const nextSlide = () => {
                 35k buidlers worldwide
               </p>
               <p class="font-medium max-w-xs">
-                Our community consists of buidlers from 155 countries on the
-                platform.
+                Extend your reach by accessing our community of buidlers from
+                all over the world.
               </p>
             </div>
             <div
               class="h-72 rounded-[32px] bg-card-bg border border-surface p-8 slide-from-right-section"
             >
               <p class="mb-3 section-title text-2xl">
-                Find the champions of your ecosystem
+                Find your ecosystem champions
               </p>
               <p class="font-medium max-w-xs">
                 Discover and source top-tier talent from our community, and fund
@@ -477,13 +476,12 @@ const nextSlide = () => {
               </p>
             </div>
             <div
-              class="h-72 rounded-[32px] bg-card-bg border border-surface p-8 slide-from-right-section "
+              class="h-72 rounded-[32px] bg-card-bg border border-surface p-8 slide-from-right-section"
             >
-              <p class=" mb-3 section-title text-2xl">
-                Truly valuable feedback
-              </p>
+              <p class="mb-3 section-title text-2xl">Developer feedback</p>
               <p class="font-medium max-w-xs">
-                Gain insights to what your true fans think of your product by harnessing the power of our custom feedback forms at the end of every hackathon.
+                Collect true feedback from developers buidling with your product
+                at every stage of your hackathons.
               </p>
             </div>
           </div>
@@ -491,7 +489,7 @@ const nextSlide = () => {
       </section>
 
       <!-- tools section -->
-      <section class="mt-52 relative px-4">
+      <section class="pt-52 relative px-4" id="features">
         <div
           class="relative h-full grid sm:grid-cols-2 gap-16 sm:gap-6 md:gap-12 max-w-[65rem] m-auto justify-center"
         >
@@ -507,37 +505,37 @@ const nextSlide = () => {
             </h1>
             <p class="font-medium mb-10 max-w-sm sm:text-lg">
               Your vision, our platform: We’ve got everything you need to
-              successfully organize your hackathon and power your community.
+              successfully organize your hackathons and power your community.
             </p>
-            <NuxtLink :href="FEATURES_URL">
-              <GradientButton
-                class="flex-shrink-0 flex-grow-0"
-                @click="
-                  () => {
-                    isTrialModalOpen = true;
-                    mixpanel.track('Request a demo', {
-                      type: 'Lead',
-                    });
-                  }
-                "
-                >Request a demo</GradientButton
-              >
-            </NuxtLink>
+            <GradientButton
+              class="flex-shrink-0 flex-grow-0"
+              @click="
+                () => {
+                  isTrialModalOpen = true;
+                  mixpanel.track('Request a demo', {
+                    type: 'Lead',
+                  });
+                }
+              "
+              >Request a demo</GradientButton
+            >
           </div>
           <div class="flex flex-col gap-4">
             <div
-              class=" rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5 slide-from-right-section"
+              class="rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5 slide-from-right-section"
             >
               <p class="section-eyebrow text-primary">buidling</p>
               <p class="slide-from-right-section font-extrabold text-2xl">
                 Hackathon platform
               </p>
               <p class="font-medium max-w-xs">
-                All the features you would expect to run an amazing hackathon in one platform. Submissions, judging, feedback, winner announcements, allowlist and many more.
+                All the features you need to run amazing hackathons in one
+                platform. Submissions, judging, feedback, winner announcements,
+                allowlist and many more.
               </p>
             </div>
             <div
-              class=" rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5 slide-from-right-section"
+              class="rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5 slide-from-right-section"
             >
               <p class="section-eyebrow text-tertiary">engagement</p>
               <p class="slide-from-right-section font-extrabold text-2xl">
@@ -549,38 +547,54 @@ const nextSlide = () => {
               </p>
             </div>
             <div
-              class=" rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5 slide-from-right-section"
+              class="rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5 slide-from-right-section"
             >
               <p class="section-eyebrow text-secondary">customer success</p>
               <p class="slide-from-right-section font-extrabold text-2xl">
                 1:1 support
               </p>
               <p class="font-medium max-w-xs">
-                Receive dedicated support from our team, from challenge brainstorming to assistance with judging (and everything in between).
+                Receive dedicated support from our global team, from challenge
+                brainstorming to assistance with judging (and everything in
+                between).
               </p>
             </div>
             <div
-              class=" rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5 slide-from-right-section"
+              class="rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5 slide-from-right-section"
             >
               <p class="section-eyebrow text-primary">analytics</p>
               <p class="slide-from-right-section font-extrabold text-2xl">
                 Measurable impact
               </p>
               <p class="font-medium max-w-xs">
-                Live metrics about your community: including number of projects submitted, buidler demographics, and more
+                Real time metrics about your community: including ongoing
+                hackathon stats, product feedback, builder rentention, buidler
+                sentiment & demographics
               </p>
             </div>
             <div
-              class=" rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5 slide-from-right-section"
+              class="rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5 slide-from-right-section"
             >
               <p class="section-eyebrow text-tertiary">marketing</p>
               <p class="slide-from-right-section font-extrabold text-2xl">
                 Community engagement
               </p>
               <p class="font-medium max-w-xs">
-                Vibrant Discord server with dedicated channels where you can get to know builders.
-
-Actively engage with your growing community through bounties, email announcements, and X (Twitter) Spaces.
+                Vibrant Discord server with dedicated channels where you can get
+                to know builders. Actively engage with your growing community
+                through bounties, email announcements, and X (Twitter) Spaces.
+              </p>
+            </div>
+            <div
+              class="rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5 slide-from-right-section"
+            >
+              <p class="section-eyebrow text-primary">buidling</p>
+              <p class="slide-from-right-section font-extrabold text-2xl">
+                buidlbot
+              </p>
+              <p class="font-medium max-w-xs">
+                buidlbot is our AI tool that trains on your documentation to
+                help builders with their projects.
               </p>
             </div>
           </div>
@@ -608,9 +622,11 @@ Actively engage with your growing community through bounties, email announcement
             support tailored to your unique needs.
           </p>
         </div>
-        <div class="parallax-section flex items-center justify-center flex-wrap gap-3 sm:gap-4">
+        <div
+          class="child:sm:h-auto child:h-[100px] parallax-section flex items-center justify-center flex-wrap gap-1 sm:gap-4"
+        >
           <div
-            class="rounded-[32px] bg-card-bg border border-surface p-4 sm:p-10"
+            class="rounded-[32px] bg-card-bg flex items-center border border-surface p-4 sm:p-10"
           >
             <img
               src="/images/discord-gradient-icon.svg"
@@ -634,7 +650,7 @@ Actively engage with your growing community through bounties, email announcement
             ></MarketingCard
           >
           <div
-            class="rounded-[32px] bg-card-bg border border-surface p-4 sm:p-10"
+            class="rounded-[32px] bg-card-bg flex items-center border border-surface p-4 sm:p-10"
           >
             <img
               src="/images/telegram-gradient-icon.svg"
@@ -655,7 +671,7 @@ Actively engage with your growing community through bounties, email announcement
             ></MarketingCard
           >
           <div
-            class="rounded-[32px] bg-card-bg border border-surface p-4 sm:p-10"
+            class="rounded-[32px] bg-card-bg flex items-center border border-surface p-4 sm:p-10"
           >
             <img
               src="/images/reddit-gradient-icon.svg"
@@ -689,7 +705,7 @@ Actively engage with your growing community through bounties, email announcement
             ></MarketingCard
           >
           <div
-            class="rounded-[32px] bg-card-bg border border-surface p-4 sm:p-10"
+            class="rounded-[32px] bg-card-bg flex items-center border border-surface p-4 sm:p-10"
           >
             <img
               src="/images/twitter-gradient-icon.svg"
@@ -703,7 +719,7 @@ Actively engage with your growing community through bounties, email announcement
             ><template v-slot:title>Twitter spaces</template></MarketingCard
           >
           <div
-            class="rounded-[32px] bg-card-bg border border-surface p-4 sm:p-10"
+            class="rounded-[32px] bg-card-bg flex items-center border border-surface p-4 sm:p-10"
           >
             <img
               src="/images/instagram-gradient-icon.svg"
@@ -724,14 +740,15 @@ Actively engage with your growing community through bounties, email announcement
       <div class="top-40 h-fit flex flex-col items-center">
         <div class="flex items-center gap-2 mb-4">
           <UserGroupIcon class="text-on-surface h-4 w-4" />
-          <h4 class="section-eyebrow">the team</h4>
+          <h4 class="section-eyebrow">meet the team</h4>
         </div>
         <h1
           class="slide-in-section section-title !leading-[120%] text-4xl sm:text-6xl text-center mb-7"
         >
-          Meet the buidlbox team
+          The team behind<br />
+          <span class="gradient-text">160+</span> hackathons
         </h1>
-        <p class="font-medium mb-10 max-w-sm text-center sm:text-lg">
+        <p class="font-medium mb-10 max-w-md text-center sm:text-lg">
           We've got your back (and your hack) at every stage, providing support
           throughout your hackathon journey.
         </p>
@@ -750,7 +767,7 @@ Actively engage with your growing community through bounties, email announcement
             <div class="carousel__box">
               <div class="carousel__image">
                 <img
-                  :src="`team/${item.image}.jpg?fit=crop&h=720&q=80`"
+                  :src="`/team/${item.image}.jpg?fit=crop&h=720&q=80`"
                   width="480"
                   height="720"
                 />
@@ -920,20 +937,18 @@ Actively engage with your growing community through bounties, email announcement
         <p class="font-medium mb-10 max-w-md text-center sm:text-lg">
           Arrange a call with us to go through the next steps!
         </p>
-        <NuxtLink :href="FEATURES_URL">
-          <GradientButton
-            class="flex-shrink-0 flex-grow-0"
-            @click="
-              () => {
-                isTrialModalOpen = true;
-                mixpanel.track('Request a demo', {
-                  type: 'Lead',
-                });
-              }
-            "
-            >Request a demo</GradientButton
-          >
-        </NuxtLink>
+        <GradientButton
+          class="flex-shrink-0 flex-grow-0"
+          @click="
+            () => {
+              isTrialModalOpen = true;
+              mixpanel.track('Request a demo', {
+                type: 'Lead',
+              });
+            }
+          "
+          >Request a demo</GradientButton
+        >
       </div>
       <div
         class="origin-center z-0 absolute h-32 w-32 bottom-0 left-1/2 m-auto transform -translate-x-1/2"

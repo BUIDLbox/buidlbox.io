@@ -14,6 +14,6 @@ const eyebrowClass = computed(() => {
     <p class="section-eyebrow mb-2.5" :class="eyebrowClass">
       <slot name="eyebrow" />
     </p>
-    <p class="font-extrabold text-sm sm:text-xl md:text-2xl"><slot name="title" /></p>
+    <p class="font-extrabold text-xs sm:text-xl md:text-2xl"><slot name="title" /></p>
   </div>
 </template>
