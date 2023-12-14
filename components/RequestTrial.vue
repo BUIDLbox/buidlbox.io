@@ -6,6 +6,7 @@ import { requestTrialAPI } from "~/api";
 
 defineProps<{
   isModalOpen: boolean;
+  darkBg?: boolean;
 }>();
 
 const emit = defineEmits(["closeModal"]);
@@ -15,11 +16,10 @@ const isRequestTrialLoading = ref(false);
 const form: Ref<any> = ref(null);
 const trial = ref({
   entityName: "",
-  teamMembers: undefined,
   industry: "",
   contactEmail: "",
   link: "",
-  comments: "",
+  requirements: "",
 });
 
 const submit = () => {
@@ -30,8 +30,7 @@ const submit = () => {
 const submitForm = async (data: any) => {
   try {
     isRequestTrialLoading.value = true;
-    const newData = { ...data, teamMembers: +data.teamMembers };
-    await requestTrialAPI(newData);
+    await requestTrialAPI(data);
 
     // toast.success(
     //   "Thank you for submitting your free trial request! Our team has received your information and will get back to you shortly.",
@@ -52,6 +51,7 @@ const submitForm = async (data: any) => {
   <div>
     <Teleport to="body">
       <SlideInModal
+        :dark-bg="darkBg"
         title="Request a demo"
         :size="ModalSize.MD"
         :isOpen="isModalOpen"
@@ -60,10 +60,7 @@ const submitForm = async (data: any) => {
         <template v-slot:content>
           <div class="p-4">
             <p class="text-on-surface-secondary text-xs 2xl:text-sm mb-4">
-              The trial will allow you to explore the features, create your
-              guidl, invite team members, hackathons and challenges in draft
-              mode, and view the landing page. However, during the trial period,
-              you will not have the ability to publish the hackathon.
+              Lorem ipsum
             </p>
             <FormKit
               ref="form"
@@ -93,13 +90,6 @@ const submitForm = async (data: any) => {
               />
               <FormKit
                 class="w-full"
-                type="number"
-                v-model="trial.teamMembers"
-                name="teamMembers"
-                label="Number of team members you would like to have on buidlbox (optional)"
-              />
-              <FormKit
-                class="w-full"
                 type="email"
                 v-model="trial.contactEmail"
                 name="contactEmail"
@@ -121,14 +111,14 @@ const submitForm = async (data: any) => {
                 class="w-full max-h-12"
                 type="textarea"
                 :maxLength="250"
-                v-model="trial.comments"
-                name="comments"
+                v-model="trial.requirements"
+                name="requirements"
                 :help="'Max 250 characters'"
                 label="Anything you would like to add? (optional)"
               />
               <div class="max-w-2xl flex w-full justify-end">
                 <Button
-                  title="Request trial"
+                  title="Request demo"
                   class="mt-2"
                   :is-loading="isRequestTrialLoading"
                   @clicked="submit()"

@@ -15,6 +15,7 @@ const props = defineProps<{
   title?: string;
   subtitle?: string;
   size?: ModalSize;
+  darkBg?: boolean;
 }>();
 
 const sliderSize = computed(() => {
@@ -48,7 +49,11 @@ const sliderSize = computed(() => {
                 :class="sliderSize"
               >
                 <div
-                  class="flex h-full flex-col overflow-y-scroll bg-surface py-6 shadow-xl"
+                  class="flex h-full flex-col overflow-y-scroll py-6 shadow-xl"
+                  :class="{
+                    'bg-surface': !darkBg,
+                    'bg-secondary-surface': darkBg,
+                  }"
                 >
                   <div class="px-4 sm:px-6">
                     <div class="flex items-start justify-between">

@@ -17,6 +17,8 @@ watch(
   { immediate: true }
 );
 
+const isTrialModalOpen = ref(false);
+
 const showHeaderBackground = ref(false);
 const checkPosition = () => {
   showHeaderBackground.value = window.scrollY >= 10;
@@ -31,10 +33,12 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="bg-secondary-surface w-screen max-w-screen min-h-screen relative pb-12">
+  <div
+    class="bg-secondary-surface w-screen max-w-screen min-h-screen relative pb-12"
+  >
     <div
       class="w-screen py-4 flex items-center justify-between px-[7vw] fixed z-[90] transition-all duration-300"
-      :class="{'bg-secondary-surface': showHeaderBackground}"
+      :class="{ 'bg-secondary-surface': showHeaderBackground }"
     >
       <img
         src="/buidlbox-logo-horizontal.png"
@@ -46,8 +50,9 @@ onUnmounted(() => {
       <NuxtLink :href="FEATURES_URL">
         <GradientButton
           class="flex-shrink-0 flex-grow-0"
-          @clicked="
+          @click="
             () => {
+              isTrialModalOpen = true;
               mixpanel.track('Request a demo', {
                 type: 'Lead',
               });
@@ -62,4 +67,10 @@ onUnmounted(() => {
 
     <PageFooter />
   </div>
+
+  <RequestTrial
+    :dark-bg="true"
+    :is-modal-open="isTrialModalOpen"
+    @close-modal="isTrialModalOpen = false"
+  />
 </template>

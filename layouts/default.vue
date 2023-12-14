@@ -18,7 +18,7 @@ watch(
 </script>
 
 <template>
-  <div class="bg-dark-blue mb-16 w-screen max-w-screen sm:overflow-visible overflow-hidden min-h-screen">
+  <div class="bg-dark-blue pb-16 w-screen max-w-screen sm:overflow-visible overflow-hidden min-h-screen">
     <Header />
 
     <slot />

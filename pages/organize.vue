@@ -21,6 +21,51 @@ gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, EasePack);
 
 const isTrialModalOpen = ref(false);
 
+onMounted(async () => {
+  nextTick(() => {
+    const slideInSections = gsap.utils.toArray(".slide-in-section");
+    slideInSections.forEach((section: any) => {
+      gsap.from(section, {
+        y: 50,
+        opacity: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: section,
+          end: "center center",
+        },
+      });
+    });
+
+    const slideFromRightSections = gsap.utils.toArray(
+      ".slide-from-right-section"
+    );
+    slideFromRightSections.forEach((section: any) => {
+      gsap.from(section, {
+        x: 50,
+        opacity: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: section,
+          end: "center center",
+        },
+      });
+    });
+
+    const parallaxSections = gsap.utils.toArray(".parallax-section");
+    parallaxSections.forEach((section: any) => {
+      gsap.to(section, {
+        y: -100,
+
+        ease: "none",
+        scrollTrigger: {
+          trigger: section,
+          scrub: 1,
+        },
+      });
+    });
+  });
+});
+
 const testimonialsRow1 = [
   {
     avatar: "",
@@ -278,12 +323,14 @@ const selectSlide = (e: any) => {
 
     <!--Client Logos-->
 
-    <section class="max-w-[85rem] mx-auto px-4 w-fit relative">
+    <section class="parallax-section max-w-[85rem] mx-auto px-4 w-fit relative">
       <div
         class="w-screen overflow-x-hidden h-[650px] background-gradient absolute left-0 right-0 -top-48"
       ></div>
       <div class="w-fit">
-        <Logos class="slide-in-section" :default-white="true"
+        <Logos
+          class="slide-in-section child:z-[60] z-[60]"
+          :default-white="true"
           ><template v-slot:eyebrow
             ><div class="flex items-center gap-2 mb-4">
               <BriefcaseIcon class="text-on-surface h-4 w-4" />
@@ -298,7 +345,7 @@ const selectSlide = (e: any) => {
     <div class="relative">
       <section class="mt-52 px-4 overflow-x-hidden max-w-screen">
         <h1
-          class="section-title text-3xl sm:text-4xl md:text-5xl xl:text-6xl max-w-[58rem] m-auto text-center !leading-[140%] tracking-wider"
+          class="slide-in-section section-title text-3xl sm:text-4xl md:text-5xl xl:text-6xl max-w-[58rem] m-auto text-center !leading-[140%] tracking-wider"
         >
           We believe the best way to
           <span class="text-primary">grow</span> developer
@@ -354,7 +401,9 @@ const selectSlide = (e: any) => {
               <GlobeAltIcon class="text-on-surface h-4 w-4" />
               <h4 class="section-eyebrow">Ecosystem</h4>
             </div>
-            <h1 class="section-title text-4xl md:text-6xl mb-7 !leading-[120%]">
+            <h1
+              class="slide-in-section section-title text-4xl md:text-6xl mb-7 !leading-[120%]"
+            >
               Grow your community with the right people
             </h1>
             <p class="font-medium sm:text-lg">
@@ -366,7 +415,9 @@ const selectSlide = (e: any) => {
             <div
               class="h-72 rounded-[32px] bg-card-bg border border-surface p-8"
             >
-              <p class="mb-3 section-title text-2xl">35k buidlers worldwide</p>
+              <p class="slide-from-right-section mb-3 section-title text-2xl">
+                35k buidlers worldwide
+              </p>
               <p class="font-medium max-w-xs">
                 Our community consists of buidlers from 155 countries on the
                 platform.
@@ -375,7 +426,7 @@ const selectSlide = (e: any) => {
             <div
               class="h-72 rounded-[32px] bg-card-bg border border-surface p-8"
             >
-              <p class="mb-3 section-title text-2xl">
+              <p class="slide-from-right-section mb-3 section-title text-2xl">
                 Find the champions of your ecosystem
               </p>
               <p class="font-medium max-w-xs">
@@ -387,7 +438,7 @@ const selectSlide = (e: any) => {
             <div
               class="h-72 rounded-[32px] bg-card-bg border border-surface p-8"
             >
-              <p class="mb-3 section-title text-2xl">
+              <p class="slide-from-right-section mb-3 section-title text-2xl">
                 Wow something else goes here
               </p>
               <p class="font-medium max-w-xs">
@@ -410,7 +461,9 @@ const selectSlide = (e: any) => {
               <WrenchScrewdriverIcon class="text-on-surface h-4 w-4" />
               <h4 class="section-eyebrow">platform tools</h4>
             </div>
-            <h1 class="section-title text-4xl md:text-6xl mb-7 !leading-[120%]">
+            <h1
+              class="slide-in-section section-title text-4xl md:text-6xl mb-7 !leading-[120%]"
+            >
               All the tools for engagement
             </h1>
             <p class="font-medium mb-10 max-w-sm sm:text-lg">
@@ -437,7 +490,9 @@ const selectSlide = (e: any) => {
               class="h-52 rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5"
             >
               <p class="section-eyebrow text-primary">buidling</p>
-              <p class="font-extrabold text-2xl">buidlbot</p>
+              <p class="slide-from-right-section font-extrabold text-2xl">
+                buidlbot
+              </p>
               <p class="font-medium max-w-xs">
                 We have a full judging platform that is simple and very
                 effective
@@ -447,7 +502,9 @@ const selectSlide = (e: any) => {
               class="h-52 rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5"
             >
               <p class="section-eyebrow text-tertiary">marketing</p>
-              <p class="font-extrabold text-2xl">Bounties</p>
+              <p class="slide-from-right-section font-extrabold text-2xl">
+                Bounties
+              </p>
               <p class="font-medium max-w-xs">
                 Engage your developer community in between hackathons. Source
                 great ideas. Solve problems. Find bugs.
@@ -457,7 +514,9 @@ const selectSlide = (e: any) => {
               class="h-52 rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5"
             >
               <p class="section-eyebrow text-secondary">marketing</p>
-              <p class="font-extrabold text-2xl">Allowlist</p>
+              <p class="slide-from-right-section font-extrabold text-2xl">
+                Allowlist
+              </p>
               <p class="font-medium max-w-xs">
                 We have a full judging platform that is simple and very
                 effective
@@ -467,7 +526,9 @@ const selectSlide = (e: any) => {
               class="h-52 rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5"
             >
               <p class="section-eyebrow text-secondary">marketing</p>
-              <p class="font-extrabold text-2xl">Allowlist</p>
+              <p class="slide-from-right-section font-extrabold text-2xl">
+                Allowlist
+              </p>
               <p class="font-medium max-w-xs">
                 We have a full judging platform that is simple and very
                 effective
@@ -477,7 +538,9 @@ const selectSlide = (e: any) => {
               class="h-52 rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5"
             >
               <p class="section-eyebrow text-secondary">marketing</p>
-              <p class="font-extrabold text-2xl">Allowlist</p>
+              <p class="slide-from-right-section font-extrabold text-2xl">
+                Allowlist
+              </p>
               <p class="font-medium max-w-xs">
                 We have a full judging platform that is simple and very
                 effective
@@ -499,7 +562,7 @@ const selectSlide = (e: any) => {
             <h4 class="section-eyebrow !leading-[120%]">Marketing</h4>
           </div>
           <h1
-            class="section-title text-4xl sm:text-6xl !leading-[120%] mb-7 text-center max-w-xl"
+            class="slide-in-section section-title text-4xl sm:text-6xl !leading-[120%] mb-7 text-center max-w-xl"
           >
             A full stack marketing strategy
           </h1>
@@ -508,7 +571,7 @@ const selectSlide = (e: any) => {
             support tailored to your unique needs.
           </p>
         </div>
-        <div class="flex items-center justify-center flex-wrap gap-3 sm:gap-4">
+        <div class="parallax-section flex items-center justify-center flex-wrap gap-3 sm:gap-4">
           <div
             class="rounded-[32px] bg-card-bg border border-surface p-4 sm:p-10"
           >
@@ -627,7 +690,7 @@ const selectSlide = (e: any) => {
           <h4 class="section-eyebrow">the team</h4>
         </div>
         <h1
-          class="section-title !leading-[120%] text-4xl sm:text-6xl text-center mb-7"
+          class="slide-in-section section-title !leading-[120%] text-4xl sm:text-6xl text-center mb-7"
         >
           Meet the buidlbox team
         </h1>
@@ -704,7 +767,7 @@ const selectSlide = (e: any) => {
             <h4 class="section-eyebrow !leading-[120%]">Testimonials</h4>
           </div>
           <h1
-            class="section-title !leading-[120%] text-4xl sm:text-6xl mb-7 text-center max-w-2xl"
+            class="slide-in-section section-title !leading-[120%] text-4xl sm:text-6xl mb-7 text-center max-w-2xl"
           >
             Don’t take it from us
           </h1>
@@ -810,7 +873,7 @@ const selectSlide = (e: any) => {
     <!-- final CTA -->
     <section class="relative w-screen px-4 mt-52 overflow-hidden h-screen">
       <div
-        class="flex flex-col items-center max-w-full justify-center child:z-50"
+        class="flex flex-col items-center max-w-full justify-center z-50 child:z-50"
       >
         <h1
           class="section-title !leading-[120%] text-4xl sm:text-6xl mb-7 text-center"
@@ -868,6 +931,7 @@ const selectSlide = (e: any) => {
   </div>
 
   <RequestTrial
+    :dark-bg="true"
     :is-modal-open="isTrialModalOpen"
     @close-modal="isTrialModalOpen = false"
   />
