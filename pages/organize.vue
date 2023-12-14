@@ -266,6 +266,13 @@ const selectSlide = (e: any) => {
   activateSlide($slide);
 };
 
+
+const list = ref();
+
+onMounted(() => {
+  list.value = [...document.getElementsByClassName("carousel__list")][0];
+})
+
 const getActiveIndex = () => {
   const $active = [...document.querySelectorAll("[data-active]")][0];
   return getSlideIndex($active);
@@ -274,19 +281,17 @@ const getActiveIndex = () => {
 const prevSlide = () => {
   const index = getActiveIndex();
   const slides = [...document.getElementsByClassName("carousel__item")];
-  const list = [...document.getElementsByClassName("carousel__list")][0];
   const last = slides[slides.length - 1];
   last.remove();
-  list.prepend(last);
+  list.value.prepend(last);
   activateSlide([...document.getElementsByClassName("carousel__item")][index]);
 };
 const nextSlide = () => {
   const index = getActiveIndex();
   const slides = [...document.getElementsByClassName("carousel__item")];
-  const list = [...document.getElementsByClassName("carousel__list")][0];
   const first = slides[0];
   first.remove();
-  list.append(first);
+  list.value.append(first);
   activateSlide([...document.getElementsByClassName("carousel__item")][index]);
 };
 </script>
@@ -455,7 +460,7 @@ const nextSlide = () => {
             <div
               class="h-72 rounded-[32px] bg-card-bg border border-surface p-8"
             >
-              <p class="slide-from-right-section mb-3 section-title text-2xl">
+              <p class=" mb-3 section-title text-2xl">
                 35k buidlers worldwide
               </p>
               <p class="font-medium max-w-xs">
