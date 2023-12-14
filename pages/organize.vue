@@ -247,14 +247,20 @@ const getSlideIndex = ($slide: Element) => {
   return slides.indexOf($slide);
 };
 
+const list = ref();
+
+onMounted(() => {
+  list.value = [...document.getElementsByClassName("carousel__list")][0];
+})
+
 const activateSlide = ($slide: Element) => {
   if (!$slide) return;
   const $slides = [...document.getElementsByClassName("carousel__item")];
   $slides.forEach((el) => el.removeAttribute("data-active"));
   $slide.setAttribute("data-active", "true");
 };
+
 const selectSlide = (e: any) => {
-  console.log("here");
   const max = window.matchMedia("screen and ( max-width: 600px)").matches
     ? 5
     : 8;
@@ -267,11 +273,7 @@ const selectSlide = (e: any) => {
 };
 
 
-const list = ref();
 
-onMounted(() => {
-  list.value = [...document.getElementsByClassName("carousel__list")][0];
-})
 
 const getActiveIndex = () => {
   const $active = [...document.querySelectorAll("[data-active]")][0];
@@ -286,6 +288,7 @@ const prevSlide = () => {
   list.value.prepend(last);
   activateSlide(slides[index]);
 };
+
 const nextSlide = () => {
   const index = getActiveIndex();
   const slides = [...document.getElementsByClassName("carousel__item")];
@@ -651,7 +654,7 @@ const nextSlide = () => {
           <MarketingCard type="secondary"
             ><template v-slot:eyebrow>planner</template
             ><template v-slot:title
-              >Schedule <br />planning</template
+              >Individualized  <br />marketing plan</template
             ></MarketingCard
           >
           <div
@@ -671,8 +674,8 @@ const nextSlide = () => {
           <MarketingCard type="primary"
             ><template v-slot:eyebrow>analytics</template
             ><template v-slot:title>
-              Marketing driven<br />
-              by analytics</template
+              Metric tracking <br />
+              across all KPIs</template
             ></MarketingCard
           >
           <div
@@ -694,7 +697,7 @@ const nextSlide = () => {
           <MarketingCard type="tertiary"
             ><template v-slot:eyebrow>emails</template
             ><template v-slot:title
-              >Continuos email <br />marketing</template
+              >Access to <br/>35k buidlers</template
             ></MarketingCard
           >
           <MarketingCard type="tertiary"
@@ -721,7 +724,7 @@ const nextSlide = () => {
           </div>
           <MarketingCard type="primary"
             ><template v-slot:eyebrow>twitter</template
-            ><template v-slot:title>Twitter spaces</template></MarketingCard
+            ><template v-slot:title>Twitter space hosting</template></MarketingCard
           >
           <div
             class="rounded-[32px] bg-card-bg flex items-center border border-surface p-4 sm:p-10"
@@ -751,7 +754,7 @@ const nextSlide = () => {
           class="slide-in-section section-title !leading-[120%] text-4xl sm:text-6xl text-center mb-7"
         >
           The team behind<br />
-          <span class="gradient-text">160+</span> hackathons
+          <span class="gradient-text">160</span> hackathons
         </h1>
         <p class="font-medium mb-10 max-w-md text-center sm:text-lg">
           We've got your back (and your hack) at every stage, providing support
