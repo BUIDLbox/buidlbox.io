@@ -238,6 +238,9 @@ const buidlboxTeam = [
   },
 ];
 
+
+
+
 const getSlideIndex = ($slide: Element) => {
   const slides = [...document.getElementsByClassName("carousel__item")];
   return slides.indexOf($slide);
@@ -248,7 +251,6 @@ const activateSlide = ($slide: Element) => {
   const $slides = [...document.getElementsByClassName("carousel__item")];
   $slides.forEach((el) => el.removeAttribute("data-active"));
   $slide.setAttribute("data-active", "true");
-  $slide.focus();
 };
 const selectSlide = (e: any) => {
   console.log("here");
@@ -257,11 +259,36 @@ const selectSlide = (e: any) => {
     : 8;
   const $slide = e.target.closest(".carousel__item");
   const index = getSlideIndex($slide);
-  // if ( index < 3 || index > max ) return;
-  // if ( index === max ) nextSlide();
-  // if ( index === 3 ) prevSlide();
+  if ( index < 3 || index > max ) return;
+  if ( index === max ) nextSlide();
+  if ( index === 3 ) prevSlide();
   activateSlide($slide);
 };
+
+const getActiveIndex = () => {
+    const $active = [...document.querySelectorAll('[data-active]')][0];
+    return getSlideIndex($active);
+}
+
+
+const prevSlide = () => {
+    const index = getActiveIndex();
+    const slides = [...document.getElementsByClassName("carousel__item")];
+    const list = [...document.getElementsByClassName("carousel__list")][0];
+    const last = slides[slides.length-1];
+    last.remove();
+    list.prepend(last);
+    activateSlide( [...document.getElementsByClassName("carousel__item")][index] );
+}
+const nextSlide = () => {
+    const index = getActiveIndex();
+    const slides = [...document.getElementsByClassName("carousel__item")];
+    const list = [...document.getElementsByClassName("carousel__list")][0];
+    const first = slides[0];
+    first.remove();
+    list.append(first);
+    activateSlide( [...document.getElementsByClassName("carousel__item")][index] );
+}
 </script>
 
 <template>
@@ -406,12 +433,26 @@ const selectSlide = (e: any) => {
             >
               Grow your community with the right people
             </h1>
-            <p class="font-medium sm:text-lg">
+            <p class="font-medium sm:text-lg mb-10">
               Elevate your hackathon experience by buidling meaningful
               connections and fostering collaboration.
             </p>
+            <NuxtLink :href="FEATURES_URL">
+              <GradientButton
+                class="flex-shrink-0 flex-grow-0"
+                @click="
+                  () => {
+                    isTrialModalOpen = true;
+                    mixpanel.track('Request a demo', {
+                      type: 'Lead',
+                    });
+                  }
+                "
+                >Request a demo</GradientButton
+              >
+            </NuxtLink>
           </div>
-          <div class="flex flex-col gap-4">
+          <div class="flex flex-col gap-4 slide-from-right-section">
             <div
               class="h-72 rounded-[32px] bg-card-bg border border-surface p-8"
             >
@@ -424,9 +465,9 @@ const selectSlide = (e: any) => {
               </p>
             </div>
             <div
-              class="h-72 rounded-[32px] bg-card-bg border border-surface p-8"
+              class="h-72 rounded-[32px] bg-card-bg border border-surface p-8 slide-from-right-section"
             >
-              <p class="slide-from-right-section mb-3 section-title text-2xl">
+              <p class="mb-3 section-title text-2xl">
                 Find the champions of your ecosystem
               </p>
               <p class="font-medium max-w-xs">
@@ -436,15 +477,13 @@ const selectSlide = (e: any) => {
               </p>
             </div>
             <div
-              class="h-72 rounded-[32px] bg-card-bg border border-surface p-8"
+              class="h-72 rounded-[32px] bg-card-bg border border-surface p-8 slide-from-right-section "
             >
-              <p class="slide-from-right-section mb-3 section-title text-2xl">
-                Wow something else goes here
+              <p class=" mb-3 section-title text-2xl">
+                Truly valuable feedback
               </p>
               <p class="font-medium max-w-xs">
-                Discover and source top-tier talent from our community, and fund
-                cutting-edge projects built on your ecosystem by hackathon
-                buidlers.
+                Gain insights to what your true fans think of your product by harnessing the power of our custom feedback forms at the end of every hackathon.
               </p>
             </div>
           </div>
@@ -464,7 +503,7 @@ const selectSlide = (e: any) => {
             <h1
               class="slide-in-section section-title text-4xl md:text-6xl mb-7 !leading-[120%]"
             >
-              All the tools for engagement
+              All the tools you expect
             </h1>
             <p class="font-medium mb-10 max-w-sm sm:text-lg">
               Your vision, our platform: We’ve got everything you need to
@@ -487,21 +526,20 @@ const selectSlide = (e: any) => {
           </div>
           <div class="flex flex-col gap-4">
             <div
-              class="h-52 rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5"
+              class=" rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5 slide-from-right-section"
             >
               <p class="section-eyebrow text-primary">buidling</p>
               <p class="slide-from-right-section font-extrabold text-2xl">
-                buidlbot
+                Hackathon platform
               </p>
               <p class="font-medium max-w-xs">
-                We have a full judging platform that is simple and very
-                effective
+                All the features you would expect to run an amazing hackathon in one platform. Submissions, judging, feedback, winner announcements, allowlist and many more.
               </p>
             </div>
             <div
-              class="h-52 rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5"
+              class=" rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5 slide-from-right-section"
             >
-              <p class="section-eyebrow text-tertiary">marketing</p>
+              <p class="section-eyebrow text-tertiary">engagement</p>
               <p class="slide-from-right-section font-extrabold text-2xl">
                 Bounties
               </p>
@@ -511,39 +549,38 @@ const selectSlide = (e: any) => {
               </p>
             </div>
             <div
-              class="h-52 rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5"
+              class=" rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5 slide-from-right-section"
             >
-              <p class="section-eyebrow text-secondary">marketing</p>
+              <p class="section-eyebrow text-secondary">customer success</p>
               <p class="slide-from-right-section font-extrabold text-2xl">
-                Allowlist
+                1:1 support
               </p>
               <p class="font-medium max-w-xs">
-                We have a full judging platform that is simple and very
-                effective
+                Receive dedicated support from our team, from challenge brainstorming to assistance with judging (and everything in between).
               </p>
             </div>
             <div
-              class="h-52 rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5"
+              class=" rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5 slide-from-right-section"
             >
-              <p class="section-eyebrow text-secondary">marketing</p>
+              <p class="section-eyebrow text-primary">analytics</p>
               <p class="slide-from-right-section font-extrabold text-2xl">
-                Allowlist
+                Measurable impact
               </p>
               <p class="font-medium max-w-xs">
-                We have a full judging platform that is simple and very
-                effective
+                Live metrics about your community: including number of projects submitted, buidler demographics, and more
               </p>
             </div>
             <div
-              class="h-52 rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5"
+              class=" rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5 slide-from-right-section"
             >
-              <p class="section-eyebrow text-secondary">marketing</p>
+              <p class="section-eyebrow text-tertiary">marketing</p>
               <p class="slide-from-right-section font-extrabold text-2xl">
-                Allowlist
+                Community engagement
               </p>
               <p class="font-medium max-w-xs">
-                We have a full judging platform that is simple and very
-                effective
+                Vibrant Discord server with dedicated channels where you can get to know builders.
+
+Actively engage with your growing community through bounties, email announcements, and X (Twitter) Spaces.
               </p>
             </div>
           </div>
