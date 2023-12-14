@@ -48,7 +48,6 @@ onMounted(async () => {
         duration: 1,
         scrollTrigger: {
           start: "top 80%",
-          markers: true,
           trigger: section,
           end: "center center",
         },
