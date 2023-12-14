@@ -284,7 +284,7 @@ const prevSlide = () => {
   const last = slides[slides.length - 1];
   last.remove();
   list.value.prepend(last);
-  activateSlide([...document.getElementsByClassName("carousel__item")][index]);
+  activateSlide(slides[index]);
 };
 const nextSlide = () => {
   const index = getActiveIndex();
@@ -292,7 +292,7 @@ const nextSlide = () => {
   const first = slides[0];
   first.remove();
   list.value.append(first);
-  activateSlide([...document.getElementsByClassName("carousel__item")][index]);
+  activateSlide(slides[index]);
 };
 </script>
 
