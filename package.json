@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev",
+    "dev": "nuxt dev --host",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
@@ -34,6 +34,7 @@
     "@heroicons/vue": "^2.0.18",
     "gsap": "^3.12.2",
     "mixpanel-browser": "^2.47.0",
+    "tailwindcss-animation-delay": "^1.2.0",
     "vue3-lottie": "^3.1.0",
     "vue3-marquee": "^4.1.0"
   }

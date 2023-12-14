@@ -76,15 +76,14 @@ export const getMetricsAPI = async () => {
 export interface TrialRequest {
   entityName: string;
   industry: string;
-  teamMembers: number;
   contactEmail: string;
   link: string;
-  comments: string;
+  requirements: string;
 }
 
 export async function requestTrialAPI(payload: TrialRequest) {
   const apiUrl = import.meta.env.VITE_BUIDL_API;
-  const url = `${apiUrl}/orgs/trial-request`;
+  const url = `${apiUrl}/orgs/enterprise-request`;
 
   return await apiService({
     method: "POST",
