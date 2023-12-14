@@ -623,10 +623,10 @@ const nextSlide = () => {
           </p>
         </div>
         <div
-          class="parallax-section flex items-center justify-center flex-wrap gap-3 sm:gap-4"
+          class="child:sm:h-auto child:h-[100px] parallax-section flex items-center justify-center flex-wrap gap-1 sm:gap-4"
         >
           <div
-            class="rounded-[32px] bg-card-bg border border-surface p-4 sm:p-10"
+            class="rounded-[32px] bg-card-bg flex items-center border border-surface p-4 sm:p-10"
           >
             <img
               src="/images/discord-gradient-icon.svg"
@@ -650,7 +650,7 @@ const nextSlide = () => {
             ></MarketingCard
           >
           <div
-            class="rounded-[32px] bg-card-bg border border-surface p-4 sm:p-10"
+            class="rounded-[32px] bg-card-bg flex items-center border border-surface p-4 sm:p-10"
           >
             <img
               src="/images/telegram-gradient-icon.svg"
@@ -671,7 +671,7 @@ const nextSlide = () => {
             ></MarketingCard
           >
           <div
-            class="rounded-[32px] bg-card-bg border border-surface p-4 sm:p-10"
+            class="rounded-[32px] bg-card-bg flex items-center border border-surface p-4 sm:p-10"
           >
             <img
               src="/images/reddit-gradient-icon.svg"
@@ -705,7 +705,7 @@ const nextSlide = () => {
             ></MarketingCard
           >
           <div
-            class="rounded-[32px] bg-card-bg border border-surface p-4 sm:p-10"
+            class="rounded-[32px] bg-card-bg flex items-center border border-surface p-4 sm:p-10"
           >
             <img
               src="/images/twitter-gradient-icon.svg"
@@ -719,7 +719,7 @@ const nextSlide = () => {
             ><template v-slot:title>Twitter spaces</template></MarketingCard
           >
           <div
-            class="rounded-[32px] bg-card-bg border border-surface p-4 sm:p-10"
+            class="rounded-[32px] bg-card-bg flex items-center border border-surface p-4 sm:p-10"
           >
             <img
               src="/images/instagram-gradient-icon.svg"
