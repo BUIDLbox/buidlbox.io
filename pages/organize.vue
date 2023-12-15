@@ -634,7 +634,7 @@ const nextSlide = () => {
     <!-- marketing section -->
     <section class="mt-52 px-4">
       <div
-        class="flex items-center justify-center flex-col sm:gap-16 gap-28 max-w-[85rem] mx-auto px-2 sm:px-6"
+        class="flex items-center justify-center flex-col sm:gap-16 gap-28 max-w-[82rem] mx-auto px-2 sm:px-6"
       >
         <div class="child:mx-auto">
           <div class="flex items-center gap-2 mb-4 justify-center">
@@ -746,7 +746,7 @@ const nextSlide = () => {
           <MarketingCard type="primary"
             ><template v-slot:eyebrow>twitter</template
             ><template v-slot:title
-              >Twitter space hosting</template
+              >Twitter space<br/> hosting</template
             ></MarketingCard
           >
           <div
