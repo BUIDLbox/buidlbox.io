@@ -45,10 +45,10 @@ onUnmounted(() => {
         alt="buidlbox logo"
         width="180"
         height="40"
-        class="xl:w-[180px] w-28 h-auto"
+        class="xl:w-[150px] w-28 h-auto"
       />
 
-      <GradientButton
+      <!-- <GradientButton
         class="flex-shrink-0 flex-grow-0"
         @click="
           () => {
@@ -59,7 +59,7 @@ onUnmounted(() => {
           }
         "
         >Request a demo</GradientButton
-      >
+      > -->
     </div>
 
     <slot />

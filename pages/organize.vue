@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { EasePack } from "gsap/EasePack";
 import { ButtonType } from "~/types/button";
+
 import {
   BriefcaseIcon,
   ChartBarIcon,
@@ -72,46 +73,51 @@ onMounted(async () => {
 
 const testimonialsRow1 = [
   {
-    avatar: "",
-    role: "buidler",
-    name: "Johnny john",
     testimonial:
-      "“This was a great hackathon to be apart of and I totally liked it and thought it was great “",
+      "“What I enjoy most about buidlbox is the seamlessly integrated platform that handles everything from registration to prizes to community engagement. This allows me to fully immerse in hacking rather than fuss with logistics. I also appreciate that buidlbox surfaces hackathons aligned with my interests.”",
+    name: "Vansh, Full-stack Developer",
+    role: "buidler",
+    avatar: "/vansh-pfp.png",
+    id: 11,
   },
   {
-    avatar: "",
-    role: "buidler",
-    name: "Johnny john",
     testimonial:
-      "“This was a great hackathon to be apart of and I totally liked it and thought it was great “",
+      "“What I enjoy most about buidlbox is the seamlessly integrated platform that handles everything from registration to prizes to community engagement. This allows me to fully immerse in hacking rather than fuss with logistics. I also appreciate that buidlbox surfaces hackathons aligned with my interests.”",
+    name: "Vansh, Full-stack Developer",
+    role: "buidler",
+    avatar: "/vansh-pfp.png",
+    id: 143,
   },
   {
-    avatar: "",
+    avatar: "/images/pfps/jonathan.jfif",
     role: "organiser",
-    name: "Joen, ceo buidlbox",
-    testimonial: "“Loved working with the buidlbox team! “",
+    name: "Jonathan W. @ Lukso",
+    testimonial:
+      "“The LUKSO Build UP! Hackathon was a success. We were so happy with the results and enjoyed working with the team!”",
   },
   {
-    avatar: "",
+    avatar: "/images/pfps/kitti.jpg",
     role: "sponsor",
-    name: "Joen, ceo buidlbox",
+    name: "Kitti Borissza @ Tezos",
     testimonial:
-      "“This was a great hackathon to be apart of and I totally liked it and thought it was great ",
+      "“Hosting hackathons with buidlbox has provided a global network of driven, independent builders that continue to thrive within our ecosystem. Hackathons are energizing, and they allow us to educate and empower builders.“",
   },
   {
-    avatar: "",
-    role: "buidler",
-    name: "Johnny john",
     testimonial:
-      "“This was a great hackathon to be apart of and I totally liked it and thought it was great “",
+      "“The buidlbox team is easily approachable, listens to feedback, and improves the product based on your feedback. I not only look forward to using buidlbox again to participate in future hackathons, but I would like to host my own hackathon on their platform too. ”",
+    name: "humptycalderon, founder at mosaic",
+    role: "buidler",
+    avatar: "/humptycalderon-pfp.jpeg",
+    id: 23222,
   },
 ];
 const testimonialsRow2 = [
   {
-    avatar: "",
+    avatar: "/images/pfps/ivan.jpg",
     role: "organiser",
-    name: "Joen, ceo buidlbox",
-    testimonial: "“Loved working with the buidlbox team! “",
+    name: "Ivan Kotelnikov @ everscale.network",
+    testimonial:
+      "““Hosting a hackathon with the buidlbox team was one of the most productive outcomes we've seen in the tech ecosystem and crypto community”“",
   },
   {
     avatar: "",
@@ -121,18 +127,19 @@ const testimonialsRow2 = [
       "“This was a great hackathon to be apart of and I totally liked it and thought it was great ",
   },
   {
-    avatar: "",
+    testimonial:
+      "“The buidlbox team is easily approachable, listens to feedback, and improves the product based on your feedback. I not only look forward to using buidlbox again to participate in future hackathons, but I would like to host my own hackathon on their platform too. ”",
+    name: "humptycalderon, founder at mosaic",
     role: "buidler",
-    name: "Johnny john",
-    testimonial:
-      "“This was a great hackathon to be apart of and I totally liked it and thought it was great “",
+    avatar: "/humptycalderon-pfp.jpeg",
+    id: 2322,
   },
   {
-    avatar: "",
+    avatar: "/images/pfps/daphne.jpg",
     role: "sponsor",
-    name: "Joen, ceo buidlbox",
+    name: "Daphne Tan @ Mask Network",
     testimonial:
-      "“This was a great hackathon to be apart of and I totally liked it and thought it was great ",
+      "“The ETHShanghai Hackathon was a positive experience with the support we got. Overall, it was a successful hackathon with 950 participants from 344 projects, which helped raise awareness our ecosystem.”",
   },
 ];
 
@@ -145,18 +152,20 @@ const testimonialsRow3 = [
       "“This was a great hackathon to be apart of and I totally liked it and thought it was great “",
   },
   {
-    avatar: "",
+    avatar: "/images/pfps/soham.jpg",
     role: "sponsor",
-    name: "Joen, ceo buidlbox",
+    name: "Soham Mishra @ Reserve Protocol",
     testimonial:
-      "“This was a great hackathon to be apart of and I totally liked it and thought it was great ",
+      "“Our goal was to host a hackathon to kickstart the platform while driving high quality community growth. Partnering with buidlbox was a phenomenal experience - We at Reserve would highly recommend it!“",
   },
   {
-    avatar: "",
-    role: "buidler",
-    name: "Johnny john",
     testimonial:
-      "“This was a great hackathon to be apart of and I totally liked it and thought it was great “",
+      "“I recently participated in the inaugural Permissionless II Hackathon and had an excellent experience. The event itself was great for hackers, but the buidlbox platform made things especially smooth and straightforward when it came to creating a team and submitting a project. I really look forward to using buidlbox again at a future hackathon!”",
+    name: "travcrypto, Marketing",
+    role: "buidler",
+    avatar:
+      "https://cdn.buidlbox.io/user/19718d4d-a82f-4b16-b4e7-9410f7c4e88d/avatar/avatar.JPG?t=1697105741898",
+    id: 32323,
   },
   {
     avatar: "",
@@ -853,94 +862,59 @@ const nextSlide = () => {
           </p>
         </div>
         <div
-          class="child:flex child:items-stretch child:justify-center child:gap-x-5 child:gap-y-2 flex flex-col gap-2"
+          class=""
         >
-          <div class="overflex-x-hidden -mx-60 h-auto">
-            <div
-              v-for="(person, index) in testimonialsRow1"
-              :key="index"
-              class="rounded-[32px] bg-card-bg border border-surface xl:px-14 sm:px-6 px-3 sm:py-8 py-4 w-[200px] md:w-[363px]"
-            >
-              <div class="flex items-center gap-4 mb-6">
-                <div
-                  class="bg-gray-400 rounded-full sm:w-[46px] sm:h-[46px] w-7 h-7"
-                ></div>
-                <div>
-                  <p
-                    class="section-eyebrow sm:mb-2 mb-1"
-                    :class="{
-                      'text-primary': person.role == 'buidler',
-                      'text-secondary': person.role == 'sponsor',
-                      'text-tertiary': person.role == 'organizer',
-                    }"
-                  >
-                    {{ person.role }}
-                  </p>
-                  <p class="sm:text-base text-xs">{{ person.name }}</p>
-                </div>
-              </div>
-              <p class="font-extrabold xl:text-base sm:text-sm text-xs">
-                {{ person.testimonial }}
-              </p>
-            </div>
-          </div>
           <div class="">
-            <div
-              v-for="(person, index) in testimonialsRow2"
-              :key="index"
-              class="rounded-[32px] bg-card-bg border border-surface xl:px-14 sm:px-6 px-3 sm:py-8 py-4 w-[200px] md:w-[363px]"
-            >
-              <div class="flex items-center gap-4 mb-6">
+            <ClientOnly>
+              <div
+                v-masonry
+                transition-duration="1s"
+                item-selector=".item"
+                class="masonry-container w-screen flex justify-center m-auto"
+                :gutter="5"
+                :fit-width="true"
+              >
                 <div
-                  class="bg-gray-400 rounded-full sm:w-[46px] sm:h-[46px] w-7 h-7"
-                ></div>
-                <div>
-                  <p
-                    class="section-eyebrow sm:mb-2 mb-1"
-                    :class="{
-                      'text-primary': person.role == 'buidler',
-                      'text-secondary': person.role == 'sponsor',
-                      'text-tertiary': person.role == 'organizer',
-                    }"
+                  v-masonry-tile
+                  class="item mb-[5px]"
+                  :key="index"
+                  v-for="(person, index) in [
+                    ...testimonialsRow1,
+                    ...testimonialsRow2,
+                    ...testimonialsRow3,
+                  ]"
+                >
+                  <div
+                    class="max-w-[80vw] sm:max-w-[250px] md:max-w-[400px] rounded-[32px] bg-card-bg border border-surface 2xl:px-14 xl:px-9 px-6 sm:py-8 py-6"
                   >
-                    {{ person.role }}
-                  </p>
-                  <p class="sm:text-base text-xs">{{ person.name }}</p>
+                    <div class="flex items-center gap-4 mb-6">
+                      <img
+                        :src="person.avatar"
+                        class="bg-gray-400 rounded-full sm:w-[46px] sm:h-[46px] w-7 h-7 flex-shrink-0"
+                      />
+
+                      <div>
+                        <p
+                          class="section-eyebrow sm:mb-2 mb-1"
+                          :class="{
+                            'text-primary': person.role == 'buidler',
+                            'text-secondary': person.role == 'organiser',
+                          }"
+                        >
+                          {{ person.role }}
+                        </p>
+                        <p class="sm:text-base text-sm">{{ person.name }}</p>
+                      </div>
+                    </div>
+                    <p
+                      class="!leading-normal font-bold xl:text-base text-sm"
+                    >
+                      {{ person.testimonial }}
+                    </p>
+                  </div>
                 </div>
               </div>
-              <p class="font-extrabold xl:text-base sm:text-sm text-xs">
-                {{ person.testimonial }}
-              </p>
-            </div>
-          </div>
-          <div class="2xl:-mx-50 2xl:-ml-50 -ml-52">
-            <div
-              v-for="(person, index) in testimonialsRow3"
-              :key="index"
-              class="rounded-[32px] bg-card-bg border border-surface xl:px-14 sm:px-6 px-3 sm:py-8 py-4 w-[200px] md:w-[363px]"
-            >
-              <div class="flex items-center gap-4 mb-6">
-                <div
-                  class="bg-gray-400 rounded-full sm:w-[46px] sm:h-[46px] w-7 h-7"
-                ></div>
-                <div>
-                  <p
-                    class="section-eyebrow sm:mb-2 mb-1"
-                    :class="{
-                      'text-primary': person.role == 'buidler',
-                      'text-secondary': person.role == 'sponsor',
-                      'text-tertiary': person.role == 'organizer',
-                    }"
-                  >
-                    {{ person.role }}
-                  </p>
-                  <p class="sm:text-base text-xs">{{ person.name }}</p>
-                </div>
-              </div>
-              <p class="font-extrabold xl:text-base sm:text-sm text-xs">
-                {{ person.testimonial }}
-              </p>
-            </div>
+            </ClientOnly>
           </div>
         </div>
       </div>
@@ -1455,4 +1429,5 @@ const nextSlide = () => {
   opacity: 0.85;
   transition-delay: 0.05s;
 }
+.grid-sizer { width: 20%; }
 </style>
