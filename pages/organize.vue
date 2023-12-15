@@ -266,12 +266,11 @@ const selectSlide = (e: any) => {
   activateSlide($slide);
 };
 
-
 const list = ref();
 
 onMounted(() => {
   list.value = [...document.getElementsByClassName("carousel__list")][0];
-})
+});
 
 const getActiveIndex = () => {
   const $active = [...document.querySelectorAll("[data-active]")][0];
@@ -460,19 +459,19 @@ const nextSlide = () => {
             <div
               class="h-72 rounded-[32px] bg-card-bg border border-surface p-8"
             >
-              <p class=" mb-3 section-title text-2xl">
-                35k buidlers worldwide
+              <p class="mb-3 section-title text-2xl">
+                Over 35K buidlers worldwide
               </p>
               <p class="font-medium max-w-xs">
-                Extend your reach by accessing our community of buidlers from
-                all over the world.
+                Extend your reach by accessing our community of talented
+                buidlers from around the world.
               </p>
             </div>
             <div
               class="h-72 rounded-[32px] bg-card-bg border border-surface p-8 slide-from-right-section"
             >
               <p class="mb-3 section-title text-2xl">
-                Find your ecosystem champions
+                Uncover your ecosystem champions
               </p>
               <p class="font-medium max-w-xs">
                 Discover and source top-tier talent from our community, and fund
@@ -483,10 +482,10 @@ const nextSlide = () => {
             <div
               class="h-72 rounded-[32px] bg-card-bg border border-surface p-8 slide-from-right-section"
             >
-              <p class="mb-3 section-title text-2xl">Developer feedback</p>
+              <p class="mb-3 section-title text-2xl">Developer feedback loop</p>
               <p class="font-medium max-w-xs">
-                Collect true feedback from developers buidling with your product
-                at every stage of your hackathons.
+                Collect authentic feedback from developers throughout every
+                stage of your hackathon journey.
               </p>
             </div>
           </div>
@@ -506,11 +505,12 @@ const nextSlide = () => {
             <h1
               class="slide-in-section section-title text-4xl md:text-6xl mb-7 !leading-[120%]"
             >
-              All the tools you expect
+              All the tools you need
             </h1>
             <p class="font-medium mb-10 max-w-sm sm:text-lg">
-              Your vision, our platform: We’ve got everything you need to
-              successfully organize your hackathons and power your community.
+              We've got a full suite of features and tools to successfully
+              organize your hackathons, power your community, and fuel your
+              growth.
             </p>
             <GradientButton
               class="flex-shrink-0 flex-grow-0"
@@ -531,11 +531,11 @@ const nextSlide = () => {
             >
               <p class="section-eyebrow text-primary">buidling</p>
               <p class="slide-from-right-section font-extrabold text-2xl">
-                Hackathon platform
+                Dynamic hackathon platform
               </p>
               <p class="font-medium max-w-xs">
                 All the features you need to run amazing hackathons in one
-                platform. Submissions, judging, feedback, winner announcements,
+                platform. Submissions, judging, feedback, winner showcase,
                 allowlist and many more.
               </p>
             </div>
@@ -544,7 +544,7 @@ const nextSlide = () => {
             >
               <p class="section-eyebrow text-tertiary">engagement</p>
               <p class="slide-from-right-section font-extrabold text-2xl">
-                Bounties
+                Standalone bounties
               </p>
               <p class="font-medium max-w-xs">
                 Engage your developer community in between hackathons. Source
@@ -556,7 +556,7 @@ const nextSlide = () => {
             >
               <p class="section-eyebrow text-secondary">customer success</p>
               <p class="slide-from-right-section font-extrabold text-2xl">
-                1:1 support
+                Comprehensive 1:1 support
               </p>
               <p class="font-medium max-w-xs">
                 Receive dedicated support from our global team, from challenge
@@ -582,12 +582,12 @@ const nextSlide = () => {
             >
               <p class="section-eyebrow text-tertiary">marketing</p>
               <p class="slide-from-right-section font-extrabold text-2xl">
-                Community engagement
+                Ongoing community engagement
               </p>
               <p class="font-medium max-w-xs">
-                Vibrant Discord server with dedicated channels where you can get
-                to know builders. Actively engage with your growing community
-                through bounties, email announcements, and X (Twitter) Spaces.
+                Actively engage with your growing community through automated
+                email announcements, Discord roles, feedback forms, workshops,
+                targeted ads and X (Twitter) Spaces.
               </p>
             </div>
             <div
@@ -595,11 +595,12 @@ const nextSlide = () => {
             >
               <p class="section-eyebrow text-primary">buidling</p>
               <p class="slide-from-right-section font-extrabold text-2xl">
-                buidlbot
+                Powered by buidlbot
               </p>
               <p class="font-medium max-w-xs">
-                buidlbot is our AI tool that trains on your documentation to
-                help builders with their projects.
+                buidlbot is our AI tool, it automates dedicated Discord channels
+                for your hackathon and trains on your documentation to help
+                builders with their projects on our platform.
               </p>
             </div>
           </div>
@@ -828,11 +829,11 @@ const nextSlide = () => {
           <h1
             class="slide-in-section section-title !leading-[120%] text-4xl sm:text-6xl mb-7 text-center max-w-2xl"
           >
-            Don’t take it from us
+            See what people say about us
           </h1>
           <p class="font-medium text-center max-w-md sm:text-lg">
-            We've got your back (and your hack) at every stage, providing
-            support throughout your hackathon journey.
+            Here's some feedback from buidlers, sponsors and organizers of their
+            experience with buidlbox.
           </p>
         </div>
         <div
@@ -940,7 +941,8 @@ const nextSlide = () => {
           Ready to grow your community?
         </h1>
         <p class="font-medium mb-10 max-w-md text-center sm:text-lg">
-          Arrange a call with us to go through the next steps!
+          Let's level up, together – schedule a call today to discuss next
+          steps.
         </p>
         <GradientButton
           class="flex-shrink-0 flex-grow-0"

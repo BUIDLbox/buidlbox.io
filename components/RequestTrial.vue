@@ -31,7 +31,7 @@ const submitForm = async (data: any) => {
   try {
     isRequestTrialLoading.value = true;
     await requestTrialAPI(data);
-
+    // TODO: add a modal after submitting - confirmation
     // toast.success(
     //   "Thank you for submitting your free trial request! Our team has received your information and will get back to you shortly.",
     //   {
@@ -60,7 +60,8 @@ const submitForm = async (data: any) => {
         <template v-slot:content>
           <div class="p-4">
             <p class="text-on-surface-secondary text-xs 2xl:text-sm mb-4">
-              Lorem ipsum
+              Please tell us more about your organization. our sales team will
+              reach out soon.
             </p>
             <FormKit
               ref="form"
