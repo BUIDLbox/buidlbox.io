@@ -49,7 +49,7 @@ const sliderSize = computed(() => {
                 :class="sliderSize"
               >
                 <div
-                  class="flex h-full flex-col overflow-y-scroll py-6 shadow-xl relative"
+                  class="flex h-full flex-col overflow-y-scroll overflow-x-hidden py-6 shadow-xl relative"
                   :class="{
                     'bg-surface': !darkBg,
                     'bg-secondary-surface': darkBg,
