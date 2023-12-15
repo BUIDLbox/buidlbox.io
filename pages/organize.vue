@@ -335,24 +335,33 @@ const nextSlide = () => {
         >
       </div>
       <div class="relative w-full h-90">
-        <img
-          class="animate-grow absolute h-32 w-32 animation-delay-0 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-          src="/images/circle1.svg"
-          alt="buidlbox logo"
-          style="transform-origin: center"
-        />
-        <img
-          class="animate-grow absolute h-32 w-32 animation-delay-2000 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-          src="/images/circle2.svg"
-          alt="buidlbox logo"
-          style="transform-origin: center"
-        />
-        <img
-          class="animate-grow absolute h-32 w-32 animation-delay-4000 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-          src="/images/circle1.svg"
-          alt="buidlbox logo"
-          style="transform-origin: center"
-        />
+        <div
+          class="origin-center z-0 absolute h-32 w-32 top-1/2 left-1/2 m-auto transform -translate-x-1/2"
+        >
+          <img
+            class="animate-grow origin-center h-32 w-32 animation-delay-0"
+            src="/images/circle1.svg"
+            alt="buidlbox logo"
+          />
+        </div>
+        <div
+          class="origin-center z-0 absolute h-32 w-32 top-1/2 left-1/2 m-auto transform -translate-x-1/2"
+        >
+          <img
+            class="animate-grow origin-center z-0 h-32 w-32 animation-delay-2000"
+            src="/images/circle2.svg"
+            alt="buidlbox logo"
+          />
+        </div>
+        <div
+          class="origin-center z-0 absolute h-32 w-32 top-1/2 left-1/2 m-auto transform -translate-x-1/2"
+        >
+          <img
+            class="animate-grow origin-center z-0 h-32 w-32 animation-delay-4000"
+            src="/images/circle1.svg"
+            alt="buidlbox logo"
+          />
+        </div>
       </div>
     </section>
 
@@ -759,7 +768,7 @@ const nextSlide = () => {
           class="slide-in-section section-title !leading-[120%] text-4xl sm:text-6xl text-center mb-7"
         >
           The team behind<br />
-          <span class="gradient-text">160</span> hackathons
+          <span class="gradient-text bg-gradient-to-br">160+</span> hackathons
         </h1>
         <p class="font-medium mb-10 max-w-md text-center sm:text-lg">
           We've got your back (and your hack) at every stage, providing support
