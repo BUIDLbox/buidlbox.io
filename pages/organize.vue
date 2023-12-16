@@ -71,13 +71,13 @@ onMounted(async () => {
   });
 });
 
-const testimonialsRow1 = [
+const testimonials = [
   {
     testimonial:
-      "“What I enjoy most about buidlbox is the seamlessly integrated platform that handles everything from registration to prizes to community engagement. This allows me to fully immerse in hacking rather than fuss with logistics. I also appreciate that buidlbox surfaces hackathons aligned with my interests.”",
-    name: "Vansh, Full-stack Developer",
+      "“I have participated in two events, buildHACKS and BuildUP #2 both of them were great opportunities to gain more skills and learn about this current era (web3). However, I met a great team on the Buidlbox Discord server, team up channel and I could join them as a web3 full-stack developer, in fact, this was the real prize in advance! so glad I found the Buidlbox platform. The event pushed me to work hard, read, and learn quickly.”",
+    name: "web3senior",
     role: "buidler",
-    avatar: "/vansh-pfp.png",
+    avatar: "",
     id: 11,
   },
   {
@@ -93,11 +93,11 @@ const testimonialsRow1 = [
     role: "organiser",
     name: "Jonathan W. @ Lukso",
     testimonial:
-      "“The LUKSO Build UP! Hackathon was a success. We were so happy with the results and enjoyed working with the team!”",
+      "“We partnered with buidlbox to launch our latest hackathon and were impressed by the developer talent their platform was able to attract and the quality of projects that came out of the event. We like the team’s hands-on approach and continual push to innovate on their products and tools.”",
   },
   {
     avatar: "/images/pfps/kitti.jpg",
-    role: "sponsor",
+    role: "organizer",
     name: "Kitti Borissza @ Tezos",
     testimonial:
       "“Hosting hackathons with buidlbox has provided a global network of driven, independent builders that continue to thrive within our ecosystem. Hackathons are energizing, and they allow us to educate and empower builders.“",
@@ -110,53 +110,48 @@ const testimonialsRow1 = [
     avatar: "/humptycalderon-pfp.jpeg",
     id: 23222,
   },
-];
-const testimonialsRow2 = [
   {
     avatar: "/images/pfps/ivan.jpg",
     role: "organiser",
     name: "Ivan Kotelnikov @ everscale.network",
     testimonial:
-      "““Hosting a hackathon with the buidlbox team was one of the most productive outcomes we've seen in the tech ecosystem and crypto community”“",
+      "“Hosting a hackathon with the buidlbox team was one of the most productive outcomes we've seen in the tech ecosystem and crypto community”“",
   },
   {
     avatar: "",
-    role: "sponsor",
+    role: "organizer",
     name: "Joen, ceo buidlbox",
     testimonial:
       "“This was a great hackathon to be apart of and I totally liked it and thought it was great ",
   },
   {
     testimonial:
-      "“The buidlbox team is easily approachable, listens to feedback, and improves the product based on your feedback. I not only look forward to using buidlbox again to participate in future hackathons, but I would like to host my own hackathon on their platform too. ”",
-    name: "humptycalderon, founder at mosaic",
+      "“My team recently placed 1st and 3rd in two challenge categories in the recent buildHACKS hackathon sponsored by DeCommas, Metamask, Linea and Buildbox. This was such an amazing feeling, winning a hackathon isn't all about the money (but thats nice too). It's a chance to really push yourself to learn and commit to actually getting something shipped out the door. I was blessed to have found an awesome team and we're now more excited than ever to squad up and continue building and learning in this brave new exciting permissionless world..”",
+    name: "Tantodefi",
     role: "buidler",
-    avatar: "/humptycalderon-pfp.jpeg",
+    avatar: "",
     id: 2322,
   },
   {
     avatar: "/images/pfps/daphne.jpg",
-    role: "sponsor",
+    role: "organizer",
     name: "Daphne Tan @ Mask Network",
     testimonial:
       "“The ETHShanghai Hackathon was a positive experience with the support we got. Overall, it was a successful hackathon with 950 participants from 344 projects, which helped raise awareness our ecosystem.”",
   },
-];
-
-const testimonialsRow3 = [
   {
     avatar: "",
     role: "buidler",
-    name: "Johnny john",
+    name: "lucianodeangelo",
     testimonial:
-      "“This was a great hackathon to be apart of and I totally liked it and thought it was great “",
+      "“Funding the Commons Hackathon was incredibly easy to participate in and there were so many amazing challenges to compete for. I actually wish there was more time so I could have built more. We won with Datanudge which has directly connected us with Octant who wants to pay us to build out the product feature further for them. “",
   },
   {
     avatar: "/images/pfps/soham.jpg",
-    role: "sponsor",
+    role: "organizer",
     name: "Soham Mishra @ Reserve Protocol",
     testimonial:
-      "“Our goal was to host a hackathon to kickstart the platform while driving high quality community growth. Partnering with buidlbox was a phenomenal experience - We at Reserve would highly recommend it!“",
+      "“Partnering with buidlbox was a phenomenal experience - their team and community of builders were instrumental in executing all phases of the hackathon, from initial ideation to final implementation of bounties and workshops. We at Reserve would highly recommend buidlbox, and look forward to continuing our partnership into the future!“",
   },
   {
     testimonial:
@@ -170,15 +165,16 @@ const testimonialsRow3 = [
   {
     avatar: "",
     role: "organiser",
-    name: "Joen, ceo buidlbox",
-    testimonial: "“Loved working with the buidlbox team! “",
+    name: "Metis",
+    testimonial:
+      "“buidlbox has been a critical partner in growing Metis developers community. We partnered with them to launch our first in-person hackathon, BogoHacks, which was held during the DevCon week in Bogota. Metis team was impressed by their work and attention to detail on the projects, going the extra mile in their customer service. Metis received great quality projects as a result of there Buidl Days. It was a great marketing effort to bring the Latam developers community into the event.“",
   },
   {
     avatar: "",
-    role: "sponsor",
-    name: "Joen, ceo buidlbox",
+    role: "organizer",
+    name: "ETHShanghai",
     testimonial:
-      "“This was a great hackathon to be apart of and I totally liked it and thought it was great ",
+      "“The ETHShanghai Hackathon is organised by Mask Network in collaboration with Gitcoin in May 2022 with the aim to create a rewarding development experience and new insights about how social networks and experiences unfold in Web3. It was a positive experience working with Gitcoin as they provided great support in the development of Hackathon questions and participant handbooks, platform for registration, workshop partner services and marketing activities. Overall, it was a successful hackathon with 950 participants across 344 projects. The hackathon helped raise the awareness of Mask Network and our ecosystem, which provided additional ammunition for our following Web3 Social Hackathon — the first ever Web3 social ecosystem round with projects that goes beyond Mask’s ecosystem“",
   },
 ];
 
@@ -319,7 +315,7 @@ const nextSlide = () => {
       />
     </div>
     <section
-      class="pt-[25vh] padding flex sm:flex-row flex-col pb-40 relative overflow-hidden"
+      class="pt-[20vh] justify-center m-auto flex sm:flex-row flex-col pb-40 relative overflow-hidden"
     >
       <div class="self-center justify-self-center max-w-md z-50">
         <h1 class="section-title leading-[120%] text-6xl sm:text-7xl pb-6">
@@ -343,9 +339,23 @@ const nextSlide = () => {
           >Request a demo</GradientButton
         >
       </div>
-      <div class="relative w-full h-90">
+      <div class="relative w-[500px] h-[500px]">
+        <client-only>
+          <video
+            playsInline
+            preload="auto"
+            width="500"
+            autoPlay
+            height="500"
+            loop
+            muted="true"
+          >
+            <!-- <source src={flowerMov} type="video/quicktime" /> -->
+            <source src="/animations/00-hero.webm" type="video/webm" />
+          </video>
+        </client-only>
         <div
-          class="origin-center z-0 absolute h-32 w-32 top-1/2 left-1/2 m-auto transform -translate-x-1/2"
+          class="origin-center z-0 absolute h-32 w-32 top-1/2 left-1/2 m-auto transform -translate-x-1/2 -translate-y-1/2"
         >
           <img
             class="animate-grow origin-center h-32 w-32 animation-delay-0"
@@ -354,7 +364,7 @@ const nextSlide = () => {
           />
         </div>
         <div
-          class="origin-center z-0 absolute h-32 w-32 top-1/2 left-1/2 m-auto transform -translate-x-1/2"
+          class="origin-center z-0 absolute h-32 w-32 top-1/2 left-1/2 m-auto transform -translate-x-1/2 -translate-y-1/2"
         >
           <img
             class="animate-grow origin-center z-0 h-32 w-32 animation-delay-2000"
@@ -363,7 +373,7 @@ const nextSlide = () => {
           />
         </div>
         <div
-          class="origin-center z-0 absolute h-32 w-32 top-1/2 left-1/2 m-auto transform -translate-x-1/2"
+          class="origin-center z-0 absolute h-32 w-32 top-1/2 left-1/2 m-auto transform -translate-x-1/2 -translate-y-1/2"
         >
           <img
             class="animate-grow origin-center z-0 h-32 w-32 animation-delay-4000"
@@ -480,36 +490,112 @@ const nextSlide = () => {
           </div>
           <div class="flex flex-col gap-4 slide-from-right-section">
             <div
-              class="h-72 rounded-[32px] bg-card-bg border border-surface p-8"
+              class="relative z-50 rounded-[32px] bg-card-bg border border-surface p-8"
             >
-              <p class="mb-3 section-title text-2xl">
-                Over 35K buidlers worldwide
-              </p>
-              <p class="font-medium max-w-xs">
-                Extend your reach by accessing our community of talented
-                buidlers from around the world.
-              </p>
+              <div
+                class="py-4 grid grid-cols-5 items-center gap-2 justify-center"
+              >
+                <div class="col-span-3">
+                  <p class="mb-6 section-title text-2xl">
+                    Over 35K buidlers worldwide
+                  </p>
+                  <p class="font-medium">
+                    Extend your reach by accessing our community of talented
+                    buidlers from around the world.
+                  </p>
+                </div>
+                <client-only>
+                  <video
+                    class="col-span-2"
+                    playsInline
+                    preload="auto"
+                    width="200"
+                    autoPlay
+                    height="200"
+                    loop
+                    muted="true"
+                  >
+                    <!-- <source src={flowerMov} type="video/quicktime" /> -->
+                    <source src="/animations/01-ww.webm" type="video/webm" />
+                  </video>
+                </client-only>
+              </div>
             </div>
             <div
-              class="h-72 rounded-[32px] bg-card-bg border border-surface p-8 slide-from-right-section"
+              class="relative z-50 rounded-[32px] bg-card-bg border border-surface p-8 slide-from-right-section"
             >
-              <p class="mb-3 section-title text-2xl">
-                Uncover your ecosystem champions
-              </p>
-              <p class="font-medium max-w-xs">
-                Discover and source top-tier talent from our community, and fund
-                cutting-edge projects built on your ecosystem by hackathon
-                buidlers.
-              </p>
+              <div
+                class="py-4 grid grid-cols-5 items-center gap-2 justify-center"
+              >
+                <div class="col-span-3">
+                  <p class="mb-6 section-title text-2xl">
+                    Uncover your ecosystem champions
+                  </p>
+                  <p class="font-medium">
+                    Discover and source top-tier talent from our community, and
+                    fund cutting-edge projects built on your ecosystem by
+                    hackathon buidlers.
+                  </p>
+                </div>
+                <client-only>
+                  <video
+                    class="col-span-2"
+                    playsInline
+                    preload="auto"
+                    width="500"
+                    autoPlay
+                    height="500"
+                    loop
+                    muted="true"
+                  >
+                    <!-- <source src={flowerMov} type="video/quicktime" /> -->
+                    <source src="/animations/02-champ.webm" type="video/webm" />
+                    <!-- <img src={flowerpng} alt="" /> -->
+                    <!-- <video ref={videoRef} className="hero-animation" poster={flowerGif} playsInline preload="auto" width="500" height="500" loop muted={true}>
+              <source src={flowerMov} type="video/quicktime" />
+              <source src={flowerWebm} type="video/webm" />
+              <img src={flowerpng} alt="" /> -->
+                  </video>
+                </client-only>
+              </div>
             </div>
             <div
-              class="h-72 rounded-[32px] bg-card-bg border border-surface p-8 slide-from-right-section"
+              class="relative z-50 rounded-[32px] bg-card-bg border border-surface p-8 slide-from-right-section"
             >
-              <p class="mb-3 section-title text-2xl">Developer feedback loop</p>
-              <p class="font-medium max-w-xs">
-                Collect authentic feedback from developers throughout every
-                stage of your hackathon journey.
-              </p>
+              <div
+                class="py-4 grid grid-cols-5 items-center gap-2 justify-center"
+              >
+                <div class="col-span-3">
+                  <p class="mb-6 section-title text-2xl">
+                    Developer<br />
+                    feedback loop
+                  </p>
+                  <p class="font-medium">
+                    Collect authentic feedback from developers throughout every
+                    stage of your hackathon journey.
+                  </p>
+                </div>
+                <client-only>
+                  <video
+                    class="col-span-2"
+                    autoplay
+                    playsInline
+                    preload="auto"
+                    width="500"
+                    height="500"
+                    loop
+                    muted="true"
+                  >
+                    <!-- <source src={flowerMov} type="video/quicktime" /> -->
+                    <source src="/animations/03-loop.webm" type="video/webm" />
+                    <!-- <img src={flowerpng} alt="" /> -->
+                    <!-- <video ref={videoRef} className="hero-animation" poster={flowerGif} playsInline preload="auto" width="500" height="500" loop muted={true}>
+              <source src={flowerMov} type="video/quicktime" />
+              <source src={flowerWebm} type="video/webm" />
+              <img src={flowerpng} alt="" /> -->
+                  </video>
+                </client-only>
+              </div>
             </div>
           </div>
         </div>
@@ -746,7 +832,8 @@ const nextSlide = () => {
           <MarketingCard type="primary"
             ><template v-slot:eyebrow>twitter</template
             ><template v-slot:title
-              >Twitter space<br/> hosting</template
+              >Twitter space<br />
+              hosting</template
             ></MarketingCard
           >
           <div
@@ -861,9 +948,7 @@ const nextSlide = () => {
             experience with buidlbox.
           </p>
         </div>
-        <div
-          class=""
-        >
+        <div class="">
           <div class="">
             <ClientOnly>
               <div
@@ -878,11 +963,7 @@ const nextSlide = () => {
                   v-masonry-tile
                   class="item mb-[5px]"
                   :key="index"
-                  v-for="(person, index) in [
-                    ...testimonialsRow1,
-                    ...testimonialsRow2,
-                    ...testimonialsRow3,
-                  ]"
+                  v-for="(person, index) in testimonials"
                 >
                   <div
                     class="max-w-[80vw] sm:max-w-[250px] md:max-w-[400px] rounded-[32px] bg-card-bg border border-surface 2xl:px-14 xl:px-9 px-6 sm:py-8 py-6"
@@ -906,9 +987,7 @@ const nextSlide = () => {
                         <p class="sm:text-base text-sm">{{ person.name }}</p>
                       </div>
                     </div>
-                    <p
-                      class="!leading-normal font-bold xl:text-base text-sm"
-                    >
+                    <p class="!leading-normal font-bold xl:text-base text-sm">
                       {{ person.testimonial }}
                     </p>
                   </div>
@@ -921,7 +1000,7 @@ const nextSlide = () => {
     </section>
 
     <!-- final CTA -->
-    <section class="relative w-screen px-4 mt-52 overflow-hidden h-screen">
+    <section class="relative w-screen px-4 mt-52 overflow-hidden h-[70vh]">
       <div
         class="flex flex-col items-center max-w-full justify-center z-50 child:z-50"
       >
@@ -948,7 +1027,7 @@ const nextSlide = () => {
         >
       </div>
       <div
-        class="origin-center z-0 absolute h-32 w-32 bottom-0 left-1/2 m-auto transform -translate-x-1/2"
+        class="origin-center z-0 absolute h-32 w-32 -bottom-20 left-1/2 m-auto transform -translate-x-1/2"
       >
         <img
           class="animate-grow origin-center h-32 w-32 animation-delay-0"
@@ -957,7 +1036,7 @@ const nextSlide = () => {
         />
       </div>
       <div
-        class="origin-center z-0 absolute h-32 w-32 bottom-0 left-1/2 m-auto transform -translate-x-1/2"
+        class="origin-center z-0 absolute h-32 w-32 -bottom-20 left-1/2 m-auto transform -translate-x-1/2"
       >
         <img
           class="animate-grow origin-center z-0 h-32 w-32 animation-delay-2000"
@@ -966,7 +1045,7 @@ const nextSlide = () => {
         />
       </div>
       <div
-        class="origin-center z-0 absolute h-32 w-32 bottom-0 left-1/2 m-auto transform -translate-x-1/2"
+        class="origin-center z-0 absolute h-32 w-32 -bottom-20 left-1/2 m-auto transform -translate-x-1/2"
       >
         <img
           class="animate-grow origin-center z-0 h-32 w-32 animation-delay-4000"
@@ -1429,5 +1508,4 @@ const nextSlide = () => {
   opacity: 0.85;
   transition-delay: 0.05s;
 }
-.grid-sizer { width: 20%; }
 </style>
