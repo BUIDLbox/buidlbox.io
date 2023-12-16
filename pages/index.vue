@@ -264,7 +264,7 @@ const setTabSwitchInterval = () => {
                   "
                 />
               </a>
-              <NuxtLink :href="FEATURES_URL">
+              <!-- <NuxtLink :href="FEATURES_URL">
                 <Button
                   title="Organize a hackathon"
                   :button-type="ButtonType.Secondary1"
@@ -277,7 +277,7 @@ const setTabSwitchInterval = () => {
                     }
                   "
                 />
-              </NuxtLink>
+              </NuxtLink> -->
             </div>
           </div>
           <div class="xl:max-w-[80vw] m-auto px-8" ref="userDashboardRef">
@@ -564,13 +564,13 @@ const setTabSwitchInterval = () => {
                       community, and fund cutting-edge projects built on your
                       ecosystem by hackathon buidlers.
                     </p>
-                    <NuxtLink :href="FEATURES_URL">
+                    <!-- <NuxtLink :href="FEATURES_URL">
                       <Button
                         title="Learn more"
                         :button-type="ButtonType.Positive"
                         class="w-40"
                       />
-                    </NuxtLink>
+                    </NuxtLink> -->
                   </div>
                   <Metrics />
                 </div>
@@ -602,7 +602,7 @@ const setTabSwitchInterval = () => {
                       co-sponsors, publishing challenges, event scheduling,
                       judging projects, and so much more.
                     </p>
-                    <NuxtLink :href="FEATURES_URL">
+                    <!-- <NuxtLink :href="FEATURES_URL">
                       <Button
                         title="Explore features"
                         :button-type="ButtonType.Positive"
@@ -615,7 +615,7 @@ const setTabSwitchInterval = () => {
                           }
                         "
                       />
-                    </NuxtLink>
+                    </NuxtLink> -->
                   </div>
                 </div>
               </div>

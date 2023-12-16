@@ -15,11 +15,10 @@ const isRequestTrialLoading = ref(false);
 const form: Ref<any> = ref(null);
 const trial = ref({
   entityName: "",
-  teamMembers: undefined,
   industry: "",
   contactEmail: "",
   link: "",
-  comments: "",
+  requirements: "",
 });
 
 const submit = () => {
@@ -30,8 +29,7 @@ const submit = () => {
 const submitForm = async (data: any) => {
   try {
     isRequestTrialLoading.value = true;
-    const newData = { ...data, teamMembers: +data.teamMembers };
-    await requestTrialAPI(newData);
+    await requestTrialAPI(data);
 
     // toast.success(
     //   "Thank you for submitting your free trial request! Our team has received your information and will get back to you shortly.",
@@ -60,10 +58,8 @@ const submitForm = async (data: any) => {
         <template v-slot:content>
           <div class="p-4">
             <p class="text-on-surface-secondary text-xs 2xl:text-sm mb-4">
-              The trial will allow you to explore the features, create your
-              guidl, invite team members, hackathons and challenges in draft
-              mode, and view the landing page. However, during the trial period,
-              you will not have the ability to publish the hackathon.
+              Our team has years of experience with hackathon related services;
+              e.g. marketing, R&D, innovation and growth.
             </p>
             <FormKit
               ref="form"
@@ -91,13 +87,7 @@ const submitForm = async (data: any) => {
                 :help="'Max 250 characters'"
                 label="Your domain / industry"
               />
-              <FormKit
-                class="w-full"
-                type="number"
-                v-model="trial.teamMembers"
-                name="teamMembers"
-                label="Number of team members you would like to have on buidlbox (optional)"
-              />
+
               <FormKit
                 class="w-full"
                 type="email"
@@ -121,10 +111,10 @@ const submitForm = async (data: any) => {
                 class="w-full max-h-12"
                 type="textarea"
                 :maxLength="250"
-                v-model="trial.comments"
-                name="comments"
+                v-model="trial.requirements"
+                name="requirements"
                 :help="'Max 250 characters'"
-                label="Anything you would like to add? (optional)"
+                label="Anything you would like to add?"
               />
               <div class="max-w-2xl flex w-full justify-end">
                 <Button

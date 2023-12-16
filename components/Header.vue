@@ -48,14 +48,14 @@ import { ButtonSize, ButtonType } from "~/types/button";
             class="md:flex hidden"
           />
         </NuxtLink>
-        <NuxtLink href="https://app.buidlbox.io/buy-hackathons/tiers">
+        <!-- <NuxtLink href="https://app.buidlbox.io/buy-hackathons/tiers">
           <Button
             title="Organize hackathons"
             :size="ButtonSize.XSmall"
             class="md:hidden"
           />
           <Button title="Organize hackathons" class="md:flex hidden" />
-        </NuxtLink>
+        </NuxtLink> -->
       </div>
     </div>
   </div>
