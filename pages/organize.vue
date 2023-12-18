@@ -106,7 +106,7 @@ onMounted(async () => {
   });
 });
 
-const testimonials = [
+const testimonials = window.screenY > 600 ? [
   {
     testimonial:
       "“I have participated in two events, buildHACKS and BuildUP #2 both of them were great opportunities to gain more skills and learn about this current era (web3). However, I met a great team on the Buidlbox Discord server, team up channel and I could join them as a web3 full-stack developer, in fact, this was the real prize in advance! so glad I found the Buidlbox platform. The event pushed me to work hard, read, and learn quickly.”",
@@ -200,6 +200,35 @@ const testimonials = [
     name: "Everscale",
     testimonial:
       "“Hosting a hackathon with the buidlbox team was one of the most productive outcomes we've seen in the tech ecosystem and crypto community.”",
+  },
+] : [
+{
+    avatar: "/images/pfps/blockworks-logo.jpg",
+    role: "organiser",
+    name: "Blockworks || Permissionless II",
+    testimonial:
+      "“The team was super hands on and so knowledgeable throughout the whole process! The platform was easy to navigate and helpful that so many processes happen within platform. Everyone has been super responsive throughout any platform issues that happened and ready to answer any questions from us or sponsors. It was also great meeting everyone IRL!”",
+  },
+  {
+    avatar: "/images/pfps/lukso-logo.png",
+    role: "organiser",
+    name: "Lukso",
+    testimonial:
+      "“We partnered with buidlbox to launch our latest hackathon and were impressed by the developer talent their platform was able to attract and the quality of projects that came out of the event. We like the team’s hands-on approach and continual push to innovate on their products and tools.”",
+  },
+  {
+    avatar: "/images/pfps/reserve-protocol-logo.png",
+    role: "organiser",
+    name: "Reserve Protocol",
+    testimonial:
+      "“Partnering with buidlbox was a phenomenal experience - their team and community of builders were instrumental in executing all phases of the hackathon, from initial ideation to final implementation of bounties and workshops. We at Reserve would highly recommend buidlbox, and look forward to continuing our partnership into the future!“",
+  },
+  {
+    avatar: "/images/pfps/ethshanghai-logo.png",
+    role: "organiser",
+    name: "EthShanghai",
+    testimonial:
+      "“The ETHShanghai Hackathon was a positive experience with the support we got. Overall, it was a successful hackathon with 950 participants from 344 projects, which helped raise awareness our ecosystem.”",
   },
 ];
 
