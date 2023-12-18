@@ -60,7 +60,7 @@ const submitForm = async (data: any) => {
         <template v-slot:content>
           <div class="p-4">
             <p class="text-on-surface-secondary text-xs 2xl:text-sm mb-4">
-              Please tell us more about your organization. our sales team will
+              Please tell us more about your organization, our sales team will
               reach out soon.
             </p>
             <FormKit

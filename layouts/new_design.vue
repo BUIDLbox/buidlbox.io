@@ -34,7 +34,7 @@ onUnmounted(() => {
 
 <template>
   <div
-    class="bg-secondary-surface w-screen max-w-screen min-h-screen relative pb-12"
+    class="bg-secondary-surface w-screen max-w-screen min-h-screen relative"
   >
     <div
       class="w-screen py-4 flex items-center justify-between px-[7vw] fixed z-[90] transition-all duration-300"
@@ -63,8 +63,6 @@ onUnmounted(() => {
     </div>
 
     <slot />
-
-    <PageFooter />
   </div>
 
   <RequestTrial

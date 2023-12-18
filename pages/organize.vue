@@ -4,7 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { EasePack } from "gsap/EasePack";
 import { ButtonType } from "~/types/button";
-
+import { Mixpanel } from "mixpanel-browser";
 import {
   BriefcaseIcon,
   ChartBarIcon,
@@ -19,11 +19,44 @@ definePageMeta({
 });
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, EasePack);
-
+const mixpanel = inject("mixpanel") as Mixpanel;
 const isTrialModalOpen = ref(false);
 
 onMounted(async () => {
   nextTick(() => {
+    const finalCTASection = document.querySelector(".final-cta");
+
+    gsap.fromTo(
+      ".final-cta-content",
+      {
+        y: 0,
+      },
+      {
+        y: () => window.innerHeight * 0.7,
+        ease: "none",
+        scrollTrigger: {
+          trigger: finalCTASection,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+          invalidateOnRefresh: true,
+        },
+      }
+    );
+    gsap.to(".footer-bg", {
+      scaleX: () => (window.innerWidth > 600 ? 0.75 : 0.8),
+      borderTopRightRadius: 60,
+      borderTopLeftRadius: 60,
+      ease: "none",
+      scrollTrigger: {
+        trigger: finalCTASection,
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+        invalidateOnRefresh: true,
+      },
+    });
+
     const slideInSections = gsap.utils.toArray(".slide-in-section");
     slideInSections.forEach((section: any) => {
       gsap.from(section, {
@@ -340,7 +373,7 @@ const nextSlide = () => {
             loop
             muted="true"
           >
-            <!-- <source src={flowerMov} type="video/quicktime" /> -->
+            <source src="/animations/00-hero.mov" type="video/quicktime" />
             <source src="/animations/00-hero.webm" type="video/webm" />
           </video>
         </client-only>
@@ -938,7 +971,7 @@ const nextSlide = () => {
                 v-masonry
                 transition-duration="1s"
                 item-selector=".item"
-                class="masonry-container w-screen flex justify-center m-auto"
+                class="masonry-container w-screen"
                 :gutter="5"
                 :fit-width="true"
               >
@@ -983,35 +1016,37 @@ const nextSlide = () => {
     </section>
 
     <!-- final CTA -->
-    <section class="relative w-screen px-4 mt-52 overflow-hidden h-[70vh]">
-      <div
-        class="flex flex-col items-center max-w-full justify-center z-50 child:z-50"
-      >
-        <h1
-          class="section-title !leading-[120%] text-4xl sm:text-6xl mb-7 text-center"
+    <section
+      class="final-cta relative w-screen px-4 z-50 mt-52 overflow-hidden h-screen"
+    >
+        <div
+          class="final-cta-content flex flex-col items-center max-w-full justify-center z-50 child:z-50"
         >
-          Ready to grow<br />
-          your community?
-        </h1>
-        <p class="font-medium mb-10 max-w-md text-center sm:text-lg">
-          Let's level up, together – schedule a call today to discuss next
-          steps.
-        </p>
-        <GradientButton
-          class="flex-shrink-0 flex-grow-0"
-          @click="
-            () => {
-              isTrialModalOpen = true;
-              mixpanel.track('Request a demo', {
-                type: 'Lead',
-              });
-            }
-          "
-          >Request a demo</GradientButton
-        >
-      </div>
+          <h1
+            class="section-title !leading-[120%] text-4xl sm:text-6xl mb-7 text-center"
+          >
+            Ready to grow<br />
+            your community?
+          </h1>
+          <p class="font-medium mb-10 max-w-md text-center sm:text-lg">
+            Let's level up, together – schedule a call today to discuss next
+            steps.
+          </p>
+          <GradientButton
+            class="flex-shrink-0 flex-grow-0"
+            @click="
+              () => {
+                isTrialModalOpen = true;
+                mixpanel.track('Request a demo', {
+                  type: 'Lead',
+                });
+              }
+            "
+            >Request a demo</GradientButton
+          >
+        </div>
       <div
-        class="origin-center z-0 absolute h-32 w-32 -bottom-20 left-1/2 m-auto transform -translate-x-1/2"
+        class="origin-center z-[-1] absolute h-32 w-32 -bottom-20 left-1/2 m-auto transform -translate-x-1/2"
       >
         <img
           class="animate-grow origin-center h-32 w-32 animation-delay-0"
@@ -1020,26 +1055,124 @@ const nextSlide = () => {
         />
       </div>
       <div
-        class="origin-center z-0 absolute h-32 w-32 -bottom-20 left-1/2 m-auto transform -translate-x-1/2"
+        class="origin-center z-[-1] absolute h-32 w-32 -bottom-20 left-1/2 m-auto transform -translate-x-1/2"
       >
         <img
-          class="animate-grow origin-center z-0 h-32 w-32 animation-delay-2000"
+          class="animate-grow origin-center  h-32 w-32 animation-delay-2000"
           src="/images/circle2.svg"
           alt="buidlbox logo"
         />
       </div>
       <div
-        class="origin-center z-0 absolute h-32 w-32 -bottom-20 left-1/2 m-auto transform -translate-x-1/2"
+        class="origin-center z-[-1] absolute h-32 w-32 -bottom-20 left-1/2 m-auto transform -translate-x-1/2"
       >
         <img
-          class="animate-grow origin-center z-0 h-32 w-32 animation-delay-4000"
+          class="animate-grow origin-center h-32 w-32 animation-delay-4000"
           src="/images/circle1.svg"
           alt="buidlbox logo"
         />
       </div>
-
-      <div class="absolute bottom-0 left-0 right-0 m-auto"></div>
     </section>
+
+    <footer class="pb-16 w-screen m-auto relative z-10">
+      <div
+        class="footer-bg bg-on-surface absolute top-0 left-0 bottom-0 right-0 z-[-1]"
+      ></div>
+      <div class="flex flex-col gap-6 pt-12 sm:px-[12vw] px-8">
+        <div>
+          <img
+            src="/buidlbox-logo-positive.svg"
+            alt="buidlbox logo"
+            width="138"
+            height="35"
+          />
+        </div>
+        <div class="flex sm:flex-row flex-col gap-4 mt-6">
+          <NuxtLink href="https://twitter.com/buidlbox" target="_blank">
+            <GradientButton>
+              <div class="flex items-center gap-3">
+                <font-awesome-icon
+                  :icon="['fab', 'twitter']"
+                  class="!w-4 !h-4"
+                />
+                <span>Follow us on twitter</span>
+              </div></GradientButton
+            ></NuxtLink
+          >
+
+          <GradientButton class="flex-shrink-0">
+            <div class="flex items-center gap-3">
+              <EnvelopeIcon class="h-4 w-4" />
+              Sign up to our newsletter
+            </div></GradientButton
+          >
+        </div>
+        <div
+          class="sm:border-t sm:border-around-forms sm:pt-4 flex justify-between gap-4 items-center w-full flex-wrap"
+        >
+          <div
+            class="flex gap-x-6 gap-y-2 child:text-sm child:text-background flex-wrap"
+          >
+            <a
+              class="hover:underline"
+              href="mailto:team@buidlbox.io"
+              target="_blank"
+              >Contact</a
+            >
+            <a
+              class="hover:underline"
+              href="https://buidlbox.zendesk.com"
+              target="_blank"
+              >Help center</a
+            >
+            <a
+              class="hover:underline"
+              @click="
+                () => {
+                  isTrialModalOpen = true;
+                  mixpanel.track('Request a demo', {
+                    type: 'Lead',
+                  });
+                }
+              "
+              >Request a demo</a
+            >
+            <NuxtLink to="/privacy" class="hover:underline" target="_blank">
+              Privacy
+            </NuxtLink>
+            <NuxtLink to="/terms" class="hover:underline" target="_blank"
+              >Terms
+            </NuxtLink>
+          </div>
+          <div class="flex items-center gap-3">
+            <a href="https://twitter.com/buidlbox" target="_blank">
+              <font-awesome-icon
+                :icon="['fab', 'twitter']"
+                class="cursor-pointer rounded-full text-background hover:text-positive transition-all w-5 h-5"
+              />
+            </a>
+            <a href="https://discord.gg/NTRYy5V2Q9" target="_blank">
+              <font-awesome-icon
+                :icon="['fab', 'discord']"
+                class="cursor-pointer rounded-full text-background hover:text-positive transition-all w-5 h-5"
+              />
+            </a>
+            <a href="https://www.instagram.com/buidlbox" target="_blank">
+              <font-awesome-icon
+                :icon="['fab', 'instagram']"
+                class="cursor-pointer rounded-full text-background hover:text-positive transition-all w-5 h-5"
+              />
+            </a>
+            <a href="https://www.linkedin.com/company/buidlbox" target="_blank">
+              <font-awesome-icon
+                :icon="['fab', 'linkedin']"
+                class="cursor-pointer rounded-full text-background hover:text-positive transition-all w-5 h-5"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
   </div>
 
   <RequestTrial
