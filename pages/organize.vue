@@ -771,7 +771,7 @@ const nextSlide = () => {
             >
               <p class="section-eyebrow text-primary">buidling</p>
               <p class="slide-from-right-section font-extrabold text-2xl">
-                Powered by buidlbot
+                Powered by AI
               </p>
               <p class="font-medium max-w-xs">
                 buidlbot is our AI tool, it automates dedicated Discord channels
@@ -851,16 +851,6 @@ const nextSlide = () => {
               across all KPIs</template
             ></MarketingCard
           >
-          <div
-            class="rounded-[32px] bg-card-bg flex items-center border border-surface p-4 sm:p-10"
-          >
-            <img
-              src="/images/reddit-gradient-icon.svg"
-              width="60"
-              height="60"
-              class="sm:!w-[3.75rem] sm:!h-[3.75rem] !w-10 !h-10"
-            />
-          </div>
           <MarketingCard type="secondary"
             ><template v-slot:eyebrow>workshops</template
             ><template v-slot:title
@@ -877,12 +867,6 @@ const nextSlide = () => {
             ><template v-slot:eyebrow>emails</template
             ><template v-slot:title
               >Continuos email <br />marketing</template
-            ></MarketingCard
-          >
-          <MarketingCard type="tertiary"
-            ><template v-slot:eyebrow>reddit</template
-            ><template v-slot:title
-              >Reddit pages and <br />engagements</template
             ></MarketingCard
           >
           <div
