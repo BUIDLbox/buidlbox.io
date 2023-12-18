@@ -539,7 +539,7 @@ const nextSlide = () => {
                 </div>
                 <client-only>
                   <video
-                    class="absolute -bottom-20 lg:bottom-0 lg:top-0 -right-16 lg:-right-2x0 col-span-2"
+                    class="absolute -bottom-28 lg:bottom-0 lg:top-0 -right-16 lg:-right-2x0 col-span-2"
                     playsInline
                     preload="auto"
                     width="250"
@@ -575,7 +575,7 @@ const nextSlide = () => {
                 </div>
                 <client-only>
                   <video
-                    class="absolute -bottom-20 lg:bottom-0 lg:top-0 -right-16 lg:-right-2x0 col-span-2"
+                    class="absolute -bottom-28 lg:bottom-0 lg:top-0 -right-16 lg:-right-2x0 col-span-2"
                     playsInline
                     preload="auto"
                     width="250"
@@ -611,7 +611,7 @@ const nextSlide = () => {
                 </div>
                 <client-only>
                   <video
-                    class="absolute -bottom-20 lg:bottom-0 lg:top-0 -right-16 lg:-right-2x0 col-span-2"
+                    class="absolute -bottom-28 lg:bottom-0 lg:top-0 -right-16 lg:-right-2x0 col-span-2"
                     autoplay
                     playsInline
                     preload="auto"

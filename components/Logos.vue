@@ -62,7 +62,7 @@ const logos = [
 
 <template>
   <div
-    class="grid grid-cols-2 sm:grid-cols-3  lg:flex flex-wrap items-center justify-center gap-x-4 sm:gap-x-10 xl:gap-y-16 gap-y-10"
+    class="grid grid-cols-3  lg:flex flex-wrap items-center justify-center gap-x-4 sm:gap-x-10 xl:gap-y-16 gap-y-10"
   >
     <NuxtLink :href="logo.link" target="_blank" v-for="(logo, index) in logos" :key="logo.name">
       <div class="relative group cursor-pointer">
