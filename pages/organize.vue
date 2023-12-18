@@ -851,10 +851,9 @@ const nextSlide = () => {
     </section>
 
     <!-- team section -->
-    <section
+    <!-- <section
       class="mt-52 px-4 flex flex-col items-center max-w-full overflow-hidden"
-    >
-      <!--header-->
+      >
       <div class="top-40 h-fit flex flex-col items-center">
         <div class="flex items-center gap-2 mb-4">
           <UserGroupIcon class="text-on-surface h-4 w-4" />
@@ -872,7 +871,6 @@ const nextSlide = () => {
         </p>
       </div>
 
-      <!--Team carousel-->
       <div class="w-screen hide-scrollbar carousel">
         <ul class="hide-scrollbar carousel__list">
           <li
@@ -906,16 +904,16 @@ const nextSlide = () => {
                 </h3>
               </div>
             </div>
-            <!-- <div class="absolute bottom-0 left-0 bg-secondary-surface transition-all p-4 opacity-0 group-hover:opacity-100">
+           <div class="absolute bottom-0 left-0 bg-secondary-surface transition-all p-4 opacity-0 group-hover:opacity-100">
             <h4 class="section-eyebrow">{{ item.eyebrow }}</h4>
             <h3>{{ item.name }}</h3>
           </div>
           <img :src="`/team/${item.image}.jpg`" class="h-full w-full object-cover object-center" alt="buidlbox logo"
-            style="transform-origin: center;" /> -->
+            style="transform-origin: center;" /> 
           </li>
         </ul>
       </div>
-    </section>
+    </section> -->
 
     <!-- testimonials section -->
     <section class="mt-52 overflow-hidden relative pb-4">
