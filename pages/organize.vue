@@ -432,7 +432,7 @@ const nextSlide = () => {
     </section>
 
     <!-- quote section -->
-    <div class="relative px-4 lg:px-16">
+    <div class="relative z-10 px-4 lg:px-16">
       <section class="mt-52 px-2 overflow-hidden max-w-screen">
         <h1
           class="slide-in-section section-title text-3xl sm:text-4xl md:text-5xl xl:text-6xl max-w-[58rem] m-auto text-center !leading-[140%] tracking-wider"
@@ -454,7 +454,7 @@ const nextSlide = () => {
     <div class="relative scale-100">
       <!-- bg circles -->
       <div
-        class="absolute h-full origin-center -left-[250px] top-20 m-auto transform -translate-x-1/2"
+        class="absolute z-0 h-full origin-center -left-[250px] top-20 m-auto transform -translate-x-1/2"
       >
         <img
           class="animate-grow origin-center h-32 w-32 animation-delay-0"
@@ -463,7 +463,7 @@ const nextSlide = () => {
         />
       </div>
       <div
-        class="absolute h-full origin-center -left-[250px] top-20 m-auto transform -translate-x-1/2"
+        class="absolute z-0 h-full origin-center -left-[250px] top-20 m-auto transform -translate-x-1/2"
       >
         <img
           class="animate-grow origin-center h-32 w-32 animation-delay-2000"
@@ -472,7 +472,7 @@ const nextSlide = () => {
         />
       </div>
       <div
-        class="absolute h-full origin-center -left-[250px] top-20 m-auto transform -translate-x-1/2"
+        class="absolute z-0 h-full origin-center -left-[250px] top-20 m-auto transform -translate-x-1/2"
       >
         <img
           class="animate-grow origin-center h-32 w-32 animation-delay-4000"
@@ -480,9 +480,11 @@ const nextSlide = () => {
           alt=""
         />
       </div>
+    </div>
+
 
       <!-- ecosystem section -->
-      <section class="mt-52 px-4 md:px-12 lg:px-16 z-50">
+      <section class="relative mt-52 px-4 md:px-12 lg:px-16 z-50">
         <div
           class="grid xl:grid-cols-2 md:gap-12 gap-6 max-w-[65rem] m-auto justify-center"
         >
@@ -516,12 +518,12 @@ const nextSlide = () => {
             </NuxtLink>
           </div>
           <div
-            class="flex flex-col gap-4 slide-from-right-section mt-12 sm:mt-0"
+            class="flex flex-col gap-4  mt-12 sm:mt-0"
           >
             <div
               class="relative z-50 rounded-[32px] bg-card-bg border border-surface p-4 md:p-8 overflow-hidden"
             >
-              <div class="py-4 grid grid-cols-5 gap-2 justify-center">
+              <div class="py-4 grid  slide-from-right-section grid-cols-5 gap-2 justify-center">
                 <div class="col-span-12 lg:col-span-3 mb-20 lg:mb-0">
                   <p class="mb-6 section-title text-2xl">
                     Over 35K buidlers worldwide
@@ -548,7 +550,7 @@ const nextSlide = () => {
               </div>
             </div>
             <div
-              class="relative z-50 rounded-[32px] bg-card-bg border border-surface p-4 lg:p-8 overflow-hidden"
+              class="relative z-50 slide-from-right-section rounded-[32px] bg-card-bg border border-surface p-4 lg:p-8 overflow-hidden"
             >
               <div class="relative py-4 grid grid-cols-5 gap-2 justify-center">
                 <div class="col-span-12 lg:col-span-3 mb-20 lg:mb-0">
@@ -578,7 +580,7 @@ const nextSlide = () => {
               </div>
             </div>
             <div
-              class="relative z-50 rounded-[32px] bg-card-bg border border-surface p-4 lg:p-8 overflow-hidden"
+              class="relative z-50 slide-from-right-section rounded-[32px] bg-card-bg border border-surface p-4 lg:p-8 overflow-hidden"
             >
               <div class="relative py-4 grid grid-cols-5 gap-2 justify-center">
                 <div class="col-span-12 lg:col-span-3 mb-20 lg:mb-0">
@@ -731,7 +733,6 @@ const nextSlide = () => {
           </div>
         </div>
       </section>
-    </div>
 
     <!-- marketing section -->
     <section class="mt-52 px-4">
@@ -1020,7 +1021,7 @@ const nextSlide = () => {
       class="final-cta relative w-screen px-4 z-50 mt-52 overflow-hidden h-screen"
     >
       <div
-        class="final-cta-content flex flex-col items-center max-w-full justify-center z-50 child:z-50"
+        class="final-cta-content slide-in-section flex flex-col items-center max-w-full justify-center z-50 child:z-50"
       >
         <h1
           class="section-title !leading-[120%] text-4xl sm:text-6xl mb-7 text-center"
