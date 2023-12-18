@@ -46,7 +46,7 @@ onMounted(async () => {
       }
     );
     gsap.to(".footer-bg", {
-      scaleX: () => (window.innerWidth > 600 ? 0.75 : 1),
+      scaleX: () => (window.innerWidth > 900 ? 0.75 : 1),
       borderTopRightRadius: 60,
       borderTopLeftRadius: 60,
       ease: "none",
@@ -450,9 +450,9 @@ const nextSlide = () => {
 
     <!--Client Logos-->
 
-    <section class="parallax-section max-w-[85rem] mx-auto px-4 w-full relative">
+    <section class=" parallax-section max-w-[85rem] mx-auto px-4 md:px-12 lg:px-16 w-full relative">
       <div
-        class="w-screen overflow-x-hidden h-[650px] background-gradient absolute left-0 right-0 -top-48"
+        class=" w-screen overflow-x-hidden h-[650px] background-gradient absolute left-0 right-0 -top-48"
       ></div>
       <div class="w-fit">
         <Logos
