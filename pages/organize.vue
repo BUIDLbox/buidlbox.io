@@ -108,25 +108,11 @@ const testimonials = [
     avatar: "/images/pfps/humptycalderon-pfp.jpeg",
   },
   {
-    avatar: "/images/pfps/everscale-logo.jpeg",
+    avatar: "/images/pfps/metis-logo.png",
     role: "organiser",
-    name: "Everscale",
+    name: "Metis",
     testimonial:
-      "“Hosting a hackathon with the buidlbox team was one of the most productive outcomes we've seen in the tech ecosystem and crypto community.”",
-  },
-  {
-    avatar: "/images/pfps/blockworks-logo.jpg",
-    role: "organiser",
-    name: "Blockworks || Permissionless II",
-    testimonial:
-      "“The team was super hands on and so knowledgeable throughout the whole process! The platform was easy to navigate and helpful that so many processes happen within platform. Everyone has been super responsive throughout any platform issues that happened and ready to answer any questions from us or sponsors. It was also great meeting everyone IRL!”",
-  },
-  {
-    testimonial:
-      "“My team recently placed 1st and 3rd in two challenge categories in the recent buildHACKS hackathon. This was such an amazing feeling, winning a hackathon isn't all about the money (but thats nice too). It's a chance to really push yourself to learn and commit to actually getting something shipped out the door. I was blessed to have found an awesome team and we're now more excited than ever to squad up and continue building and learning in this brave new exciting permissionless world.”",
-    name: "Tantodefi",
-    role: "buidler",
-    avatar: "/images/pfps/tantodefi-pfp.jpeg",
+      "“buidlbox has been a critical partner in growing Metis developers community. Metis team was impressed by their work and attention to detail on the projects, going the extra mile in their customer service. Metis received great quality projects as a result of there Buidl Days.“",
   },
   {
     avatar: "/images/pfps/ethshanghai-logo.png",
@@ -135,6 +121,22 @@ const testimonials = [
     testimonial:
       "“The ETHShanghai Hackathon was a positive experience with the support we got. Overall, it was a successful hackathon with 950 participants from 344 projects, which helped raise awareness our ecosystem.”",
   },
+
+  {
+    testimonial:
+      "“My team recently placed 1st and 3rd in two challenge categories in the recent buildHACKS hackathon. This was such an amazing feeling, winning a hackathon isn't all about the money (but thats nice too). It's a chance to really push yourself to learn and commit to actually getting something shipped out the door. I was blessed to have found an awesome team and we're now more excited than ever to squad up and continue building and learning in this brave new exciting permissionless world.”",
+    name: "Tantodefi",
+    role: "buidler",
+    avatar: "/images/pfps/tantodefi-pfp.jpeg",
+  },
+  {
+    avatar: "/images/pfps/blockworks-logo.jpg",
+    role: "organiser",
+    name: "Blockworks || Permissionless II",
+    testimonial:
+      "“The team was super hands on and so knowledgeable throughout the whole process! The platform was easy to navigate and helpful that so many processes happen within platform. Everyone has been super responsive throughout any platform issues that happened and ready to answer any questions from us or sponsors. It was also great meeting everyone IRL!”",
+  },
+
   {
     avatar: "/images/pfps/lucianodeangelo-pfp.png",
     role: "buidler",
@@ -158,11 +160,11 @@ const testimonials = [
       "https://cdn.buidlbox.io/user/19718d4d-a82f-4b16-b4e7-9410f7c4e88d/avatar/avatar.JPG?t=1697105741898",
   },
   {
-    avatar: "/images/pfps/metis-logo.png",
+    avatar: "/images/pfps/everscale-logo.jpeg",
     role: "organiser",
-    name: "Metis",
+    name: "Everscale",
     testimonial:
-      "“buidlbox has been a critical partner in growing Metis developers community. Metis team was impressed by their work and attention to detail on the projects, going the extra mile in their customer service. Metis received great quality projects as a result of there Buidl Days. It was a great marketing effort to bring the Latam developers community into the event.“",
+      "“Hosting a hackathon with the buidlbox team was one of the most productive outcomes we've seen in the tech ecosystem and crypto community.”",
   },
 ];
 
