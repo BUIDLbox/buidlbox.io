@@ -77,28 +77,26 @@ const testimonials = [
       "“I have participated in two events, buildHACKS and BuildUP #2 both of them were great opportunities to gain more skills and learn about this current era (web3). However, I met a great team on the Buidlbox Discord server, team up channel and I could join them as a web3 full-stack developer, in fact, this was the real prize in advance! so glad I found the Buidlbox platform. The event pushed me to work hard, read, and learn quickly.”",
     name: "web3senior",
     role: "buidler",
-    avatar: "",
-    id: 11,
+    avatar: "/images/pfps/web3senior-pfp.jpg",
+  },
+  {
+    avatar: "/images/pfps/lukso-logo.png",
+    role: "organiser",
+    name: "Lukso",
+    testimonial:
+      "“We partnered with buidlbox to launch our latest hackathon and were impressed by the developer talent their platform was able to attract and the quality of projects that came out of the event. We like the team’s hands-on approach and continual push to innovate on their products and tools.”",
   },
   {
     testimonial:
       "“What I enjoy most about buidlbox is the seamlessly integrated platform that handles everything from registration to prizes to community engagement. This allows me to fully immerse in hacking rather than fuss with logistics. I also appreciate that buidlbox surfaces hackathons aligned with my interests.”",
     name: "Vansh, Full-stack Developer",
     role: "buidler",
-    avatar: "/vansh-pfp.png",
-    id: 143,
+    avatar: "/images/pfps/vansh-pfp.png",
   },
   {
-    avatar: "/images/pfps/jonathan.jfif",
+    avatar: "/images/pfps/tezos-logo.svg",
     role: "organiser",
-    name: "Jonathan W. @ Lukso",
-    testimonial:
-      "“We partnered with buidlbox to launch our latest hackathon and were impressed by the developer talent their platform was able to attract and the quality of projects that came out of the event. We like the team’s hands-on approach and continual push to innovate on their products and tools.”",
-  },
-  {
-    avatar: "/images/pfps/kitti.jpg",
-    role: "organizer",
-    name: "Kitti Borissza @ Tezos",
+    name: "Tezos",
     testimonial:
       "“Hosting hackathons with buidlbox has provided a global network of driven, independent builders that continue to thrive within our ecosystem. Hackathons are energizing, and they allow us to educate and empower builders.“",
   },
@@ -107,49 +105,47 @@ const testimonials = [
       "“The buidlbox team is easily approachable, listens to feedback, and improves the product based on your feedback. I not only look forward to using buidlbox again to participate in future hackathons, but I would like to host my own hackathon on their platform too. ”",
     name: "humptycalderon, founder at mosaic",
     role: "buidler",
-    avatar: "/humptycalderon-pfp.jpeg",
-    id: 23222,
+    avatar: "/images/pfps/humptycalderon-pfp.jpeg",
   },
   {
-    avatar: "/images/pfps/ivan.jpg",
+    avatar: "/images/pfps/everscale-logo.jpeg",
     role: "organiser",
-    name: "Ivan Kotelnikov @ everscale.network",
+    name: "Everscale",
     testimonial:
-      "“Hosting a hackathon with the buidlbox team was one of the most productive outcomes we've seen in the tech ecosystem and crypto community”“",
+      "“Hosting a hackathon with the buidlbox team was one of the most productive outcomes we've seen in the tech ecosystem and crypto community.”",
   },
   {
-    avatar: "",
-    role: "organizer",
-    name: "Joen, ceo buidlbox",
+    avatar: "/images/pfps/blockworks-logo.jpg",
+    role: "organiser",
+    name: "Blockworks || Permissionless II",
     testimonial:
-      "“This was a great hackathon to be apart of and I totally liked it and thought it was great ",
+      "“The team was super hands on and so knowledgeable throughout the whole process! The platform was easy to navigate and helpful that so many processes happen within platform. Everyone has been super responsive throughout any platform issues that happened and ready to answer any questions from us or sponsors. It was also great meeting everyone IRL!”",
   },
   {
     testimonial:
-      "“My team recently placed 1st and 3rd in two challenge categories in the recent buildHACKS hackathon sponsored by DeCommas, Metamask, Linea and Buildbox. This was such an amazing feeling, winning a hackathon isn't all about the money (but thats nice too). It's a chance to really push yourself to learn and commit to actually getting something shipped out the door. I was blessed to have found an awesome team and we're now more excited than ever to squad up and continue building and learning in this brave new exciting permissionless world..”",
+      "“My team recently placed 1st and 3rd in two challenge categories in the recent buildHACKS hackathon. This was such an amazing feeling, winning a hackathon isn't all about the money (but thats nice too). It's a chance to really push yourself to learn and commit to actually getting something shipped out the door. I was blessed to have found an awesome team and we're now more excited than ever to squad up and continue building and learning in this brave new exciting permissionless world.”",
     name: "Tantodefi",
     role: "buidler",
-    avatar: "",
-    id: 2322,
+    avatar: "/images/pfps/tantodefi-pfp.jpeg",
   },
   {
-    avatar: "/images/pfps/daphne.jpg",
-    role: "organizer",
-    name: "Daphne Tan @ Mask Network",
+    avatar: "/images/pfps/ethshanghai-logo.png",
+    role: "organiser",
+    name: "EthShanghai",
     testimonial:
       "“The ETHShanghai Hackathon was a positive experience with the support we got. Overall, it was a successful hackathon with 950 participants from 344 projects, which helped raise awareness our ecosystem.”",
   },
   {
-    avatar: "",
+    avatar: "/images/pfps/lucianodeangelo-pfp.png",
     role: "buidler",
     name: "lucianodeangelo",
     testimonial:
       "“Funding the Commons Hackathon was incredibly easy to participate in and there were so many amazing challenges to compete for. I actually wish there was more time so I could have built more. We won with Datanudge which has directly connected us with Octant who wants to pay us to build out the product feature further for them. “",
   },
   {
-    avatar: "/images/pfps/soham.jpg",
-    role: "organizer",
-    name: "Soham Mishra @ Reserve Protocol",
+    avatar: "/images/pfps/reserve-protocol-logo.png",
+    role: "organiser",
+    name: "Reserve Protocol",
     testimonial:
       "“Partnering with buidlbox was a phenomenal experience - their team and community of builders were instrumental in executing all phases of the hackathon, from initial ideation to final implementation of bounties and workshops. We at Reserve would highly recommend buidlbox, and look forward to continuing our partnership into the future!“",
   },
@@ -160,21 +156,13 @@ const testimonials = [
     role: "buidler",
     avatar:
       "https://cdn.buidlbox.io/user/19718d4d-a82f-4b16-b4e7-9410f7c4e88d/avatar/avatar.JPG?t=1697105741898",
-    id: 32323,
   },
   {
-    avatar: "",
+    avatar: "/images/pfps/metis-logo.png",
     role: "organiser",
     name: "Metis",
     testimonial:
-      "“buidlbox has been a critical partner in growing Metis developers community. We partnered with them to launch our first in-person hackathon, BogoHacks, which was held during the DevCon week in Bogota. Metis team was impressed by their work and attention to detail on the projects, going the extra mile in their customer service. Metis received great quality projects as a result of there Buidl Days. It was a great marketing effort to bring the Latam developers community into the event.“",
-  },
-  {
-    avatar: "",
-    role: "organizer",
-    name: "ETHShanghai",
-    testimonial:
-      "“The ETHShanghai Hackathon is organised by Mask Network in collaboration with Gitcoin in May 2022 with the aim to create a rewarding development experience and new insights about how social networks and experiences unfold in Web3. It was a positive experience working with Gitcoin as they provided great support in the development of Hackathon questions and participant handbooks, platform for registration, workshop partner services and marketing activities. Overall, it was a successful hackathon with 950 participants across 344 projects. The hackathon helped raise the awareness of Mask Network and our ecosystem, which provided additional ammunition for our following Web3 Social Hackathon — the first ever Web3 social ecosystem round with projects that goes beyond Mask’s ecosystem“",
+      "“buidlbox has been a critical partner in growing Metis developers community. Metis team was impressed by their work and attention to detail on the projects, going the extra mile in their customer service. Metis received great quality projects as a result of there Buidl Days. It was a great marketing effort to bring the Latam developers community into the event.“",
   },
 ];
 
@@ -941,7 +929,8 @@ const nextSlide = () => {
           <h1
             class="slide-in-section section-title !leading-[120%] text-4xl sm:text-6xl mb-7 text-center max-w-2xl"
           >
-            See what people say about us
+            See what people <br />
+            say about us
           </h1>
           <p class="font-medium text-center max-w-md sm:text-lg">
             Here's some feedback from buidlers, sponsors and organizers of their
@@ -987,7 +976,7 @@ const nextSlide = () => {
                         <p class="sm:text-base text-sm">{{ person.name }}</p>
                       </div>
                     </div>
-                    <p class="!leading-normal font-bold xl:text-base text-sm">
+                    <p class="!leading-normal xl:text-base text-sm">
                       {{ person.testimonial }}
                     </p>
                   </div>
@@ -1007,7 +996,8 @@ const nextSlide = () => {
         <h1
           class="section-title !leading-[120%] text-4xl sm:text-6xl mb-7 text-center"
         >
-          Ready to grow your community?
+          Ready to grow<br />
+          your community?
         </h1>
         <p class="font-medium mb-10 max-w-md text-center sm:text-lg">
           Let's level up, together – schedule a call today to discuss next
