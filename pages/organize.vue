@@ -376,9 +376,11 @@ const nextSlide = () => {
             height="500"
             loop
             muted="true"
+            poster="/animations/00-hero.gif"
           >
             <source src="/animations/00-hero.mov" type="video/quicktime" />
             <source src="/animations/00-hero.webm" type="video/webm" />
+            <img src="/animations/00-hero.png" alt="" />
           </video>
         </client-only>
         <div
@@ -541,8 +543,14 @@ const nextSlide = () => {
                     height="250"
                     loop
                     muted="true"
+                    poster="/animations/01-ww.gif"
                   >
+                    <source
+                      src="/animations/01-ww.mov"
+                      type="video/quicktime"
+                    />
                     <source src="/animations/01-ww.webm" type="video/webm" />
+                    <img src="/animations/01-ww.png" alt="" />
                   </video>
                 </client-only>
               </div>
@@ -571,8 +579,14 @@ const nextSlide = () => {
                     height="250"
                     loop
                     muted="true"
+                    poster="/animations/02-champ.gif"
                   >
+                    <source
+                      src="/animations/02-champ.mov"
+                      type="video/quicktime"
+                    />
                     <source src="/animations/02-champ.webm" type="video/webm" />
+                    <img src="/animations/02-champ.png" alt="" />
                   </video>
                 </client-only>
               </div>
@@ -601,14 +615,14 @@ const nextSlide = () => {
                     height="250"
                     loop
                     muted="true"
+                    poster="/animations/03-loop.gif"
                   >
-                    <!-- <source src={flowerMov} type="video/quicktime" /> -->
+                    <source
+                      src="/animations/03-loop.mov"
+                      type="video/quicktime"
+                    />
                     <source src="/animations/03-loop.webm" type="video/webm" />
-                    <!-- <img src={flowerpng} alt="" /> -->
-                    <!-- <video ref={videoRef} className="hero-animation" poster={flowerGif} playsInline preload="auto" width="500" height="500" loop muted={true}>
-              <source src={flowerMov} type="video/quicktime" />
-              <source src={flowerWebm} type="video/webm" />
-              <img src={flowerpng} alt="" /> -->
+                    <img src="/animations/03-loop.png" alt="" />
                   </video>
                 </client-only>
               </div>
