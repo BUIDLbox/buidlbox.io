@@ -6,6 +6,9 @@ export default defineNuxtConfig({
       title: "buidlbox",
     },
   },
+  vite: {
+    assetsInclude: ["**/*.mov"],
+  },
   modules: [
     "@nuxtjs/google-fonts",
     "@vueuse/nuxt",

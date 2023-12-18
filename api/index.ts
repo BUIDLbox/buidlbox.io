@@ -95,7 +95,10 @@ export async function requestTrialAPI(payload: TrialRequest) {
   });
 }
 
-export async function newsletterSubscribeAPI(email: string) {
+export async function newsletterSubscribeAPI(body: {
+  email: string;
+  source: "source-banner" | "source-footer";
+}) {
   const apiUrl = import.meta.env.VITE_BUIDL_API;
   const url = `${apiUrl}/landing-page/newsletter`;
 
@@ -105,6 +108,6 @@ export async function newsletterSubscribeAPI(email: string) {
     headers: {
       "Content-Type": "application/json",
     },
-    body: { email },
+    body,
   });
 }
