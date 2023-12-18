@@ -338,10 +338,12 @@ const nextSlide = () => {
       />
     </div>
     <section
-      class="xl:padding pt-[15vh] sm:pt-[20vh]  justify-center m-auto flex sm:flex-row flex-col pb-40 relative overflow-hidden"
+      class="xl:padding pt-[15vh] sm:pt-[20vh] justify-center m-auto flex sm:flex-row flex-col pb-40 relative overflow-hidden"
     >
       <div class="self-center justify-self-center max-w-md z-50 px-4">
-        <h1 class="section-title leading-[120%] text-4xl sm:text-5xl lg:text-7xl pb-6 text-center xl:text-left">
+        <h1
+          class="section-title leading-[120%] text-4xl sm:text-5xl lg:text-7xl pb-6 text-center xl:text-left"
+        >
           We grow <br /><span class="gradient-text">ecosystems</span>
         </h1>
         <p class="pb-12 xl:pb-20 xl:text-xl text-center xl:text-left">
@@ -362,7 +364,9 @@ const nextSlide = () => {
           >Request a demo</GradientButton
         >
       </div>
-      <div class="absolute top-[500px] md:top-[450px] xl:top-0 left-0 right-0 m-auto xl:relative w-[350px] h-[350px] md:w-[500px] md:h-[500px]">
+      <div
+        class="absolute top-[500px] md:top-[450px] xl:top-0 left-0 right-0 m-auto xl:relative w-[350px] h-[350px] md:w-[500px] md:h-[500px]"
+      >
         <client-only>
           <video
             playsInline
@@ -428,8 +432,8 @@ const nextSlide = () => {
     </section>
 
     <!-- quote section -->
-    <div class="relative px-4 lg:px-16 ">
-      <section class="mt-52 px-4 overflow-x-hidden max-w-screen">
+    <div class="relative px-4 lg:px-16">
+      <section class="mt-52 px-2 overflow-hidden max-w-screen">
         <h1
           class="slide-in-section section-title text-3xl sm:text-4xl md:text-5xl xl:text-6xl max-w-[58rem] m-auto text-center !leading-[140%] tracking-wider"
         >
@@ -478,7 +482,7 @@ const nextSlide = () => {
       </div>
 
       <!-- ecosystem section -->
-      <section class="mt-52  px-4 md:px-12 lg:px-16 z-50">
+      <section class="mt-52 px-4 md:px-12 lg:px-16 z-50">
         <div
           class="grid xl:grid-cols-2 md:gap-12 gap-6 max-w-[65rem] m-auto justify-center"
         >
@@ -511,13 +515,13 @@ const nextSlide = () => {
               >
             </NuxtLink>
           </div>
-          <div class="flex flex-col gap-4 slide-from-right-section mt-12 sm:mt-0">
+          <div
+            class="flex flex-col gap-4 slide-from-right-section mt-12 sm:mt-0"
+          >
             <div
               class="relative z-50 rounded-[32px] bg-card-bg border border-surface p-4 md:p-8 overflow-hidden"
             >
-              <div
-                class="py-4 grid grid-cols-5  gap-2 justify-center "
-              >
+              <div class="py-4 grid grid-cols-5 gap-2 justify-center">
                 <div class="col-span-12 lg:col-span-3 mb-20 lg:mb-0">
                   <p class="mb-6 section-title text-2xl">
                     Over 35K buidlers worldwide
@@ -529,7 +533,7 @@ const nextSlide = () => {
                 </div>
                 <client-only>
                   <video
-                  class="absolute -bottom-20 lg:bottom-0 lg:top-0 -right-16 lg:-right-2x0  col-span-2"
+                    class="absolute -bottom-20 lg:bottom-0 lg:top-0 -right-16 lg:-right-2x0 col-span-2"
                     playsInline
                     preload="auto"
                     width="250"
@@ -544,11 +548,9 @@ const nextSlide = () => {
               </div>
             </div>
             <div
-               class="relative z-50 rounded-[32px] bg-card-bg border border-surface p-4 lg:p-8 overflow-hidden"
+              class="relative z-50 rounded-[32px] bg-card-bg border border-surface p-4 lg:p-8 overflow-hidden"
             >
-              <div
-                class="relative py-4 grid grid-cols-5 gap-2 justify-center"
-              >
+              <div class="relative py-4 grid grid-cols-5 gap-2 justify-center">
                 <div class="col-span-12 lg:col-span-3 mb-20 lg:mb-0">
                   <p class="mb-6 section-title text-2xl">
                     Uncover your ecosystem champions
@@ -561,7 +563,7 @@ const nextSlide = () => {
                 </div>
                 <client-only>
                   <video
-                  class="absolute -bottom-20 lg:bottom-0 lg:top-0 -right-16 lg:-right-2x0  col-span-2"
+                    class="absolute -bottom-20 lg:bottom-0 lg:top-0 -right-16 lg:-right-2x0 col-span-2"
                     playsInline
                     preload="auto"
                     width="250"
@@ -571,17 +573,14 @@ const nextSlide = () => {
                     muted="true"
                   >
                     <source src="/animations/02-champ.webm" type="video/webm" />
-               
                   </video>
                 </client-only>
               </div>
             </div>
             <div
-            class="relative z-50 rounded-[32px] bg-card-bg border border-surface p-4 lg:p-8 overflow-hidden"
+              class="relative z-50 rounded-[32px] bg-card-bg border border-surface p-4 lg:p-8 overflow-hidden"
             >
-              <div
-              class="relative py-4 grid grid-cols-5 gap-2 justify-center"
-              >
+              <div class="relative py-4 grid grid-cols-5 gap-2 justify-center">
                 <div class="col-span-12 lg:col-span-3 mb-20 lg:mb-0">
                   <p class="mb-6 section-title text-2xl">
                     Developer<br />
@@ -594,7 +593,7 @@ const nextSlide = () => {
                 </div>
                 <client-only>
                   <video
-                  class="absolute -bottom-20 lg:bottom-0 lg:top-0 -right-16 lg:-right-2x0  col-span-2"
+                    class="absolute -bottom-20 lg:bottom-0 lg:top-0 -right-16 lg:-right-2x0 col-span-2"
                     autoplay
                     playsInline
                     preload="auto"
@@ -619,9 +618,9 @@ const nextSlide = () => {
       </section>
 
       <!-- tools section -->
-      <section class="pt-52 relative px-4 md:px-12 lg:px-16 " id="features">
+      <section class="pt-52 relative px-4 md:px-12 lg:px-16" id="features">
         <div
-          class="relative h-full   grid lg:grid-cols-2 gap-16 sm:gap-6 md:gap-12 max-w-[65rem] m-auto xl:justify-center"
+          class="relative h-full grid lg:grid-cols-2 gap-16 sm:gap-6 md:gap-12 max-w-[65rem] m-auto xl:justify-center"
         >
           <div class="max-w-md lg:sticky top-40 h-fit">
             <div class="flex items-center gap-2 mb-4">
@@ -653,7 +652,7 @@ const nextSlide = () => {
           </div>
           <div class="flex flex-col gap-4">
             <div
-              class="rounded-[32px] bg-card-bg border border-surface py-8 px-6 lg:px-8  flex flex-col gap-2.5 slide-from-right-section"
+              class="rounded-[32px] bg-card-bg border border-surface py-8 px-6 lg:px-8 flex flex-col gap-2.5 slide-from-right-section"
             >
               <p class="section-eyebrow text-primary">buidling</p>
               <p class="slide-from-right-section font-extrabold text-2xl">
@@ -666,7 +665,7 @@ const nextSlide = () => {
               </p>
             </div>
             <div
-              class="rounded-[32px] bg-card-bg border border-surface py-8 px-6 lg:px-8  flex flex-col gap-2.5 slide-from-right-section"
+              class="rounded-[32px] bg-card-bg border border-surface py-8 px-6 lg:px-8 flex flex-col gap-2.5 slide-from-right-section"
             >
               <p class="section-eyebrow text-tertiary">engagement</p>
               <p class="slide-from-right-section font-extrabold text-2xl">
@@ -678,7 +677,7 @@ const nextSlide = () => {
               </p>
             </div>
             <div
-              class="rounded-[32px] bg-card-bg border border-surface py-8 px-6 lg:px-8  flex flex-col gap-2.5 slide-from-right-section"
+              class="rounded-[32px] bg-card-bg border border-surface py-8 px-6 lg:px-8 flex flex-col gap-2.5 slide-from-right-section"
             >
               <p class="section-eyebrow text-secondary">customer success</p>
               <p class="slide-from-right-section font-extrabold text-2xl">
@@ -691,7 +690,7 @@ const nextSlide = () => {
               </p>
             </div>
             <div
-              class="rounded-[32px] bg-card-bg border border-surface py-8 px-6 lg:px-8  flex flex-col gap-2.5 slide-from-right-section"
+              class="rounded-[32px] bg-card-bg border border-surface py-8 px-6 lg:px-8 flex flex-col gap-2.5 slide-from-right-section"
             >
               <p class="section-eyebrow text-primary">analytics</p>
               <p class="slide-from-right-section font-extrabold text-2xl">
@@ -704,7 +703,7 @@ const nextSlide = () => {
               </p>
             </div>
             <div
-              class="rounded-[32px] bg-card-bg border border-surface py-8 px-6 lg:px-8  flex flex-col gap-2.5 slide-from-right-section"
+              class="rounded-[32px] bg-card-bg border border-surface py-8 px-6 lg:px-8 flex flex-col gap-2.5 slide-from-right-section"
             >
               <p class="section-eyebrow text-tertiary">marketing</p>
               <p class="slide-from-right-section font-extrabold text-2xl">
@@ -717,7 +716,7 @@ const nextSlide = () => {
               </p>
             </div>
             <div
-              class="rounded-[32px] bg-card-bg border border-surface py-8 px-6 lg:px-8  flex flex-col gap-2.5 slide-from-right-section"
+              class="rounded-[32px] bg-card-bg border border-surface py-8 px-6 lg:px-8 flex flex-col gap-2.5 slide-from-right-section"
             >
               <p class="section-eyebrow text-primary">buidling</p>
               <p class="slide-from-right-section font-extrabold text-2xl">
@@ -971,18 +970,19 @@ const nextSlide = () => {
                 v-masonry
                 transition-duration="1s"
                 item-selector=".item"
-                class="masonry-container w-screen"
+                column-width=".item"
+                class="masonry-container m-auto w-[80vw] sm:w-[505px] md:w-[760px] xl:w-[1210px] 2xl:w-[1615px]"
                 :gutter="5"
-                :fit-width="true"
+                :resize="true"
               >
                 <div
                   v-masonry-tile
-                  class="item mb-[5px]"
+                  class="item mb-[5px] w-[80vw] sm:w-[250px] xl:w-[400px]"
                   :key="index"
                   v-for="(person, index) in testimonials"
                 >
                   <div
-                    class="max-w-[80vw] sm:max-w-[250px] md:max-w-[400px] rounded-[32px] bg-card-bg border border-surface 2xl:px-14 xl:px-9 px-6 sm:py-8 py-6"
+                    class="rounded-[32px] bg-card-bg border border-surface 2xl:px-14 xl:px-9 px-6 sm:py-8 py-6"
                   >
                     <div class="flex items-center gap-4 mb-6">
                       <img
@@ -1019,32 +1019,32 @@ const nextSlide = () => {
     <section
       class="final-cta relative w-screen px-4 z-50 mt-52 overflow-hidden h-screen"
     >
-        <div
-          class="final-cta-content flex flex-col items-center max-w-full justify-center z-50 child:z-50"
+      <div
+        class="final-cta-content flex flex-col items-center max-w-full justify-center z-50 child:z-50"
+      >
+        <h1
+          class="section-title !leading-[120%] text-4xl sm:text-6xl mb-7 text-center"
         >
-          <h1
-            class="section-title !leading-[120%] text-4xl sm:text-6xl mb-7 text-center"
-          >
-            Ready to grow<br />
-            your community?
-          </h1>
-          <p class="font-medium mb-10 max-w-md text-center sm:text-lg">
-            Let's level up, together – schedule a call today to discuss next
-            steps.
-          </p>
-          <GradientButton
-            class="flex-shrink-0 flex-grow-0"
-            @click="
-              () => {
-                isTrialModalOpen = true;
-                mixpanel.track('Request a demo', {
-                  type: 'Lead',
-                });
-              }
-            "
-            >Request a demo</GradientButton
-          >
-        </div>
+          Ready to grow<br />
+          your community?
+        </h1>
+        <p class="font-medium mb-10 max-w-md text-center sm:text-lg">
+          Let's level up, together – schedule a call today to discuss next
+          steps.
+        </p>
+        <GradientButton
+          class="flex-shrink-0 flex-grow-0"
+          @click="
+            () => {
+              isTrialModalOpen = true;
+              mixpanel.track('Request a demo', {
+                type: 'Lead',
+              });
+            }
+          "
+          >Request a demo</GradientButton
+        >
+      </div>
       <div
         class="origin-center z-[-1] absolute h-32 w-32 -bottom-20 left-1/2 m-auto transform -translate-x-1/2"
       >
@@ -1058,7 +1058,7 @@ const nextSlide = () => {
         class="origin-center z-[-1] absolute h-32 w-32 -bottom-20 left-1/2 m-auto transform -translate-x-1/2"
       >
         <img
-          class="animate-grow origin-center  h-32 w-32 animation-delay-2000"
+          class="animate-grow origin-center h-32 w-32 animation-delay-2000"
           src="/images/circle2.svg"
           alt="buidlbox logo"
         />
