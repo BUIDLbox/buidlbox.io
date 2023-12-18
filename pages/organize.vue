@@ -558,7 +558,7 @@ const nextSlide = () => {
             class="flex flex-col gap-4  mt-12 sm:mt-0"
           >
             <div
-              class="relative z-50 rounded-[32px] bg-card-bg border border-surface p-4 md:p-8 overflow-hidden"
+              class="relative z-50 rounded-[32px] bg-card-bg border border-surface p-4 lg:p-8 overflow-hidden"
             >
               <div class="py-4 grid  slide-from-right-section grid-cols-5 gap-2 justify-center">
                 <div class="col-span-12 lg:col-span-3 mb-20 lg:mb-0">

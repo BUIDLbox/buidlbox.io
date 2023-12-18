@@ -62,7 +62,7 @@ const logos = [
 
 <template>
   <div
-    class="grid grid-cols-3  lg:flex flex-wrap items-center justify-center gap-x-4 sm:gap-x-10 xl:gap-y-16 gap-y-10"
+    class="grid grid-cols-3 lg:flex flex-wrap items-center justify-between md:justify-center  gap-x-4 sm:gap-x-10 xl:gap-y-16 gap-y-10"
   >
     <NuxtLink :href="logo.link" target="_blank" v-for="(logo, index) in logos" :key="logo.name">
       <div class="relative group cursor-pointer">
@@ -72,12 +72,12 @@ const logos = [
         <img
           :src="defaultWhite ? logo.logo : logo.fullColorLogo"
           :alt="`${logo.name} logo`"
-          class="w-full h-auto md:max-w-[220px] max-w-[110px] 2xl:max-w-none"
+          class="w-full h-auto max-w-[220px] 2xl:max-w-none"
         />
         <img
           :src="defaultWhite ? logo.fullColorLogo : logo.logo"
           :alt="`${logo.name} logo`"
-          class="absolute top-0 left-0 right-0 bottom-0 group-hover:opacity-0 transition-all duration-300 w-full h-auto md:max-w-[220px] max-w-[110px] 2xl:max-w-none"
+          class="absolute top-0 left-0 right-0 bottom-0 group-hover:opacity-0 transition-all duration-300 w-full h-auto max-w-[220px]  2xl:max-w-none"
         />
       </div>
     </NuxtLink>
