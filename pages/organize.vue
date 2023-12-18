@@ -340,7 +340,7 @@ const nextSlide = () => {
     <section
       class="xl:padding pt-[15vh] sm:pt-[20vh] justify-center m-auto flex sm:flex-row flex-col pb-40 relative overflow-hidden"
     >
-      <div class="self-center justify-self-center max-w-md z-50 px-4 slide-from-right-section">
+      <div class="self-center justify-self-center max-w-md z-50 mb-20 xl:mb-0 px-4 slide-from-right-section">
         <h1
           class="section-title leading-[120%] text-4xl sm:text-5xl lg:text-7xl pb-6 text-center xl:text-left"
         >
