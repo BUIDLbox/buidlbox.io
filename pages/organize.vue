@@ -21,6 +21,8 @@ definePageMeta({
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, EasePack);
 const mixpanel = inject("mixpanel") as Mixpanel;
 const isTrialModalOpen = ref(false);
+const isNewsletterModalOpen = ref(false);
+const subscribedSuccessfully = ref(false);
 
 onMounted(async () => {
   nextTick(() => {
@@ -376,9 +378,11 @@ const nextSlide = () => {
             height="500"
             loop
             muted="true"
+            poster="/animations/00-hero.gif"
           >
             <source src="/animations/00-hero.mov" type="video/quicktime" />
             <source src="/animations/00-hero.webm" type="video/webm" />
+            <img src="/animations/00-hero.png" alt="" />
           </video>
         </client-only>
         <div
@@ -543,8 +547,14 @@ const nextSlide = () => {
                     height="250"
                     loop
                     muted="true"
+                    poster="/animations/01-ww.gif"
                   >
+                    <source
+                      src="/animations/01-ww.mov"
+                      type="video/quicktime"
+                    />
                     <source src="/animations/01-ww.webm" type="video/webm" />
+                    <img src="/animations/01-ww.png" alt="" />
                   </video>
                 </client-only>
               </div>
@@ -573,8 +583,14 @@ const nextSlide = () => {
                     height="250"
                     loop
                     muted="true"
+                    poster="/animations/02-champ.gif"
                   >
+                    <source
+                      src="/animations/02-champ.mov"
+                      type="video/quicktime"
+                    />
                     <source src="/animations/02-champ.webm" type="video/webm" />
+                    <img src="/animations/02-champ.png" alt="" />
                   </video>
                 </client-only>
               </div>
@@ -603,14 +619,14 @@ const nextSlide = () => {
                     height="250"
                     loop
                     muted="true"
+                    poster="/animations/03-loop.gif"
                   >
-                    <!-- <source src={flowerMov} type="video/quicktime" /> -->
+                    <source
+                      src="/animations/03-loop.mov"
+                      type="video/quicktime"
+                    />
                     <source src="/animations/03-loop.webm" type="video/webm" />
-                    <!-- <img src={flowerpng} alt="" /> -->
-                    <!-- <video ref={videoRef} className="hero-animation" poster={flowerGif} playsInline preload="auto" width="500" height="500" loop muted={true}>
-              <source src={flowerMov} type="video/quicktime" />
-              <source src={flowerWebm} type="video/webm" />
-              <img src={flowerpng} alt="" /> -->
+                    <img src="/animations/03-loop.png" alt="" />
                   </video>
                 </client-only>
               </div>
@@ -1101,7 +1117,7 @@ const nextSlide = () => {
             ></NuxtLink
           >
 
-          <GradientButton class="flex-shrink-0">
+          <GradientButton class="flex-shrink-0" @click="isNewsletterModalOpen = true">
             <div class="flex items-center gap-3">
               <EnvelopeIcon class="h-4 w-4" />
               Sign up to our newsletter
@@ -1181,6 +1197,24 @@ const nextSlide = () => {
     :is-modal-open="isTrialModalOpen"
     @close-modal="isTrialModalOpen = false"
   />
+
+  <ClientOnly>
+    <Teleport to="body">
+      <DashboardModal
+        v-if="isNewsletterModalOpen"
+        class="w-full z-[100]"
+        @close="isNewsletterModalOpen = false"
+      >
+        <div class="bg-gradient-to-b from-transparent to-secondary-surface">
+          <NewsletterForm
+            @subscribed="subscribedSuccessfully = true"
+            :subscribed-successfully="subscribedSuccessfully"
+            source="source-footer"
+          />
+        </div>
+      </DashboardModal>
+    </Teleport>
+  </ClientOnly>
 
   <!-- <div class="grid gap-32">
       <div class="bg-hero-bg w-full bg-top bg-contain bg-no-repeat grid gap-10">

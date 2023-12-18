@@ -4,7 +4,7 @@ export const testimonials = [
       "“What I enjoy most about buidlbox is the seamlessly integrated platform that handles everything from registration to prizes to community engagement. This allows me to fully immerse in hacking rather than fuss with logistics. I also appreciate that buidlbox surfaces hackathons aligned with my interests.”",
     name: "Vansh",
     role: "Full-stack Developer",
-    avatarUrl: "/vansh-pfp.png",
+    avatarUrl: "/images/pfps/vansh-pfp.png",
     id: 11,
   },
   {
@@ -12,7 +12,7 @@ export const testimonials = [
       "“The buidlbox team is easily approachable, listens to feedback, and improves the product based on your feedback. I not only look forward to using buidlbox again to participate in future hackathons, but I would like to host my own hackathon on their platform too. ”",
     name: "humptycalderon",
     role: "founder at mosaic",
-    avatarUrl: "/humptycalderon-pfp.jpeg",
+    avatarUrl: "/images/pfps/humptycalderon-pfp.jpeg",
     id: 22,
   },
   {
