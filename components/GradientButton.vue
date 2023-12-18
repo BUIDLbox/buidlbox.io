@@ -22,7 +22,7 @@ const props = withDefaults(
 
 <template>
   <div class="relative">
-    <div class="p-[1px] gradient rounded-lg relative z-50 w-fit group ">
+    <div class="p-[1px] gradient rounded-lg relative z-50 w-full md:w-fit group ">
       <div
         class="p-[1px] gradient blur-xl opacity-25 group-hover:scale-[1.15] transition-all duration-300 scale-100 absolute z-0 w-full h-full"
       ></div>
@@ -30,7 +30,7 @@ const props = withDefaults(
         type="button"
         :disabled="disabled || isLoading"
         :class="{ 'cursor-not-allowed': disabled }"
-        class="inter font-bold flex items-center justify-center rounded-lg relative overflow-hidden bg-secondary-surface"
+        class="inter font-bold flex items-center justify-center w-full md:w-fit rounded-lg relative overflow-hidden bg-secondary-surface"
       >
         <!-- Content of the button -->
         <div v-if="isLoading">

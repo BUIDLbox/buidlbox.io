@@ -34,7 +34,7 @@ onUnmounted(() => {
 
 <template>
   <div
-    class="bg-secondary-surface w-screen max-w-screen min-h-screen relative pb-12"
+    class="bg-secondary-surface w-screen max-w-screen min-h-screen relative"
   >
     <div
       class="w-screen py-4 flex items-center justify-between px-[7vw] fixed z-[90] transition-all duration-300"
@@ -45,10 +45,10 @@ onUnmounted(() => {
         alt="buidlbox logo"
         width="180"
         height="40"
-        class="xl:w-[180px] w-28 h-auto"
+        class="xl:w-[150px] w-28 h-auto"
       />
 
-      <GradientButton
+      <!-- <GradientButton
         class="flex-shrink-0 flex-grow-0"
         @click="
           () => {
@@ -59,12 +59,10 @@ onUnmounted(() => {
           }
         "
         >Request a demo</GradientButton
-      >
+      > -->
     </div>
 
     <slot />
-
-    <PageFooter />
   </div>
 
   <RequestTrial

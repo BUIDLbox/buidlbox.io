@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { EasePack } from "gsap/EasePack";
 import { ButtonType } from "~/types/button";
+import { Mixpanel } from "mixpanel-browser";
 import {
   BriefcaseIcon,
   ChartBarIcon,
@@ -18,11 +19,44 @@ definePageMeta({
 });
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, EasePack);
-
+const mixpanel = inject("mixpanel") as Mixpanel;
 const isTrialModalOpen = ref(false);
 
 onMounted(async () => {
   nextTick(() => {
+    const finalCTASection = document.querySelector(".final-cta");
+
+    gsap.fromTo(
+      ".final-cta-content",
+      {
+        y: 0,
+      },
+      {
+        y: () => window.innerHeight * 0.7,
+        ease: "none",
+        scrollTrigger: {
+          trigger: finalCTASection,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+          invalidateOnRefresh: true,
+        },
+      }
+    );
+    gsap.to(".footer-bg", {
+      scaleX: () => (window.innerWidth > 600 ? 0.75 : 0.8),
+      borderTopRightRadius: 60,
+      borderTopLeftRadius: 60,
+      ease: "none",
+      scrollTrigger: {
+        trigger: finalCTASection,
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+        invalidateOnRefresh: true,
+      },
+    });
+
     const slideInSections = gsap.utils.toArray(".slide-in-section");
     slideInSections.forEach((section: any) => {
       gsap.from(section, {
@@ -70,106 +104,100 @@ onMounted(async () => {
   });
 });
 
-const testimonialsRow1 = [
+const testimonials = [
   {
-    avatar: "",
-    role: "buidler",
-    name: "Johnny john",
     testimonial:
-      "“This was a great hackathon to be apart of and I totally liked it and thought it was great “",
+      "“I have participated in two events, buildHACKS and BuildUP #2 both of them were great opportunities to gain more skills and learn about this current era (web3). However, I met a great team on the Buidlbox Discord server, team up channel and I could join them as a web3 full-stack developer, in fact, this was the real prize in advance! so glad I found the Buidlbox platform. The event pushed me to work hard, read, and learn quickly.”",
+    name: "web3senior",
+    role: "buidler",
+    avatar: "/images/pfps/web3senior-pfp.jpg",
   },
   {
-    avatar: "",
-    role: "buidler",
-    name: "Johnny john",
-    testimonial:
-      "“This was a great hackathon to be apart of and I totally liked it and thought it was great “",
-  },
-  {
-    avatar: "",
+    avatar: "/images/pfps/lukso-logo.png",
     role: "organiser",
-    name: "Joen, ceo buidlbox",
-    testimonial: "“Loved working with the buidlbox team! “",
-  },
-  {
-    avatar: "",
-    role: "sponsor",
-    name: "Joen, ceo buidlbox",
+    name: "Lukso",
     testimonial:
-      "“This was a great hackathon to be apart of and I totally liked it and thought it was great ",
+      "“We partnered with buidlbox to launch our latest hackathon and were impressed by the developer talent their platform was able to attract and the quality of projects that came out of the event. We like the team’s hands-on approach and continual push to innovate on their products and tools.”",
   },
   {
-    avatar: "",
+    testimonial:
+      "“What I enjoy most about buidlbox is the seamlessly integrated platform that handles everything from registration to prizes to community engagement. This allows me to fully immerse in hacking rather than fuss with logistics. I also appreciate that buidlbox surfaces hackathons aligned with my interests.”",
+    name: "Vansh, Full-stack Developer",
     role: "buidler",
-    name: "Johnny john",
-    testimonial:
-      "“This was a great hackathon to be apart of and I totally liked it and thought it was great “",
+    avatar: "/images/pfps/vansh-pfp.png",
   },
-];
-const testimonialsRow2 = [
   {
-    avatar: "",
+    avatar: "/images/pfps/tezos-logo.svg",
     role: "organiser",
-    name: "Joen, ceo buidlbox",
-    testimonial: "“Loved working with the buidlbox team! “",
-  },
-  {
-    avatar: "",
-    role: "sponsor",
-    name: "Joen, ceo buidlbox",
+    name: "Tezos",
     testimonial:
-      "“This was a great hackathon to be apart of and I totally liked it and thought it was great ",
+      "“Hosting hackathons with buidlbox has provided a global network of driven, independent builders that continue to thrive within our ecosystem. Hackathons are energizing, and they allow us to educate and empower builders.“",
   },
   {
-    avatar: "",
+    testimonial:
+      "“The buidlbox team is easily approachable, listens to feedback, and improves the product based on your feedback. I not only look forward to using buidlbox again to participate in future hackathons, but I would like to host my own hackathon on their platform too. ”",
+    name: "humptycalderon, founder at mosaic",
     role: "buidler",
-    name: "Johnny john",
-    testimonial:
-      "“This was a great hackathon to be apart of and I totally liked it and thought it was great “",
+    avatar: "/images/pfps/humptycalderon-pfp.jpeg",
   },
   {
-    avatar: "",
-    role: "sponsor",
-    name: "Joen, ceo buidlbox",
+    avatar: "/images/pfps/metis-logo.png",
+    role: "organiser",
+    name: "Metis",
     testimonial:
-      "“This was a great hackathon to be apart of and I totally liked it and thought it was great ",
+      "“buidlbox has been a critical partner in growing Metis developers community. Metis team was impressed by their work and attention to detail on the projects, going the extra mile in their customer service. Metis received great quality projects as a result of there Buidl Days.“",
   },
-];
+  {
+    avatar: "/images/pfps/ethshanghai-logo.png",
+    role: "organiser",
+    name: "EthShanghai",
+    testimonial:
+      "“The ETHShanghai Hackathon was a positive experience with the support we got. Overall, it was a successful hackathon with 950 participants from 344 projects, which helped raise awareness our ecosystem.”",
+  },
 
-const testimonialsRow3 = [
   {
-    avatar: "",
+    testimonial:
+      "“My team recently placed 1st and 3rd in two challenge categories in the recent buildHACKS hackathon. This was such an amazing feeling, winning a hackathon isn't all about the money (but thats nice too). It's a chance to really push yourself to learn and commit to actually getting something shipped out the door. I was blessed to have found an awesome team and we're now more excited than ever to squad up and continue building and learning in this brave new exciting permissionless world.”",
+    name: "Tantodefi",
     role: "buidler",
-    name: "Johnny john",
-    testimonial:
-      "“This was a great hackathon to be apart of and I totally liked it and thought it was great “",
+    avatar: "/images/pfps/tantodefi-pfp.jpeg",
   },
   {
-    avatar: "",
-    role: "sponsor",
-    name: "Joen, ceo buidlbox",
-    testimonial:
-      "“This was a great hackathon to be apart of and I totally liked it and thought it was great ",
-  },
-  {
-    avatar: "",
-    role: "buidler",
-    name: "Johnny john",
-    testimonial:
-      "“This was a great hackathon to be apart of and I totally liked it and thought it was great “",
-  },
-  {
-    avatar: "",
+    avatar: "/images/pfps/blockworks-logo.jpg",
     role: "organiser",
-    name: "Joen, ceo buidlbox",
-    testimonial: "“Loved working with the buidlbox team! “",
+    name: "Blockworks || Permissionless II",
+    testimonial:
+      "“The team was super hands on and so knowledgeable throughout the whole process! The platform was easy to navigate and helpful that so many processes happen within platform. Everyone has been super responsive throughout any platform issues that happened and ready to answer any questions from us or sponsors. It was also great meeting everyone IRL!”",
+  },
+
+  {
+    avatar: "/images/pfps/lucianodeangelo-pfp.png",
+    role: "buidler",
+    name: "lucianodeangelo",
+    testimonial:
+      "“Funding the Commons Hackathon was incredibly easy to participate in and there were so many amazing challenges to compete for. I actually wish there was more time so I could have built more. We won with Datanudge which has directly connected us with Octant who wants to pay us to build out the product feature further for them. “",
   },
   {
-    avatar: "",
-    role: "sponsor",
-    name: "Joen, ceo buidlbox",
+    avatar: "/images/pfps/reserve-protocol-logo.png",
+    role: "organiser",
+    name: "Reserve Protocol",
     testimonial:
-      "“This was a great hackathon to be apart of and I totally liked it and thought it was great ",
+      "“Partnering with buidlbox was a phenomenal experience - their team and community of builders were instrumental in executing all phases of the hackathon, from initial ideation to final implementation of bounties and workshops. We at Reserve would highly recommend buidlbox, and look forward to continuing our partnership into the future!“",
+  },
+  {
+    testimonial:
+      "“I recently participated in the inaugural Permissionless II Hackathon and had an excellent experience. The event itself was great for hackers, but the buidlbox platform made things especially smooth and straightforward when it came to creating a team and submitting a project. I really look forward to using buidlbox again at a future hackathon!”",
+    name: "travcrypto, Marketing",
+    role: "buidler",
+    avatar:
+      "https://cdn.buidlbox.io/user/19718d4d-a82f-4b16-b4e7-9410f7c4e88d/avatar/avatar.JPG?t=1697105741898",
+  },
+  {
+    avatar: "/images/pfps/everscale-logo.jpeg",
+    role: "organiser",
+    name: "Everscale",
+    testimonial:
+      "“Hosting a hackathon with the buidlbox team was one of the most productive outcomes we've seen in the tech ecosystem and crypto community.”",
   },
 ];
 
@@ -251,7 +279,7 @@ const list = ref();
 
 onMounted(() => {
   list.value = [...document.getElementsByClassName("carousel__list")][0];
-})
+});
 
 const activateSlide = ($slide: Element) => {
   if (!$slide) return;
@@ -272,8 +300,9 @@ const selectSlide = (e: any) => {
   activateSlide($slide);
 };
 
-
-
+onMounted(() => {
+  list.value = [...document.getElementsByClassName("carousel__list")][0];
+});
 
 const getActiveIndex = () => {
   const $active = [...document.querySelectorAll("[data-active]")][0];
@@ -309,19 +338,21 @@ const nextSlide = () => {
       />
     </div>
     <section
-      class="pt-[25vh] padding flex sm:flex-row flex-col pb-40 relative overflow-hidden"
+      class="xl:padding pt-[15vh] sm:pt-[20vh] justify-center m-auto flex sm:flex-row flex-col pb-40 relative overflow-hidden"
     >
-      <div class="self-center justify-self-center max-w-md z-50">
-        <h1 class="section-title leading-[120%] text-6xl sm:text-7xl pb-6">
+      <div class="self-center justify-self-center max-w-md z-50 px-4">
+        <h1
+          class="section-title leading-[120%] text-4xl sm:text-5xl lg:text-7xl pb-6 text-center xl:text-left"
+        >
           We grow <br /><span class="gradient-text">ecosystems</span>
         </h1>
-        <p class="pb-20 sm:text-lg">
+        <p class="pb-12 xl:pb-20 xl:text-xl text-center xl:text-left">
           Unlock innovation and grow developer communities through hackathons &
           bounties with buidlbox
         </p>
 
         <GradientButton
-          class="flex-shrink-0 flex-grow-0"
+          class="flex-shrink-0 flex-grow-0 flex xl:block items-center justify-center"
           @click="
             () => {
               isTrialModalOpen = true;
@@ -333,25 +364,50 @@ const nextSlide = () => {
           >Request a demo</GradientButton
         >
       </div>
-      <div class="relative w-full h-90">
-        <img
-          class="animate-grow absolute h-32 w-32 animation-delay-0 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-          src="/images/circle1.svg"
-          alt="buidlbox logo"
-          style="transform-origin: center"
-        />
-        <img
-          class="animate-grow absolute h-32 w-32 animation-delay-2000 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-          src="/images/circle2.svg"
-          alt="buidlbox logo"
-          style="transform-origin: center"
-        />
-        <img
-          class="animate-grow absolute h-32 w-32 animation-delay-4000 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-          src="/images/circle1.svg"
-          alt="buidlbox logo"
-          style="transform-origin: center"
-        />
+      <div
+        class="absolute top-[500px] md:top-[450px] xl:top-0 left-0 right-0 m-auto xl:relative w-[350px] h-[350px] md:w-[500px] md:h-[500px]"
+      >
+        <client-only>
+          <video
+            playsInline
+            preload="auto"
+            width="500"
+            autoPlay
+            height="500"
+            loop
+            muted="true"
+          >
+            <source src="/animations/00-hero.mov" type="video/quicktime" />
+            <source src="/animations/00-hero.webm" type="video/webm" />
+          </video>
+        </client-only>
+        <div
+          class="origin-center z-0 absolute h-32 w-32 top-1/2 left-1/2 m-auto transform -translate-x-1/2 -translate-y-1/2"
+        >
+          <img
+            class="animate-grow origin-center h-32 w-32 animation-delay-0"
+            src="/images/circle1.svg"
+            alt="buidlbox logo"
+          />
+        </div>
+        <div
+          class="origin-center z-0 absolute h-32 w-32 top-1/2 left-1/2 m-auto transform -translate-x-1/2 -translate-y-1/2"
+        >
+          <img
+            class="animate-grow origin-center z-0 h-32 w-32 animation-delay-2000"
+            src="/images/circle2.svg"
+            alt="buidlbox logo"
+          />
+        </div>
+        <div
+          class="origin-center z-0 absolute h-32 w-32 top-1/2 left-1/2 m-auto transform -translate-x-1/2 -translate-y-1/2"
+        >
+          <img
+            class="animate-grow origin-center z-0 h-32 w-32 animation-delay-4000"
+            src="/images/circle1.svg"
+            alt="buidlbox logo"
+          />
+        </div>
       </div>
     </section>
 
@@ -376,8 +432,8 @@ const nextSlide = () => {
     </section>
 
     <!-- quote section -->
-    <div class="relative">
-      <section class="mt-52 px-4 overflow-x-hidden max-w-screen">
+    <div class="relative px-4 lg:px-16">
+      <section class="mt-52 px-2 overflow-hidden max-w-screen">
         <h1
           class="slide-in-section section-title text-3xl sm:text-4xl md:text-5xl xl:text-6xl max-w-[58rem] m-auto text-center !leading-[140%] tracking-wider"
         >
@@ -426,11 +482,11 @@ const nextSlide = () => {
       </div>
 
       <!-- ecosystem section -->
-      <section class="mt-52 px-4 z-50">
+      <section class="mt-52 px-4 md:px-12 lg:px-16 z-50">
         <div
-          class="grid sm:grid-cols-2 md:gap-12 gap-6 max-w-[65rem] m-auto justify-center"
+          class="grid xl:grid-cols-2 md:gap-12 gap-6 max-w-[65rem] m-auto justify-center"
         >
-          <div class="max-w-lg h-fit top-40 lg:sticky z-50 child:z-50">
+          <div class="max-w-lg h-fit top-40 xl:sticky z-50 child:z-50">
             <div class="flex items-center gap-2 mb-4">
               <GlobeAltIcon class="text-on-surface h-4 w-4" />
               <h4 class="section-eyebrow">Ecosystem</h4>
@@ -459,47 +515,112 @@ const nextSlide = () => {
               >
             </NuxtLink>
           </div>
-          <div class="flex flex-col gap-4 slide-from-right-section">
+          <div
+            class="flex flex-col gap-4 slide-from-right-section mt-12 sm:mt-0"
+          >
             <div
-              class="h-72 rounded-[32px] bg-card-bg border border-surface p-8"
+              class="relative z-50 rounded-[32px] bg-card-bg border border-surface p-4 md:p-8 overflow-hidden"
             >
-              <p class=" mb-3 section-title text-2xl">
-                35k buidlers worldwide
-              </p>
-              <p class="font-medium max-w-xs">
-                Extend your reach by accessing our community of buidlers from
-                all over the world.
-              </p>
+              <div class="py-4 grid grid-cols-5 gap-2 justify-center">
+                <div class="col-span-12 lg:col-span-3 mb-20 lg:mb-0">
+                  <p class="mb-6 section-title text-2xl">
+                    Over 35K buidlers worldwide
+                  </p>
+                  <p class="font-medium">
+                    Extend your reach by accessing our community of talented
+                    buidlers from around the world.
+                  </p>
+                </div>
+                <client-only>
+                  <video
+                    class="absolute -bottom-20 lg:bottom-0 lg:top-0 -right-16 lg:-right-2x0 col-span-2"
+                    playsInline
+                    preload="auto"
+                    width="250"
+                    autoPlay
+                    height="250"
+                    loop
+                    muted="true"
+                  >
+                    <source src="/animations/01-ww.webm" type="video/webm" />
+                  </video>
+                </client-only>
+              </div>
             </div>
             <div
-              class="h-72 rounded-[32px] bg-card-bg border border-surface p-8 slide-from-right-section"
+              class="relative z-50 rounded-[32px] bg-card-bg border border-surface p-4 lg:p-8 overflow-hidden"
             >
-              <p class="mb-3 section-title text-2xl">
-                Find your ecosystem champions
-              </p>
-              <p class="font-medium max-w-xs">
-                Discover and source top-tier talent from our community, and fund
-                cutting-edge projects built on your ecosystem by hackathon
-                buidlers.
-              </p>
+              <div class="relative py-4 grid grid-cols-5 gap-2 justify-center">
+                <div class="col-span-12 lg:col-span-3 mb-20 lg:mb-0">
+                  <p class="mb-6 section-title text-2xl">
+                    Uncover your ecosystem champions
+                  </p>
+                  <p class="font-medium">
+                    Discover and source top-tier talent from our community, and
+                    fund cutting-edge projects built on your ecosystem by
+                    hackathon buidlers.
+                  </p>
+                </div>
+                <client-only>
+                  <video
+                    class="absolute -bottom-20 lg:bottom-0 lg:top-0 -right-16 lg:-right-2x0 col-span-2"
+                    playsInline
+                    preload="auto"
+                    width="250"
+                    autoPlay
+                    height="250"
+                    loop
+                    muted="true"
+                  >
+                    <source src="/animations/02-champ.webm" type="video/webm" />
+                  </video>
+                </client-only>
+              </div>
             </div>
             <div
-              class="h-72 rounded-[32px] bg-card-bg border border-surface p-8 slide-from-right-section"
+              class="relative z-50 rounded-[32px] bg-card-bg border border-surface p-4 lg:p-8 overflow-hidden"
             >
-              <p class="mb-3 section-title text-2xl">Developer feedback</p>
-              <p class="font-medium max-w-xs">
-                Collect true feedback from developers buidling with your product
-                at every stage of your hackathons.
-              </p>
+              <div class="relative py-4 grid grid-cols-5 gap-2 justify-center">
+                <div class="col-span-12 lg:col-span-3 mb-20 lg:mb-0">
+                  <p class="mb-6 section-title text-2xl">
+                    Developer<br />
+                    feedback loop
+                  </p>
+                  <p class="font-medium">
+                    Collect authentic feedback from developers throughout every
+                    stage of your hackathon journey.
+                  </p>
+                </div>
+                <client-only>
+                  <video
+                    class="absolute -bottom-20 lg:bottom-0 lg:top-0 -right-16 lg:-right-2x0 col-span-2"
+                    autoplay
+                    playsInline
+                    preload="auto"
+                    width="250"
+                    height="250"
+                    loop
+                    muted="true"
+                  >
+                    <!-- <source src={flowerMov} type="video/quicktime" /> -->
+                    <source src="/animations/03-loop.webm" type="video/webm" />
+                    <!-- <img src={flowerpng} alt="" /> -->
+                    <!-- <video ref={videoRef} className="hero-animation" poster={flowerGif} playsInline preload="auto" width="500" height="500" loop muted={true}>
+              <source src={flowerMov} type="video/quicktime" />
+              <source src={flowerWebm} type="video/webm" />
+              <img src={flowerpng} alt="" /> -->
+                  </video>
+                </client-only>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       <!-- tools section -->
-      <section class="pt-52 relative px-4" id="features">
+      <section class="pt-52 relative px-4 md:px-12 lg:px-16" id="features">
         <div
-          class="relative h-full grid sm:grid-cols-2 gap-16 sm:gap-6 md:gap-12 max-w-[65rem] m-auto justify-center"
+          class="relative h-full grid lg:grid-cols-2 gap-16 sm:gap-6 md:gap-12 max-w-[65rem] m-auto xl:justify-center"
         >
           <div class="max-w-md lg:sticky top-40 h-fit">
             <div class="flex items-center gap-2 mb-4">
@@ -509,11 +630,12 @@ const nextSlide = () => {
             <h1
               class="slide-in-section section-title text-4xl md:text-6xl mb-7 !leading-[120%]"
             >
-              All the tools you expect
+              All the tools you need
             </h1>
             <p class="font-medium mb-10 max-w-sm sm:text-lg">
-              Your vision, our platform: We’ve got everything you need to
-              successfully organize your hackathons and power your community.
+              We've got a full suite of features and tools to successfully
+              organize your hackathons, power your community, and fuel your
+              growth.
             </p>
             <GradientButton
               class="flex-shrink-0 flex-grow-0"
@@ -530,24 +652,24 @@ const nextSlide = () => {
           </div>
           <div class="flex flex-col gap-4">
             <div
-              class="rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5 slide-from-right-section"
+              class="rounded-[32px] bg-card-bg border border-surface py-8 px-6 lg:px-8 flex flex-col gap-2.5 slide-from-right-section"
             >
               <p class="section-eyebrow text-primary">buidling</p>
               <p class="slide-from-right-section font-extrabold text-2xl">
-                Hackathon platform
+                Dynamic hackathon platform
               </p>
               <p class="font-medium max-w-xs">
                 All the features you need to run amazing hackathons in one
-                platform. Submissions, judging, feedback, winner announcements,
+                platform. Submissions, judging, feedback, winner showcase,
                 allowlist and many more.
               </p>
             </div>
             <div
-              class="rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5 slide-from-right-section"
+              class="rounded-[32px] bg-card-bg border border-surface py-8 px-6 lg:px-8 flex flex-col gap-2.5 slide-from-right-section"
             >
               <p class="section-eyebrow text-tertiary">engagement</p>
               <p class="slide-from-right-section font-extrabold text-2xl">
-                Bounties
+                Standalone bounties
               </p>
               <p class="font-medium max-w-xs">
                 Engage your developer community in between hackathons. Source
@@ -555,11 +677,11 @@ const nextSlide = () => {
               </p>
             </div>
             <div
-              class="rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5 slide-from-right-section"
+              class="rounded-[32px] bg-card-bg border border-surface py-8 px-6 lg:px-8 flex flex-col gap-2.5 slide-from-right-section"
             >
               <p class="section-eyebrow text-secondary">customer success</p>
               <p class="slide-from-right-section font-extrabold text-2xl">
-                1:1 support
+                Comprehensive 1:1 support
               </p>
               <p class="font-medium max-w-xs">
                 Receive dedicated support from our global team, from challenge
@@ -568,7 +690,7 @@ const nextSlide = () => {
               </p>
             </div>
             <div
-              class="rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5 slide-from-right-section"
+              class="rounded-[32px] bg-card-bg border border-surface py-8 px-6 lg:px-8 flex flex-col gap-2.5 slide-from-right-section"
             >
               <p class="section-eyebrow text-primary">analytics</p>
               <p class="slide-from-right-section font-extrabold text-2xl">
@@ -581,28 +703,29 @@ const nextSlide = () => {
               </p>
             </div>
             <div
-              class="rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5 slide-from-right-section"
+              class="rounded-[32px] bg-card-bg border border-surface py-8 px-6 lg:px-8 flex flex-col gap-2.5 slide-from-right-section"
             >
               <p class="section-eyebrow text-tertiary">marketing</p>
               <p class="slide-from-right-section font-extrabold text-2xl">
-                Community engagement
+                Ongoing community engagement
               </p>
               <p class="font-medium max-w-xs">
-                Vibrant Discord server with dedicated channels where you can get
-                to know builders. Actively engage with your growing community
-                through bounties, email announcements, and X (Twitter) Spaces.
+                Actively engage with your growing community through automated
+                email announcements, Discord roles, feedback forms, workshops,
+                targeted ads and X (Twitter) Spaces.
               </p>
             </div>
             <div
-              class="rounded-[32px] bg-card-bg border border-surface p-8 flex flex-col gap-2.5 slide-from-right-section"
+              class="rounded-[32px] bg-card-bg border border-surface py-8 px-6 lg:px-8 flex flex-col gap-2.5 slide-from-right-section"
             >
               <p class="section-eyebrow text-primary">buidling</p>
               <p class="slide-from-right-section font-extrabold text-2xl">
-                buidlbot
+                Powered by buidlbot
               </p>
               <p class="font-medium max-w-xs">
-                buidlbot is our AI tool that trains on your documentation to
-                help builders with their projects.
+                buidlbot is our AI tool, it automates dedicated Discord channels
+                for your hackathon and trains on your documentation to help
+                builders with their projects on our platform.
               </p>
             </div>
           </div>
@@ -613,7 +736,7 @@ const nextSlide = () => {
     <!-- marketing section -->
     <section class="mt-52 px-4">
       <div
-        class="flex items-center justify-center flex-col sm:gap-16 gap-28 max-w-[85rem] mx-auto px-2 sm:px-6"
+        class="flex items-center justify-center flex-col sm:gap-16 gap-28 max-w-[82rem] mx-auto px-2 sm:px-6"
       >
         <div class="child:mx-auto">
           <div class="flex items-center gap-2 mb-4 justify-center">
@@ -654,7 +777,7 @@ const nextSlide = () => {
           <MarketingCard type="secondary"
             ><template v-slot:eyebrow>planner</template
             ><template v-slot:title
-              >Individualized  <br />marketing plan</template
+              >Individualized <br />marketing plan</template
             ></MarketingCard
           >
           <div
@@ -697,7 +820,7 @@ const nextSlide = () => {
           <MarketingCard type="tertiary"
             ><template v-slot:eyebrow>emails</template
             ><template v-slot:title
-              >Access to <br/>35k buidlers</template
+              >Access to <br />35k buidlers</template
             ></MarketingCard
           >
           <MarketingCard type="tertiary"
@@ -724,7 +847,10 @@ const nextSlide = () => {
           </div>
           <MarketingCard type="primary"
             ><template v-slot:eyebrow>twitter</template
-            ><template v-slot:title>Twitter space hosting</template></MarketingCard
+            ><template v-slot:title
+              >Twitter space<br />
+              hosting</template
+            ></MarketingCard
           >
           <div
             class="rounded-[32px] bg-card-bg flex items-center border border-surface p-4 sm:p-10"
@@ -741,10 +867,9 @@ const nextSlide = () => {
     </section>
 
     <!-- team section -->
-    <section
+    <!-- <section
       class="mt-52 px-4 flex flex-col items-center max-w-full overflow-hidden"
-    >
-      <!--header-->
+      >
       <div class="top-40 h-fit flex flex-col items-center">
         <div class="flex items-center gap-2 mb-4">
           <UserGroupIcon class="text-on-surface h-4 w-4" />
@@ -754,7 +879,7 @@ const nextSlide = () => {
           class="slide-in-section section-title !leading-[120%] text-4xl sm:text-6xl text-center mb-7"
         >
           The team behind<br />
-          <span class="gradient-text">160</span> hackathons
+          <span class="gradient-text bg-gradient-to-br">160+</span> hackathons
         </h1>
         <p class="font-medium mb-10 max-w-md text-center sm:text-lg">
           We've got your back (and your hack) at every stage, providing support
@@ -762,7 +887,6 @@ const nextSlide = () => {
         </p>
       </div>
 
-      <!--Team carousel-->
       <div class="w-screen hide-scrollbar carousel">
         <ul class="hide-scrollbar carousel__list">
           <li
@@ -796,16 +920,16 @@ const nextSlide = () => {
                 </h3>
               </div>
             </div>
-            <!-- <div class="absolute bottom-0 left-0 bg-secondary-surface transition-all p-4 opacity-0 group-hover:opacity-100">
+           <div class="absolute bottom-0 left-0 bg-secondary-surface transition-all p-4 opacity-0 group-hover:opacity-100">
             <h4 class="section-eyebrow">{{ item.eyebrow }}</h4>
             <h3>{{ item.name }}</h3>
           </div>
           <img :src="`/team/${item.image}.jpg`" class="h-full w-full object-cover object-center" alt="buidlbox logo"
-            style="transform-origin: center;" /> -->
+            style="transform-origin: center;" /> 
           </li>
         </ul>
       </div>
-    </section>
+    </section> -->
 
     <!-- testimonials section -->
     <section class="mt-52 overflow-hidden relative pb-4">
@@ -831,119 +955,82 @@ const nextSlide = () => {
           <h1
             class="slide-in-section section-title !leading-[120%] text-4xl sm:text-6xl mb-7 text-center max-w-2xl"
           >
-            Don’t take it from us
+            See what people <br />
+            say about us
           </h1>
           <p class="font-medium text-center max-w-md sm:text-lg">
-            We've got your back (and your hack) at every stage, providing
-            support throughout your hackathon journey.
+            Here's some feedback from buidlers, sponsors and organizers of their
+            experience with buidlbox.
           </p>
         </div>
-        <div
-          class="child:flex child:items-stretch child:justify-center child:gap-x-5 child:gap-y-2 flex flex-col gap-2"
-        >
-          <div class="overflex-x-hidden -mx-60 h-auto">
-            <div
-              v-for="(person, index) in testimonialsRow1"
-              :key="index"
-              class="rounded-[32px] bg-card-bg border border-surface xl:px-14 sm:px-6 px-3 sm:py-8 py-4 w-[200px] md:w-[363px]"
-            >
-              <div class="flex items-center gap-4 mb-6">
-                <div
-                  class="bg-gray-400 rounded-full sm:w-[46px] sm:h-[46px] w-7 h-7"
-                ></div>
-                <div>
-                  <p
-                    class="section-eyebrow sm:mb-2 mb-1"
-                    :class="{
-                      'text-primary': person.role == 'buidler',
-                      'text-secondary': person.role == 'sponsor',
-                      'text-tertiary': person.role == 'organizer',
-                    }"
-                  >
-                    {{ person.role }}
-                  </p>
-                  <p class="sm:text-base text-xs">{{ person.name }}</p>
-                </div>
-              </div>
-              <p class="font-extrabold xl:text-base sm:text-sm text-xs">
-                {{ person.testimonial }}
-              </p>
-            </div>
-          </div>
+        <div class="">
           <div class="">
-            <div
-              v-for="(person, index) in testimonialsRow2"
-              :key="index"
-              class="rounded-[32px] bg-card-bg border border-surface xl:px-14 sm:px-6 px-3 sm:py-8 py-4 w-[200px] md:w-[363px]"
-            >
-              <div class="flex items-center gap-4 mb-6">
+            <ClientOnly>
+              <div
+                v-masonry
+                transition-duration="1s"
+                item-selector=".item"
+                column-width=".item"
+                class="masonry-container m-auto w-[80vw] sm:w-[505px] md:w-[760px] xl:w-[1210px] 2xl:w-[1615px]"
+                :gutter="5"
+                :resize="true"
+              >
                 <div
-                  class="bg-gray-400 rounded-full sm:w-[46px] sm:h-[46px] w-7 h-7"
-                ></div>
-                <div>
-                  <p
-                    class="section-eyebrow sm:mb-2 mb-1"
-                    :class="{
-                      'text-primary': person.role == 'buidler',
-                      'text-secondary': person.role == 'sponsor',
-                      'text-tertiary': person.role == 'organizer',
-                    }"
+                  v-masonry-tile
+                  class="item mb-[5px] w-[80vw] sm:w-[250px] xl:w-[400px]"
+                  :key="index"
+                  v-for="(person, index) in testimonials"
+                >
+                  <div
+                    class="rounded-[32px] bg-card-bg border border-surface 2xl:px-14 xl:px-9 px-6 sm:py-8 py-6"
                   >
-                    {{ person.role }}
-                  </p>
-                  <p class="sm:text-base text-xs">{{ person.name }}</p>
+                    <div class="flex items-center gap-4 mb-6">
+                      <img
+                        :src="person.avatar"
+                        class="bg-gray-400 rounded-full sm:w-[46px] sm:h-[46px] w-7 h-7 flex-shrink-0"
+                      />
+
+                      <div>
+                        <p
+                          class="section-eyebrow sm:mb-2 mb-1"
+                          :class="{
+                            'text-primary': person.role == 'buidler',
+                            'text-secondary': person.role == 'organiser',
+                          }"
+                        >
+                          {{ person.role }}
+                        </p>
+                        <p class="sm:text-base text-sm">{{ person.name }}</p>
+                      </div>
+                    </div>
+                    <p class="!leading-normal xl:text-base text-sm">
+                      {{ person.testimonial }}
+                    </p>
+                  </div>
                 </div>
               </div>
-              <p class="font-extrabold xl:text-base sm:text-sm text-xs">
-                {{ person.testimonial }}
-              </p>
-            </div>
-          </div>
-          <div class="2xl:-mx-50 2xl:-ml-50 -ml-52">
-            <div
-              v-for="(person, index) in testimonialsRow3"
-              :key="index"
-              class="rounded-[32px] bg-card-bg border border-surface xl:px-14 sm:px-6 px-3 sm:py-8 py-4 w-[200px] md:w-[363px]"
-            >
-              <div class="flex items-center gap-4 mb-6">
-                <div
-                  class="bg-gray-400 rounded-full sm:w-[46px] sm:h-[46px] w-7 h-7"
-                ></div>
-                <div>
-                  <p
-                    class="section-eyebrow sm:mb-2 mb-1"
-                    :class="{
-                      'text-primary': person.role == 'buidler',
-                      'text-secondary': person.role == 'sponsor',
-                      'text-tertiary': person.role == 'organizer',
-                    }"
-                  >
-                    {{ person.role }}
-                  </p>
-                  <p class="sm:text-base text-xs">{{ person.name }}</p>
-                </div>
-              </div>
-              <p class="font-extrabold xl:text-base sm:text-sm text-xs">
-                {{ person.testimonial }}
-              </p>
-            </div>
+            </ClientOnly>
           </div>
         </div>
       </div>
     </section>
 
     <!-- final CTA -->
-    <section class="relative w-screen px-4 mt-52 overflow-hidden h-screen">
+    <section
+      class="final-cta relative w-screen px-4 z-50 mt-52 overflow-hidden h-screen"
+    >
       <div
-        class="flex flex-col items-center max-w-full justify-center z-50 child:z-50"
+        class="final-cta-content flex flex-col items-center max-w-full justify-center z-50 child:z-50"
       >
         <h1
           class="section-title !leading-[120%] text-4xl sm:text-6xl mb-7 text-center"
         >
-          Ready to grow your community?
+          Ready to grow<br />
+          your community?
         </h1>
         <p class="font-medium mb-10 max-w-md text-center sm:text-lg">
-          Arrange a call with us to go through the next steps!
+          Let's level up, together – schedule a call today to discuss next
+          steps.
         </p>
         <GradientButton
           class="flex-shrink-0 flex-grow-0"
@@ -959,7 +1046,7 @@ const nextSlide = () => {
         >
       </div>
       <div
-        class="origin-center z-0 absolute h-32 w-32 bottom-0 left-1/2 m-auto transform -translate-x-1/2"
+        class="origin-center z-[-1] absolute h-32 w-32 -bottom-20 left-1/2 m-auto transform -translate-x-1/2"
       >
         <img
           class="animate-grow origin-center h-32 w-32 animation-delay-0"
@@ -968,26 +1055,124 @@ const nextSlide = () => {
         />
       </div>
       <div
-        class="origin-center z-0 absolute h-32 w-32 bottom-0 left-1/2 m-auto transform -translate-x-1/2"
+        class="origin-center z-[-1] absolute h-32 w-32 -bottom-20 left-1/2 m-auto transform -translate-x-1/2"
       >
         <img
-          class="animate-grow origin-center z-0 h-32 w-32 animation-delay-2000"
+          class="animate-grow origin-center h-32 w-32 animation-delay-2000"
           src="/images/circle2.svg"
           alt="buidlbox logo"
         />
       </div>
       <div
-        class="origin-center z-0 absolute h-32 w-32 bottom-0 left-1/2 m-auto transform -translate-x-1/2"
+        class="origin-center z-[-1] absolute h-32 w-32 -bottom-20 left-1/2 m-auto transform -translate-x-1/2"
       >
         <img
-          class="animate-grow origin-center z-0 h-32 w-32 animation-delay-4000"
+          class="animate-grow origin-center h-32 w-32 animation-delay-4000"
           src="/images/circle1.svg"
           alt="buidlbox logo"
         />
       </div>
-
-      <div class="absolute bottom-0 left-0 right-0 m-auto"></div>
     </section>
+
+    <footer class="pb-16 w-screen m-auto relative z-10">
+      <div
+        class="footer-bg bg-on-surface absolute top-0 left-0 bottom-0 right-0 z-[-1]"
+      ></div>
+      <div class="flex flex-col gap-6 pt-12 sm:px-[12vw] px-8">
+        <div>
+          <img
+            src="/buidlbox-logo-positive.svg"
+            alt="buidlbox logo"
+            width="138"
+            height="35"
+          />
+        </div>
+        <div class="flex sm:flex-row flex-col gap-4 mt-6">
+          <NuxtLink href="https://twitter.com/buidlbox" target="_blank">
+            <GradientButton>
+              <div class="flex items-center gap-3">
+                <font-awesome-icon
+                  :icon="['fab', 'twitter']"
+                  class="!w-4 !h-4"
+                />
+                <span>Follow us on twitter</span>
+              </div></GradientButton
+            ></NuxtLink
+          >
+
+          <GradientButton class="flex-shrink-0">
+            <div class="flex items-center gap-3">
+              <EnvelopeIcon class="h-4 w-4" />
+              Sign up to our newsletter
+            </div></GradientButton
+          >
+        </div>
+        <div
+          class="sm:border-t sm:border-around-forms sm:pt-4 flex justify-between gap-4 items-center w-full flex-wrap"
+        >
+          <div
+            class="flex gap-x-6 gap-y-2 child:text-sm child:text-background flex-wrap"
+          >
+            <a
+              class="hover:underline"
+              href="mailto:team@buidlbox.io"
+              target="_blank"
+              >Contact</a
+            >
+            <a
+              class="hover:underline"
+              href="https://buidlbox.zendesk.com"
+              target="_blank"
+              >Help center</a
+            >
+            <a
+              class="hover:underline"
+              @click="
+                () => {
+                  isTrialModalOpen = true;
+                  mixpanel.track('Request a demo', {
+                    type: 'Lead',
+                  });
+                }
+              "
+              >Request a demo</a
+            >
+            <NuxtLink to="/privacy" class="hover:underline" target="_blank">
+              Privacy
+            </NuxtLink>
+            <NuxtLink to="/terms" class="hover:underline" target="_blank"
+              >Terms
+            </NuxtLink>
+          </div>
+          <div class="flex items-center gap-3">
+            <a href="https://twitter.com/buidlbox" target="_blank">
+              <font-awesome-icon
+                :icon="['fab', 'twitter']"
+                class="cursor-pointer rounded-full text-background hover:text-positive transition-all w-5 h-5"
+              />
+            </a>
+            <a href="https://discord.gg/NTRYy5V2Q9" target="_blank">
+              <font-awesome-icon
+                :icon="['fab', 'discord']"
+                class="cursor-pointer rounded-full text-background hover:text-positive transition-all w-5 h-5"
+              />
+            </a>
+            <a href="https://www.instagram.com/buidlbox" target="_blank">
+              <font-awesome-icon
+                :icon="['fab', 'instagram']"
+                class="cursor-pointer rounded-full text-background hover:text-positive transition-all w-5 h-5"
+              />
+            </a>
+            <a href="https://www.linkedin.com/company/buidlbox" target="_blank">
+              <font-awesome-icon
+                :icon="['fab', 'linkedin']"
+                class="cursor-pointer rounded-full text-background hover:text-positive transition-all w-5 h-5"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
   </div>
 
   <RequestTrial

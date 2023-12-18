@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
-
+import { Mixpanel } from "mixpanel-browser";
+const mixpanel = inject("mixpanel") as Mixpanel;
 const isTrialModalOpen = ref(false);
 </script>
 
@@ -47,7 +48,16 @@ const isTrialModalOpen = ref(false);
               target="_blank"
               >Help center</a
             >
-            <a class="hover:underline" @click="isTrialModalOpen = true"
+            <a
+              class="hover:underline"
+              @click="
+                () => {
+                  isTrialModalOpen = true;
+                  mixpanel.track('Request a demo', {
+                    type: 'Lead',
+                  });
+                }
+              "
               >Request a demo</a
             >
             <NuxtLink to="/privacy" class="hover:underline" target="_blank">
