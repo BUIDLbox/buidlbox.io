@@ -755,10 +755,10 @@ const nextSlide = () => {
           </p>
         </div>
         <div
-          class="child:sm:h-auto child:h-[100px] parallax-section flex items-center justify-center flex-wrap gap-1 sm:gap-4"
+          class="child:sm:h-auto lg:child:h-[100px] parallax-section flex gap-2 items-stretch justify-center flex-wrap  sm:gap-4"
         >
           <div
-            class="rounded-[32px] bg-card-bg flex items-center border border-surface p-4 sm:p-10"
+            class="rounded-[32px] bg-card-bg flex items-center  border border-surface p-4 sm:p-10"
           >
             <img
               src="/images/discord-gradient-icon.svg"
