@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
-
+import { Mixpanel } from "mixpanel-browser";
+const mixpanel = inject("mixpanel") as Mixpanel;
 const isTrialModalOpen = ref(false);
 </script>
 
@@ -28,12 +29,7 @@ const isTrialModalOpen = ref(false);
               target="_blank"
               >Organize a hackathon</a
             > -->
-            <a
-              class="hover:underline"
-              href="https://app.buidlbox.io/buy-hackathons/tiers"
-              target="_blank"
-              >Pricing</a
-            >
+
             <!-- <a
               class="hover:underline"
               href="https://buidlbox.io/"
@@ -52,20 +48,22 @@ const isTrialModalOpen = ref(false);
               target="_blank"
               >Help center</a
             >
-            <a class="hover:underline" @click="isTrialModalOpen = true"
+            <a
+              class="hover:underline"
+              @click="
+                () => {
+                  isTrialModalOpen = true;
+                  mixpanel.track('Request a demo', {
+                    type: 'Lead',
+                  });
+                }
+              "
               >Request a demo</a
             >
-            <NuxtLink
-              to="/privacy"
-              class="hover:underline"
-              target="_blank"
-            >
+            <NuxtLink to="/privacy" class="hover:underline" target="_blank">
               Privacy
             </NuxtLink>
-            <NuxtLink
-              to="/terms"
-              class="hover:underline"
-              target="_blank"
+            <NuxtLink to="/terms" class="hover:underline" target="_blank"
               >Terms
             </NuxtLink>
           </div>

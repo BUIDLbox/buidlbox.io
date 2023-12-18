@@ -15,6 +15,7 @@ const props = defineProps<{
   title?: string;
   subtitle?: string;
   size?: ModalSize;
+  darkBg?: boolean;
 }>();
 
 const sliderSize = computed(() => {
@@ -26,7 +27,7 @@ const sliderSize = computed(() => {
 
 <template>
   <TransitionRoot as="template" :show="isOpen">
-    <Dialog as="div" class="relative z-50" @close="$emit('close')">
+    <Dialog as="div" class="relative z-[99]" @close="$emit('close')">
       <div class="fixed inset-0" />
 
       <div class="fixed inset-0 overflow-hidden">
@@ -48,12 +49,21 @@ const sliderSize = computed(() => {
                 :class="sliderSize"
               >
                 <div
-                  class="flex h-full flex-col overflow-y-scroll bg-surface py-6 shadow-xl"
+                  class="flex h-full flex-col overflow-y-scroll overflow-x-hidden py-6 shadow-xl relative"
+                  :class="{
+                    'bg-surface': !darkBg,
+                    'bg-secondary-surface': darkBg,
+                  }"
                 >
+                  <img
+                    src="/images/background-gradient.png"
+                    alt="buidlbox logo"
+                    class="absolute -rotate-90 -top-[33rem] left-0 right-0 m-auto"
+                  />
                   <div class="px-4 sm:px-6">
                     <div class="flex items-start justify-between">
                       <DialogTitle
-                        class="section-title text-base sm:text-lg text-center leading-6 ml-6 w-full flex justify-center xl:justify-start"
+                        class="section-title text-base sm:text-lg text-center leading-6 ml-4 w-full flex justify-center xl:justify-start"
                         >{{ title }}</DialogTitle
                       >
                       <div class="ml-3 flex h-7 items-center">

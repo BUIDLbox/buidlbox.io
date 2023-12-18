@@ -36,6 +36,7 @@ export default {
         "on-surface-tertiary": "var(--on-surface-tertiary)",
         "on-forms": "var(--on-forms)",
         "surface-gradient": ["rgb(33,54,69)", "var(--surface-gradient)"],
+        "background-gradient": "linear-gradient(180deg, rgba(16,20,24,0.8016456582633054) 0%, rgba(16,20,24,1) 34%, rgba(16,20,24,1) 98%)",
         purple: "var(--purple)",
         "dark-blue": "var(--dark-blue)",
         "light-blue": "var(--light-blue)",
@@ -47,15 +48,25 @@ export default {
       },
       backgroundImage: {
         "hero-bg": "url('/hero-bg.png')",
+        "card-bg": "linear-gradient(131deg, #101419 49.05%, #14181E 96.1%)"
       },
       keyframes: {
         scroll: {
           "0%": { transform: "translateX(0%)" },
           "100%": { transform: "translateX(-100%)" },
         },
+        grow: {
+          '0%': { transform: 'scale(1)',
+        opacity: 0 },
+          '70%': {
+            opacity: 1
+          },
+          '100%': { transform: 'scale(10)', opacity: 0 },
+        },
       },
       animation: {
         scroll: "scroll 25s linear infinite",
+        grow: "grow 8s cubic-bezier(0.42, 0, 0.58, 1) infinite"
       },
     },
   },
@@ -64,6 +75,8 @@ export default {
       addVariant("child", "& > *");
       addVariant("child-hover", "& > *:hover");
     },
+    require("tailwindcss-animation-delay"),
+
     FormKitVariants,
   ],
 };
