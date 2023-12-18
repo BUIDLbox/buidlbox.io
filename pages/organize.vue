@@ -847,14 +847,13 @@ const nextSlide = () => {
           <MarketingCard type="primary"
             ><template v-slot:eyebrow>analytics</template
             ><template v-slot:title>
-              Metric tracking <br />
-              across all KPIs</template
-            ></MarketingCard
+              Track important<br /> ecosystem metrics</template>
+            </MarketingCard
           >
           <MarketingCard type="secondary"
             ><template v-slot:eyebrow>workshops</template
             ><template v-slot:title
-              >Hosting <br />workshops</template
+              >Integrated event<br /> calendar </template
             ></MarketingCard
           >
           <MarketingCard type="tertiary"
@@ -866,7 +865,7 @@ const nextSlide = () => {
           <MarketingCard type="tertiary"
             ><template v-slot:eyebrow>emails</template
             ><template v-slot:title
-              >Continuos email <br />marketing</template
+              >continuous email <br />marketing</template
             ></MarketingCard
           >
           <div
@@ -882,8 +881,8 @@ const nextSlide = () => {
           <MarketingCard type="primary"
             ><template v-slot:eyebrow>twitter</template
             ><template v-slot:title
-              >Twitter space<br />
-              hosting</template
+              >Facilitated<br /> twitter spaces
+              </template
             ></MarketingCard
           >
           <div
