@@ -395,7 +395,7 @@ const nextSlide = () => {
     </section>
 
     <!-- quote section -->
-    <div class="relative">
+    <div class="relative px-4 lg:px-16 ">
       <section class="mt-52 px-4 overflow-x-hidden max-w-screen">
         <h1
           class="slide-in-section section-title text-3xl sm:text-4xl md:text-5xl xl:text-6xl max-w-[58rem] m-auto text-center !leading-[140%] tracking-wider"
@@ -445,11 +445,11 @@ const nextSlide = () => {
       </div>
 
       <!-- ecosystem section -->
-      <section class="mt-52 px-4 z-50">
+      <section class="mt-52  px-4 md:px-12 lg:px-16 z-50">
         <div
-          class="grid lg:grid-cols-2 md:gap-12 gap-6 max-w-[65rem] m-auto justify-center"
+          class="grid xl:grid-cols-2 md:gap-12 gap-6 max-w-[65rem] m-auto justify-center"
         >
-          <div class="max-w-lg h-fit top-40 lg:sticky z-50 child:z-50">
+          <div class="max-w-lg h-fit top-40 xl:sticky z-50 child:z-50">
             <div class="flex items-center gap-2 mb-4">
               <GlobeAltIcon class="text-on-surface h-4 w-4" />
               <h4 class="section-eyebrow">Ecosystem</h4>
@@ -483,7 +483,7 @@ const nextSlide = () => {
               class="relative z-50 rounded-[32px] bg-card-bg border border-surface p-4 md:p-8 overflow-hidden"
             >
               <div
-                class="py-4 grid grid-cols-5 items-center gap-2 justify-center "
+                class="py-4 grid grid-cols-5  gap-2 justify-center "
               >
                 <div class="col-span-12 lg:col-span-3 mb-20 lg:mb-0">
                   <p class="mb-6 section-title text-2xl">
@@ -496,7 +496,7 @@ const nextSlide = () => {
                 </div>
                 <client-only>
                   <video
-                    class="absolute -bottom-16 -right-16  lg:relative col-span-2"
+                  class="absolute -bottom-20 lg:bottom-0 lg:top-0 -right-16 lg:-right-2x0  col-span-2"
                     playsInline
                     preload="auto"
                     width="250"
@@ -505,7 +505,6 @@ const nextSlide = () => {
                     loop
                     muted="true"
                   >
-                    <!-- <source src={flowerMov} type="video/quicktime" /> -->
                     <source src="/animations/01-ww.webm" type="video/webm" />
                   </video>
                 </client-only>
@@ -515,7 +514,7 @@ const nextSlide = () => {
                class="relative z-50 rounded-[32px] bg-card-bg border border-surface p-4 lg:p-8 overflow-hidden"
             >
               <div
-                class="relative py-4 grid grid-cols-5 items-center gap-2 justify-center"
+                class="relative py-4 grid grid-cols-5 gap-2 justify-center"
               >
                 <div class="col-span-12 lg:col-span-3 mb-20 lg:mb-0">
                   <p class="mb-6 section-title text-2xl">
@@ -529,7 +528,7 @@ const nextSlide = () => {
                 </div>
                 <client-only>
                   <video
-                    class="absolute -bottom-20 -right-16  lg:relative col-span-2"
+                  class="absolute -bottom-20 lg:bottom-0 lg:top-0 -right-16 lg:-right-2x0  col-span-2"
                     playsInline
                     preload="auto"
                     width="250"
@@ -538,13 +537,8 @@ const nextSlide = () => {
                     loop
                     muted="true"
                   >
-                    <!-- <source src={flowerMov} type="video/quicktime" /> -->
                     <source src="/animations/02-champ.webm" type="video/webm" />
-                    <!-- <img src={flowerpng} alt="" /> -->
-                    <!-- <video ref={videoRef} className="hero-animation" poster={flowerGif} playsInline preload="auto" width="500" height="500" loop muted={true}>
-              <source src={flowerMov} type="video/quicktime" />
-              <source src={flowerWebm} type="video/webm" />
-              <img src={flowerpng} alt="" /> -->
+               
                   </video>
                 </client-only>
               </div>
@@ -553,7 +547,7 @@ const nextSlide = () => {
             class="relative z-50 rounded-[32px] bg-card-bg border border-surface p-4 lg:p-8 overflow-hidden"
             >
               <div
-              class="relative py-4 grid grid-cols-5 items-center gap-2 justify-center"
+              class="relative py-4 grid grid-cols-5 gap-2 justify-center"
               >
                 <div class="col-span-12 lg:col-span-3 mb-20 lg:mb-0">
                   <p class="mb-6 section-title text-2xl">
@@ -567,7 +561,7 @@ const nextSlide = () => {
                 </div>
                 <client-only>
                   <video
-                  class="absolute -bottom-20 -right-16  lg:relative col-span-2"
+                  class="absolute -bottom-20 lg:bottom-0 lg:top-0 -right-16 lg:-right-2x0  col-span-2"
                     autoplay
                     playsInline
                     preload="auto"
@@ -592,9 +586,9 @@ const nextSlide = () => {
       </section>
 
       <!-- tools section -->
-      <section class="pt-52 relative px-4" id="features">
+      <section class="pt-52 relative px-4 md:px-12 lg:px-16 " id="features">
         <div
-          class="relative h-full   grid sm:grid-cols-2 gap-16 sm:gap-6 md:gap-12 max-w-[65rem] m-auto justify-center"
+          class="relative h-full   grid lg:grid-cols-2 gap-16 sm:gap-6 md:gap-12 max-w-[65rem] m-auto xl:justify-center"
         >
           <div class="max-w-md lg:sticky top-40 h-fit">
             <div class="flex items-center gap-2 mb-4">
