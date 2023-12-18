@@ -46,7 +46,7 @@ onMounted(async () => {
       }
     );
     gsap.to(".footer-bg", {
-      scaleX: () => (window.innerWidth > 600 ? 0.75 : 0.8),
+      scaleX: () => (window.innerWidth > 600 ? 0.75 : 1),
       borderTopRightRadius: 60,
       borderTopLeftRadius: 60,
       ease: "none",
@@ -417,7 +417,7 @@ const nextSlide = () => {
 
     <!--Client Logos-->
 
-    <section class="parallax-section max-w-[85rem] mx-auto px-4 w-fit relative">
+    <section class="parallax-section max-w-[85rem] mx-auto px-4 w-full relative">
       <div
         class="w-screen overflow-x-hidden h-[650px] background-gradient absolute left-0 right-0 -top-48"
       ></div>
@@ -771,7 +771,7 @@ const nextSlide = () => {
           </p>
         </div>
         <div
-          class="child:sm:h-auto lg:child:h-[100px] parallax-section flex gap-2 items-stretch justify-center flex-wrap  sm:gap-4"
+          class="child:sm:h-auto  parallax-section flex gap-2 items-stretch justify-center flex-wrap  sm:gap-4"
         >
           <div
             class="rounded-[32px] bg-card-bg flex items-center  border border-surface p-4 sm:p-10"
@@ -981,7 +981,6 @@ const nextSlide = () => {
           </p>
         </div>
         <div class="">
-          <div class="">
             <ClientOnly>
               <div
                 v-masonry
@@ -1027,7 +1026,6 @@ const nextSlide = () => {
                 </div>
               </div>
             </ClientOnly>
-          </div>
         </div>
       </div>
     </section>
