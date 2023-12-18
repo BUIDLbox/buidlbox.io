@@ -106,7 +106,112 @@ onMounted(async () => {
   });
 });
 
-const testimonials = window.screenY > 600 ? [
+
+const testimonials = ref([] as any[]);
+
+const carouselTags = [
+  { name: "Guidl dashboard", imgSrc: "/carouselTags/guidl-dashboard.png" },
+  { name: "Hackathon setup wizard", imgSrc: "/buidlbox-user-dashboard.png" },
+  { name: "Manage challenges", imgSrc: "" },
+  { name: "Personalized landing page", imgSrc: "" },
+  { name: "Invite co-sponsors & judges", imgSrc: "" },
+  { name: "Manage event calendar", imgSrc: "" },
+  { name: "Review submissions", imgSrc: "" },
+  { name: "Judging platform", imgSrc: "" },
+  { name: "Announce winners", imgSrc: "" },
+  { name: "Metrics & data", imgSrc: "" },
+];
+const selectedCarouselTag = ref<{ name: string; imgSrc: string }>(
+  carouselTags[0]
+);
+
+const buidlboxTeam = [
+  {
+    name: "Emma Clarkson",
+    eyebrow: "Lead Developer",
+    image: "test1",
+  },
+  {
+    name: "John Doe",
+    eyebrow: "Marketing Strategist",
+    image: "test2",
+  },
+  {
+    name: "Sophia Turner",
+    eyebrow: "Product Manager",
+    image: "test3",
+  },
+  {
+    name: "Liam Smith",
+    eyebrow: "Creative Director",
+    image: "test4",
+  },
+  {
+    name: "Isabella Johnson",
+    eyebrow: "Financial Analyst",
+    image: "test5",
+  },
+  {
+    name: "Oliver Williams",
+    eyebrow: "UX Designer",
+    image: "test1",
+  },
+  {
+    name: "Mia Brown",
+    eyebrow: "HR Coordinator",
+    image: "test2",
+  },
+  {
+    name: "Lucas Jones",
+    eyebrow: "IT Specialist",
+    image: "test3",
+  },
+  {
+    name: "Amelia Garcia",
+    eyebrow: "Sales Executive",
+    image: "test4",
+  },
+  {
+    name: "Ethan Martinez",
+    eyebrow: "Operations Manager",
+    image: "test5",
+  },
+];
+
+const getSlideIndex = ($slide: Element) => {
+  const slides = [...document.getElementsByClassName("carousel__item")];
+  return slides.indexOf($slide);
+};
+
+const list = ref();
+
+onMounted(() => {
+  list.value = [...document.getElementsByClassName("carousel__list")][0];
+});
+
+const activateSlide = ($slide: Element) => {
+  if (!$slide) return;
+  const $slides = [...document.getElementsByClassName("carousel__item")];
+  $slides.forEach((el) => el.removeAttribute("data-active"));
+  $slide.setAttribute("data-active", "true");
+};
+
+const selectSlide = (e: any) => {
+  const max = window.matchMedia("screen and ( max-width: 600px)").matches
+    ? 5
+    : 8;
+  const $slide = e.target.closest(".carousel__item");
+  const index = getSlideIndex($slide);
+  if (index < 3 || index > max) return;
+  if (index === max) nextSlide();
+  if (index === 3) prevSlide();
+  activateSlide($slide);
+};
+
+onMounted(() => {
+  list.value = [...document.getElementsByClassName("carousel__list")][0];
+
+  testimonials.value = window?.innerWidth > 600 ? [
   {
     testimonial:
       "“I have participated in two events, buildHACKS and BuildUP #2 both of them were great opportunities to gain more skills and learn about this current era (web3). However, I met a great team on the Buidlbox Discord server, team up channel and I could join them as a web3 full-stack developer, in fact, this was the real prize in advance! so glad I found the Buidlbox platform. The event pushed me to work hard, read, and learn quickly.”",
@@ -232,107 +337,6 @@ const testimonials = window.screenY > 600 ? [
   },
 ];
 
-const carouselTags = [
-  { name: "Guidl dashboard", imgSrc: "/carouselTags/guidl-dashboard.png" },
-  { name: "Hackathon setup wizard", imgSrc: "/buidlbox-user-dashboard.png" },
-  { name: "Manage challenges", imgSrc: "" },
-  { name: "Personalized landing page", imgSrc: "" },
-  { name: "Invite co-sponsors & judges", imgSrc: "" },
-  { name: "Manage event calendar", imgSrc: "" },
-  { name: "Review submissions", imgSrc: "" },
-  { name: "Judging platform", imgSrc: "" },
-  { name: "Announce winners", imgSrc: "" },
-  { name: "Metrics & data", imgSrc: "" },
-];
-const selectedCarouselTag = ref<{ name: string; imgSrc: string }>(
-  carouselTags[0]
-);
-
-const buidlboxTeam = [
-  {
-    name: "Emma Clarkson",
-    eyebrow: "Lead Developer",
-    image: "test1",
-  },
-  {
-    name: "John Doe",
-    eyebrow: "Marketing Strategist",
-    image: "test2",
-  },
-  {
-    name: "Sophia Turner",
-    eyebrow: "Product Manager",
-    image: "test3",
-  },
-  {
-    name: "Liam Smith",
-    eyebrow: "Creative Director",
-    image: "test4",
-  },
-  {
-    name: "Isabella Johnson",
-    eyebrow: "Financial Analyst",
-    image: "test5",
-  },
-  {
-    name: "Oliver Williams",
-    eyebrow: "UX Designer",
-    image: "test1",
-  },
-  {
-    name: "Mia Brown",
-    eyebrow: "HR Coordinator",
-    image: "test2",
-  },
-  {
-    name: "Lucas Jones",
-    eyebrow: "IT Specialist",
-    image: "test3",
-  },
-  {
-    name: "Amelia Garcia",
-    eyebrow: "Sales Executive",
-    image: "test4",
-  },
-  {
-    name: "Ethan Martinez",
-    eyebrow: "Operations Manager",
-    image: "test5",
-  },
-];
-
-const getSlideIndex = ($slide: Element) => {
-  const slides = [...document.getElementsByClassName("carousel__item")];
-  return slides.indexOf($slide);
-};
-
-const list = ref();
-
-onMounted(() => {
-  list.value = [...document.getElementsByClassName("carousel__list")][0];
-});
-
-const activateSlide = ($slide: Element) => {
-  if (!$slide) return;
-  const $slides = [...document.getElementsByClassName("carousel__item")];
-  $slides.forEach((el) => el.removeAttribute("data-active"));
-  $slide.setAttribute("data-active", "true");
-};
-
-const selectSlide = (e: any) => {
-  const max = window.matchMedia("screen and ( max-width: 600px)").matches
-    ? 5
-    : 8;
-  const $slide = e.target.closest(".carousel__item");
-  const index = getSlideIndex($slide);
-  if (index < 3 || index > max) return;
-  if (index === max) nextSlide();
-  if (index === 3) prevSlide();
-  activateSlide($slide);
-};
-
-onMounted(() => {
-  list.value = [...document.getElementsByClassName("carousel__list")][0];
 });
 
 const getActiveIndex = () => {
