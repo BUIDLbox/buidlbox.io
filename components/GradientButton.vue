@@ -33,7 +33,7 @@ const props = withDefaults(
         class="inter font-bold flex items-center justify-center w-full md:w-fit rounded-lg relative overflow-hidden bg-secondary-surface"
       >
         <!-- Content of the button -->
-        <div v-if="isLoading">
+        <div class="px-8 py-4 section-eyebrow font-semibold" v-if="isLoading">
           <client-only>
             <Vue3Lottie
               :animationData="loadingDots"
@@ -43,7 +43,7 @@ const props = withDefaults(
             />
           </client-only>
         </div>
-        <div class="px-8 py-4 section-eyebrow font-semibold">
+        <div v-else class="px-8 py-4 section-eyebrow font-semibold">
           <slot></slot>
         </div>
       </button>

@@ -23,6 +23,7 @@ const trial = ref({
 });
 
 const submit = () => {
+  console.log('here');
   const node = form.value?.node;
   node.submit();
 };
@@ -129,7 +130,7 @@ const submitForm = async (data: any) => {
                   v-else
                   class="mt-2"
                   :is-loading="isRequestTrialLoading"
-                  @clicked="submit()"
+                  @click="submit()"
                   >Request demo</GradientButton
                 >
               </div>

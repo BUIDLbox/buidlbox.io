@@ -49,7 +49,7 @@ const sliderSize = computed(() => {
                 :class="sliderSize"
               >
                 <div
-                  class="flex h-full flex-col overflow-y-scroll overflow-x-hidden py-6 shadow-xl relative"
+                  class=" flex h-full flex-col overflow-y-scroll overflow-x-hidden py-6 shadow-xl relative"
                   :class="{
                     'bg-surface': !darkBg,
                     'bg-secondary-surface': darkBg,
@@ -58,9 +58,9 @@ const sliderSize = computed(() => {
                   <img
                     src="/images/background-gradient.png"
                     alt="buidlbox logo"
-                    class="absolute -rotate-90 -top-[33rem] left-0 right-0 m-auto"
+                    class="absolute -rotate-90 -top-[33rem] left-0 right-0 m-auto "
                   />
-                  <div class="px-4 sm:px-6">
+                  <div class="px-4 sm:px-6 relative z-50">
                     <div class="flex items-start justify-between">
                       <DialogTitle
                         class="section-title text-base sm:text-lg text-center leading-6 ml-4 w-full flex justify-center xl:justify-start"
@@ -77,7 +77,7 @@ const sliderSize = computed(() => {
                         </button>
                       </div>
                     </div>
-                    <div class="mt-1">
+                    <div class="mt-1 relative z-50">
                       <p v-if="subtitle" class="text-sm">{{ subtitle }}</p>
                       <div
                         class="xl:ml-6 w-full flex justify-center xl:justify-start"
@@ -87,7 +87,7 @@ const sliderSize = computed(() => {
                       <!-- <component v-else :is="subtitleComponent"></component> -->
                     </div>
                   </div>
-                  <div class="relative 2xl:mt-2 flex-1 px-4 sm:px-6">
+                  <div class="relative 2xl:mt-2 flex-1 px-4 sm:px-6 z-50">
                     <slot name="content"></slot>
                   </div>
                 </div>

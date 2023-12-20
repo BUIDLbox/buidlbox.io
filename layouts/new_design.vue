@@ -37,7 +37,7 @@ onUnmounted(() => {
     class="bg-secondary-surface w-screen max-w-screen min-h-screen relative"
   >
     <div
-      class="w-screen py-4 flex items-center justify-between px-[7vw] fixed z-[90] transition-all duration-300"
+      class="w-screen py-4 flex items-center justify-center xl:justify-between xl:padding fixed z-[90] transition-all duration-300"
       :class="{ 'bg-secondary-surface backdrop-blur-xl': showHeaderBackground }"
     >
       <img

@@ -450,11 +450,11 @@ const nextSlide = () => {
 
     <!--Client Logos-->
 
-    <section class=" parallax-section max-w-[85rem] mx-auto px-4 md:px-12 lg:px-16 w-full relative">
+    <section class="z-40 parallax-section max-w-[85rem] mx-auto px-4 md:px-12 lg:px-16 w-full relative">
       <div
-        class=" w-screen overflow-x-hidden h-[650px] background-gradient absolute left-0 right-0 -top-48"
+        class=" w-screen overflow-x-hidden z-0  h-[500px] background-gradient absolute left-0 right-0 -top-48"
       ></div>
-      <div class="w-fit">
+      <div class="w-fit relative z-20">
         <Logos
           class="slide-in-section child:z-[60] z-[60]"
           :default-white="true"
@@ -469,7 +469,7 @@ const nextSlide = () => {
     </section>
 
     <!-- quote section -->
-    <div class="relative z-10 px-4 lg:px-16">
+    <div class="relative z-40 px-4 lg:px-16">
       <section class="mt-52 px-2 overflow-hidden max-w-screen">
         <h1
           class="slide-in-section section-title text-3xl sm:text-4xl md:text-5xl xl:text-6xl max-w-[58rem] m-auto text-center !leading-[140%] tracking-wider"
@@ -480,12 +480,12 @@ const nextSlide = () => {
           <span class="text-tertiary">hackathons</span>.
         </h1>
 
-        <img
-          src="/images/background-gradient.png"
-          alt=""
-          class="absolute -top-80 -right-[100px] w-[800px] z-40 m-auto"
-        />
       </section>
+      <img
+        src="/images/background-gradient.png"
+        alt=""
+        class="absolute top-[1500px] lg:top-[100px] -right-[100px] w-[800px] z-10 m-auto"
+      />
     </div>
 
     <div class="relative scale-100">
@@ -749,7 +749,7 @@ const nextSlide = () => {
               </p>
               <p class="font-medium max-w-xs">
                 Real time metrics about your community: including ongoing
-                hackathon stats, product feedback, builder rentention, buidler
+                hackathon stats, product feedback, builder retention, buidler
                 sentiment & demographics
               </p>
             </div>
@@ -758,7 +758,7 @@ const nextSlide = () => {
             >
               <p class="section-eyebrow text-tertiary">marketing</p>
               <p class="slide-from-right-section font-extrabold text-2xl">
-                Ongoing community engagement
+                Community engagement
               </p>
               <p class="font-medium max-w-xs">
                 Actively engage with your growing community through automated
@@ -804,10 +804,10 @@ const nextSlide = () => {
           </p>
         </div>
         <div
-          class="child:sm:h-auto  parallax-section flex gap-2 items-stretch justify-center flex-wrap  sm:gap-4"
+          class="child:sm:h-auto w-full parallax-section flex flex-col lg:flex-row gap-2 items-stretch justify-center  lg:flex-wrap  sm:gap-4"
         >
           <div
-            class="rounded-[32px] bg-card-bg flex items-center  border border-surface p-4 sm:p-10"
+            class="rounded-[32px] bg-card-bg hidden lg:flex  items-center  border border-surface p-4 sm:p-10"
           >
             <img
               src="/images/discord-gradient-icon.svg"
@@ -831,7 +831,7 @@ const nextSlide = () => {
             ></MarketingCard
           >
           <div
-            class="rounded-[32px] bg-card-bg flex items-center border border-surface p-4 sm:p-10"
+            class="rounded-[32px] bg-card-bg hidden lg:flex items-center border border-surface p-4 sm:p-10"
           >
             <img
               src="/images/telegram-gradient-icon.svg"
@@ -869,7 +869,7 @@ const nextSlide = () => {
             ></MarketingCard
           >
           <div
-            class="rounded-[32px] bg-card-bg flex items-center border border-surface p-4 sm:p-10"
+            class="rounded-[32px] bg-card-bg hidden lg:flex  items-center border border-surface p-4 sm:p-10"
           >
             <img
               src="/images/twitter-gradient-icon.svg"
@@ -886,7 +886,7 @@ const nextSlide = () => {
             ></MarketingCard
           >
           <div
-            class="rounded-[32px] bg-card-bg flex items-center border border-surface p-4 sm:p-10"
+            class="rounded-[32px] bg-card-bg hidden lg:flex  items-center border border-surface p-4 sm:p-10"
           >
             <img
               src="/images/instagram-gradient-icon.svg"
@@ -1230,139 +1230,6 @@ const nextSlide = () => {
     </Teleport>
   </ClientOnly>
 
-  <!-- <div class="grid gap-32">
-      <div class="bg-hero-bg w-full bg-top bg-contain bg-no-repeat grid gap-10">
-        <div
-          class="flex flex-col gap-8 items-center justify-center py-24 pt-24"
-        >
-          <GradientTitle class="font-heading text-5xl 2xl:text-6xl"
-            >Build amazing hackathons.</GradientTitle
-          >
-          <h3 class="2xl:text-lg max-w-md text-center text-on-surface">
-            A hack-in-a-box designed to connect talented buidlers with top web3
-            organizations to buidl a better web.
-          </h3>
-
-          <div class="flex items-center gap-4 mt-4">
-            <Button
-              title="Request a demo"
-              :button-type="ButtonType.Secondary1"
-              @click="isTrialModalOpen = true"
-              class="w-52"
-            />
-            <a href="https://app.buidlbox.io/buy-hackathons/tiers">
-              <Button title="View pricing" class="w-52" />
-            </a>
-          </div>
-        </div>
-
-        <Logos />
-      </div>
-
-      <div
-        class="px-[10vw] bg-gradient-to-b from-dark-blue to-tertiary-surface"
-      >
-        <div class="flex flex-col items-center text-center gap-6">
-          <h5
-            class="font-heading text-xl text-around-forms font-medium uppercase"
-          >
-            DISCOVER OUR FEATURES
-          </h5>
-          <GradientTitle
-            class="font-heading text-2xl xl:text-4xl font-extrabold"
-            >Hackathons made easy, on one seamless platform</GradientTitle
-          >
-          <div class="flex items-center justify-center flex-wrap gap-2">
-            <div
-              @click="selectedCarouselTag = carouselTag"
-              v-for="carouselTag in carouselTags"
-              :key="carouselTag.name"
-              class="px-5 py-2.5 rounded-full border border-primary text-on-surface text-sm font-bold cursor-pointer hover:opacity-70 transition-all"
-              :class="{
-                'bg-primary': selectedCarouselTag.name == carouselTag.name,
-              }"
-            >
-              {{ carouselTag.name }}
-            </div>
-          </div>
-          <div>
-            <img
-              :src="selectedCarouselTag.imgSrc"
-              :alt="selectedCarouselTag.name"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div>
-        <div class="flex flex-col items-center text-center gap-6">
-          <h5
-            class="font-heading text-xl text-around-forms font-medium uppercase"
-          >
-            WHY CHOOSE BUIDLBOX?
-          </h5>
-          <GradientTitle
-            class="font-heading text-2xl xl:text-4xl font-extrabold"
-            >Elevate your hackathon experience</GradientTitle
-          >
-          <p>
-            With a guidl account for your organization, you can seamlessly
-            launch your hackathon in minutes – bounties too.
-          </p>
-          <div class="flex items-center justify-center gap-5">
-            <Button
-              title="Request a demo"
-              @click="isTrialModalOpen = true"
-              class="w-52"
-            />
-            <a href="https://app.buidlbox.io/buy-hackathons/tiers">
-              <Button
-                title="View pricing"
-                :button-type="ButtonType.Secondary1"
-                class="w-52"
-              />
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div
-        class="px-[10vw] bg-gradient-to-b from-dark-blue to-tertiary-surface"
-      >
-        <div class="flex flex-col items-center text-center gap-6">
-          <h5
-            class="font-heading text-xl text-around-forms font-medium uppercase"
-          >
-            HOW WE COMPARE
-          </h5>
-          <GradientTitle
-            class="font-heading text-2xl xl:text-4xl font-extrabold"
-            >Our platform goes above & beyond</GradientTitle
-          >
-          <p>
-            With a guidl account for your organization, you can seamlessly
-            launch your hackathon in minutes – bounties too.
-          </p>
-          <Features />
-          <div class="flex items-center justify-center gap-5">
-            <a href="https://app.buidlbox.io/buy-hackathons/tiers">
-              <Button title="Purchase a hackathon" class="w-52" />
-            </a>
-            <Button
-              title="Request a demo"
-              :button-type="ButtonType.Secondary1"
-              @click="isTrialModalOpen = true"
-              class="w-52"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <RequestTrial
-      :is-modal-open="isTrialModalOpen"
-      @close-modal="isTrialModalOpen = false"
-    /> -->
 </template>
 
 <style scoped>
