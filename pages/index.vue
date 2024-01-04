@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ButtonType } from "~/types/button";
+import { ButtonType, ButtonSize } from "~/types/button";
 import { testimonials, hackathons } from "~/data/index";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -746,19 +746,39 @@ const setTabSwitchInterval = () => {
               </div>
             </div>
           </div>
-          <a href="https://app.buidlbox.io/">
-            <Button
-              title="Start buidling"
-              class="m-auto w-72"
-              @clicked="
-                () => {
-                  mixpanel.track('Start buidling', {
-                    type: 'Lead',
-                  });
-                }
-              "
-            />
-          </a>
+          <div
+            class="flex flex-wrap flex-row items-center justify-center gap-6"
+          >
+            <a href="https://app.buidlbox.io/">
+              <Button
+                title="Start buidling"
+                class="m-auto w-72"
+                :size="ButtonSize.Large"
+                @clicked="
+                  () => {
+                    mixpanel.track('Start buidling', {
+                      type: 'Lead',
+                    });
+                  }
+                "
+              />
+            </a>
+            <NuxtLink :to="FEATURES_URL">
+              <Button
+                title="Organize a hackathon"
+                :button-type="ButtonType.Secondary1"
+                class="sm:w-52"
+                :size="ButtonSize.Large"
+                @clicked="
+                  () => {
+                    mixpanel.track('Organize a hackathon', {
+                      type: 'Lead',
+                    });
+                  }
+                "
+              />
+            </NuxtLink>
+          </div>
         </div>
       </div>
 
