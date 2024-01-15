@@ -3,6 +3,7 @@ import { ref, type Ref } from "vue";
 import { ModalSize } from "@/types/general";
 // import { useToast } from "vue-toastification";
 import { requestTrialAPI } from "~/api";
+import { Mixpanel } from "mixpanel-browser";
 
 defineProps<{
   isModalOpen: boolean;
@@ -12,6 +13,7 @@ defineProps<{
 const emit = defineEmits(["closeModal"]);
 
 // const toast = useToast();
+const mixpanel = inject("mixpanel") as Mixpanel;
 const isRequestTrialLoading = ref(false);
 const form: Ref<any> = ref(null);
 const trial = ref({
@@ -23,8 +25,11 @@ const trial = ref({
 });
 
 const submit = () => {
-  console.log('here');
   const node = form.value?.node;
+  mixpanel.track("Request a demo complete", {
+    type: "Lead",
+    step: "Complete",
+  });
   node.submit();
 };
 
