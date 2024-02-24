@@ -48,7 +48,9 @@ const {
   data: announcements,
   error: announcementsError,
   pending: isGetAnnouncementsLoading,
-} = await useFetch<{ data: { data: Announcement[] } }>(url);
+} = await useFetch<{ data: Announcement[] }>(url, {
+  server: false,
+});
 
 onUnmounted(() => {
   mm.revert();
@@ -232,7 +234,7 @@ const setTabSwitchInterval = () => {
     <div class="bg-gradient-to-b from-tertiary-surface to-dark-blue from-35%">
       <div class="bg-hero-bg w-full bg-top bg-contain bg-no-repeat">
         <AnnouncementBar
-          :announcements="announcements?.data?.data"
+          :announcements="announcements?.data"
           :isGetAnnouncementsLoading="isGetAnnouncementsLoading"
           @open-newsletter-modal="isNewsletterModalOpen = true"
         />
